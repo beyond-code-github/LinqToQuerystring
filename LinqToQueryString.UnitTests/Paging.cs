@@ -357,4 +357,77 @@
     }
 
     #endregion
+
+    #region OrderBy Multiple Properties
+
+    public class When_using_order_by_on_two_properties : PagingAndOrdering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$orderby=Complete,Age");
+
+        private It should_return_five_records = () => result.Count().ShouldEqual(5);
+
+        private It should_return_the_third_record = () => result.ElementAt(0).Name.ShouldEqual(concreteCollection.ElementAt(2).Name);
+
+        private It should_then_be_followed_by_the_fifth = () => result.ElementAt(1).Name.ShouldEqual(concreteCollection.ElementAt(4).Name);
+
+        private It should_then_be_followed_by_the_fourth = () => result.ElementAt(2).Name.ShouldEqual(concreteCollection.ElementAt(3).Name);
+
+        private It should_then_be_followed_by_the_second = () => result.ElementAt(3).Name.ShouldEqual(concreteCollection.ElementAt(1).Name);
+
+        private It should_then_be_followed_by_the_first = () => result.ElementAt(4).Name.ShouldEqual(concreteCollection.ElementAt(0).Name);
+    }
+
+    public class When_using_order_by_on_one_descending_and_one_ascending : PagingAndOrdering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$orderby=Complete desc,Age");
+
+        private It should_return_five_records = () => result.Count().ShouldEqual(5);
+
+        private It should_return_the_fourth_record = () => result.ElementAt(0).Name.ShouldEqual(concreteCollection.ElementAt(3).Name);
+
+        private It should_then_be_followed_by_the_second = () => result.ElementAt(1).Name.ShouldEqual(concreteCollection.ElementAt(1).Name);
+
+        private It should_then_be_followed_by_the_first = () => result.ElementAt(2).Name.ShouldEqual(concreteCollection.ElementAt(0).Name);
+
+        private It should_then_be_followed_by_the_third = () => result.ElementAt(3).Name.ShouldEqual(concreteCollection.ElementAt(2).Name);
+
+        private It should_then_be_followed_by_the_fifth = () => result.ElementAt(4).Name.ShouldEqual(concreteCollection.ElementAt(4).Name);
+    }
+
+    public class When_using_order_by_on_one_ascending_and_one_descending : PagingAndOrdering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$orderby=Complete,Age desc");
+
+        private It should_return_five_records = () => result.Count().ShouldEqual(5);
+
+        private It should_return_the_fifth_record = () => result.ElementAt(0).Name.ShouldEqual(concreteCollection.ElementAt(4).Name);
+
+        private It should_then_be_followed_by_the_third = () => result.ElementAt(1).Name.ShouldEqual(concreteCollection.ElementAt(2).Name);
+
+        private It should_then_be_followed_by_the_first = () => result.ElementAt(2).Name.ShouldEqual(concreteCollection.ElementAt(0).Name);
+
+        private It should_then_be_followed_by_the_second = () => result.ElementAt(3).Name.ShouldEqual(concreteCollection.ElementAt(1).Name);
+
+        private It should_then_be_followed_by_the_fourth = () => result.ElementAt(4).Name.ShouldEqual(concreteCollection.ElementAt(3).Name);
+    }
+
+    public class When_using_order_by_on_two_properties_both_descending : PagingAndOrdering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$orderby=Complete desc,Age desc");
+
+        private It should_return_five_records = () => result.Count().ShouldEqual(5);
+
+        private It should_return_the_first_record = () => result.ElementAt(0).Name.ShouldEqual(concreteCollection.ElementAt(0).Name);
+
+        private It should_then_be_followed_by_the_second = () => result.ElementAt(1).Name.ShouldEqual(concreteCollection.ElementAt(1).Name);
+
+        private It should_then_be_followed_by_the_fourth = () => result.ElementAt(2).Name.ShouldEqual(concreteCollection.ElementAt(3).Name);
+
+        private It should_then_be_followed_by_the_fifth = () => result.ElementAt(3).Name.ShouldEqual(concreteCollection.ElementAt(4).Name);
+
+        private It should_then_be_followed_by_the_third = () => result.ElementAt(4).Name.ShouldEqual(concreteCollection.ElementAt(2).Name);
+    }
+
+    #endregion
 }
+

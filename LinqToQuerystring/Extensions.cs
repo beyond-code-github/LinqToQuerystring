@@ -43,7 +43,19 @@
             var singleNode = result.Tree as TreeNode;
             if (singleNode != null && !(singleNode is IdentifierNode))
             {
-                return query.Provider.CreateQuery<T>(singleNode.BuildLinqExpression<T>(query, query.Expression));
+                if (singleNode is OrderByNode)
+                {
+                    foreach (var child in singleNode.Children.Cast<TreeNode>().Reverse())
+                    {
+                        query = query.Provider.CreateQuery<T>(child.BuildLinqExpression<T>(query, query.Expression));
+                    }
+                }
+                else
+                {
+                    query = query.Provider.CreateQuery<T>(singleNode.BuildLinqExpression<T>(query, query.Expression));
+                }
+
+                return query;
             }
 
             var tree = result.Tree as CommonTree;

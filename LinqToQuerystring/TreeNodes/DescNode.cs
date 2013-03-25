@@ -16,7 +16,11 @@
 
         public override Expression BuildLinqExpression<T>(IQueryable query, Expression expression, ParameterExpression item = null)
         {
-            return this.ChildNode.BuildLinqExpression<T>(query, expression, item);
+            var parameter = item ?? Expression.Parameter(typeof(T), "o");
+            var childExpression = this.ChildNode.BuildLinqExpression<T>(query, expression, parameter);
+
+            var lambda = Expression.Lambda(childExpression, new[] { parameter });
+            return Expression.Call(typeof(Queryable), "OrderByDescending", new[] { query.ElementType, childExpression.Type }, query.Expression, lambda);
         }
     }
 }

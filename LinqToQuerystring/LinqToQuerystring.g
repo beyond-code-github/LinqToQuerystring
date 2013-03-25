@@ -43,7 +43,8 @@ orderbylist
 	:	orderpropertyname (','! orderpropertyname)*;
 
 orderpropertyname
-	:	propertyname (SPACE! (ASC | DESC)^)?;
+	:	propertyname -> ^(ASC propertyname)
+	| 	propertyname (SPACE! (ASC | DESC)^);
 
 propertyname
 	:	IDENTIFIER  ('/' IDENTIFIER)*;

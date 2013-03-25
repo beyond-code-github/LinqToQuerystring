@@ -17,17 +17,8 @@
 
         public override Expression BuildLinqExpression<T>(IQueryable query, Expression expression, ParameterExpression item = null)
         {
-            var parameter = item ?? Expression.Parameter(typeof(T), "o");
-            var childExpression = this.ChildNode.BuildLinqExpression<T>(query, expression, parameter);
-
-            var lambda = Expression.Lambda(childExpression, new[] { parameter });
-
-            if (this.ChildNode is DescNode)
-            {
-                return Expression.Call(typeof(Queryable), "OrderByDescending", new[] { query.ElementType, childExpression.Type }, query.Expression, lambda);
-            }
-
-            return Expression.Call(typeof(Queryable), "OrderBy", new[] { query.ElementType, childExpression.Type }, query.Expression, lambda);
+            throw new NotSupportedException(
+                "Orderby is just a placeholder and should be handled differently in Extensions.cs");
         }
     }
 }
