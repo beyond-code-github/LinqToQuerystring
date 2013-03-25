@@ -35,15 +35,6 @@
                                              BuildConcreteClassInstance("Eggs", 1, new DateTime(2000, 01, 01), true),
                                              BuildConcreteClassInstance("Dogfood", 4, new DateTime(2009, 01, 01), false),
                                          };
-
-            complexOrderingCollection = new List<ConcreteClass>
-                                         {
-                                             BuildConcreteClassInstance("Apple", 1, new DateTime(2005, 01, 01), true),
-                                             BuildConcreteClassInstance("Apple", 1, new DateTime(2007, 01, 01), true),
-                                             BuildConcreteClassInstance("Banana", 1, new DateTime(2000, 01, 01), false),
-                                             BuildConcreteClassInstance("Banana", 2, new DateTime(2000, 01, 01), true),
-                                             BuildConcreteClassInstance("Banana", 3, new DateTime(2000, 01, 01), false),
-                                         };
         };
     }
 
