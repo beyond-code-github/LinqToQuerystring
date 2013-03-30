@@ -3,6 +3,7 @@ Overview
 
 LinqToQuerystring is an expression parser for .NET that aims to provide a lightweight subset of the OData URI Specification. Currently supports:
 
+* string, int32, bool, datetime data types
 * $top
 * $skip (must be used in conjunction with orderby in Linq to Entities)
 * $orderby:
@@ -17,6 +18,7 @@ In development:
 
 Future roadmap:
 
+* byte, decimal, double, single, guid, time, int64, datetimeoffset data types
 * $select
 * $expand (via 
 * $inlinecount
