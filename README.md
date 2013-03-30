@@ -5,7 +5,10 @@ LinqToQuerystring is an expression parser for .NET that aims to provide a lightw
 
 * $top
 * $skip
-* $orderby (simple types, complex types via IComparable, subproperties)
+* $orderby:
+** simple types, 
+** subproperties
+** complex types ( Linq-To-Objects only, via IComparable, )
 
 In development:
 
