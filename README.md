@@ -4,11 +4,11 @@ Overview
 LinqToQuerystring is an expression parser for .NET that aims to provide a lightweight subset of the OData URI Specification. Currently supports:
 
 * $top
-* $skip
+* $skip (must be used in conjunction with orderby in Linq to Entities)
 * $orderby:
     * simple types, 
     * subproperties
-    * complex types ( Linq-To-Objects only, via IComparable, )
+    * complex types ( Linq to Objects only, via IComparable, )
 
 In development:
 
