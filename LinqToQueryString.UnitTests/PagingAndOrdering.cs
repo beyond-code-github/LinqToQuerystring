@@ -12,7 +12,11 @@
     {
         protected static IQueryable<ConcreteClass> result;
 
-        protected static List<ConcreteClass> concreteCollection, complexOrderingCollection;
+        protected static IQueryable<ComplexClass> complexResult;
+
+        protected static List<ConcreteClass> concreteCollection;
+
+        protected static List<ComplexClass> complexCollection;
 
         protected static ConcreteClass BuildConcreteClassInstance(string name, int age, DateTime date, bool complete)
         {
@@ -33,7 +37,16 @@
                                              BuildConcreteClassInstance("Custard", 3, new DateTime(2007, 01, 01), true),
                                              BuildConcreteClassInstance("Banana", 2, new DateTime(2003, 01, 01), false),
                                              BuildConcreteClassInstance("Eggs", 1, new DateTime(2000, 01, 01), true),
-                                             BuildConcreteClassInstance("Dogfood", 4, new DateTime(2009, 01, 01), false),
+                                             BuildConcreteClassInstance("Dogfood", 4, new DateTime(2009, 01, 01), false)
+                                         };
+
+            complexCollection = new List<ComplexClass>
+                                         {
+                                             new ComplexClass { Title = "Charles", Concrete = BuildConcreteClassInstance("Apple", 5, new DateTime(2005, 01, 01), true) },
+                                             new ComplexClass { Title = "Andrew", Concrete = BuildConcreteClassInstance("Custard", 3, new DateTime(2007, 01, 01), true) },
+                                             new ComplexClass { Title = "David", Concrete = BuildConcreteClassInstance("Banana", 2, new DateTime(2003, 01, 01), false) },
+                                             new ComplexClass { Title = "Edward", Concrete = BuildConcreteClassInstance("Eggs", 1, new DateTime(2000, 01, 01), true) },
+                                             new ComplexClass { Title = "Boris", Concrete = BuildConcreteClassInstance("Dogfood", 4, new DateTime(2009, 01, 01), false) }
                                          };
         };
     }
@@ -417,6 +430,260 @@
         private It should_then_be_followed_by_the_fifth = () => result.ElementAt(3).Name.ShouldEqual(concreteCollection.ElementAt(4).Name);
 
         private It should_then_be_followed_by_the_third = () => result.ElementAt(4).Name.ShouldEqual(concreteCollection.ElementAt(2).Name);
+    }
+
+    #endregion
+
+    #region OrderBy Complex Types
+
+    public class When_using_order_by_on_complex_types_using_IComparable : PagingAndOrdering
+    {
+        private Because of = () => complexResult = complexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete");
+
+        private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
+
+        private It should_return_the_first_record = () => complexResult.ElementAt(0).Title.ShouldEqual(complexCollection.ElementAt(0).Title);
+
+        private It should_be_then_be_followed_by_the_third = () => complexResult.ElementAt(1).Title.ShouldEqual(complexCollection.ElementAt(2).Title);
+
+        private It should_be_then_be_followed_by_the_second = () => complexResult.ElementAt(2).Title.ShouldEqual(complexCollection.ElementAt(1).Title);
+
+        private It should_be_then_be_followed_by_the_fifth = () => complexResult.ElementAt(3).Title.ShouldEqual(complexCollection.ElementAt(4).Title);
+
+        private It should_be_then_be_followed_by_the_fourth = () => complexResult.ElementAt(4).Title.ShouldEqual(complexCollection.ElementAt(3).Title);
+    }
+
+    public class When_using_order_by_asc_on_complex_types_using_IComparable : PagingAndOrdering
+    {
+        private Because of = () => complexResult = complexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete asc");
+
+        private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
+
+        private It should_return_the_first_record = () => complexResult.ElementAt(0).Title.ShouldEqual(complexCollection.ElementAt(0).Title);
+
+        private It should_be_then_be_followed_by_the_third = () => complexResult.ElementAt(1).Title.ShouldEqual(complexCollection.ElementAt(2).Title);
+
+        private It should_be_then_be_followed_by_the_second = () => complexResult.ElementAt(2).Title.ShouldEqual(complexCollection.ElementAt(1).Title);
+
+        private It should_be_then_be_followed_by_the_fifth = () => complexResult.ElementAt(3).Title.ShouldEqual(complexCollection.ElementAt(4).Title);
+
+        private It should_be_then_be_followed_by_the_fourth = () => complexResult.ElementAt(4).Title.ShouldEqual(complexCollection.ElementAt(3).Title);
+    }
+
+    public class When_using_order_by_desc_on_complex_types_using_IComparable : PagingAndOrdering
+    {
+        private Because of = () => complexResult = complexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete desc");
+
+        private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
+
+        private It should_return_the_fourth_record = () => complexResult.ElementAt(0).Title.ShouldEqual(complexCollection.ElementAt(3).Title);
+
+        private It should_be_then_be_followed_by_the_fifth = () => complexResult.ElementAt(1).Title.ShouldEqual(complexCollection.ElementAt(4).Title);
+
+        private It should_be_then_be_followed_by_the_second = () => complexResult.ElementAt(2).Title.ShouldEqual(complexCollection.ElementAt(1).Title);
+
+        private It should_be_then_be_followed_by_the_third = () => complexResult.ElementAt(3).Title.ShouldEqual(complexCollection.ElementAt(2).Title);
+
+        private It should_be_then_be_followed_by_the_first_ = () => complexResult.ElementAt(4).Title.ShouldEqual(complexCollection.ElementAt(0).Title);
+    }
+
+    #endregion
+
+    #region OrderBy SubProperties
+
+    public class When_using_order_by_on_a_single_subproperty : PagingAndOrdering
+    {
+        private Because of = () => complexResult = complexCollection.AsQueryable().ExtendFromOData(@"?$orderby=Concrete/Age");
+
+        private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
+
+        private It should_return_the_fourth_record = () => complexResult.ElementAt(0).Title.ShouldEqual(complexCollection.ElementAt(3).Title);
+
+        private It should_be_then_be_followed_by_the_third = () => complexResult.ElementAt(1).Title.ShouldEqual(complexCollection.ElementAt(2).Title);
+
+        private It should_be_then_be_followed_by_the_second = () => complexResult.ElementAt(2).Title.ShouldEqual(complexCollection.ElementAt(1).Title);
+
+        private It should_be_then_be_followed_by_the_fifth = () => complexResult.ElementAt(3).Title.ShouldEqual(complexCollection.ElementAt(4).Title);
+
+        private It should_be_then_be_followed_by_the_first = () => complexResult.ElementAt(4).Title.ShouldEqual(complexCollection.ElementAt(0).Title);
+    }
+
+    public class When_using_order_by_asc_on_a_single_subproperty : PagingAndOrdering
+    {
+        private Because of = () => complexResult = complexCollection.AsQueryable().ExtendFromOData(@"?$orderby=Concrete/Age asc");
+
+        private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
+
+        private It should_return_the_fourth_record = () => complexResult.ElementAt(0).Title.ShouldEqual(complexCollection.ElementAt(3).Title);
+
+        private It should_be_then_be_followed_by_the_third = () => complexResult.ElementAt(1).Title.ShouldEqual(complexCollection.ElementAt(2).Title);
+
+        private It should_be_then_be_followed_by_the_second = () => complexResult.ElementAt(2).Title.ShouldEqual(complexCollection.ElementAt(1).Title);
+
+        private It should_be_then_be_followed_by_the_fifth = () => complexResult.ElementAt(3).Title.ShouldEqual(complexCollection.ElementAt(4).Title);
+
+        private It should_be_then_be_followed_by_the_first = () => complexResult.ElementAt(4).Title.ShouldEqual(complexCollection.ElementAt(0).Title);
+    }
+
+    public class When_using_order_by_desc_on_a_single_subproperty : PagingAndOrdering
+    {
+        private Because of = () => complexResult = complexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete/Age desc");
+
+        private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
+
+        private It should_return_the_first_record = () => complexResult.ElementAt(0).Title.ShouldEqual(complexCollection.ElementAt(0).Title);
+
+        private It should_be_then_be_followed_by_the_fifth = () => complexResult.ElementAt(1).Title.ShouldEqual(complexCollection.ElementAt(4).Title);
+
+        private It should_be_then_be_followed_by_the_second = () => complexResult.ElementAt(2).Title.ShouldEqual(complexCollection.ElementAt(1).Title);
+
+        private It should_be_then_be_followed_by_the_third = () => complexResult.ElementAt(3).Title.ShouldEqual(complexCollection.ElementAt(2).Title);
+
+        private It should_be_then_be_followed_by_the_fourth = () => complexResult.ElementAt(4).Title.ShouldEqual(complexCollection.ElementAt(3).Title);
+    }
+
+    #endregion
+
+    #region OrderBy Multiple SubProperties
+
+    public class When_using_order_by_on_two_sub_properties : PagingAndOrdering
+    {
+        private Because of = () => complexResult = complexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete/Complete,Concrete/Age");
+
+        private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
+
+        private It should_return_the_third_record = () => complexResult.ElementAt(0).Title.ShouldEqual(complexCollection.ElementAt(2).Title);
+
+        private It should_then_be_followed_by_the_fifth = () => complexResult.ElementAt(1).Title.ShouldEqual(complexCollection.ElementAt(4).Title);
+
+        private It should_then_be_followed_by_the_fourth = () => complexResult.ElementAt(2).Title.ShouldEqual(complexCollection.ElementAt(3).Title);
+
+        private It should_then_be_followed_by_the_second = () => complexResult.ElementAt(3).Title.ShouldEqual(complexCollection.ElementAt(1).Title);
+
+        private It should_then_be_followed_by_the_first = () => complexResult.ElementAt(4).Title.ShouldEqual(complexCollection.ElementAt(0).Title);
+    }
+
+    public class When_using_order_by_on_two_sub_properties_one_descending_and_one_ascending : PagingAndOrdering
+    {
+        private Because of = () => complexResult = complexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete/Complete desc,Concrete/Age");
+
+        private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
+
+        private It should_return_the_fourth_record = () => complexResult.ElementAt(0).Title.ShouldEqual(complexCollection.ElementAt(3).Title);
+
+        private It should_then_be_followed_by_the_second = () => complexResult.ElementAt(1).Title.ShouldEqual(complexCollection.ElementAt(1).Title);
+
+        private It should_then_be_followed_by_the_first = () => complexResult.ElementAt(2).Title.ShouldEqual(complexCollection.ElementAt(0).Title);
+
+        private It should_then_be_followed_by_the_third = () => complexResult.ElementAt(3).Title.ShouldEqual(complexCollection.ElementAt(2).Title);
+
+        private It should_then_be_followed_by_the_fifth = () => complexResult.ElementAt(4).Title.ShouldEqual(complexCollection.ElementAt(4).Title);
+    }
+
+    public class When_using_order_by_on_two_sub_properties_one_ascending_and_one_descending : PagingAndOrdering
+    {
+        private Because of = () => complexResult = complexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete/Complete,Concrete/Age desc");
+
+        private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
+
+        private It should_return_the_fifth_record = () => complexResult.ElementAt(0).Title.ShouldEqual(complexCollection.ElementAt(4).Title);
+
+        private It should_then_be_followed_by_the_third = () => complexResult.ElementAt(1).Title.ShouldEqual(complexCollection.ElementAt(2).Title);
+
+        private It should_then_be_followed_by_the_first = () => complexResult.ElementAt(2).Title.ShouldEqual(complexCollection.ElementAt(0).Title);
+
+        private It should_then_be_followed_by_the_second = () => complexResult.ElementAt(3).Title.ShouldEqual(complexCollection.ElementAt(1).Title);
+
+        private It should_then_be_followed_by_the_fourth = () => complexResult.ElementAt(4).Title.ShouldEqual(complexCollection.ElementAt(3).Title);
+    }
+
+    public class When_using_order_by_on_two_sub_properties_both_descending : PagingAndOrdering
+    {
+        private Because of = () => complexResult = complexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete/Complete desc,Concrete/Age desc");
+
+        private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
+
+        private It should_return_the_first_record = () => complexResult.ElementAt(0).Title.ShouldEqual(complexCollection.ElementAt(0).Title);
+
+        private It should_then_be_followed_by_the_second = () => complexResult.ElementAt(1).Title.ShouldEqual(complexCollection.ElementAt(1).Title);
+
+        private It should_then_be_followed_by_the_fourth = () => complexResult.ElementAt(2).Title.ShouldEqual(complexCollection.ElementAt(3).Title);
+
+        private It should_then_be_followed_by_the_fifth = () => complexResult.ElementAt(3).Title.ShouldEqual(complexCollection.ElementAt(4).Title);
+
+        private It should_then_be_followed_by_the_third = () => complexResult.ElementAt(4).Title.ShouldEqual(complexCollection.ElementAt(2).Title);
+    }
+
+    #endregion
+
+    #region OrderBy Mixed Properties and SubProperties
+
+    public class When_using_order_by_on_mixed_properties : PagingAndOrdering
+    {
+        private Because of = () => complexResult = complexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete/Complete,Title");
+
+        private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
+
+        private It should_return_the_fifth_record = () => complexResult.ElementAt(0).Title.ShouldEqual(complexCollection.ElementAt(4).Title);
+
+        private It should_then_be_followed_by_the_third = () => complexResult.ElementAt(1).Title.ShouldEqual(complexCollection.ElementAt(2).Title);
+
+        private It should_then_be_followed_by_the_second = () => complexResult.ElementAt(2).Title.ShouldEqual(complexCollection.ElementAt(1).Title);
+
+        private It should_then_be_followed_by_the_first = () => complexResult.ElementAt(3).Title.ShouldEqual(complexCollection.ElementAt(0).Title);
+
+        private It should_then_be_followed_by_the_fourth = () => complexResult.ElementAt(4).Title.ShouldEqual(complexCollection.ElementAt(3).Title);
+    }
+
+    public class When_using_order_by_on_mixed_properties_one_descending_and_one_ascending : PagingAndOrdering
+    {
+        private Because of = () => complexResult = complexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete/Complete desc,Title");
+
+        private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
+
+        private It should_return_the_second_record = () => complexResult.ElementAt(0).Title.ShouldEqual(complexCollection.ElementAt(1).Title);
+
+        private It should_then_be_followed_by_the_first = () => complexResult.ElementAt(1).Title.ShouldEqual(complexCollection.ElementAt(0).Title);
+
+        private It should_then_be_followed_by_the_fourth = () => complexResult.ElementAt(2).Title.ShouldEqual(complexCollection.ElementAt(3).Title);
+
+        private It should_then_be_followed_by_the_fifth = () => complexResult.ElementAt(3).Title.ShouldEqual(complexCollection.ElementAt(4).Title);
+
+        private It should_then_be_followed_by_the_third = () => complexResult.ElementAt(4).Title.ShouldEqual(complexCollection.ElementAt(2).Title);
+    }
+
+    public class When_using_order_by_on_mixed_properties_one_ascending_and_one_descending : PagingAndOrdering
+    {
+        private Because of = () => complexResult = complexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete/Complete,Title desc");
+
+        private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
+
+        private It should_return_the_third_record = () => complexResult.ElementAt(0).Title.ShouldEqual(complexCollection.ElementAt(2).Title);
+
+        private It should_then_be_followed_by_the_fifth = () => complexResult.ElementAt(1).Title.ShouldEqual(complexCollection.ElementAt(4).Title);
+
+        private It should_then_be_followed_by_the_fourth = () => complexResult.ElementAt(2).Title.ShouldEqual(complexCollection.ElementAt(3).Title);
+
+        private It should_then_be_followed_by_the_first = () => complexResult.ElementAt(3).Title.ShouldEqual(complexCollection.ElementAt(0).Title);
+
+        private It should_then_be_followed_by_the_second = () => complexResult.ElementAt(4).Title.ShouldEqual(complexCollection.ElementAt(1).Title);
+    }
+
+    public class When_using_order_by_on_mixed_properties_both_descending : PagingAndOrdering
+    {
+        private Because of = () => complexResult = complexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete/Complete desc,Title desc");
+
+        private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
+
+        private It should_return_the_fourth_record = () => complexResult.ElementAt(0).Title.ShouldEqual(complexCollection.ElementAt(3).Title);
+
+        private It should_then_be_followed_by_the_first = () => complexResult.ElementAt(1).Title.ShouldEqual(complexCollection.ElementAt(0).Title);
+
+        private It should_then_be_followed_by_the_second = () => complexResult.ElementAt(2).Title.ShouldEqual(complexCollection.ElementAt(1).Title);
+
+        private It should_then_be_followed_by_the_third = () => complexResult.ElementAt(3).Title.ShouldEqual(complexCollection.ElementAt(2).Title);
+
+        private It should_then_be_followed_by_the_fifth = () => complexResult.ElementAt(4).Title.ShouldEqual(complexCollection.ElementAt(4).Title);
     }
 
     #endregion

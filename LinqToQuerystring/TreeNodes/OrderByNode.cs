@@ -15,7 +15,7 @@
         {
         }
 
-        public override Expression BuildLinqExpression<T>(IQueryable query, Expression expression, ParameterExpression item = null)
+        public override Expression BuildLinqExpression<T>(IQueryable query, Expression expression, Expression item = null)
         {
             throw new NotSupportedException(
                 "Orderby is just a placeholder and should be handled differently in Extensions.cs");

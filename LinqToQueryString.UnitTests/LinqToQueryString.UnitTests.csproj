@@ -71,7 +71,7 @@
     <Compile Include="ConcreteClass.cs" />
     <Compile Include="Filtering.cs" />
     <Compile Include="IndexedClass.cs" />
-    <Compile Include="Paging.cs" />
+    <Compile Include="PagingAndOrdering.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomDataGenerators.cs" />
   </ItemGroup>

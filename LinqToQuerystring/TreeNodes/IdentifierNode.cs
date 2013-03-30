@@ -14,7 +14,7 @@
         {
         }
 
-        public override Expression BuildLinqExpression<T>(IQueryable query, Expression expression, ParameterExpression item)
+        public override Expression BuildLinqExpression<T>(IQueryable query, Expression expression, Expression item)
         {
             //return Expression.Call(item, "get_Item", null, Expression.Constant(this.Text));
             return Expression.Property(item, this.Text);

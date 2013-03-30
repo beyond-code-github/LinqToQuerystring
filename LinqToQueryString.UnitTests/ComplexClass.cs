@@ -1,10 +1,10 @@
 ﻿namespace LinqToQueryString.UnitTests
 {
-    using System.Collections.Generic;
+    using System;
 
     public class ComplexClass
     {
-        public List<ConcreteClass> Concretes { get; set; }
+        public ConcreteClass Concrete { get; set; }
 
         public string Title { get; set; }
     }

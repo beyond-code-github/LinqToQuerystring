@@ -14,7 +14,7 @@
         {
         }
 
-        public override Expression BuildLinqExpression<T>(IQueryable query, Expression expression, ParameterExpression item = null)
+        public override Expression BuildLinqExpression<T>(IQueryable query, Expression expression, Expression item = null)
         {
             return Expression.And(
                 this.LeftNode.BuildLinqExpression<T>(query, expression, item),

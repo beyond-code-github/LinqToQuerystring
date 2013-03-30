@@ -14,7 +14,7 @@
         {
         }
 
-        public override Expression BuildLinqExpression<T>(IQueryable query, Expression expression, ParameterExpression item = null)
+        public override Expression BuildLinqExpression<T>(IQueryable query, Expression expression, Expression item = null)
         {
             return Expression.Not(this.ChildNode.BuildLinqExpression<T>(query, expression, item));
         }

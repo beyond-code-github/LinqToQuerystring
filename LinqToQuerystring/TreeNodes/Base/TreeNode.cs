@@ -15,7 +15,7 @@
         }
 
         public abstract Expression BuildLinqExpression<T>(
-            IQueryable query, Expression expression, ParameterExpression item = null);
+            IQueryable query, Expression expression, Expression item = null);
 
         public virtual int CompareTo(TreeNode other)
         {
