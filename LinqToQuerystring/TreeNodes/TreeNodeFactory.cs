@@ -29,6 +29,16 @@
                     return new OrNode(token);
                 case LinqToQuerystringLexer.EQUALS:
                     return new EqualsNode(token);
+                case LinqToQuerystringLexer.NOTEQUALS:
+                    return new NotEqualsNode(token);
+                case LinqToQuerystringLexer.GREATERTHAN:
+                    return new GreaterThanNode(token);
+                case LinqToQuerystringLexer.GREATERTHANOREQUAL:
+                    return new GreaterThanOrEqualNode(token);
+                case LinqToQuerystringLexer.LESSTHAN:
+                    return new LessThanNode(token);
+                case LinqToQuerystringLexer.LESSTHANOREQUAL:
+                    return new LessThanOrEqualNode(token);
                 case LinqToQuerystringLexer.IDENTIFIER:
                     return new IdentifierNode(token);
                 case LinqToQuerystringLexer.STRING:
@@ -37,6 +47,8 @@
                     return new BoolNode(token);
                 case LinqToQuerystringLexer.INT:
                     return new IntNode(token);
+                case LinqToQuerystringLexer.DATETIME:
+                    return new DateTimeNode(token);
                 case LinqToQuerystringLexer.DESC:
                     return new DescNode(token);
                 case LinqToQuerystringLexer.ASC:

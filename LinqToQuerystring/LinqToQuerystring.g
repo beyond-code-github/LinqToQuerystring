@@ -31,10 +31,12 @@ orexpression
 	:	andexpression (SPACE! AND^ SPACE! andexpression)*;
 	
 andexpression
-	:	(NOT^)* comparisonexpression (SPACE! NOT^ SPACE! comparisonexpression)*;
+	:	NOT^ SPACE comparisonexpression
+	|	comparisonexpression;
 		
 comparisonexpression
-	:	propertyname SPACE! EQUALS^ SPACE! (INT+ | BOOL | STRING);
+	:	propertyname SPACE! filteroperator^ SPACE! (INT+ | BOOL | STRING | DATETIME)
+	|	'(' filterexpression ')';
 
 orderby
 	:	ORDERBY^ orderbylist;
@@ -49,14 +51,29 @@ orderpropertyname
 propertyname
 	:	IDENTIFIER  ('/' IDENTIFIER)*;
 
+filteroperator
+	:	EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL;
+	
 ASSIGN
 	: 	'=';
 
-FILTEROPERATOR
-	:	'ne' | 'gt' | 'ge' | 'lt' | 'le';
-
 EQUALS	
 	:	'eq';	
+	
+NOTEQUALS	
+	:	'ne';	
+	
+GREATERTHAN	
+	:	'gt';	
+	
+GREATERTHANOREQUAL
+	:	'ge';	
+	
+LESSTHAN	
+	:	'lt';	
+	
+LESSTHANOREQUAL
+	:	'le';	
 
 NOT		
 	:	'not';
@@ -98,8 +115,10 @@ NEWLINE
 	:	('\r'|'\n')+;
 	
 IDENTIFIER
-	:	('<'|'>'|'a'..'z'|'A'..'Z'|'0'..'9'|'_')+;
+	:	('a'..'z'|'A'..'Z'|'0'..'9'|'_')+;
 
 STRING	
 	:	'\'' ('<'|'>'|'a'..'z'|'A'..'Z'|'0'..'9'|'_'|' '|'\t')+ '\'';
 
+DATETIME
+	:	'datetime\'' '0'..'9'+ '-' '0'..'9'+ '-' + '0'..'9'+ 'T' '0'..'9'+ ':' '0'..'9'+ (':' '0'..'9'+ ('.' '0'..'9'+)*)* '\'';

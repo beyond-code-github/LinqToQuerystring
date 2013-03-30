@@ -67,6 +67,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Exceptions.cs" />
     <Compile Include="Filtering.cs" />
     <Compile Include="IndexedClass.cs" />
     <Compile Include="PagingAndOrdering.cs" />

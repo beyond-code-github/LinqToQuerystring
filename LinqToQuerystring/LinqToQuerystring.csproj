@@ -52,6 +52,12 @@
     <Compile Include="TreeNodes\Base\TreeNode.cs" />
     <Compile Include="TreeNodes\Base\TwoChildNode.cs" />
     <Compile Include="TreeNodes\BoolNode.cs" />
+    <Compile Include="TreeNodes\DateTimeNode.cs" />
+    <Compile Include="TreeNodes\LessThanNode.cs" />
+    <Compile Include="TreeNodes\LessThanOrEqualNode.cs" />
+    <Compile Include="TreeNodes\GreaterThanOrEqualNode.cs" />
+    <Compile Include="TreeNodes\GreaterThanNode.cs" />
+    <Compile Include="TreeNodes\NotEqualsNode.cs" />
     <Compile Include="TreeNodes\DescNode.cs" />
     <Compile Include="TreeNodes\EqualsNode.cs" />
     <Compile Include="TreeNodes\FilterNode.cs" />
