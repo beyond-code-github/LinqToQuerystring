@@ -47,6 +47,7 @@
     <Compile Include="LinqToQuerystringParser.cs" />
     <Compile Include="TreeNodes\AndNode.cs" />
     <Compile Include="TreeNodes\AscNode.cs" />
+    <Compile Include="TreeNodes\Base\ExplicitOrderByBase.cs" />
     <Compile Include="TreeNodes\Base\SingleChildNode.cs" />
     <Compile Include="TreeNodes\Base\TreeNode.cs" />
     <Compile Include="TreeNodes\Base\TwoChildNode.cs" />
