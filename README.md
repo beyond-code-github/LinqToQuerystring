@@ -10,23 +10,25 @@ LinqToQuerystring is an expression parser for .NET that aims to provide a lightw
     * simple types, 
     * subproperties
     * complex types ( Linq to Objects only, via IComparable, )
+* $filter - simple properties
 
 In development:
 
+* $filter - sub properties
 * Support for class indexers
-* $filter (logic operators, parenthesis)
 
 Future roadmap:
 
 * byte, decimal, double, single, guid, time, int64, datetimeoffset data types
 * $select
-* $expand (via 
+* $expand (via EF Include method)
 * $inlinecount
 
 * Arithmetic operations (e.g abs, mod)
 * Other functions (e.g endswith, floor)
 
 * MediaTypeFormatter for Web API
+* LinqToQueryable Attribute
 
 Details
 =======
