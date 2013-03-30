@@ -8,7 +8,7 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class AscNode : TreeNode
+    public class AscNode : ExplicitOrderByBase
     {
         public AscNode(IToken payload)
             : base(payload)
@@ -30,8 +30,14 @@
 
             Debug.Assert(childExpression != null, "childExpression should never be null");
 
+            var methodName = "OrderBy";
+            if (query.Provider.GetType().Name.Contains("DbQueryProvider") && !this.IsFirstChild)
+            {
+                methodName = "ThenBy";
+            }
+
             var lambda = Expression.Lambda(childExpression, new[] { parameter as ParameterExpression });
-            return Expression.Call(typeof(Queryable), "OrderBy", new[] { query.ElementType, childExpression.Type }, query.Expression, lambda);
+            return Expression.Call(typeof(Queryable), methodName, new[] { query.ElementType, childExpression.Type }, query.Expression, lambda);
         }
     }
 }

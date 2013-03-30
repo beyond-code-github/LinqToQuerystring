@@ -1,6 +1,7 @@
 ﻿namespace LinqToQuerystring
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
 
@@ -43,19 +44,7 @@
             var singleNode = result.Tree as TreeNode;
             if (singleNode != null && !(singleNode is IdentifierNode))
             {
-                if (singleNode is OrderByNode)
-                {
-                    foreach (var child in singleNode.Children.Cast<TreeNode>().Reverse())
-                    {
-                        query = query.Provider.CreateQuery<T>(child.BuildLinqExpression<T>(query, query.Expression));
-                    }
-                }
-                else
-                {
-                    query = query.Provider.CreateQuery<T>(singleNode.BuildLinqExpression<T>(query, query.Expression));
-                }
-
-                return query;
+                return CreateQuery(query, singleNode);
             }
 
             var tree = result.Tree as CommonTree;
@@ -64,10 +53,37 @@
                 var children = tree.Children.Cast<TreeNode>().ToList();
                 children.Sort();
 
-                foreach (var baseNode in children)
+                foreach (var node in children)
                 {
-                    query = query.Provider.CreateQuery<T>(baseNode.BuildLinqExpression<T>(query, query.Expression));
+                    query = CreateQuery(query, node);
                 }
+            }
+
+            return query;
+        }
+
+        private static IQueryable<T> CreateQuery<T>(IQueryable<T> query, TreeNode node)
+        {
+            if (node is OrderByNode)
+            {
+                var children = node.Children.Cast<ExplicitOrderByBase>();
+
+                if (!query.Provider.GetType().Name.Contains("DbQueryProvider"))
+                {
+                    children = children.Reverse();
+                }
+
+                var explicitOrderByNodes = children as IList<ExplicitOrderByBase> ?? children.ToList();
+                explicitOrderByNodes.First().IsFirstChild = true;
+
+                foreach (var child in explicitOrderByNodes)
+                {
+                    query = query.Provider.CreateQuery<T>(child.BuildLinqExpression<T>(query, query.Expression));
+                }
+            }
+            else
+            {
+                query = query.Provider.CreateQuery<T>(node.BuildLinqExpression<T>(query, query.Expression));
             }
 
             return query;

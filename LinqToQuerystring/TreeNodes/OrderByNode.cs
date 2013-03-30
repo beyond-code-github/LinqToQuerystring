@@ -20,5 +20,15 @@
             throw new NotSupportedException(
                 "Orderby is just a placeholder and should be handled differently in Extensions.cs");
         }
+
+        public override int CompareTo(TreeNode other)
+        {
+            if (other is SkipNode)
+            {
+                return -1;
+            }
+
+            return 0;
+        }
     }
 }

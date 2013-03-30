@@ -1,4 +1,4 @@
-﻿namespace LinqToQueryString.UnitTests
+﻿namespace LinqToQueryString.Tests
 {
     using System;
 

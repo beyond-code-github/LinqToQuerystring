@@ -1,9 +1,11 @@
-﻿namespace LinqToQueryString.UnitTests
+﻿namespace LinqToQueryString.Tests
 {
     using System;
 
     public class ConcreteClass : IComparable<ConcreteClass>
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public DateTime Date { get; set; }
