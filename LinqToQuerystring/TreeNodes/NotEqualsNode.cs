@@ -7,17 +7,17 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class NotEqualsNode : TwoChildNode
+    public class NotEqualsNode<T> : TwoChildNode<T>
     {
         public NotEqualsNode(IToken payload)
             : base(payload)
         {
         }
 
-        public override Expression BuildLinqExpression<T>(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
-            var leftExpression = this.LeftNode.BuildLinqExpression<T>(query, expression, item);
-            var rightExpression = this.RightNode.BuildLinqExpression<T>(query, expression, item);
+            var leftExpression = this.LeftNode.BuildLinqExpression(query, expression, item);
+            var rightExpression = this.RightNode.BuildLinqExpression(query, expression, item);
 
             if (!leftExpression.Type.IsAssignableFrom(rightExpression.Type))
             {

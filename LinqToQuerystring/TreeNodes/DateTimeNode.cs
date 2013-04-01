@@ -9,14 +9,14 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class DateTimeNode : TreeNode
+    public class DateTimeNode<T> : TreeNode<T>
     {
         public DateTimeNode(IToken payload)
             : base(payload)
         {
         }
 
-        public override Expression BuildLinqExpression<T>(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
             var dateText = this.Text
                 .Replace("datetime'", string.Empty)

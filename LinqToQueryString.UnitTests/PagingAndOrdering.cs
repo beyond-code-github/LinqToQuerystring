@@ -46,7 +46,7 @@
 
     public class When_using_top_1 : PagingAndOrdering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$top=1");
+        private Because of = () => result = (IQueryable<ConcreteClass>)concreteCollection.AsQueryable().ExtendFromOData("?$top=1");
 
         private It should_return_one_record = () => result.Count().ShouldEqual(1);
 
@@ -55,7 +55,7 @@
 
     public class When_using_top_3 : PagingAndOrdering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$top=3");
+        private Because of = () => result = (IQueryable<ConcreteClass>)concreteCollection.AsQueryable().ExtendFromOData("?$top=3");
 
         private It should_return_three_record = () => result.Count().ShouldEqual(3);
 

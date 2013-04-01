@@ -7,14 +7,14 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class StringNode : TreeNode
+    public class StringNode<T> : TreeNode<T>
     {
         public StringNode(IToken payload)
             : base(payload)
         {
         }
 
-        public override Expression BuildLinqExpression<T>(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
             return Expression.Constant(this.Text.Replace("'", string.Empty));
         }

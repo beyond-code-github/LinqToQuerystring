@@ -8,14 +8,14 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class BoolNode : TreeNode
+    public class BoolNode<T> : TreeNode<T>
     {
         public BoolNode(IToken payload)
             : base(payload)
         {
         }
 
-        public override Expression BuildLinqExpression<T>(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
             return Expression.Constant(Convert.ToBoolean(this.Text));
         }

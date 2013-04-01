@@ -7,18 +7,18 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class AndNode : TwoChildNode
+    public class AndNode<T> : TwoChildNode<T>
     {
         public AndNode(IToken payload)
             : base(payload)
         {
         }
 
-        public override Expression BuildLinqExpression<T>(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
             return Expression.And(
-                this.LeftNode.BuildLinqExpression<T>(query, expression, item),
-                this.RightNode.BuildLinqExpression<T>(query, expression, item));
+                this.LeftNode.BuildLinqExpression(query, expression, item),
+                this.RightNode.BuildLinqExpression(query, expression, item));
         }
     }
 }

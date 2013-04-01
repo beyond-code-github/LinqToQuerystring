@@ -52,6 +52,7 @@
     <Compile Include="TreeNodes\Base\TreeNode.cs" />
     <Compile Include="TreeNodes\Base\TwoChildNode.cs" />
     <Compile Include="TreeNodes\BoolNode.cs" />
+    <Compile Include="TreeNodes\SelectNode.cs" />
     <Compile Include="TreeNodes\DateTimeNode.cs" />
     <Compile Include="TreeNodes\LessThanNode.cs" />
     <Compile Include="TreeNodes\LessThanOrEqualNode.cs" />

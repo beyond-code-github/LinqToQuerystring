@@ -7,17 +7,17 @@
     using Antlr.Runtime;
     using Antlr.Runtime.Tree;
 
-    public abstract class TreeNode : CommonTree, IComparable<TreeNode>
+    public abstract class TreeNode<T> : CommonTree, IComparable<TreeNode<T>>
     {
         protected TreeNode(IToken payload)
             : base(payload)
         {
         }
 
-        public abstract Expression BuildLinqExpression<T>(
+        public abstract Expression BuildLinqExpression(
             IQueryable query, Expression expression, Expression item = null);
 
-        public virtual int CompareTo(TreeNode other)
+        public virtual int CompareTo(TreeNode<T> other)
         {
             return 0;
         }

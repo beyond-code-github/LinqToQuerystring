@@ -2,7 +2,7 @@
 {
     using Antlr.Runtime;
 
-    public abstract class ExplicitOrderByBase : TreeNode
+    public abstract class ExplicitOrderByBase<T> : TreeNode<T>
     {
         protected ExplicitOrderByBase(IToken payload)
             : base(payload)

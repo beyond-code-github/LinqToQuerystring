@@ -7,16 +7,16 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class NotNode : SingleChildNode
+    public class NotNode<T> : SingleChildNode<T>
     {
         public NotNode(IToken payload)
             : base(payload)
         {
         }
 
-        public override Expression BuildLinqExpression<T>(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
-            return Expression.Not(this.ChildNode.BuildLinqExpression<T>(query, expression, item));
+            return Expression.Not(this.ChildNode.BuildLinqExpression(query, expression, item));
         }
     }
 }

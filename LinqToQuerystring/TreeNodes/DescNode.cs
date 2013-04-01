@@ -8,23 +8,23 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class DescNode : ExplicitOrderByBase
+    public class DescNode<T> : ExplicitOrderByBase<T>
     {
         public DescNode(IToken payload)
             : base(payload)
         {
         }
 
-        public override Expression BuildLinqExpression<T>(IQueryable query, Expression expression, Expression item = null)
+        public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
             var parameter = item ?? Expression.Parameter(typeof(T), "o");
             Expression childExpression = expression;
 
             var temp = parameter;
 
-            foreach (var child in this.Children.Cast<TreeNode>())
+            foreach (var child in this.Children.Cast<TreeNode<T>>())
             {
-                childExpression = child.BuildLinqExpression<T>(query, childExpression, temp);
+                childExpression = child.BuildLinqExpression(query, childExpression, temp);
                 temp = childExpression;
             }
 

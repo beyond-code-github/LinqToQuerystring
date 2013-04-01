@@ -13,7 +13,7 @@ options
 public prog
 	:	(param ('&'! param)*)*;
 
-param	:	(orderby | top | skip | filter);
+param	:	(orderby | top | skip | filter | select);
 
 skip	
 	:	SKIP^ INT+;
@@ -23,6 +23,9 @@ top
 
 filter	
 	:	FILTER^ filterexpression;
+	
+select
+	:	SELECT^ propertyname (','! propertyname)*;
 
 filterexpression	
 	:	orexpression (SPACE! OR^ SPACE! orexpression)*;
@@ -101,6 +104,9 @@ FILTER
 
 ORDERBY
 	:	'$orderby=';
+	
+SELECT
+	:	'$select=';
 		
 INT	
 	:	'0'..'9'+;
