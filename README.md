@@ -1,7 +1,7 @@
-Overview
-========
+v0.3 Overview
+=============
 
-LinqToQuerystring is an expression parser for .NET that aims to provide a lightweight subset of the OData URI Specification. Currently supports:
+Linq to Querystring is an expression parser for .NET that aims to provide a lightweight subset of the OData URI Specification. Currently supports:
 
 * string, int32, bool, datetime data types
 * $top
@@ -11,16 +11,18 @@ LinqToQuerystring is an expression parser for .NET that aims to provide a lightw
     * subproperties
     * complex types ( Linq to Objects only, via IComparable, )
 * $filter - simple properties
+* $select - simple properties
 
 In development:
 
+* $select - sub properties & complex types
 * $filter - sub properties
 * Support for class indexers
+* Demo Site\API
 
 Future roadmap:
 
 * byte, decimal, double, single, guid, time, int64, datetimeoffset data types
-* $select
 * $expand (via EF Include method)
 * $inlinecount
 
@@ -29,6 +31,8 @@ Future roadmap:
 
 * MediaTypeFormatter for Web API
 * LinqToQueryable Attribute
+ 
+* UIToQuerystring - JQuery plugin for building oData\Linq to Querystring expressions
 
 Details
 =======
