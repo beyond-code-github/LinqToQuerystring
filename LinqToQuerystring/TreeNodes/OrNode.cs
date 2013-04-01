@@ -1,5 +1,6 @@
 ﻿namespace LinqToQuerystring.TreeNodes
 {
+    using System;
     using System.Linq;
     using System.Linq.Expressions;
 
@@ -7,10 +8,10 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class OrNode<T> : TwoChildNode<T>
+    public class OrNode : TwoChildNode
     {
-        public OrNode(IToken payload)
-            : base(payload)
+        public OrNode(Type inputType, IToken payload)
+            : base(inputType, payload)
         {
         }
 

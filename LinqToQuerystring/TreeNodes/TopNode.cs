@@ -1,5 +1,6 @@
 ﻿namespace LinqToQuerystring.TreeNodes
 {
+    using System;
     using System.Linq;
     using System.Linq.Expressions;
 
@@ -7,10 +8,10 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class TopNode<T> : SingleChildNode<T>
+    public class TopNode : SingleChildNode
     {
-        public TopNode(IToken payload)
-            : base(payload)
+        public TopNode(Type inputType, IToken payload)
+            : base(inputType, payload)
         {
         }
 
@@ -24,9 +25,9 @@
                 this.ChildNode.BuildLinqExpression(query, expression));
         }
 
-        public override int CompareTo(TreeNode<T> other)
+        public override int CompareTo(TreeNode other)
         {
-            if (other is SkipNode<T>)
+            if (other is SkipNode)
             {
                 return 1;
             }

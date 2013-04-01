@@ -8,10 +8,10 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class OrderByNode<T> : SingleChildNode<T>
+    public class OrderByNode : SingleChildNode
     {
-        public OrderByNode(IToken payload)
-            : base(payload)
+        public OrderByNode(Type inputType, IToken payload)
+            : base(inputType, payload)
         {
         }
 
@@ -21,9 +21,9 @@
                 "Orderby is just a placeholder and should be handled differently in Extensions.cs");
         }
 
-        public override int CompareTo(TreeNode<T> other)
+        public override int CompareTo(TreeNode other)
         {
-            if (other is SkipNode<T>)
+            if (other is SkipNode)
             {
                 return -1;
             }

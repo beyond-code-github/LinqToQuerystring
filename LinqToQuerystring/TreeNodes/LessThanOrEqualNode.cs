@@ -1,5 +1,6 @@
 ﻿namespace LinqToQuerystring.TreeNodes
 {
+    using System;
     using System.Linq;
     using System.Linq.Expressions;
 
@@ -7,10 +8,10 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class LessThanOrEqualNode<T> : TwoChildNode<T>
+    public class LessThanOrEqualNode : TwoChildNode
     {
-        public LessThanOrEqualNode(IToken payload)
-            : base(payload)
+        public LessThanOrEqualNode(Type inputType, IToken payload)
+            : base(inputType, payload)
         {
         }
 

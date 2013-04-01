@@ -1,9 +1,18 @@
 ﻿namespace LinqToQuerystring.TreeNodes
 {
+    using System;
+
     using Antlr.Runtime.Tree;
 
-    public class TreeNodeFactory<T> : CommonTreeAdaptor
+    public class TreeNodeFactory : CommonTreeAdaptor
     {
+        private readonly Type inputType;
+
+        public TreeNodeFactory(Type inputType)
+        {
+            this.inputType = inputType;
+        }
+
         public override object Create(Antlr.Runtime.IToken token)
         {
             if (token == null)
@@ -14,47 +23,47 @@
             switch (token.Type)
             {
                 case LinqToQuerystringLexer.TOP:
-                    return new TopNode<T>(token);
+                    return new TopNode(inputType, token);
                 case LinqToQuerystringLexer.SKIP:
-                    return new SkipNode<T>(token);
+                    return new SkipNode(inputType, token);
                 case LinqToQuerystringLexer.ORDERBY:
-                    return new OrderByNode<T>(token);
+                    return new OrderByNode(inputType, token);
                 case LinqToQuerystringLexer.FILTER:
-                    return new FilterNode<T>(token);
+                    return new FilterNode(inputType, token);
                 case LinqToQuerystringLexer.SELECT:
-                    return new SelectNode<T>(token);
+                    return new SelectNode(inputType, token);
                 case LinqToQuerystringLexer.NOT:
-                    return new NotNode<T>(token);
+                    return new NotNode(inputType, token);
                 case LinqToQuerystringLexer.AND:
-                    return new AndNode<T>(token);
+                    return new AndNode(inputType, token);
                 case LinqToQuerystringLexer.OR:
-                    return new OrNode<T>(token);
+                    return new OrNode(inputType, token);
                 case LinqToQuerystringLexer.EQUALS:
-                    return new EqualsNode<T>(token);
+                    return new EqualsNode(inputType, token);
                 case LinqToQuerystringLexer.NOTEQUALS:
-                    return new NotEqualsNode<T>(token);
+                    return new NotEqualsNode(inputType, token);
                 case LinqToQuerystringLexer.GREATERTHAN:
-                    return new GreaterThanNode<T>(token);
+                    return new GreaterThanNode(inputType, token);
                 case LinqToQuerystringLexer.GREATERTHANOREQUAL:
-                    return new GreaterThanOrEqualNode<T>(token);
+                    return new GreaterThanOrEqualNode(inputType, token);
                 case LinqToQuerystringLexer.LESSTHAN:
-                    return new LessThanNode<T>(token);
+                    return new LessThanNode(inputType, token);
                 case LinqToQuerystringLexer.LESSTHANOREQUAL:
-                    return new LessThanOrEqualNode<T>(token);
+                    return new LessThanOrEqualNode(inputType, token);
                 case LinqToQuerystringLexer.IDENTIFIER:
-                    return new IdentifierNode<T>(token);
+                    return new IdentifierNode(inputType, token);
                 case LinqToQuerystringLexer.STRING:
-                    return new StringNode<T>(token);
+                    return new StringNode(inputType, token);
                 case LinqToQuerystringLexer.BOOL:
-                    return new BoolNode<T>(token);
+                    return new BoolNode(inputType, token);
                 case LinqToQuerystringLexer.INT:
-                    return new IntNode<T>(token);
+                    return new IntNode(inputType, token);
                 case LinqToQuerystringLexer.DATETIME:
-                    return new DateTimeNode<T>(token);
+                    return new DateTimeNode(inputType, token);
                 case LinqToQuerystringLexer.DESC:
-                    return new DescNode<T>(token);
+                    return new DescNode(inputType, token);
                 case LinqToQuerystringLexer.ASC:
-                    return new AscNode<T>(token);
+                    return new AscNode(inputType, token);
             }
 
             return null;

@@ -8,10 +8,10 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class IntNode<T> : TreeNode<T>
+    public class IntNode : TreeNode
     {
-        public IntNode(IToken payload)
-            : base(payload)
+        public IntNode(Type inputType, IToken payload)
+            : base(inputType, payload)
         {
         }
 

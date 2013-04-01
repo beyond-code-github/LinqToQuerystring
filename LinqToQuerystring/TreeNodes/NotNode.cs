@@ -1,5 +1,6 @@
 ﻿namespace LinqToQuerystring.TreeNodes
 {
+    using System;
     using System.Linq;
     using System.Linq.Expressions;
 
@@ -7,10 +8,10 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class NotNode<T> : SingleChildNode<T>
+    public class NotNode : SingleChildNode
     {
-        public NotNode(IToken payload)
-            : base(payload)
+        public NotNode(Type inputType, IToken payload)
+            : base(inputType, payload)
         {
         }
 

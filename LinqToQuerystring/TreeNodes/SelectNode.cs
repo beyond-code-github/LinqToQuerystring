@@ -10,20 +10,25 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class SelectNode<T> : SingleChildNode<T>
+    public class SelectNode : SingleChildNode
     {
-        public SelectNode(IToken payload)
-            : base(payload)
+        public SelectNode(Type inputType, IToken payload)
+            : base(inputType, payload)
         {
         }
 
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
-            var parameter = item ?? Expression.Parameter(typeof(T), "o");
-            Expression childExpression = expression;
+            var fixedexpr = Expression.Call(
+                typeof(Queryable), "Cast", new[] { inputType }, query.Expression);
+
+            query = query.Provider.CreateQuery(fixedexpr);
+
+            var parameter = item ?? Expression.Parameter(inputType, "o");
+            Expression childExpression = fixedexpr;
 
             MethodInfo addMethod = typeof(Dictionary<string, object>).GetMethod("Add");
-            var elements = this.Children.Cast<TreeNode<T>>().Select(
+            var elements = this.Children.Cast<TreeNode>().Select(
                 o => Expression.ElementInit(addMethod, Expression.Constant(o.Text), Expression.Convert(o.BuildLinqExpression(query, childExpression, parameter), typeof(object))));
 
             var newDictionary = Expression.New(typeof(Dictionary<string, object>));
@@ -33,7 +38,7 @@
             return Expression.Call(typeof(Queryable), "Select", new[] { query.ElementType, typeof(Dictionary<string, object>) }, query.Expression, lambda);
         }
 
-        public override int CompareTo(TreeNode<T> other)
+        public override int CompareTo(TreeNode other)
         {
             // Select clause should always be last
             return 1;

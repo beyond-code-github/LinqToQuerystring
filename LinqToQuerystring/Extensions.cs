@@ -1,6 +1,7 @@
 ﻿namespace LinqToQuerystring
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
@@ -15,15 +16,15 @@
     {
         public static IQueryable<TResult> ExtendFromOData<T, TResult>(this IQueryable<T> query, string queryString)
         {
-            return (IQueryable<TResult>)Extend(query, queryString);
+            return (IQueryable<TResult>)ExtendFromOData(query, queryString, typeof(T));
         }
 
         public static IQueryable<T> ExtendFromOData<T>(this IQueryable<T> query, string queryString)
         {
-            return (IQueryable<T>)Extend(query, queryString);
+            return (IQueryable<T>)ExtendFromOData(query, queryString, typeof(T));
         }
 
-        private static IQueryable Extend<T>(IQueryable<T> query, string queryString)
+        public static IQueryable ExtendFromOData(this IQueryable query, string queryString, Type inputType)
         {
             IQueryable queryResult = query;
 
@@ -49,20 +50,20 @@
             var lexer = new LinqToQuerystringLexer(input);
             var tokStream = new CommonTokenStream(lexer);
 
-            var parser = new LinqToQuerystringParser(tokStream) { TreeAdaptor = new TreeNodeFactory<T>() };
+            var parser = new LinqToQuerystringParser(tokStream) { TreeAdaptor = new TreeNodeFactory(inputType) };
 
             var result = parser.prog();
 
-            var singleNode = result.Tree as TreeNode<T>;
-            if (singleNode != null && !(singleNode is IdentifierNode<T>))
+            var singleNode = result.Tree as TreeNode;
+            if (singleNode != null && !(singleNode is IdentifierNode))
             {
-                return CreateQuery<T>(queryResult, singleNode);
+                return CreateQuery(queryResult, singleNode);
             }
 
             var tree = result.Tree as CommonTree;
             if (tree != null)
             {
-                var children = tree.Children.Cast<TreeNode<T>>().ToList();
+                var children = tree.Children.Cast<TreeNode>().ToList();
                 children.Sort();
 
                 foreach (var node in children)
@@ -74,23 +75,23 @@
             return queryResult;
         }
 
-        private static IQueryable CreateQuery<T>(IQueryable query, TreeNode<T> node)
+        private static IQueryable CreateQuery(IQueryable query, TreeNode node)
         {
-            if (node is OrderByNode<T>)
+            if (node is OrderByNode)
             {
-                var children = node.Children.Cast<ExplicitOrderByBase<T>>();
+                var children = node.Children.Cast<ExplicitOrderByBase>();
 
                 if (!query.Provider.GetType().Name.Contains("DbQueryProvider"))
                 {
                     children = children.Reverse();
                 }
 
-                var explicitOrderByNodes = children as IList<ExplicitOrderByBase<T>> ?? children.ToList();
+                var explicitOrderByNodes = children as IList<ExplicitOrderByBase> ?? children.ToList();
                 explicitOrderByNodes.First().IsFirstChild = true;
 
                 foreach (var child in explicitOrderByNodes)
                 {
-                    query = query.Provider.CreateQuery<T>(child.BuildLinqExpression(query, query.Expression));
+                    query = query.Provider.CreateQuery(child.BuildLinqExpression(query, query.Expression));
                 }
             }
             else
@@ -102,16 +103,22 @@
                 // There is a solution involving reflection.emit, but is it worth it? Not sure...
 
                 // There should only be one of these
-                if (node is SelectNode<T>)
+                if (node is SelectNode)
                 {
-                    var result = ((IQueryable<T>)query).ToList().AsQueryable();
+                    var result = Iterate(query.GetEnumerator()).Cast<object>().ToList().AsQueryable();
                     return result.Provider.CreateQuery<Dictionary<string, object>>(node.BuildLinqExpression(result, result.Expression));
                 }
 
-                query = query.Provider.CreateQuery<T>(node.BuildLinqExpression(query, query.Expression));
+                query = query.Provider.CreateQuery(node.BuildLinqExpression(query, query.Expression));
             }
 
             return query;
+        }
+
+        static IEnumerable Iterate(this IEnumerator iterator)
+        {
+            while (iterator.MoveNext())
+                yield return iterator.Current;
         }
     }
 }

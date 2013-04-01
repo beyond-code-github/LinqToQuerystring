@@ -1,5 +1,6 @@
 ﻿namespace LinqToQuerystring.TreeNodes
 {
+    using System;
     using System.Diagnostics;
     using System.Linq;
     using System.Linq.Expressions;
@@ -8,21 +9,21 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class AscNode<T> : ExplicitOrderByBase<T>
+    public class AscNode : ExplicitOrderByBase
     {
-        public AscNode(IToken payload)
-            : base(payload)
+        public AscNode(Type inputType, IToken payload)
+            : base(inputType, payload)
         {
         }
 
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
-            var parameter = item ?? Expression.Parameter(typeof(T), "o");
+            var parameter = item ?? Expression.Parameter(inputType, "o");
             Expression childExpression = expression;
 
             var temp = parameter;
 
-            foreach (var child in this.Children.Cast<TreeNode<T>>())
+            foreach (var child in this.Children.Cast<TreeNode>())
             {
                 childExpression = child.BuildLinqExpression(query, childExpression, temp);
                 temp = childExpression;

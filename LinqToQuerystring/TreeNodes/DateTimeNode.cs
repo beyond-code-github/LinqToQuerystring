@@ -9,10 +9,10 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class DateTimeNode<T> : TreeNode<T>
+    public class DateTimeNode : TreeNode
     {
-        public DateTimeNode(IToken payload)
-            : base(payload)
+        public DateTimeNode(Type inputType, IToken payload)
+            : base(inputType, payload)
         {
         }
 

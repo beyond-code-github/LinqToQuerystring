@@ -4,18 +4,18 @@
 
     using Antlr.Runtime;
 
-    public abstract class SingleChildNode<T> : TreeNode<T>
+    public abstract class SingleChildNode : TreeNode
     {
-        protected SingleChildNode(IToken payload)
-            : base(payload)
+        protected SingleChildNode(Type inputType, IToken payload)
+            : base(inputType, payload)
         {
         }
 
-        public TreeNode<T> ChildNode
+        public TreeNode ChildNode
         {
             get
             {
-                var childNode = this.Children[0] as TreeNode<T>;
+                var childNode = this.Children[0] as TreeNode;
                 if (childNode == null)
                 {
                     throw new InvalidOperationException(string.Format("No valid child for {0}", this.GetType()));

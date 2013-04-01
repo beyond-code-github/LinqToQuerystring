@@ -8,17 +8,17 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class FilterNode<T> : SingleChildNode<T>
+    public class FilterNode : SingleChildNode
     {
-        public FilterNode(IToken payload)
-            : base(payload)
+        public FilterNode(Type inputType, IToken payload)
+            : base(inputType, payload)
         {
         }
 
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
-            var parameter = item ?? Expression.Parameter(typeof(T), "o");
-            var lambda = Expression.Lambda<Func<T, bool>>(
+            var parameter = item ?? Expression.Parameter(inputType, "o");
+            var lambda = Expression.Lambda(
                 this.ChildNode.BuildLinqExpression(query, expression, parameter), new[] { parameter as ParameterExpression });
 
             return Expression.Call(typeof(Queryable), "Where", new[] { query.ElementType }, query.Expression, lambda);
