@@ -1,0 +1,88 @@
+﻿<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>So we heard you like to use $select, $expand and $inlinecount...</h1>
+            </hgroup>
+            <p>
+                Linq to Querystring is an expression parser for .NET Web API that supports a subset of the OData URI Specification. 
+                Currently in a pre-release alpha release, the following odata query options are supported (with some caveats):
+                <ul>
+                    <li>Paging and Ordering with <strong>$top</strong>, <strong>$skip</strong> & <strong>$orderby</strong>
+                    </li>
+                    <li>Filtering on simple properties with <strong>$filter</strong>
+                    </li>
+                    <li>Projections on simple properties with <strong>$select</strong>
+                    </li>
+                </ul>
+                See the <a href="https://github.com/Roysvork/LinqToQuerystring">GitHub Repo</a> for more information on currently supported features.
+            </p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <h3>Try it out:</h3>
+        <ol class="round">
+            <li class="one">
+                <h5>Type your oData query here:</h5>
+                http://api/movies
+                <input type="text" id="queryexpression" value="?$orderby=Title" /><input type="button" id="go" value="Go" />
+            </li>
+            <li class="two">
+                <h3>See the results:</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <!-- ko foreach: { data: headings, as: 'heading' } -->
+                            <th data-bind="text: heading"></th>
+                            <!-- /ko -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- ko foreach: { data: data, as: 'record' } -->
+                        <tr>
+                            <!-- ko foreach: { data: $root.headings, as: 'field' } -->
+                            <td data-bind="text: record[field]"></td>
+                            <!-- /ko -->
+                        </tr>
+                        <!-- /ko -->
+                    </tbody>
+                </table>
+            </li>
+        </ol>
+    </section>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+
+        var model = {
+            headings: ko.observableArray(),
+            data: ko.observableArray()
+        };
+            
+        var load = function() {
+            var query = $("#queryexpression").val();
+            $.get("/api/Values" + query, function (data) {
+                var headings = [];
+                if (data && data.length > 0) {
+                    for (prop in data[0]) {
+                        if (data[0].hasOwnProperty(prop)) {
+                            headings.push(prop);
+                        }
+                    }
+                }
+                
+                model.headings(headings);
+                model.data(data);
+            });
+        };
+
+        $(document).ready(function () {
+            
+            ko.applyBindings(model);
+            
+            $("#go").click(load);
+            load();
+        });
+    </script>
+}
