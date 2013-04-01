@@ -95,18 +95,21 @@
             }
             else
             {
+                // TODO: Find a solution to the following:
+                // Currently the only way to perform the SELECT part of the query is to call ToList and then project onto a dictionary. Two main problems:
+                // 1. Linq to Entities does not support projection onto list initialisers with more than one value
+                // 2. We cannot build an anonymous type using expression trees as there is compiler magic that must happen.
+                // There is a solution involving reflection.emit, but is it worth it? Not sure...
+
                 // There should only be one of these
                 if (node is SelectNode<T>)
                 {
-                    query = query.Provider.CreateQuery<Dictionary<string, object>>(node.BuildLinqExpression(query, query.Expression));
+                    var result = ((IQueryable<T>)query).ToList().AsQueryable();
+                    return result.Provider.CreateQuery<Dictionary<string, object>>(node.BuildLinqExpression(result, result.Expression));
                 }
-                else
-                {
-                    query = query.Provider.CreateQuery<T>(node.BuildLinqExpression(query, query.Expression));
-                }
-            }
 
-            dynamic doc = new { hello = "hello" };
+                query = query.Provider.CreateQuery<T>(node.BuildLinqExpression(query, query.Expression));
+            }
 
             return query;
         }
