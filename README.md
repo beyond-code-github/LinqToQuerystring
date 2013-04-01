@@ -25,13 +25,10 @@ Future roadmap:
 * byte, decimal, double, single, guid, time, int64, datetimeoffset data types
 * $expand (via EF Include method)
 * $inlinecount
-
 * Arithmetic operations (e.g abs, mod)
 * Other functions (e.g endswith, floor)
-
 * MediaTypeFormatter for Web API
-* LinqToQueryable Attribute
- 
+* LinqToQueryable Attribute 
 * UIToQuerystring - JQuery plugin for building oData\Linq to Querystring expressions
 
 Details
