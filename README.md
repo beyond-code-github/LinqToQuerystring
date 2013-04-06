@@ -1,8 +1,13 @@
-v0.3 Overview
-=============
+v0.4.1 Overview
+==============
 
-Linq to Querystring is an expression parser for .NET that aims to provide a lightweight subset of the OData URI Specification. Currently supports:
+Linq to Querystring is an expression parser for .NET that aims to provide a lightweight subset of the OData URI Specification.
 
+Check out the demo site here: http://linqtoquerystring.azurewebsites.net/
+
+Currently supported:
+
+* Seamless integration with Asp.Net Web API using LinqToQueryable Attribute 
 * string, int32, bool, datetime data types
 * $top
 * $skip (must be used in conjunction with orderby in Linq to Entities)
@@ -12,23 +17,21 @@ Linq to Querystring is an expression parser for .NET that aims to provide a ligh
     * complex types ( Linq to Objects only, via IComparable, )
 * $filter - simple properties
 * $select - simple properties
+* $inlinecount
 
 In development:
 
 * $select - sub properties & complex types
 * $filter - sub properties
 * Support for class indexers
-* Demo Site\API
 
 Future roadmap:
 
 * byte, decimal, double, single, guid, time, int64, datetimeoffset data types
 * $expand (via EF Include method)
-* $inlinecount
 * Arithmetic operations (e.g abs, mod)
 * Other functions (e.g endswith, floor)
-* MediaTypeFormatter for Web API
-* LinqToQueryable Attribute 
+
 * UIToQuerystring - JQuery plugin for building oData\Linq to Querystring expressions
 
 Details
@@ -36,7 +39,12 @@ Details
 
 Linq to Querystring uses an expression parser written in ANTLR to map a subset of odata-compatible expressions onto any .NET IQueryable.
 
-Linq to Objects:
+Get going straight away by adding the [LinqToQueryable] attribute to your Asp.Net Web API controllers:
+
+    [LinqToQueryable]
+    public IQueryable<Movie> Get()
+    
+Work directly with Linq to Object IQueryables:
 
     var collection = new List<Dummy>
     {
@@ -50,7 +58,7 @@ Linq to Objects:
     var ordered = collection.ExtendFromOData("?$orderby=Complete,Age");
     var paged = collection.ExtendFromOData("?$skip=2$top=2");
 
-Linq to Entities:
+Also tested against Entity Framework:
 
     var query = this.unitOfWork.Data.Where(o => o.SomeRepoLevelFilter == x);
     var extended = query.ExtendFromOData("?$filter=Complete eq true and name eq 'Eggs'");
