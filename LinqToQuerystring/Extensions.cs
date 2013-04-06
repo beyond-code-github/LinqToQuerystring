@@ -15,9 +15,9 @@
 
     public static class Extensions
     {
-        public static IQueryable<TResult> ExtendFromOData<T, TResult>(this IQueryable<T> query, string queryString)
+        public static TResult ExtendFromOData<T, TResult>(this IQueryable<T> query, string queryString)
         {
-            return (IQueryable<TResult>)ExtendFromOData(query, queryString, typeof(T));
+            return (TResult)ExtendFromOData(query, queryString, typeof(T));
         }
 
         public static IQueryable<T> ExtendFromOData<T>(this IQueryable<T> query, string queryString)
@@ -25,7 +25,7 @@
             return (IQueryable<T>)ExtendFromOData(query, queryString, typeof(T));
         }
 
-        public static IQueryable ExtendFromOData(this IQueryable query, string queryString, Type inputType)
+        public static object ExtendFromOData(this IQueryable query, string queryString, Type inputType)
         {
             IQueryable queryResult = query;
             IQueryable constrainedQuery = query;
@@ -65,7 +65,12 @@
                     return constrainedQuery;
                 }
 
-                return ProjectQuery(queryResult, constrainedQuery, singleNode);
+                if (singleNode is SelectNode)
+                {
+                    return ProjectQuery(queryResult, constrainedQuery, singleNode);
+                }
+
+                return PackageResults(queryResult, constrainedQuery);
             }
 
             var tree = result.Tree as CommonTree;
@@ -80,10 +85,16 @@
                     BuildQuery(node, ref queryResult, ref constrainedQuery);
                 }
 
-                // These should always come last
-                foreach (var node in children.Where(o => (o is SelectNode) || (o is InlineCountNode)))
+                var selectNode = children.FirstOrDefault(o => o is SelectNode);
+                if (selectNode != null)
                 {
-                    constrainedQuery = ProjectQuery(queryResult, constrainedQuery, node);
+                    constrainedQuery = ProjectQuery(queryResult, constrainedQuery, selectNode);
+                }
+
+                var inlineCountNode = children.FirstOrDefault(o => o is InlineCountNode);
+                if (inlineCountNode != null)
+                {
+                    return PackageResults(queryResult, constrainedQuery);
                 }
             }
 
@@ -146,21 +157,17 @@
             // 2. We cannot build an anonymous type using expression trees as there is compiler magic that must happen.
             // There is a solution involving reflection.emit, but is it worth it? Not sure...
 
-            // There should only be one of these
-            if (node is SelectNode)
-            {
-                var result = constrainedQuery.GetEnumeratedQuery().AsQueryable();
-                return result.Provider.CreateQuery<Dictionary<string, object>>(node.BuildLinqExpression(result, result.Expression));
-            }
+            var result = constrainedQuery.GetEnumeratedQuery().AsQueryable();
+            return
+                result.Provider.CreateQuery<Dictionary<string, object>>(
+                    node.BuildLinqExpression(result, result.Expression));
 
-            // There should only be one of these too, and it should be the last node
-            if (node is InlineCountNode)
-            {
-                var result = query.GetEnumeratedQuery();
-                return new List<Dictionary<string, object>> { new Dictionary<string, object> { { "Count", result.Count() }, { "Results", constrainedQuery } } }.AsQueryable();
-            }
+        }
 
-            throw new ArgumentException("node is not of the correct type", "node");
+        private static object PackageResults(IQueryable query, IQueryable constrainedQuery)
+        {
+            var result = query.GetEnumeratedQuery();
+            return new Dictionary<string, object> { { "Count", result.Count() }, { "Results", constrainedQuery } };
         }
 
         public static IEnumerable<object> GetEnumeratedQuery(this IQueryable query)

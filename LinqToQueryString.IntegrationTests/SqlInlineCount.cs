@@ -11,16 +11,18 @@
 
     public class SqlInlineCount : SqlProjection
     {
+        protected static Dictionary<string, object> inlineCountResult;
+
         protected static List<ConcreteClass> concreteResult;
 
         protected static List<ConcreteClass> GetWrappedResults()
         {
-            return (result.ElementAt(0)["Results"] as IQueryable<ConcreteClass>).ToList();
+            return (inlineCountResult["Results"] as IQueryable<ConcreteClass>).ToList();
         }
 
         protected static List<Dictionary<string, object>> GetWrappedProjectedResults()
         {
-            return (result.ElementAt(0)["Results"] as IQueryable<Dictionary<string, object>>).ToList();
+            return (inlineCountResult["Results"] as IQueryable<Dictionary<string, object>>).ToList();
         }
     }
 
@@ -43,11 +45,9 @@
 
     public class When_requesting_inline_count_on_an_unfiltered_query : SqlInlineCount
     {
-        Because of = () => result = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$inlinecount=allpages").ToList();
+        Because of = () => inlineCountResult = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$inlinecount=allpages");
 
-        private It should_return_a_single_wrapper_structure = () => result.Count().ShouldEqual(1);
-
-        private It should_return_the_correct_count = () => result.ElementAt(0)["Count"].ShouldEqual(5);
+        private It should_return_the_correct_count = () => inlineCountResult["Count"].ShouldEqual(5);
 
         private It should_return_the_response_within_a_wrapper = () => GetWrappedResults().Count().ShouldEqual(5);
 
@@ -64,11 +64,9 @@
 
     public class When_requesting_inline_count_on_a_projected_query : SqlInlineCount
     {
-        Because of = () => result = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$select=Name,Age&$inlinecount=allpages").ToList();
+        Because of = () => inlineCountResult = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$select=Name,Age&$inlinecount=allpages");
 
-        private It should_return_a_wrapper_structure = () => result.Count().ShouldEqual(1);
-
-        private It should_return_the_correct_count = () => result.ElementAt(0)["Count"].ShouldEqual(5);
+        private It should_return_the_correct_count = () => inlineCountResult["Count"].ShouldEqual(5);
 
         private It should_return_the_response_within_a_wrapper = () => GetWrappedProjectedResults().Count().ShouldEqual(5);
 
@@ -102,11 +100,9 @@
 
     public class When_requesting_inline_count_on_a_filtered_query : SqlInlineCount
     {
-        Because of = () => result = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$filter=Age ge 3&$inlinecount=allpages").ToList();
+        Because of = () => inlineCountResult = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$filter=Age ge 3&$inlinecount=allpages");
 
-        private It should_return_a_wrapper_structure = () => result.Count().ShouldEqual(1);
-
-        private It should_return_the_correct_count = () => result.ElementAt(0)["Count"].ShouldEqual(3);
+        private It should_return_the_correct_count = () => inlineCountResult["Count"].ShouldEqual(3);
 
         private It should_return_the_response_within_a_wrapper = () => GetWrappedResults().Count().ShouldEqual(3);
 
@@ -119,11 +115,9 @@
 
     public class When_requesting_inline_count_on_an_ordered_query : SqlInlineCount
     {
-        Because of = () => result = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$orderby=Age desc&$inlinecount=allpages").ToList();
+        Because of = () => inlineCountResult = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$orderby=Age desc&$inlinecount=allpages");
 
-        private It should_return_a_wrapper_structure = () => result.Count().ShouldEqual(1);
-
-        private It should_return_the_correct_count = () => result.ElementAt(0)["Count"].ShouldEqual(5);
+        private It should_return_the_correct_count = () => inlineCountResult["Count"].ShouldEqual(5);
 
         private It should_return_the_response_within_a_wrapper = () => GetWrappedResults().Count().ShouldEqual(5);
 
@@ -140,11 +134,9 @@
 
     public class When_requesting_inline_count_on_a_top_limited_query : SqlInlineCount
     {
-        Because of = () => result = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$top=3&$inlinecount=allpages").ToList();
+        Because of = () => inlineCountResult = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$top=3&$inlinecount=allpages");
 
-        private It should_return_a_wrapper_structure = () => result.Count().ShouldEqual(1);
-
-        private It should_return_the_correct_count = () => result.ElementAt(0)["Count"].ShouldEqual(5);
+        private It should_return_the_correct_count = () => inlineCountResult["Count"].ShouldEqual(5);
 
         private It should_return_the_response_within_a_wrapper = () => GetWrappedResults().Count().ShouldEqual(3);
 
@@ -157,11 +149,9 @@
 
     public class When_requesting_inline_count_on_a_top_limited_projected_query : SqlInlineCount
     {
-        Because of = () => result = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$orderby=Name&$top=3&$select=Name,Age&$inlinecount=allpages").ToList();
+        Because of = () => inlineCountResult = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$orderby=Name&$top=3&$select=Name,Age&$inlinecount=allpages");
 
-        private It should_return_a_wrapper_structure = () => result.Count().ShouldEqual(1);
-
-        private It should_return_the_correct_count = () => result.ElementAt(0)["Count"].ShouldEqual(5);
+        private It should_return_the_correct_count = () => inlineCountResult["Count"].ShouldEqual(5);
 
         private It should_return_the_response_within_a_wrapper = () => GetWrappedProjectedResults().Count().ShouldEqual(3);
 
@@ -174,11 +164,9 @@
 
     public class When_requesting_inline_count_on_a_paged_query : SqlInlineCount
     {
-        Because of = () => result = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$orderby=Name&$skip=2&$top=2&$inlinecount=allpages").ToList();
+        Because of = () => inlineCountResult = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$orderby=Name&$skip=2&$top=2&$inlinecount=allpages");
 
-        private It should_return_a_wrapper_structure = () => result.Count().ShouldEqual(1);
-
-        private It should_return_the_correct_count = () => result.ElementAt(0)["Count"].ShouldEqual(5);
+        private It should_return_the_correct_count = () => inlineCountResult["Count"].ShouldEqual(5);
 
         private It should_return_the_response_within_a_wrapper = () => GetWrappedResults().Count().ShouldEqual(2);
 
@@ -189,11 +177,9 @@
 
     public class When_requesting_inline_count_on_a_paged_projected_query : SqlInlineCount
     {
-        Because of = () => result = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$orderby=Name&$skip=2&$top=2&$select=Name,Age&$inlinecount=allpages").ToList();
+        Because of = () => inlineCountResult = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$orderby=Name&$skip=2&$top=2&$select=Name,Age&$inlinecount=allpages");
 
-        private It should_return_a_wrapper_structure = () => result.Count().ShouldEqual(1);
-
-        private It should_return_the_correct_count = () => result.ElementAt(0)["Count"].ShouldEqual(5);
+        private It should_return_the_correct_count = () => inlineCountResult["Count"].ShouldEqual(5);
 
         private It should_return_the_response_within_a_wrapper = () => GetWrappedProjectedResults().Count().ShouldEqual(2);
 
@@ -204,11 +190,9 @@
 
     public class When_requesting_inline_count_on_a_filtered_paged_query : SqlInlineCount
     {
-        Because of = () => result = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$orderby=Name&$filter=Age ge 3&$skip=2&$top=2&$inlinecount=allpages").ToList();
+        Because of = () => inlineCountResult = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$orderby=Name&$filter=Age ge 3&$skip=2&$top=2&$inlinecount=allpages");
 
-        private It should_return_a_wrapper_structure = () => result.Count().ShouldEqual(1);
-
-        private It should_return_the_correct_count = () => result.ElementAt(0)["Count"].ShouldEqual(3);
+        private It should_return_the_correct_count = () => inlineCountResult["Count"].ShouldEqual(3);
 
         private It should_return_the_response_within_a_wrapper = () => GetWrappedResults().Count().ShouldEqual(1);
 
@@ -217,11 +201,9 @@
 
     public class When_requesting_inline_count_on_a_filtered_paged_projected_query : SqlInlineCount
     {
-        Because of = () => result = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$orderby=Name&$filter=Age ge 3&$skip=2&$top=2&$select=Name,Age&$inlinecount=allpages").ToList();
+        Because of = () => inlineCountResult = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, Dictionary<string, object>>("?$orderby=Name&$filter=Age ge 3&$skip=2&$top=2&$select=Name,Age&$inlinecount=allpages");
 
-        private It should_return_a_wrapper_structure = () => result.Count().ShouldEqual(1);
-
-        private It should_return_the_correct_count = () => result.ElementAt(0)["Count"].ShouldEqual(3);
+        private It should_return_the_correct_count = () => inlineCountResult["Count"].ShouldEqual(3);
 
         private It should_return_the_response_within_a_wrapper = () => GetWrappedProjectedResults().Count().ShouldEqual(1);
 
