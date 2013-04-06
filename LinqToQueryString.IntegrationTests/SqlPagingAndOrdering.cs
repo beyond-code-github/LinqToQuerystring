@@ -46,7 +46,7 @@
 
     public class When_using_top_1 : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$top=1").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$top=1").ToList();
 
         private It should_return_one_record = () => result.Count().ShouldEqual(1);
 
@@ -55,7 +55,7 @@
 
     public class When_using_top_3 : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$top=3").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$top=3").ToList();
 
         private It should_return_three_records = () => result.Count().ShouldEqual(3);
 
@@ -72,7 +72,7 @@
 
     public class When_using_skip_1_on_ordered_data : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Id&$skip=1").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Id&$skip=1").ToList();
 
         private It should_return_four_records = () => result.Count().ShouldEqual(4);
 
@@ -87,7 +87,7 @@
 
     public class When_using_skip_3_on_ordered_data : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Id$skip=3").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Id$skip=3").ToList();
 
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
@@ -102,7 +102,7 @@
 
     public class When_using_skip_2_and_top_2_on_ordered_data : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Id$skip=2&$top=2").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Id$skip=2&$top=2").ToList();
 
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
@@ -113,7 +113,7 @@
 
     public class When_using_skip_3_and_top_1_on_ordered_data : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Id$skip=3&$top=1").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Id$skip=3&$top=1").ToList();
 
         private It should_return_one_record = () => result.Count().ShouldEqual(1);
 
@@ -122,7 +122,7 @@
 
     public class When_using_top_2_and_skip_2_on_ordered_data : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Id$top=2&$skip=2").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Id$top=2&$skip=2").ToList();
 
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
@@ -137,7 +137,7 @@
 
     public class When_using_order_by_on_integer_with_one_criteria : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Age").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Age").ToList();
 
         private It should_return_five_records = () => result.Count().ShouldEqual(5);
 
@@ -154,7 +154,7 @@
 
     public class When_using_order_by_asc_on_integer_with_one_criteria : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Age asc").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Age asc").ToList();
 
         private It should_return_five_records = () => result.Count().ShouldEqual(5);
 
@@ -171,7 +171,7 @@
 
     public class When_using_order_by_desc_on_integer_with_one_criteria : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Age desc").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Age desc").ToList();
 
         private It should_return_five_records = () => result.Count().ShouldEqual(5);
 
@@ -192,7 +192,7 @@
 
     public class When_using_order_by_on_string_with_one_criteria : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Name").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Name").ToList();
 
         private It should_return_five_records = () => result.Count().ShouldEqual(5);
 
@@ -209,7 +209,7 @@
 
     public class When_using_order_by_asc_on_string_with_one_criteria : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Name asc").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Name asc").ToList();
 
         private It should_return_five_records = () => result.Count().ShouldEqual(5);
 
@@ -226,7 +226,7 @@
 
     public class When_using_order_by_desc_on_string_with_one_criteria : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Name desc").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Name desc").ToList();
 
         private It should_return_five_records = () => result.Count().ShouldEqual(5);
 
@@ -247,7 +247,7 @@
 
     public class When_using_order_by_on_date_with_one_criteria : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Date").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Date").ToList();
 
         private It should_return_five_records = () => result.Count().ShouldEqual(5);
 
@@ -264,7 +264,7 @@
 
     public class When_using_order_by_asc_on_date_with_one_criteria : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Date asc").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Date asc").ToList();
 
         private It should_return_five_records = () => result.Count().ShouldEqual(5);
 
@@ -281,7 +281,7 @@
 
     public class When_using_order_by_desc_on_date_with_one_criteria : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Date desc").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Date desc").ToList();
 
         private It should_return_five_records = () => result.Count().ShouldEqual(5);
 
@@ -302,7 +302,7 @@
 
     public class When_using_order_by_on_bool_with_one_criteria : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Complete").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Complete").ToList();
 
         private It should_return_five_records = () => result.Count().ShouldEqual(5);
 
@@ -319,7 +319,7 @@
 
     public class When_using_order_by_asc_on_bool_with_one_criteria : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Complete asc").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Complete asc").ToList();
 
         private It should_return_five_records = () => result.Count().ShouldEqual(5);
 
@@ -336,7 +336,7 @@
 
     public class When_using_order_by_desc_on_bool_with_one_criteria : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Complete desc").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Complete desc").ToList();
 
         private It should_return_five_records = () => result.Count().ShouldEqual(5);
 
@@ -357,7 +357,7 @@
 
     public class When_using_order_by_on_two_properties : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Complete,Age").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Complete,Age").ToList();
 
         private It should_return_five_records = () => result.Count().ShouldEqual(5);
 
@@ -374,7 +374,7 @@
 
     public class When_using_order_by_on_one_descending_and_one_ascending : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Complete desc,Age").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Complete desc,Age").ToList();
 
         private It should_return_five_records = () => result.Count().ShouldEqual(5);
 
@@ -391,7 +391,7 @@
 
     public class When_using_order_by_on_one_ascending_and_one_descending : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Complete,Age desc").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Complete,Age desc").ToList();
 
         private It should_return_five_records = () => result.Count().ShouldEqual(5);
 
@@ -408,7 +408,7 @@
 
     public class When_using_order_by_on_two_properties_both_descending : SqlPagingAndOrdering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().ExtendFromOData("?$orderby=Complete desc,Age desc").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$orderby=Complete desc,Age desc").ToList();
 
         private It should_return_five_records = () => result.Count().ShouldEqual(5);
 
@@ -429,7 +429,7 @@
 
     public class When_using_order_by_on_a_single_subproperty : SqlPagingAndOrdering
     {
-        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().ExtendFromOData(@"?$orderby=Concrete/Age").ToList();
+        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().LinqToQuerystring(@"?$orderby=Concrete/Age").ToList();
 
         private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
 
@@ -446,7 +446,7 @@
 
     public class When_using_order_by_asc_on_a_single_subproperty : SqlPagingAndOrdering
     {
-        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().ExtendFromOData(@"?$orderby=Concrete/Age asc").ToList();
+        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().LinqToQuerystring(@"?$orderby=Concrete/Age asc").ToList();
 
         private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
 
@@ -463,7 +463,7 @@
 
     public class When_using_order_by_desc_on_a_single_subproperty : SqlPagingAndOrdering
     {
-        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete/Age desc").ToList();
+        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().LinqToQuerystring("?$orderby=Concrete/Age desc").ToList();
 
         private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
 
@@ -484,7 +484,7 @@
 
     public class When_using_order_by_on_two_sub_properties : SqlPagingAndOrdering
     {
-        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete/Complete,Concrete/Age").ToList();
+        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().LinqToQuerystring("?$orderby=Concrete/Complete,Concrete/Age").ToList();
 
         private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
 
@@ -501,7 +501,7 @@
 
     public class When_using_order_by_on_two_sub_properties_one_descending_and_one_ascending : SqlPagingAndOrdering
     {
-        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete/Complete desc,Concrete/Age").ToList();
+        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().LinqToQuerystring("?$orderby=Concrete/Complete desc,Concrete/Age").ToList();
 
         private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
 
@@ -518,7 +518,7 @@
 
     public class When_using_order_by_on_two_sub_properties_one_ascending_and_one_descending : SqlPagingAndOrdering
     {
-        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete/Complete,Concrete/Age desc").ToList();
+        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().LinqToQuerystring("?$orderby=Concrete/Complete,Concrete/Age desc").ToList();
 
         private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
 
@@ -535,7 +535,7 @@
 
     public class When_using_order_by_on_two_sub_properties_both_descending : SqlPagingAndOrdering
     {
-        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete/Complete desc,Concrete/Age desc").ToList();
+        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().LinqToQuerystring("?$orderby=Concrete/Complete desc,Concrete/Age desc").ToList();
 
         private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
 
@@ -556,7 +556,7 @@
 
     public class When_using_order_by_on_mixed_properties : SqlPagingAndOrdering
     {
-        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete/Complete,Title").ToList();
+        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().LinqToQuerystring("?$orderby=Concrete/Complete,Title").ToList();
 
         private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
 
@@ -573,7 +573,7 @@
 
     public class When_using_order_by_on_mixed_properties_one_descending_and_one_ascending : SqlPagingAndOrdering
     {
-        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete/Complete desc,Title").ToList();
+        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().LinqToQuerystring("?$orderby=Concrete/Complete desc,Title").ToList();
 
         private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
 
@@ -590,7 +590,7 @@
 
     public class When_using_order_by_on_mixed_properties_one_ascending_and_one_descending : SqlPagingAndOrdering
     {
-        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete/Complete,Title desc").ToList();
+        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().LinqToQuerystring("?$orderby=Concrete/Complete,Title desc").ToList();
 
         private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
 
@@ -607,7 +607,7 @@
 
     public class When_using_order_by_on_mixed_properties_both_descending : SqlPagingAndOrdering
     {
-        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().ExtendFromOData("?$orderby=Concrete/Complete desc,Title desc").ToList();
+        private Because of = () => complexResult = testDb.ComplexCollection.AsQueryable().LinqToQuerystring("?$orderby=Concrete/Complete desc,Title desc").ToList();
 
         private It should_return_five_records = () => complexResult.Count().ShouldEqual(5);
 

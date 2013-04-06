@@ -43,7 +43,7 @@
     {
         private Because of =
             () =>
-            result = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, IQueryable<Dictionary<string, object>>>("?$select=Name").ToList();
+            result = testDb.ConcreteCollection.LinqToQuerystring<ConcreteClass, IQueryable<Dictionary<string, object>>>("?$select=Name").ToList();
 
         private It should_project_the_name_properties_into_the_dictionary =
             () => result.ShouldEachConformTo(r => r.ContainsKey("Name"));
@@ -68,7 +68,7 @@
     {
         private Because of =
             () =>
-            result = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, IQueryable<Dictionary<string, object>>>("?$select=Age").ToList();
+            result = testDb.ConcreteCollection.LinqToQuerystring<ConcreteClass, IQueryable<Dictionary<string, object>>>("?$select=Age").ToList();
 
         private It should_project_the_name_properties_into_the_dictionary =
             () => result.ShouldEachConformTo(
@@ -94,7 +94,7 @@
     {
         private Because of =
             () =>
-            result = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, IQueryable<Dictionary<string, object>>>("?$select=Date").ToList();
+            result = testDb.ConcreteCollection.LinqToQuerystring<ConcreteClass, IQueryable<Dictionary<string, object>>>("?$select=Date").ToList();
 
         private It should_project_the_name_properties_into_the_dictionary =
             () => result.ShouldEachConformTo(
@@ -120,7 +120,7 @@
     {
         private Because of =
             () =>
-            result = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, IQueryable<Dictionary<string, object>>>("?$select=Complete").ToList();
+            result = testDb.ConcreteCollection.LinqToQuerystring<ConcreteClass, IQueryable<Dictionary<string, object>>>("?$select=Complete").ToList();
 
         private It should_project_the_name_properties_into_the_dictionary =
             () => result.ShouldEachConformTo(
@@ -146,7 +146,7 @@
     {
         private Because of =
             () =>
-            result = testDb.ConcreteCollection.ExtendFromOData<ConcreteClass, IQueryable<Dictionary<string, object>>>("?$select=Name,Age").ToList();
+            result = testDb.ConcreteCollection.LinqToQuerystring<ConcreteClass, IQueryable<Dictionary<string, object>>>("?$select=Name,Age").ToList();
 
         private It should_project_the_name_and_age_properties_into_the_dictionary =
             () => result.ShouldEachConformTo(

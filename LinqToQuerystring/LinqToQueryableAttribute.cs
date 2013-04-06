@@ -22,7 +22,7 @@
                     var genericType = originalquery.GetType().GetGenericArguments()[0];
                     var query = HttpUtility.UrlDecode(queryString);
 
-                    actionExecutedContext.Response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.OK, originalquery.ExtendFromOData(query, genericType));
+                    actionExecutedContext.Response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.OK, originalquery.LinqToQuerystring(query, genericType));
                 }
             }
         }

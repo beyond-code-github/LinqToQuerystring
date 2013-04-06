@@ -5,7 +5,6 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
-    using System.Linq.Expressions;
 
     using Antlr.Runtime;
     using Antlr.Runtime.Tree;
@@ -15,17 +14,17 @@
 
     public static class Extensions
     {
-        public static TResult ExtendFromOData<T, TResult>(this IQueryable<T> query, string queryString)
+        public static TResult LinqToQuerystring<T, TResult>(this IQueryable<T> query, string queryString)
         {
-            return (TResult)ExtendFromOData(query, queryString, typeof(T));
+            return (TResult)LinqToQuerystring(query, queryString, typeof(T));
         }
 
-        public static IQueryable<T> ExtendFromOData<T>(this IQueryable<T> query, string queryString)
+        public static IQueryable<T> LinqToQuerystring<T>(this IQueryable<T> query, string queryString)
         {
-            return (IQueryable<T>)ExtendFromOData(query, queryString, typeof(T));
+            return (IQueryable<T>)LinqToQuerystring(query, queryString, typeof(T));
         }
 
-        public static object ExtendFromOData(this IQueryable query, string queryString, Type inputType)
+        public static object LinqToQuerystring(this IQueryable query, string queryString, Type inputType)
         {
             IQueryable queryResult = query;
             IQueryable constrainedQuery = query;

@@ -54,7 +54,7 @@
 
     public class When_using_eq_filter_on_a_single_string : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Name eq 'Apple'");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Name eq 'Apple'");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
@@ -63,7 +63,7 @@
 
     public class When_using_not_eq_filter_on_a_single_string : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=not Name eq 'Apple'");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Name eq 'Apple'");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(9);
 
@@ -72,7 +72,7 @@
 
     public class When_using_ne_filter_on_a_single_string : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Name ne 'Apple'");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Name ne 'Apple'");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(9);
 
@@ -81,7 +81,7 @@
 
     public class When_using_not_ne_filter_on_a_single_string : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=not Name ne 'Apple'");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Name ne 'Apple'");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
@@ -94,7 +94,7 @@
 
     public class When_using_eq_filter_on_a_single_int : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Age eq 4");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Age eq 4");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
@@ -103,7 +103,7 @@
 
     public class When_using_not_eq_filter_on_a_single_int : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=not Age eq 4");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Age eq 4");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(9);
 
@@ -112,7 +112,7 @@
 
     public class When_using_ne_filter_on_a_single_int : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Age ne 4");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Age ne 4");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(9);
 
@@ -121,7 +121,7 @@
 
     public class When_using_not_ne_filter_on_a_single_int : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=not Age ne 4");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Age ne 4");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
@@ -130,7 +130,7 @@
 
     public class When_using_gt_filter_on_a_single_int : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Age gt 3");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Age gt 3");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(3);
 
@@ -139,7 +139,7 @@
 
     public class When_using_not_gt_filter_on_a_single_int : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=not Age gt 3");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Age gt 3");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(8);
 
@@ -148,7 +148,7 @@
 
     public class When_using_ge_filter_on_a_single_int : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Age ge 3");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Age ge 3");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(6);
 
@@ -157,7 +157,7 @@
 
     public class When_using_not_ge_filter_on_a_single_int : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=not Age ge 3");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Age ge 3");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(5);
 
@@ -166,7 +166,7 @@
 
     public class When_using_lt_filter_on_a_single_int : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Age lt 3");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Age lt 3");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(5);
 
@@ -175,7 +175,7 @@
 
     public class When_using_not_lt_filter_on_a_single_int : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=not Age lt 3");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Age lt 3");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(6);
 
@@ -184,7 +184,7 @@
 
     public class When_using_le_filter_on_a_single_int : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Age le 3");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Age le 3");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(8);
 
@@ -193,7 +193,7 @@
 
     public class When_using_not_le_filter_on_a_single_int : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=not Age le 3");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Age le 3");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(3);
 
@@ -206,7 +206,7 @@
 
     public class When_using_eq_filter_on_a_single_date : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Date eq datetime'2002-01-01T00:00'");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Date eq datetime'2002-01-01T00:00'");
 
         private It should_return_three_records = () => result.Count().ShouldEqual(3);
 
@@ -215,7 +215,7 @@
 
     public class When_using_not_eq_filter_on_a_single_date : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=not Date eq datetime'2002-01-01T00:00'");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Date eq datetime'2002-01-01T00:00'");
 
         private It should_return_eight_records = () => result.Count().ShouldEqual(8);
 
@@ -224,7 +224,7 @@
 
     public class When_using_ne_filter_on_a_single_date : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Date ne datetime'2002-01-01T00:00'");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Date ne datetime'2002-01-01T00:00'");
 
         private It should_return_eight_records = () => result.Count().ShouldEqual(8);
 
@@ -233,7 +233,7 @@
 
     public class When_using_not_ne_filter_on_a_single_date : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=not Date ne datetime'2002-01-01T00:00'");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Date ne datetime'2002-01-01T00:00'");
 
         private It should_return_three_records = () => result.Count().ShouldEqual(3);
 
@@ -242,7 +242,7 @@
 
     public class When_using_gt_filter_on_a_single_date : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Date gt datetime'2003-01-01T00:00'");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Date gt datetime'2003-01-01T00:00'");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(3);
 
@@ -251,7 +251,7 @@
 
     public class When_using_not_gt_filter_on_a_single_date : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=not Date gt datetime'2003-01-01T00:00'");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Date gt datetime'2003-01-01T00:00'");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(8);
 
@@ -260,7 +260,7 @@
 
     public class When_using_ge_filter_on_a_single_date : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Date ge datetime'2003-01-01T00:00'");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Date ge datetime'2003-01-01T00:00'");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(6);
 
@@ -269,7 +269,7 @@
 
     public class When_using_not_ge_filter_on_a_single_date : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=not Date ge datetime'2003-01-01T00:00'");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Date ge datetime'2003-01-01T00:00'");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(5);
 
@@ -278,7 +278,7 @@
 
     public class When_using_lt_filter_on_a_single_date : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Date lt datetime'2003-01-01T00:00'");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Date lt datetime'2003-01-01T00:00'");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(5);
 
@@ -287,7 +287,7 @@
 
     public class When_using_not_lt_filter_on_a_single_date : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=not Date lt datetime'2003-01-01T00:00'");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Date lt datetime'2003-01-01T00:00'");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(6);
 
@@ -296,7 +296,7 @@
 
     public class When_using_le_filter_on_a_single_date : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Date le datetime'2003-01-01T00:00'");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Date le datetime'2003-01-01T00:00'");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(8);
 
@@ -305,7 +305,7 @@
 
     public class When_using_not_le_filter_on_a_single_date : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=not Date le datetime'2003-01-01T00:00'");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Date le datetime'2003-01-01T00:00'");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(3);
 
@@ -318,7 +318,7 @@
 
     public class When_using_eq_filter_on_a_single_bool : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Complete eq true");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Complete eq true");
 
         private It should_return_three_records = () => result.Count().ShouldEqual(6);
 
@@ -327,7 +327,7 @@
 
     public class When_using_not_eq_filter_on_a_single_bool : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=not Complete eq true");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Complete eq true");
 
         private It should_return_eight_records = () => result.Count().ShouldEqual(5);
 
@@ -336,7 +336,7 @@
 
     public class When_using_ne_filter_on_a_single_bool : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Complete ne true");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Complete ne true");
 
         private It should_return_eight_records = () => result.Count().ShouldEqual(5);
 
@@ -345,7 +345,7 @@
 
     public class When_using_not_ne_filter_on_a_single_bool : Filtering
     {
-        private Because of = () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=not Complete ne true");
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Complete ne true");
 
         private It should_return_three_records = () => result.Count().ShouldEqual(6);
 
@@ -359,7 +359,7 @@
     public class When_anding_two_filters_together : Filtering
     {
         private Because of =
-            () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Name eq 'Custard' and Age ge 2");
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Name eq 'Custard' and Age ge 2");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
@@ -373,7 +373,7 @@
     public class When_anding_a_filter_and_a_not_filter : Filtering
     {
         private Because of =
-            () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Name eq 'Custard' and not Age lt 2");
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Name eq 'Custard' and not Age lt 2");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
@@ -387,7 +387,7 @@
     public class When_oring_two_filters_together : Filtering
     {
         private Because of =
-            () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Name eq 'Banana' or Date gt datetime'2003-01-01T00:00'");
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Name eq 'Banana' or Date gt datetime'2003-01-01T00:00'");
 
         private It should_return_four_records = () => result.Count().ShouldEqual(4);
 
@@ -398,7 +398,7 @@
     public class When_oring_a_filter_and_a_not_filter : Filtering
     {
         private Because of =
-            () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Name eq 'Banana' or not Date le datetime'2003-01-01T00:00'");
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Name eq 'Banana' or not Date le datetime'2003-01-01T00:00'");
 
         private It should_return_four_records = () => result.Count().ShouldEqual(4);
 
@@ -413,7 +413,7 @@
     public class When_combining_and_or_filters_together : Filtering
     {
         private Because of =
-            () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Name eq 'Apple' and Complete eq true or Date gt datetime'2003-01-01T00:00'");
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Name eq 'Apple' and Complete eq true or Date gt datetime'2003-01-01T00:00'");
 
         private It should_return_four_records = () => result.Count().ShouldEqual(4);
 
@@ -424,7 +424,7 @@
     public class When_combining_and_or_not_filters_together : Filtering
     {
         private Because of =
-            () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Name eq 'Apple' and Complete eq true or not Date le datetime'2003-01-01T00:00'");
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Name eq 'Apple' and Complete eq true or not Date le datetime'2003-01-01T00:00'");
 
         private It should_return_four_records = () => result.Count().ShouldEqual(4);
 
@@ -436,7 +436,7 @@
     public class When_using_parenthesis : Filtering
     {
         private Because of =
-            () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=Name eq 'Apple' and (Complete eq true or Date gt datetime'2003-01-01T00:00')");
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Name eq 'Apple' and (Complete eq true or Date gt datetime'2003-01-01T00:00')");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
@@ -447,7 +447,7 @@
     public class When_notting_an_entire_parenthesised_expression : Filtering
     {
         private Because of =
-            () => result = concreteCollection.AsQueryable().ExtendFromOData("?$filter=not (Name eq 'Apple' and (Complete eq true or Date gt datetime'2003-01-01T00:00'))");
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not (Name eq 'Apple' and (Complete eq true or Date gt datetime'2003-01-01T00:00'))");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(9);
 
