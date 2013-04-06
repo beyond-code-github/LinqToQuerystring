@@ -753,3 +753,7 @@ tr.pager td {
             margin: 0;
         }
 }
+
+#queryexpression {
+    width: 700px;
+}
