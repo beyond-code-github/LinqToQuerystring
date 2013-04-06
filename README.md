@@ -8,7 +8,7 @@ Check out the demo site here: http://linqtoquerystring.azurewebsites.net/
 Installation
 ===========
 
-Nuget package: https://nuget.org/packages/LinqToQuerystring/0.4.1
+Nuget package: https://nuget.org/packages/LinqToQuerystring/
 
 PM> Install-Package LinqToQuerystring
 
