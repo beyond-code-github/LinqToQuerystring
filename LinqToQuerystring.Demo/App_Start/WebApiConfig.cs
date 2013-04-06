@@ -5,6 +5,8 @@ using System.Web.Http;
 
 namespace LinqToQuerystring.Demo
 {
+    using LinqToQuerystring.Demo.Filters;
+
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)

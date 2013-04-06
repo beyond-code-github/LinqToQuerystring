@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace LinqToQuerystring.Demo
 {
@@ -7,7 +6,7 @@ namespace LinqToQuerystring.Demo
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+
         }
     }
 }

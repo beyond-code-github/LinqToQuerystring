@@ -5,10 +5,12 @@
     using System.Linq;
     using System.Web.Http;
 
+    using LinqToQuerystring.Demo.Filters;
     using LinqToQuerystring.Demo.Models;
 
     public class ValuesController : ApiController
     {
+        [ApiExceptionFilter]
         [LinqToQueryable]
         public IQueryable<Movie> Get()
         {
