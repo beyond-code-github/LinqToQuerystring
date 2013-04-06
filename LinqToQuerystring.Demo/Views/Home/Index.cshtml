@@ -8,7 +8,7 @@
                 Linq to Querystring is an expression parser for .NET Web API that supports a subset of the OData URI Specification. 
                 Currently in a pre-release alpha release, the following odata query options are supported (with some caveats):
                 <ul>
-                    <li>Paging and Ordering with <strong>$top</strong>, <strong>$skip</strong> & <strong>$orderby</strong>
+                    <li>Paging and Ordering with <strong>$top</strong>, <strong>$skip</strong> & <strong>$orderby</strong> & <strong>$inlinecount</strong>
                     </li>
                     <li>Filtering on simple properties with <strong>$filter</strong>
                     </li>
@@ -29,6 +29,7 @@
             </li>
             <li class="two">
                 <h3>See the results:</h3>
+                <div id="error" data-bind="if: hasError"><span class="error" data-bind="text: error"></span></div>
                 <div id="countContainer"><label>Count:</label><span data-bind="text: count">N/A</span></div>
                 <table>
                     <thead>
@@ -56,41 +57,53 @@
 {
     <script type="text/javascript">
 
-        var model = {
-            headings: ko.observableArray(),
-            data: ko.observableArray(),
-            count: ko.observable()
-        };
+        var model = {};
+        model.headings = ko.observableArray();
+        model.data = ko.observableArray(),
+        model.count = ko.observable(),
+        model.error = ko.observable(),
+        model.hasError = ko.dependentObservable(function() {
+            if (model.error());
+            {
+                return true;
+            }
+        });
+        
+            $(document).ajaxError(function (event, jqxhr, settings, exception) {
+            var error = $.parseJSON(jqxhr.responseText);
+            model.error(error.ExceptionMessage);
+        });
             
-        var load = function() {
+            var load = function() {
             var query = $("#queryexpression").val();
             $.get("/api/Values" + query, function (data) {
-                var headings = [];
+            var headings = [];
 
-                var results = data;
-                if (data && data.Count) {
-                    results = data.Results;
-                }
+            var results = data;
+            if (data && data.Count) {
+            results = data.Results;
+        }
 
-                if (results && results.length > 0) {
-                    for (prop in results[0]) {
-                        if (results[0].hasOwnProperty(prop)) {
-                            headings.push(prop);
-                        }
-                    }
-                }
+            if (results && results.length > 0) {
+            for (prop in results[0]) {
+            if (results[0].hasOwnProperty(prop)) {
+            headings.push(prop);
+        }
+        }
+        }
                 
-                if (data && data.Count) {
-                    model.count(data.Count);
-                } else {
-                    model.count("N/A");
-                }
-                model.headings(headings);
-                model.data(results);
-            });
+            if (data && data.Count) {
+            model.count(data.Count);
+        } else {
+            model.count("N/A");
+        }
+            model.headings(headings);
+            model.data(results);
+            model.error(null);
+        });
         };
 
-        $(document).ready(function () {
+            $(document).ready(function () {
             
             ko.applyBindings(model);
             
