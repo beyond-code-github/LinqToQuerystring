@@ -28,7 +28,8 @@ select
 	:	SELECT^ propertyname (','! propertyname)*;
 	
 inlinecount
-	:	INLINECOUNT^ (ALLPAGES|NONE);
+	:	INLINECOUNT^ ALLPAGES
+	|	INLINECOUNT NONE ->;
 
 filterexpression	
 	:	orexpression (SPACE! OR^ SPACE! orexpression)*;
