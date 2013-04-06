@@ -55,10 +55,10 @@ Work directly with Linq to Object IQueryables:
        new Dummy("Dogfood", 4, new DateTime(2009, 01, 01), false),
     }.AsQueryable();
 
-    var ordered = collection.ExtendFromOData("?$orderby=Complete,Age");
-    var paged = collection.ExtendFromOData("?$skip=2$top=2");
+    var ordered = collection.LinqToQuerystring("?$orderby=Complete,Age");
+    var paged = collection.LinqToQuerystring("?$skip=2$top=2");
 
 Also tested against Entity Framework:
 
     var query = this.unitOfWork.Data.Where(o => o.SomeRepoLevelFilter == x);
-    var extended = query.ExtendFromOData("?$filter=Complete eq true and name eq 'Eggs'");
+    var extended = query.LinqToQuerystring("?$filter=Complete eq true and name eq 'Eggs'");
