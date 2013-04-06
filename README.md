@@ -5,7 +5,16 @@ Linq to Querystring is an expression parser for .NET that aims to provide a ligh
 
 Check out the demo site here: http://linqtoquerystring.azurewebsites.net/
 
-Currently supported:
+Installation
+===========
+
+Nuget package: https://nuget.org/packages/LinqToQuerystring/0.4.1
+
+PM> Install-Package LinqToQuerystring
+
+
+Currently supported
+===================
 
 * Seamless integration with Asp.Net Web API using LinqToQueryable Attribute 
 * string, int32, bool, datetime data types
