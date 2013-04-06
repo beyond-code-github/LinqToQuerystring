@@ -22,17 +22,12 @@
 
         public override int CompareTo(TreeNode other)
         {
-            if (other is TopNode)
-            {
-                return -1;
-            }
-
-            if (other is OrderByNode)
+            if (other is OrderByNode || other is FilterNode)
             {
                 return 1;
             }
 
-            return 0;
+            return -1;
         }
     }
 }

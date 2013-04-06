@@ -23,12 +23,12 @@
 
         public override int CompareTo(TreeNode other)
         {
-            if (other is SkipNode || other is InlineCountNode)
+            if (other is FilterNode)
             {
-                return -1;
+                return 1;
             }
 
-            return 0;
+            return -1;
         }
     }
 }

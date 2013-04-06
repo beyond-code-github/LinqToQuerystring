@@ -27,17 +27,12 @@
 
         public override int CompareTo(TreeNode other)
         {
-            if (other is SkipNode)
+            if (other is OrderByNode || other is FilterNode || other is SkipNode)
             {
                 return 1;
             }
 
-            if (other is InlineCountNode)
-            {
-                return -1;
-            }
-
-            return 0;
+            return -1;
         }
     }
 }

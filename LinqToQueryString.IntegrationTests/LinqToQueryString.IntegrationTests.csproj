@@ -86,6 +86,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Exceptions.cs" />
+    <Compile Include="SqlInlineCount.cs" />
     <Compile Include="SqlProjection.cs" />
     <Compile Include="SqlFiltering.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

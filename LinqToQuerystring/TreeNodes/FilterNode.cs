@@ -26,12 +26,7 @@
 
         public override int CompareTo(TreeNode other)
         {
-            if (other is InlineCountNode)
-            {
-                return -1;
-            }
-
-            return 0;
+            return -1;
         }
     }
 }
