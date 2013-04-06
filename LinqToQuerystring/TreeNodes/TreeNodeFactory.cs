@@ -32,6 +32,8 @@
                     return new FilterNode(inputType, token);
                 case LinqToQuerystringLexer.SELECT:
                     return new SelectNode(inputType, token);
+                case LinqToQuerystringLexer.INLINECOUNT:
+                    return new InlineCountNode(inputType, token);
                 case LinqToQuerystringLexer.NOT:
                     return new NotNode(inputType, token);
                 case LinqToQuerystringLexer.AND:

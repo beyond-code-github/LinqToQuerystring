@@ -159,7 +159,7 @@
             () => result.ShouldEachConformTo(
                 r => r.ContainsKey("Name") && r.ContainsKey("Age"));
 
-        private It should_only_have_projected_the_one_property =
+        private It should_only_have_projected_two_properties =
             () => result.ShouldEachConformTo(r => r.Count == 2);
 
         private It should_contain_5_results = () => result.Count().ShouldEqual(5);

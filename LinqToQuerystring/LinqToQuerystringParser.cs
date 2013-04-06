@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.4.1.9004 D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g 2013-04-01 22:46:41
+// $ANTLR 3.4.1.9004 D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g 2013-04-06 15:02:51
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
@@ -35,38 +35,41 @@ namespace  LinqToQuerystring
 public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 {
 	internal static readonly string[] tokenNames = new string[] {
-		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "AND", "ASC", "ASSIGN", "BOOL", "DATETIME", "DESC", "EQUALS", "FILTER", "GREATERTHAN", "GREATERTHANOREQUAL", "IDENTIFIER", "INT", "LESSTHAN", "LESSTHANOREQUAL", "NEWLINE", "NOT", "NOTEQUALS", "OR", "ORDERBY", "SELECT", "SKIP", "SPACE", "STRING", "TOP", "'&'", "'('", "')'", "','", "'/'"
+		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "ALLPAGES", "AND", "ASC", "ASSIGN", "BOOL", "DATETIME", "DESC", "EQUALS", "FILTER", "GREATERTHAN", "GREATERTHANOREQUAL", "IDENTIFIER", "INLINECOUNT", "INT", "LESSTHAN", "LESSTHANOREQUAL", "NEWLINE", "NONE", "NOT", "NOTEQUALS", "OR", "ORDERBY", "SELECT", "SKIP", "SPACE", "STRING", "TOP", "'&'", "'('", "')'", "','", "'/'"
 	};
 	public const int EOF=-1;
-	public const int AND=4;
-	public const int ASC=5;
-	public const int ASSIGN=6;
-	public const int BOOL=7;
-	public const int DATETIME=8;
-	public const int DESC=9;
-	public const int EQUALS=10;
-	public const int FILTER=11;
-	public const int GREATERTHAN=12;
-	public const int GREATERTHANOREQUAL=13;
-	public const int IDENTIFIER=14;
-	public const int INT=15;
-	public const int LESSTHAN=16;
-	public const int LESSTHANOREQUAL=17;
-	public const int NEWLINE=18;
-	public const int NOT=19;
-	public const int NOTEQUALS=20;
-	public const int OR=21;
-	public const int ORDERBY=22;
-	public const int SELECT=23;
-	public const int SKIP=24;
-	public const int SPACE=25;
-	public const int STRING=26;
-	public const int TOP=27;
-	public const int T__28=28;
-	public const int T__29=29;
-	public const int T__30=30;
+	public const int ALLPAGES=4;
+	public const int AND=5;
+	public const int ASC=6;
+	public const int ASSIGN=7;
+	public const int BOOL=8;
+	public const int DATETIME=9;
+	public const int DESC=10;
+	public const int EQUALS=11;
+	public const int FILTER=12;
+	public const int GREATERTHAN=13;
+	public const int GREATERTHANOREQUAL=14;
+	public const int IDENTIFIER=15;
+	public const int INLINECOUNT=16;
+	public const int INT=17;
+	public const int LESSTHAN=18;
+	public const int LESSTHANOREQUAL=19;
+	public const int NEWLINE=20;
+	public const int NONE=21;
+	public const int NOT=22;
+	public const int NOTEQUALS=23;
+	public const int OR=24;
+	public const int ORDERBY=25;
+	public const int SELECT=26;
+	public const int SKIP=27;
+	public const int SPACE=28;
+	public const int STRING=29;
+	public const int TOP=30;
 	public const int T__31=31;
 	public const int T__32=32;
+	public const int T__33=33;
+	public const int T__34=34;
+	public const int T__35=35;
 
 	public LinqToQuerystringParser(ITokenStream input)
 		: this(input, new RecognizerSharedState())
@@ -146,7 +149,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(2, false);
 				int LA2_1 = input.LA(1);
 
-				if ((LA2_1==FILTER||(LA2_1>=ORDERBY && LA2_1<=SKIP)||LA2_1==TOP))
+				if ((LA2_1==FILTER||LA2_1==INLINECOUNT||(LA2_1>=ORDERBY && LA2_1<=SKIP)||LA2_1==TOP))
 				{
 					alt2 = 1;
 				}
@@ -174,7 +177,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 						try { DebugEnterDecision(1, false);
 						int LA1_1 = input.LA(1);
 
-						if ((LA1_1==28))
+						if ((LA1_1==31))
 						{
 							alt1 = 1;
 						}
@@ -188,7 +191,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 							// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:14:12: '&' ! param
 							{
 							DebugLocation(14, 15);
-							char_literal2=(IToken)Match(input,28,Follow._28_in_prog58); 
+							char_literal2=(IToken)Match(input,31,Follow._31_in_prog58); 
 							DebugLocation(14, 17);
 							PushFollow(Follow._param_in_prog61);
 							param3=param();
@@ -255,7 +258,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_param();
 	partial void LeaveRule_param();
 	// $ANTLR start "param"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:16:1: param : ( orderby | top | skip | filter | select ) ;
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:16:1: param : ( orderby | top | skip | filter | select | inlinecount ) ;
 	[GrammarRule("param")]
 	private AstParserRuleReturnScope<object, IToken> param()
 	{
@@ -272,20 +275,21 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		AstParserRuleReturnScope<object, IToken> skip6 = default(AstParserRuleReturnScope<object, IToken>);
 		AstParserRuleReturnScope<object, IToken> filter7 = default(AstParserRuleReturnScope<object, IToken>);
 		AstParserRuleReturnScope<object, IToken> select8 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> inlinecount9 = default(AstParserRuleReturnScope<object, IToken>);
 
 		try { DebugEnterRule(GrammarFileName, "param");
-		DebugLocation(16, 48);
+		DebugLocation(16, 62);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:16:7: ( ( orderby | top | skip | filter | select ) )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:16:7: ( ( orderby | top | skip | filter | select | inlinecount ) )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:16:9: ( orderby | top | skip | filter | select )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:16:9: ( orderby | top | skip | filter | select | inlinecount )
 			{
 			root_0 = (object)adaptor.Nil();
 
 			DebugLocation(16, 9);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:16:9: ( orderby | top | skip | filter | select )
-			int alt3=5;
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:16:9: ( orderby | top | skip | filter | select | inlinecount )
+			int alt3=6;
 			try { DebugEnterSubRule(3);
 			try { DebugEnterDecision(3, false);
 			switch (input.LA(1))
@@ -313,6 +317,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			case SELECT:
 				{
 				alt3 = 5;
+				}
+				break;
+			case INLINECOUNT:
+				{
+				alt3 = 6;
 				}
 				break;
 			default:
@@ -391,6 +400,19 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 
 				}
 				break;
+			case 6:
+				DebugEnterAlt(6);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:16:51: inlinecount
+				{
+				DebugLocation(16, 51);
+				PushFollow(Follow._inlinecount_in_param94);
+				inlinecount9=inlinecount();
+				PopFollow();
+
+				adaptor.AddChild(root_0, inlinecount9.Tree);
+
+				}
+				break;
 
 			}
 			} finally { DebugExitSubRule(3); }
@@ -417,7 +439,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			LeaveRule("param", 2);
 			LeaveRule_param();
 		}
-		DebugLocation(16, 48);
+		DebugLocation(16, 62);
 		} finally { DebugExitRule(GrammarFileName, "param"); }
 		return retval;
 
@@ -439,11 +461,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 
 		object root_0 = default(object);
 
-		IToken SKIP9 = default(IToken);
-		IToken INT10 = default(IToken);
+		IToken SKIP10 = default(IToken);
+		IToken INT11 = default(IToken);
 
-		object SKIP9_tree = default(object);
-		object INT10_tree = default(object);
+		object SKIP10_tree = default(object);
+		object INT11_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "skip");
 		DebugLocation(18, 13);
 		try
@@ -455,9 +477,9 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			root_0 = (object)adaptor.Nil();
 
 			DebugLocation(19, 8);
-			SKIP9=(IToken)Match(input,SKIP,Follow._SKIP_in_skip101); 
-			SKIP9_tree = (object)adaptor.Create(SKIP9);
-			root_0 = (object)adaptor.BecomeRoot(SKIP9_tree, root_0);
+			SKIP10=(IToken)Match(input,SKIP,Follow._SKIP_in_skip105); 
+			SKIP10_tree = (object)adaptor.Create(SKIP10);
+			root_0 = (object)adaptor.BecomeRoot(SKIP10_tree, root_0);
 			DebugLocation(19, 10);
 			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:19:10: ( INT )+
 			int cnt4=0;
@@ -482,9 +504,9 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:19:10: INT
 					{
 					DebugLocation(19, 10);
-					INT10=(IToken)Match(input,INT,Follow._INT_in_skip104); 
-					INT10_tree = (object)adaptor.Create(INT10);
-					adaptor.AddChild(root_0, INT10_tree);
+					INT11=(IToken)Match(input,INT,Follow._INT_in_skip108); 
+					INT11_tree = (object)adaptor.Create(INT11);
+					adaptor.AddChild(root_0, INT11_tree);
 
 					}
 					break;
@@ -548,11 +570,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 
 		object root_0 = default(object);
 
-		IToken TOP11 = default(IToken);
-		IToken INT12 = default(IToken);
+		IToken TOP12 = default(IToken);
+		IToken INT13 = default(IToken);
 
-		object TOP11_tree = default(object);
-		object INT12_tree = default(object);
+		object TOP12_tree = default(object);
+		object INT13_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "top");
 		DebugLocation(21, 12);
 		try
@@ -564,9 +586,9 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			root_0 = (object)adaptor.Nil();
 
 			DebugLocation(22, 7);
-			TOP11=(IToken)Match(input,TOP,Follow._TOP_in_top115); 
-			TOP11_tree = (object)adaptor.Create(TOP11);
-			root_0 = (object)adaptor.BecomeRoot(TOP11_tree, root_0);
+			TOP12=(IToken)Match(input,TOP,Follow._TOP_in_top119); 
+			TOP12_tree = (object)adaptor.Create(TOP12);
+			root_0 = (object)adaptor.BecomeRoot(TOP12_tree, root_0);
 			DebugLocation(22, 9);
 			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:22:9: ( INT )+
 			int cnt5=0;
@@ -591,9 +613,9 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:22:9: INT
 					{
 					DebugLocation(22, 9);
-					INT12=(IToken)Match(input,INT,Follow._INT_in_top118); 
-					INT12_tree = (object)adaptor.Create(INT12);
-					adaptor.AddChild(root_0, INT12_tree);
+					INT13=(IToken)Match(input,INT,Follow._INT_in_top122); 
+					INT13_tree = (object)adaptor.Create(INT13);
+					adaptor.AddChild(root_0, INT13_tree);
 
 					}
 					break;
@@ -657,10 +679,10 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 
 		object root_0 = default(object);
 
-		IToken FILTER13 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> filterexpression14 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken FILTER14 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> filterexpression15 = default(AstParserRuleReturnScope<object, IToken>);
 
-		object FILTER13_tree = default(object);
+		object FILTER14_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "filter");
 		DebugLocation(24, 27);
 		try
@@ -672,15 +694,15 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			root_0 = (object)adaptor.Nil();
 
 			DebugLocation(25, 10);
-			FILTER13=(IToken)Match(input,FILTER,Follow._FILTER_in_filter129); 
-			FILTER13_tree = (object)adaptor.Create(FILTER13);
-			root_0 = (object)adaptor.BecomeRoot(FILTER13_tree, root_0);
+			FILTER14=(IToken)Match(input,FILTER,Follow._FILTER_in_filter133); 
+			FILTER14_tree = (object)adaptor.Create(FILTER14);
+			root_0 = (object)adaptor.BecomeRoot(FILTER14_tree, root_0);
 			DebugLocation(25, 12);
-			PushFollow(Follow._filterexpression_in_filter132);
-			filterexpression14=filterexpression();
+			PushFollow(Follow._filterexpression_in_filter136);
+			filterexpression15=filterexpression();
 			PopFollow();
 
-			adaptor.AddChild(root_0, filterexpression14.Tree);
+			adaptor.AddChild(root_0, filterexpression15.Tree);
 
 			}
 
@@ -725,13 +747,13 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 
 		object root_0 = default(object);
 
-		IToken SELECT15 = default(IToken);
-		IToken char_literal17 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> propertyname16 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> propertyname18 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken SELECT16 = default(IToken);
+		IToken char_literal18 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> propertyname17 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> propertyname19 = default(AstParserRuleReturnScope<object, IToken>);
 
-		object SELECT15_tree = default(object);
-		object char_literal17_tree = default(object);
+		object SELECT16_tree = default(object);
+		object char_literal18_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "select");
 		DebugLocation(27, 44);
 		try
@@ -743,15 +765,15 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			root_0 = (object)adaptor.Nil();
 
 			DebugLocation(28, 10);
-			SELECT15=(IToken)Match(input,SELECT,Follow._SELECT_in_select142); 
-			SELECT15_tree = (object)adaptor.Create(SELECT15);
-			root_0 = (object)adaptor.BecomeRoot(SELECT15_tree, root_0);
+			SELECT16=(IToken)Match(input,SELECT,Follow._SELECT_in_select146); 
+			SELECT16_tree = (object)adaptor.Create(SELECT16);
+			root_0 = (object)adaptor.BecomeRoot(SELECT16_tree, root_0);
 			DebugLocation(28, 12);
-			PushFollow(Follow._propertyname_in_select145);
-			propertyname16=propertyname();
+			PushFollow(Follow._propertyname_in_select149);
+			propertyname17=propertyname();
 			PopFollow();
 
-			adaptor.AddChild(root_0, propertyname16.Tree);
+			adaptor.AddChild(root_0, propertyname17.Tree);
 			DebugLocation(28, 25);
 			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:28:25: ( ',' ! propertyname )*
 			try { DebugEnterSubRule(6);
@@ -761,7 +783,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(6, false);
 				int LA6_1 = input.LA(1);
 
-				if ((LA6_1==31))
+				if ((LA6_1==34))
 				{
 					alt6 = 1;
 				}
@@ -775,13 +797,13 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:28:26: ',' ! propertyname
 					{
 					DebugLocation(28, 29);
-					char_literal17=(IToken)Match(input,31,Follow._31_in_select148); 
+					char_literal18=(IToken)Match(input,34,Follow._34_in_select152); 
 					DebugLocation(28, 31);
-					PushFollow(Follow._propertyname_in_select151);
-					propertyname18=propertyname();
+					PushFollow(Follow._propertyname_in_select155);
+					propertyname19=propertyname();
 					PopFollow();
 
-					adaptor.AddChild(root_0, propertyname18.Tree);
+					adaptor.AddChild(root_0, propertyname19.Tree);
 
 					}
 					break;
@@ -825,48 +847,127 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	}
 	// $ANTLR end "select"
 
-	partial void EnterRule_filterexpression();
-	partial void LeaveRule_filterexpression();
-	// $ANTLR start "filterexpression"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:30:1: filterexpression : orexpression ( SPACE ! OR ^ SPACE ! orexpression )* ;
-	[GrammarRule("filterexpression")]
-	private AstParserRuleReturnScope<object, IToken> filterexpression()
+	partial void EnterRule_inlinecount();
+	partial void LeaveRule_inlinecount();
+	// $ANTLR start "inlinecount"
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:30:1: inlinecount : INLINECOUNT ^ ( ALLPAGES | NONE ) ;
+	[GrammarRule("inlinecount")]
+	private AstParserRuleReturnScope<object, IToken> inlinecount()
 	{
-		EnterRule_filterexpression();
-		EnterRule("filterexpression", 7);
-		TraceIn("filterexpression", 7);
+		EnterRule_inlinecount();
+		EnterRule("inlinecount", 7);
+		TraceIn("inlinecount", 7);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		IToken SPACE20 = default(IToken);
-		IToken OR21 = default(IToken);
-		IToken SPACE22 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> orexpression19 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> orexpression23 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken INLINECOUNT20 = default(IToken);
+		IToken set21 = default(IToken);
 
-		object SPACE20_tree = default(object);
-		object OR21_tree = default(object);
-		object SPACE22_tree = default(object);
-		try { DebugEnterRule(GrammarFileName, "filterexpression");
-		DebugLocation(30, 49);
+		object INLINECOUNT20_tree = default(object);
+		object set21_tree = default(object);
+		try { DebugEnterRule(GrammarFileName, "inlinecount");
+		DebugLocation(30, 31);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:31:2: ( orexpression ( SPACE ! OR ^ SPACE ! orexpression )* )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:31:2: ( INLINECOUNT ^ ( ALLPAGES | NONE ) )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:31:4: orexpression ( SPACE ! OR ^ SPACE ! orexpression )*
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:31:4: INLINECOUNT ^ ( ALLPAGES | NONE )
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(31, 4);
-			PushFollow(Follow._orexpression_in_filterexpression163);
-			orexpression19=orexpression();
+			DebugLocation(31, 15);
+			INLINECOUNT20=(IToken)Match(input,INLINECOUNT,Follow._INLINECOUNT_in_inlinecount167); 
+			INLINECOUNT20_tree = (object)adaptor.Create(INLINECOUNT20);
+			root_0 = (object)adaptor.BecomeRoot(INLINECOUNT20_tree, root_0);
+			DebugLocation(31, 17);
+
+			set21=(IToken)input.LT(1);
+			if (input.LA(1)==ALLPAGES||input.LA(1)==NONE)
+			{
+				input.Consume();
+				adaptor.AddChild(root_0, (object)adaptor.Create(set21));
+				state.errorRecovery=false;
+			}
+			else
+			{
+				MismatchedSetException mse = new MismatchedSetException(null,input);
+				DebugRecognitionException(mse);
+				throw mse;
+			}
+
+
+			}
+
+			retval.Stop = (IToken)input.LT(-1);
+
+			retval.Tree = (object)adaptor.RulePostProcessing(root_0);
+			adaptor.SetTokenBoundaries(retval.Tree, retval.Start, retval.Stop);
+
+		}
+		catch (RecognitionException re)
+		{
+			ReportError(re);
+			Recover(input,re);
+		retval.Tree = (object)adaptor.ErrorNode(input, retval.Start, input.LT(-1), re);
+
+		}
+		finally
+		{
+			TraceOut("inlinecount", 7);
+			LeaveRule("inlinecount", 7);
+			LeaveRule_inlinecount();
+		}
+		DebugLocation(31, 31);
+		} finally { DebugExitRule(GrammarFileName, "inlinecount"); }
+		return retval;
+
+	}
+	// $ANTLR end "inlinecount"
+
+	partial void EnterRule_filterexpression();
+	partial void LeaveRule_filterexpression();
+	// $ANTLR start "filterexpression"
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:33:1: filterexpression : orexpression ( SPACE ! OR ^ SPACE ! orexpression )* ;
+	[GrammarRule("filterexpression")]
+	private AstParserRuleReturnScope<object, IToken> filterexpression()
+	{
+		EnterRule_filterexpression();
+		EnterRule("filterexpression", 8);
+		TraceIn("filterexpression", 8);
+		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
+		retval.Start = (IToken)input.LT(1);
+
+		object root_0 = default(object);
+
+		IToken SPACE23 = default(IToken);
+		IToken OR24 = default(IToken);
+		IToken SPACE25 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> orexpression22 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> orexpression26 = default(AstParserRuleReturnScope<object, IToken>);
+
+		object SPACE23_tree = default(object);
+		object OR24_tree = default(object);
+		object SPACE25_tree = default(object);
+		try { DebugEnterRule(GrammarFileName, "filterexpression");
+		DebugLocation(33, 49);
+		try
+		{
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:34:2: ( orexpression ( SPACE ! OR ^ SPACE ! orexpression )* )
+			DebugEnterAlt(1);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:34:4: orexpression ( SPACE ! OR ^ SPACE ! orexpression )*
+			{
+			root_0 = (object)adaptor.Nil();
+
+			DebugLocation(34, 4);
+			PushFollow(Follow._orexpression_in_filterexpression184);
+			orexpression22=orexpression();
 			PopFollow();
 
-			adaptor.AddChild(root_0, orexpression19.Tree);
-			DebugLocation(31, 17);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:31:17: ( SPACE ! OR ^ SPACE ! orexpression )*
+			adaptor.AddChild(root_0, orexpression22.Tree);
+			DebugLocation(34, 17);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:34:17: ( SPACE ! OR ^ SPACE ! orexpression )*
 			try { DebugEnterSubRule(7);
 			while (true)
 			{
@@ -885,22 +986,22 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:31:18: SPACE ! OR ^ SPACE ! orexpression
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:34:18: SPACE ! OR ^ SPACE ! orexpression
 					{
-					DebugLocation(31, 23);
-					SPACE20=(IToken)Match(input,SPACE,Follow._SPACE_in_filterexpression166); 
-					DebugLocation(31, 27);
-					OR21=(IToken)Match(input,OR,Follow._OR_in_filterexpression169); 
-					OR21_tree = (object)adaptor.Create(OR21);
-					root_0 = (object)adaptor.BecomeRoot(OR21_tree, root_0);
-					DebugLocation(31, 34);
-					SPACE22=(IToken)Match(input,SPACE,Follow._SPACE_in_filterexpression172); 
-					DebugLocation(31, 36);
-					PushFollow(Follow._orexpression_in_filterexpression175);
-					orexpression23=orexpression();
+					DebugLocation(34, 23);
+					SPACE23=(IToken)Match(input,SPACE,Follow._SPACE_in_filterexpression187); 
+					DebugLocation(34, 27);
+					OR24=(IToken)Match(input,OR,Follow._OR_in_filterexpression190); 
+					OR24_tree = (object)adaptor.Create(OR24);
+					root_0 = (object)adaptor.BecomeRoot(OR24_tree, root_0);
+					DebugLocation(34, 34);
+					SPACE25=(IToken)Match(input,SPACE,Follow._SPACE_in_filterexpression193); 
+					DebugLocation(34, 36);
+					PushFollow(Follow._orexpression_in_filterexpression196);
+					orexpression26=orexpression();
 					PopFollow();
 
-					adaptor.AddChild(root_0, orexpression23.Tree);
+					adaptor.AddChild(root_0, orexpression26.Tree);
 
 					}
 					break;
@@ -933,11 +1034,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("filterexpression", 7);
-			LeaveRule("filterexpression", 7);
+			TraceOut("filterexpression", 8);
+			LeaveRule("filterexpression", 8);
 			LeaveRule_filterexpression();
 		}
-		DebugLocation(31, 49);
+		DebugLocation(34, 49);
 		} finally { DebugExitRule(GrammarFileName, "filterexpression"); }
 		return retval;
 
@@ -947,45 +1048,45 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_orexpression();
 	partial void LeaveRule_orexpression();
 	// $ANTLR start "orexpression"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:33:1: orexpression : andexpression ( SPACE ! AND ^ SPACE ! andexpression )* ;
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:36:1: orexpression : andexpression ( SPACE ! AND ^ SPACE ! andexpression )* ;
 	[GrammarRule("orexpression")]
 	private AstParserRuleReturnScope<object, IToken> orexpression()
 	{
 		EnterRule_orexpression();
-		EnterRule("orexpression", 8);
-		TraceIn("orexpression", 8);
+		EnterRule("orexpression", 9);
+		TraceIn("orexpression", 9);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		IToken SPACE25 = default(IToken);
-		IToken AND26 = default(IToken);
-		IToken SPACE27 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> andexpression24 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> andexpression28 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken SPACE28 = default(IToken);
+		IToken AND29 = default(IToken);
+		IToken SPACE30 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> andexpression27 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> andexpression31 = default(AstParserRuleReturnScope<object, IToken>);
 
-		object SPACE25_tree = default(object);
-		object AND26_tree = default(object);
-		object SPACE27_tree = default(object);
+		object SPACE28_tree = default(object);
+		object AND29_tree = default(object);
+		object SPACE30_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "orexpression");
-		DebugLocation(33, 52);
+		DebugLocation(36, 52);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:34:2: ( andexpression ( SPACE ! AND ^ SPACE ! andexpression )* )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:37:2: ( andexpression ( SPACE ! AND ^ SPACE ! andexpression )* )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:34:4: andexpression ( SPACE ! AND ^ SPACE ! andexpression )*
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:37:4: andexpression ( SPACE ! AND ^ SPACE ! andexpression )*
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(34, 4);
-			PushFollow(Follow._andexpression_in_orexpression187);
-			andexpression24=andexpression();
+			DebugLocation(37, 4);
+			PushFollow(Follow._andexpression_in_orexpression208);
+			andexpression27=andexpression();
 			PopFollow();
 
-			adaptor.AddChild(root_0, andexpression24.Tree);
-			DebugLocation(34, 18);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:34:18: ( SPACE ! AND ^ SPACE ! andexpression )*
+			adaptor.AddChild(root_0, andexpression27.Tree);
+			DebugLocation(37, 18);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:37:18: ( SPACE ! AND ^ SPACE ! andexpression )*
 			try { DebugEnterSubRule(8);
 			while (true)
 			{
@@ -1011,22 +1112,22 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:34:19: SPACE ! AND ^ SPACE ! andexpression
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:37:19: SPACE ! AND ^ SPACE ! andexpression
 					{
-					DebugLocation(34, 24);
-					SPACE25=(IToken)Match(input,SPACE,Follow._SPACE_in_orexpression190); 
-					DebugLocation(34, 29);
-					AND26=(IToken)Match(input,AND,Follow._AND_in_orexpression193); 
-					AND26_tree = (object)adaptor.Create(AND26);
-					root_0 = (object)adaptor.BecomeRoot(AND26_tree, root_0);
-					DebugLocation(34, 36);
-					SPACE27=(IToken)Match(input,SPACE,Follow._SPACE_in_orexpression196); 
-					DebugLocation(34, 38);
-					PushFollow(Follow._andexpression_in_orexpression199);
-					andexpression28=andexpression();
+					DebugLocation(37, 24);
+					SPACE28=(IToken)Match(input,SPACE,Follow._SPACE_in_orexpression211); 
+					DebugLocation(37, 29);
+					AND29=(IToken)Match(input,AND,Follow._AND_in_orexpression214); 
+					AND29_tree = (object)adaptor.Create(AND29);
+					root_0 = (object)adaptor.BecomeRoot(AND29_tree, root_0);
+					DebugLocation(37, 36);
+					SPACE30=(IToken)Match(input,SPACE,Follow._SPACE_in_orexpression217); 
+					DebugLocation(37, 38);
+					PushFollow(Follow._andexpression_in_orexpression220);
+					andexpression31=andexpression();
 					PopFollow();
 
-					adaptor.AddChild(root_0, andexpression28.Tree);
+					adaptor.AddChild(root_0, andexpression31.Tree);
 
 					}
 					break;
@@ -1059,11 +1160,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("orexpression", 8);
-			LeaveRule("orexpression", 8);
+			TraceOut("orexpression", 9);
+			LeaveRule("orexpression", 9);
 			LeaveRule_orexpression();
 		}
-		DebugLocation(34, 52);
+		DebugLocation(37, 52);
 		} finally { DebugExitRule(GrammarFileName, "orexpression"); }
 		return retval;
 
@@ -1073,30 +1174,30 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_andexpression();
 	partial void LeaveRule_andexpression();
 	// $ANTLR start "andexpression"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:36:1: andexpression : ( NOT ^ SPACE comparisonexpression | comparisonexpression );
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:39:1: andexpression : ( NOT ^ SPACE comparisonexpression | comparisonexpression );
 	[GrammarRule("andexpression")]
 	private AstParserRuleReturnScope<object, IToken> andexpression()
 	{
 		EnterRule_andexpression();
-		EnterRule("andexpression", 9);
-		TraceIn("andexpression", 9);
+		EnterRule("andexpression", 10);
+		TraceIn("andexpression", 10);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		IToken NOT29 = default(IToken);
-		IToken SPACE30 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> comparisonexpression31 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> comparisonexpression32 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken NOT32 = default(IToken);
+		IToken SPACE33 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> comparisonexpression34 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> comparisonexpression35 = default(AstParserRuleReturnScope<object, IToken>);
 
-		object NOT29_tree = default(object);
-		object SPACE30_tree = default(object);
+		object NOT32_tree = default(object);
+		object SPACE33_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "andexpression");
-		DebugLocation(36, 23);
+		DebugLocation(39, 23);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:37:2: ( NOT ^ SPACE comparisonexpression | comparisonexpression )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:40:2: ( NOT ^ SPACE comparisonexpression | comparisonexpression )
 			int alt9=2;
 			try { DebugEnterDecision(9, false);
 			int LA9_1 = input.LA(1);
@@ -1105,7 +1206,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			{
 				alt9 = 1;
 			}
-			else if ((LA9_1==IDENTIFIER||LA9_1==29))
+			else if ((LA9_1==IDENTIFIER||LA9_1==32))
 			{
 				alt9 = 2;
 			}
@@ -1120,39 +1221,39 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:37:4: NOT ^ SPACE comparisonexpression
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:40:4: NOT ^ SPACE comparisonexpression
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(37, 7);
-				NOT29=(IToken)Match(input,NOT,Follow._NOT_in_andexpression211); 
-				NOT29_tree = (object)adaptor.Create(NOT29);
-				root_0 = (object)adaptor.BecomeRoot(NOT29_tree, root_0);
-				DebugLocation(37, 9);
-				SPACE30=(IToken)Match(input,SPACE,Follow._SPACE_in_andexpression214); 
-				SPACE30_tree = (object)adaptor.Create(SPACE30);
-				adaptor.AddChild(root_0, SPACE30_tree);
-				DebugLocation(37, 15);
-				PushFollow(Follow._comparisonexpression_in_andexpression216);
-				comparisonexpression31=comparisonexpression();
+				DebugLocation(40, 7);
+				NOT32=(IToken)Match(input,NOT,Follow._NOT_in_andexpression232); 
+				NOT32_tree = (object)adaptor.Create(NOT32);
+				root_0 = (object)adaptor.BecomeRoot(NOT32_tree, root_0);
+				DebugLocation(40, 9);
+				SPACE33=(IToken)Match(input,SPACE,Follow._SPACE_in_andexpression235); 
+				SPACE33_tree = (object)adaptor.Create(SPACE33);
+				adaptor.AddChild(root_0, SPACE33_tree);
+				DebugLocation(40, 15);
+				PushFollow(Follow._comparisonexpression_in_andexpression237);
+				comparisonexpression34=comparisonexpression();
 				PopFollow();
 
-				adaptor.AddChild(root_0, comparisonexpression31.Tree);
+				adaptor.AddChild(root_0, comparisonexpression34.Tree);
 
 				}
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:38:4: comparisonexpression
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:41:4: comparisonexpression
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(38, 4);
-				PushFollow(Follow._comparisonexpression_in_andexpression221);
-				comparisonexpression32=comparisonexpression();
+				DebugLocation(41, 4);
+				PushFollow(Follow._comparisonexpression_in_andexpression242);
+				comparisonexpression35=comparisonexpression();
 				PopFollow();
 
-				adaptor.AddChild(root_0, comparisonexpression32.Tree);
+				adaptor.AddChild(root_0, comparisonexpression35.Tree);
 
 				}
 				break;
@@ -1173,11 +1274,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("andexpression", 9);
-			LeaveRule("andexpression", 9);
+			TraceOut("andexpression", 10);
+			LeaveRule("andexpression", 10);
 			LeaveRule_andexpression();
 		}
-		DebugLocation(38, 23);
+		DebugLocation(41, 23);
 		} finally { DebugExitRule(GrammarFileName, "andexpression"); }
 		return retval;
 
@@ -1187,43 +1288,43 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_comparisonexpression();
 	partial void LeaveRule_comparisonexpression();
 	// $ANTLR start "comparisonexpression"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:40:1: comparisonexpression : ( propertyname SPACE ! filteroperator ^ SPACE ! ( ( INT )+ | BOOL | STRING | DATETIME ) | '(' filterexpression ')' );
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:43:1: comparisonexpression : ( propertyname SPACE ! filteroperator ^ SPACE ! ( ( INT )+ | BOOL | STRING | DATETIME ) | '(' filterexpression ')' );
 	[GrammarRule("comparisonexpression")]
 	private AstParserRuleReturnScope<object, IToken> comparisonexpression()
 	{
 		EnterRule_comparisonexpression();
-		EnterRule("comparisonexpression", 10);
-		TraceIn("comparisonexpression", 10);
+		EnterRule("comparisonexpression", 11);
+		TraceIn("comparisonexpression", 11);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		IToken SPACE34 = default(IToken);
-		IToken SPACE36 = default(IToken);
-		IToken INT37 = default(IToken);
-		IToken BOOL38 = default(IToken);
-		IToken STRING39 = default(IToken);
-		IToken DATETIME40 = default(IToken);
-		IToken char_literal41 = default(IToken);
-		IToken char_literal43 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> propertyname33 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> filteroperator35 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> filterexpression42 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken SPACE37 = default(IToken);
+		IToken SPACE39 = default(IToken);
+		IToken INT40 = default(IToken);
+		IToken BOOL41 = default(IToken);
+		IToken STRING42 = default(IToken);
+		IToken DATETIME43 = default(IToken);
+		IToken char_literal44 = default(IToken);
+		IToken char_literal46 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> propertyname36 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> filteroperator38 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> filterexpression45 = default(AstParserRuleReturnScope<object, IToken>);
 
-		object SPACE34_tree = default(object);
-		object SPACE36_tree = default(object);
-		object INT37_tree = default(object);
-		object BOOL38_tree = default(object);
-		object STRING39_tree = default(object);
-		object DATETIME40_tree = default(object);
-		object char_literal41_tree = default(object);
-		object char_literal43_tree = default(object);
+		object SPACE37_tree = default(object);
+		object SPACE39_tree = default(object);
+		object INT40_tree = default(object);
+		object BOOL41_tree = default(object);
+		object STRING42_tree = default(object);
+		object DATETIME43_tree = default(object);
+		object char_literal44_tree = default(object);
+		object char_literal46_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "comparisonexpression");
-		DebugLocation(40, 27);
+		DebugLocation(43, 27);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:41:2: ( propertyname SPACE ! filteroperator ^ SPACE ! ( ( INT )+ | BOOL | STRING | DATETIME ) | '(' filterexpression ')' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:44:2: ( propertyname SPACE ! filteroperator ^ SPACE ! ( ( INT )+ | BOOL | STRING | DATETIME ) | '(' filterexpression ')' )
 			int alt12=2;
 			try { DebugEnterDecision(12, false);
 			int LA12_1 = input.LA(1);
@@ -1232,7 +1333,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			{
 				alt12 = 1;
 			}
-			else if ((LA12_1==29))
+			else if ((LA12_1==32))
 			{
 				alt12 = 2;
 			}
@@ -1247,28 +1348,28 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:41:4: propertyname SPACE ! filteroperator ^ SPACE ! ( ( INT )+ | BOOL | STRING | DATETIME )
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:44:4: propertyname SPACE ! filteroperator ^ SPACE ! ( ( INT )+ | BOOL | STRING | DATETIME )
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(41, 4);
-				PushFollow(Follow._propertyname_in_comparisonexpression232);
-				propertyname33=propertyname();
+				DebugLocation(44, 4);
+				PushFollow(Follow._propertyname_in_comparisonexpression253);
+				propertyname36=propertyname();
 				PopFollow();
 
-				adaptor.AddChild(root_0, propertyname33.Tree);
-				DebugLocation(41, 22);
-				SPACE34=(IToken)Match(input,SPACE,Follow._SPACE_in_comparisonexpression234); 
-				DebugLocation(41, 38);
-				PushFollow(Follow._filteroperator_in_comparisonexpression237);
-				filteroperator35=filteroperator();
+				adaptor.AddChild(root_0, propertyname36.Tree);
+				DebugLocation(44, 22);
+				SPACE37=(IToken)Match(input,SPACE,Follow._SPACE_in_comparisonexpression255); 
+				DebugLocation(44, 38);
+				PushFollow(Follow._filteroperator_in_comparisonexpression258);
+				filteroperator38=filteroperator();
 				PopFollow();
 
-				root_0 = (object)adaptor.BecomeRoot(filteroperator35.Tree, root_0);
-				DebugLocation(41, 45);
-				SPACE36=(IToken)Match(input,SPACE,Follow._SPACE_in_comparisonexpression240); 
-				DebugLocation(41, 47);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:41:47: ( ( INT )+ | BOOL | STRING | DATETIME )
+				root_0 = (object)adaptor.BecomeRoot(filteroperator38.Tree, root_0);
+				DebugLocation(44, 45);
+				SPACE39=(IToken)Match(input,SPACE,Follow._SPACE_in_comparisonexpression261); 
+				DebugLocation(44, 47);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:44:47: ( ( INT )+ | BOOL | STRING | DATETIME )
 				int alt11=4;
 				try { DebugEnterSubRule(11);
 				try { DebugEnterDecision(11, false);
@@ -1307,10 +1408,10 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:41:48: ( INT )+
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:44:48: ( INT )+
 					{
-					DebugLocation(41, 48);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:41:48: ( INT )+
+					DebugLocation(44, 48);
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:44:48: ( INT )+
 					int cnt10=0;
 					try { DebugEnterSubRule(10);
 					while (true)
@@ -1330,12 +1431,12 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 						{
 						case 1:
 							DebugEnterAlt(1);
-							// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:41:48: INT
+							// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:44:48: INT
 							{
-							DebugLocation(41, 48);
-							INT37=(IToken)Match(input,INT,Follow._INT_in_comparisonexpression244); 
-							INT37_tree = (object)adaptor.Create(INT37);
-							adaptor.AddChild(root_0, INT37_tree);
+							DebugLocation(44, 48);
+							INT40=(IToken)Match(input,INT,Follow._INT_in_comparisonexpression265); 
+							INT40_tree = (object)adaptor.Create(INT40);
+							adaptor.AddChild(root_0, INT40_tree);
 
 							}
 							break;
@@ -1360,34 +1461,34 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					break;
 				case 2:
 					DebugEnterAlt(2);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:41:55: BOOL
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:44:55: BOOL
 					{
-					DebugLocation(41, 55);
-					BOOL38=(IToken)Match(input,BOOL,Follow._BOOL_in_comparisonexpression249); 
-					BOOL38_tree = (object)adaptor.Create(BOOL38);
-					adaptor.AddChild(root_0, BOOL38_tree);
+					DebugLocation(44, 55);
+					BOOL41=(IToken)Match(input,BOOL,Follow._BOOL_in_comparisonexpression270); 
+					BOOL41_tree = (object)adaptor.Create(BOOL41);
+					adaptor.AddChild(root_0, BOOL41_tree);
 
 					}
 					break;
 				case 3:
 					DebugEnterAlt(3);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:41:62: STRING
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:44:62: STRING
 					{
-					DebugLocation(41, 62);
-					STRING39=(IToken)Match(input,STRING,Follow._STRING_in_comparisonexpression253); 
-					STRING39_tree = (object)adaptor.Create(STRING39);
-					adaptor.AddChild(root_0, STRING39_tree);
+					DebugLocation(44, 62);
+					STRING42=(IToken)Match(input,STRING,Follow._STRING_in_comparisonexpression274); 
+					STRING42_tree = (object)adaptor.Create(STRING42);
+					adaptor.AddChild(root_0, STRING42_tree);
 
 					}
 					break;
 				case 4:
 					DebugEnterAlt(4);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:41:71: DATETIME
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:44:71: DATETIME
 					{
-					DebugLocation(41, 71);
-					DATETIME40=(IToken)Match(input,DATETIME,Follow._DATETIME_in_comparisonexpression257); 
-					DATETIME40_tree = (object)adaptor.Create(DATETIME40);
-					adaptor.AddChild(root_0, DATETIME40_tree);
+					DebugLocation(44, 71);
+					DATETIME43=(IToken)Match(input,DATETIME,Follow._DATETIME_in_comparisonexpression278); 
+					DATETIME43_tree = (object)adaptor.Create(DATETIME43);
+					adaptor.AddChild(root_0, DATETIME43_tree);
 
 					}
 					break;
@@ -1400,24 +1501,24 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:42:4: '(' filterexpression ')'
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:45:4: '(' filterexpression ')'
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(42, 4);
-				char_literal41=(IToken)Match(input,29,Follow._29_in_comparisonexpression263); 
-				char_literal41_tree = (object)adaptor.Create(char_literal41);
-				adaptor.AddChild(root_0, char_literal41_tree);
-				DebugLocation(42, 8);
-				PushFollow(Follow._filterexpression_in_comparisonexpression265);
-				filterexpression42=filterexpression();
+				DebugLocation(45, 4);
+				char_literal44=(IToken)Match(input,32,Follow._32_in_comparisonexpression284); 
+				char_literal44_tree = (object)adaptor.Create(char_literal44);
+				adaptor.AddChild(root_0, char_literal44_tree);
+				DebugLocation(45, 8);
+				PushFollow(Follow._filterexpression_in_comparisonexpression286);
+				filterexpression45=filterexpression();
 				PopFollow();
 
-				adaptor.AddChild(root_0, filterexpression42.Tree);
-				DebugLocation(42, 25);
-				char_literal43=(IToken)Match(input,30,Follow._30_in_comparisonexpression267); 
-				char_literal43_tree = (object)adaptor.Create(char_literal43);
-				adaptor.AddChild(root_0, char_literal43_tree);
+				adaptor.AddChild(root_0, filterexpression45.Tree);
+				DebugLocation(45, 25);
+				char_literal46=(IToken)Match(input,33,Follow._33_in_comparisonexpression288); 
+				char_literal46_tree = (object)adaptor.Create(char_literal46);
+				adaptor.AddChild(root_0, char_literal46_tree);
 
 				}
 				break;
@@ -1438,11 +1539,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("comparisonexpression", 10);
-			LeaveRule("comparisonexpression", 10);
+			TraceOut("comparisonexpression", 11);
+			LeaveRule("comparisonexpression", 11);
 			LeaveRule_comparisonexpression();
 		}
-		DebugLocation(42, 27);
+		DebugLocation(45, 27);
 		} finally { DebugExitRule(GrammarFileName, "comparisonexpression"); }
 		return retval;
 
@@ -1452,42 +1553,42 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_orderby();
 	partial void LeaveRule_orderby();
 	// $ANTLR start "orderby"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:44:1: orderby : ORDERBY ^ orderbylist ;
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:47:1: orderby : ORDERBY ^ orderbylist ;
 	[GrammarRule("orderby")]
 	private AstParserRuleReturnScope<object, IToken> orderby()
 	{
 		EnterRule_orderby();
-		EnterRule("orderby", 11);
-		TraceIn("orderby", 11);
+		EnterRule("orderby", 12);
+		TraceIn("orderby", 12);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		IToken ORDERBY44 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> orderbylist45 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken ORDERBY47 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> orderbylist48 = default(AstParserRuleReturnScope<object, IToken>);
 
-		object ORDERBY44_tree = default(object);
+		object ORDERBY47_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "orderby");
-		DebugLocation(44, 23);
+		DebugLocation(47, 23);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:45:2: ( ORDERBY ^ orderbylist )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:48:2: ( ORDERBY ^ orderbylist )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:45:4: ORDERBY ^ orderbylist
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:48:4: ORDERBY ^ orderbylist
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(45, 11);
-			ORDERBY44=(IToken)Match(input,ORDERBY,Follow._ORDERBY_in_orderby276); 
-			ORDERBY44_tree = (object)adaptor.Create(ORDERBY44);
-			root_0 = (object)adaptor.BecomeRoot(ORDERBY44_tree, root_0);
-			DebugLocation(45, 13);
-			PushFollow(Follow._orderbylist_in_orderby279);
-			orderbylist45=orderbylist();
+			DebugLocation(48, 11);
+			ORDERBY47=(IToken)Match(input,ORDERBY,Follow._ORDERBY_in_orderby297); 
+			ORDERBY47_tree = (object)adaptor.Create(ORDERBY47);
+			root_0 = (object)adaptor.BecomeRoot(ORDERBY47_tree, root_0);
+			DebugLocation(48, 13);
+			PushFollow(Follow._orderbylist_in_orderby300);
+			orderbylist48=orderbylist();
 			PopFollow();
 
-			adaptor.AddChild(root_0, orderbylist45.Tree);
+			adaptor.AddChild(root_0, orderbylist48.Tree);
 
 			}
 
@@ -1506,11 +1607,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("orderby", 11);
-			LeaveRule("orderby", 11);
+			TraceOut("orderby", 12);
+			LeaveRule("orderby", 12);
 			LeaveRule_orderby();
 		}
-		DebugLocation(45, 23);
+		DebugLocation(48, 23);
 		} finally { DebugExitRule(GrammarFileName, "orderby"); }
 		return retval;
 
@@ -1520,41 +1621,41 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_orderbylist();
 	partial void LeaveRule_orderbylist();
 	// $ANTLR start "orderbylist"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:47:1: orderbylist : orderpropertyname ( ',' ! orderpropertyname )* ;
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:50:1: orderbylist : orderpropertyname ( ',' ! orderpropertyname )* ;
 	[GrammarRule("orderbylist")]
 	private AstParserRuleReturnScope<object, IToken> orderbylist()
 	{
 		EnterRule_orderbylist();
-		EnterRule("orderbylist", 12);
-		TraceIn("orderbylist", 12);
+		EnterRule("orderbylist", 13);
+		TraceIn("orderbylist", 13);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		IToken char_literal47 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> orderpropertyname46 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> orderpropertyname48 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken char_literal50 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> orderpropertyname49 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> orderpropertyname51 = default(AstParserRuleReturnScope<object, IToken>);
 
-		object char_literal47_tree = default(object);
+		object char_literal50_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "orderbylist");
-		DebugLocation(47, 46);
+		DebugLocation(50, 46);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:48:2: ( orderpropertyname ( ',' ! orderpropertyname )* )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:51:2: ( orderpropertyname ( ',' ! orderpropertyname )* )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:48:4: orderpropertyname ( ',' ! orderpropertyname )*
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:51:4: orderpropertyname ( ',' ! orderpropertyname )*
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(48, 4);
-			PushFollow(Follow._orderpropertyname_in_orderbylist289);
-			orderpropertyname46=orderpropertyname();
+			DebugLocation(51, 4);
+			PushFollow(Follow._orderpropertyname_in_orderbylist310);
+			orderpropertyname49=orderpropertyname();
 			PopFollow();
 
-			adaptor.AddChild(root_0, orderpropertyname46.Tree);
-			DebugLocation(48, 22);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:48:22: ( ',' ! orderpropertyname )*
+			adaptor.AddChild(root_0, orderpropertyname49.Tree);
+			DebugLocation(51, 22);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:51:22: ( ',' ! orderpropertyname )*
 			try { DebugEnterSubRule(13);
 			while (true)
 			{
@@ -1562,7 +1663,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(13, false);
 				int LA13_1 = input.LA(1);
 
-				if ((LA13_1==31))
+				if ((LA13_1==34))
 				{
 					alt13 = 1;
 				}
@@ -1573,16 +1674,16 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:48:23: ',' ! orderpropertyname
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:51:23: ',' ! orderpropertyname
 					{
-					DebugLocation(48, 26);
-					char_literal47=(IToken)Match(input,31,Follow._31_in_orderbylist292); 
-					DebugLocation(48, 28);
-					PushFollow(Follow._orderpropertyname_in_orderbylist295);
-					orderpropertyname48=orderpropertyname();
+					DebugLocation(51, 26);
+					char_literal50=(IToken)Match(input,34,Follow._34_in_orderbylist313); 
+					DebugLocation(51, 28);
+					PushFollow(Follow._orderpropertyname_in_orderbylist316);
+					orderpropertyname51=orderpropertyname();
 					PopFollow();
 
-					adaptor.AddChild(root_0, orderpropertyname48.Tree);
+					adaptor.AddChild(root_0, orderpropertyname51.Tree);
 
 					}
 					break;
@@ -1615,11 +1716,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("orderbylist", 12);
-			LeaveRule("orderbylist", 12);
+			TraceOut("orderbylist", 13);
+			LeaveRule("orderbylist", 13);
 			LeaveRule_orderbylist();
 		}
-		DebugLocation(48, 46);
+		DebugLocation(51, 46);
 		} finally { DebugExitRule(GrammarFileName, "orderbylist"); }
 		return retval;
 
@@ -1629,31 +1730,31 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_orderpropertyname();
 	partial void LeaveRule_orderpropertyname();
 	// $ANTLR start "orderpropertyname"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:50:1: orderpropertyname : ( propertyname -> ^( ASC propertyname ) | propertyname ( SPACE ! ( ASC | DESC ) ^) );
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:53:1: orderpropertyname : ( propertyname -> ^( ASC propertyname ) | propertyname ( SPACE ! ( ASC | DESC ) ^) );
 	[GrammarRule("orderpropertyname")]
 	private AstParserRuleReturnScope<object, IToken> orderpropertyname()
 	{
 		EnterRule_orderpropertyname();
-		EnterRule("orderpropertyname", 13);
-		TraceIn("orderpropertyname", 13);
+		EnterRule("orderpropertyname", 14);
+		TraceIn("orderpropertyname", 14);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		IToken SPACE51 = default(IToken);
-		IToken set52 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> propertyname49 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> propertyname50 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken SPACE54 = default(IToken);
+		IToken set55 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> propertyname52 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> propertyname53 = default(AstParserRuleReturnScope<object, IToken>);
 
-		object SPACE51_tree = default(object);
-		object set52_tree = default(object);
+		object SPACE54_tree = default(object);
+		object set55_tree = default(object);
 		RewriteRuleSubtreeStream stream_propertyname=new RewriteRuleSubtreeStream(adaptor,"rule propertyname");
 		try { DebugEnterRule(GrammarFileName, "orderpropertyname");
-		DebugLocation(50, 39);
+		DebugLocation(53, 39);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:51:2: ( propertyname -> ^( ASC propertyname ) | propertyname ( SPACE ! ( ASC | DESC ) ^) )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:54:2: ( propertyname -> ^( ASC propertyname ) | propertyname ( SPACE ! ( ASC | DESC ) ^) )
 			int alt14=2;
 			try { DebugEnterDecision(14, false);
 			try
@@ -1670,14 +1771,14 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:51:4: propertyname
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:54:4: propertyname
 				{
-				DebugLocation(51, 4);
-				PushFollow(Follow._propertyname_in_orderpropertyname306);
-				propertyname49=propertyname();
+				DebugLocation(54, 4);
+				PushFollow(Follow._propertyname_in_orderpropertyname327);
+				propertyname52=propertyname();
 				PopFollow();
 
-				stream_propertyname.Add(propertyname49.Tree);
+				stream_propertyname.Add(propertyname52.Tree);
 
 
 				{
@@ -1692,16 +1793,16 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 				root_0 = (object)adaptor.Nil();
-				// 51:17: -> ^( ASC propertyname )
+				// 54:17: -> ^( ASC propertyname )
 				{
-					DebugLocation(51, 20);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:51:20: ^( ASC propertyname )
+					DebugLocation(54, 20);
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:54:20: ^( ASC propertyname )
 					{
 					object root_1 = (object)adaptor.Nil();
-					DebugLocation(51, 22);
+					DebugLocation(54, 22);
 					root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(ASC, "ASC"), root_1);
 
-					DebugLocation(51, 26);
+					DebugLocation(54, 26);
 					adaptor.AddChild(root_1, stream_propertyname.NextTree());
 
 					adaptor.AddChild(root_0, root_1);
@@ -1716,31 +1817,31 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:52:5: propertyname ( SPACE ! ( ASC | DESC ) ^)
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:55:5: propertyname ( SPACE ! ( ASC | DESC ) ^)
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(52, 5);
-				PushFollow(Follow._propertyname_in_orderpropertyname320);
-				propertyname50=propertyname();
+				DebugLocation(55, 5);
+				PushFollow(Follow._propertyname_in_orderpropertyname341);
+				propertyname53=propertyname();
 				PopFollow();
 
-				adaptor.AddChild(root_0, propertyname50.Tree);
-				DebugLocation(52, 18);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:52:18: ( SPACE ! ( ASC | DESC ) ^)
+				adaptor.AddChild(root_0, propertyname53.Tree);
+				DebugLocation(55, 18);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:55:18: ( SPACE ! ( ASC | DESC ) ^)
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:52:19: SPACE ! ( ASC | DESC ) ^
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:55:19: SPACE ! ( ASC | DESC ) ^
 				{
-				DebugLocation(52, 24);
-				SPACE51=(IToken)Match(input,SPACE,Follow._SPACE_in_orderpropertyname323); 
-				DebugLocation(52, 38);
+				DebugLocation(55, 24);
+				SPACE54=(IToken)Match(input,SPACE,Follow._SPACE_in_orderpropertyname344); 
+				DebugLocation(55, 38);
 
-				set52=(IToken)input.LT(1);
-				set52=(IToken)input.LT(1);
+				set55=(IToken)input.LT(1);
+				set55=(IToken)input.LT(1);
 				if (input.LA(1)==ASC||input.LA(1)==DESC)
 				{
 					input.Consume();
-					root_0 = (object)adaptor.BecomeRoot((object)adaptor.Create(set52), root_0);
+					root_0 = (object)adaptor.BecomeRoot((object)adaptor.Create(set55), root_0);
 					state.errorRecovery=false;
 				}
 				else
@@ -1773,11 +1874,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("orderpropertyname", 13);
-			LeaveRule("orderpropertyname", 13);
+			TraceOut("orderpropertyname", 14);
+			LeaveRule("orderpropertyname", 14);
 			LeaveRule_orderpropertyname();
 		}
-		DebugLocation(52, 39);
+		DebugLocation(55, 39);
 		} finally { DebugExitRule(GrammarFileName, "orderpropertyname"); }
 		return retval;
 
@@ -1787,41 +1888,41 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_propertyname();
 	partial void LeaveRule_propertyname();
 	// $ANTLR start "propertyname"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:54:1: propertyname : IDENTIFIER ( '/' IDENTIFIER )* ;
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:57:1: propertyname : IDENTIFIER ( '/' IDENTIFIER )* ;
 	[GrammarRule("propertyname")]
 	private AstParserRuleReturnScope<object, IToken> propertyname()
 	{
 		EnterRule_propertyname();
-		EnterRule("propertyname", 14);
-		TraceIn("propertyname", 14);
+		EnterRule("propertyname", 15);
+		TraceIn("propertyname", 15);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		IToken IDENTIFIER53 = default(IToken);
-		IToken char_literal54 = default(IToken);
-		IToken IDENTIFIER55 = default(IToken);
+		IToken IDENTIFIER56 = default(IToken);
+		IToken char_literal57 = default(IToken);
+		IToken IDENTIFIER58 = default(IToken);
 
-		object IDENTIFIER53_tree = default(object);
-		object char_literal54_tree = default(object);
-		object IDENTIFIER55_tree = default(object);
+		object IDENTIFIER56_tree = default(object);
+		object char_literal57_tree = default(object);
+		object IDENTIFIER58_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "propertyname");
-		DebugLocation(54, 32);
+		DebugLocation(57, 32);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:55:2: ( IDENTIFIER ( '/' IDENTIFIER )* )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:58:2: ( IDENTIFIER ( '/' IDENTIFIER )* )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:55:4: IDENTIFIER ( '/' IDENTIFIER )*
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:58:4: IDENTIFIER ( '/' IDENTIFIER )*
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(55, 4);
-			IDENTIFIER53=(IToken)Match(input,IDENTIFIER,Follow._IDENTIFIER_in_propertyname343); 
-			IDENTIFIER53_tree = (object)adaptor.Create(IDENTIFIER53);
-			adaptor.AddChild(root_0, IDENTIFIER53_tree);
-			DebugLocation(55, 16);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:55:16: ( '/' IDENTIFIER )*
+			DebugLocation(58, 4);
+			IDENTIFIER56=(IToken)Match(input,IDENTIFIER,Follow._IDENTIFIER_in_propertyname364); 
+			IDENTIFIER56_tree = (object)adaptor.Create(IDENTIFIER56);
+			adaptor.AddChild(root_0, IDENTIFIER56_tree);
+			DebugLocation(58, 16);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:58:16: ( '/' IDENTIFIER )*
 			try { DebugEnterSubRule(15);
 			while (true)
 			{
@@ -1829,7 +1930,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(15, false);
 				int LA15_1 = input.LA(1);
 
-				if ((LA15_1==32))
+				if ((LA15_1==35))
 				{
 					alt15 = 1;
 				}
@@ -1840,16 +1941,16 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:55:17: '/' IDENTIFIER
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:58:17: '/' IDENTIFIER
 					{
-					DebugLocation(55, 17);
-					char_literal54=(IToken)Match(input,32,Follow._32_in_propertyname347); 
-					char_literal54_tree = (object)adaptor.Create(char_literal54);
-					adaptor.AddChild(root_0, char_literal54_tree);
-					DebugLocation(55, 21);
-					IDENTIFIER55=(IToken)Match(input,IDENTIFIER,Follow._IDENTIFIER_in_propertyname349); 
-					IDENTIFIER55_tree = (object)adaptor.Create(IDENTIFIER55);
-					adaptor.AddChild(root_0, IDENTIFIER55_tree);
+					DebugLocation(58, 17);
+					char_literal57=(IToken)Match(input,35,Follow._35_in_propertyname368); 
+					char_literal57_tree = (object)adaptor.Create(char_literal57);
+					adaptor.AddChild(root_0, char_literal57_tree);
+					DebugLocation(58, 21);
+					IDENTIFIER58=(IToken)Match(input,IDENTIFIER,Follow._IDENTIFIER_in_propertyname370); 
+					IDENTIFIER58_tree = (object)adaptor.Create(IDENTIFIER58);
+					adaptor.AddChild(root_0, IDENTIFIER58_tree);
 
 					}
 					break;
@@ -1882,11 +1983,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("propertyname", 14);
-			LeaveRule("propertyname", 14);
+			TraceOut("propertyname", 15);
+			LeaveRule("propertyname", 15);
 			LeaveRule_propertyname();
 		}
-		DebugLocation(55, 32);
+		DebugLocation(58, 32);
 		} finally { DebugExitRule(GrammarFileName, "propertyname"); }
 		return retval;
 
@@ -1896,38 +1997,38 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_filteroperator();
 	partial void LeaveRule_filteroperator();
 	// $ANTLR start "filteroperator"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:57:1: filteroperator : ( EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL );
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:60:1: filteroperator : ( EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL );
 	[GrammarRule("filteroperator")]
 	private AstParserRuleReturnScope<object, IToken> filteroperator()
 	{
 		EnterRule_filteroperator();
-		EnterRule("filteroperator", 15);
-		TraceIn("filteroperator", 15);
+		EnterRule("filteroperator", 16);
+		TraceIn("filteroperator", 16);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		IToken set56 = default(IToken);
+		IToken set59 = default(IToken);
 
-		object set56_tree = default(object);
+		object set59_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "filteroperator");
-		DebugLocation(57, 85);
+		DebugLocation(60, 85);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:58:2: ( EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:61:2: ( EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL )
 			DebugEnterAlt(1);
 			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(58, 2);
+			DebugLocation(61, 2);
 
-			set56=(IToken)input.LT(1);
+			set59=(IToken)input.LT(1);
 			if (input.LA(1)==EQUALS||(input.LA(1)>=GREATERTHAN && input.LA(1)<=GREATERTHANOREQUAL)||(input.LA(1)>=LESSTHAN && input.LA(1)<=LESSTHANOREQUAL)||input.LA(1)==NOTEQUALS)
 			{
 				input.Consume();
-				adaptor.AddChild(root_0, (object)adaptor.Create(set56));
+				adaptor.AddChild(root_0, (object)adaptor.Create(set59));
 				state.errorRecovery=false;
 			}
 			else
@@ -1955,11 +2056,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("filteroperator", 15);
-			LeaveRule("filteroperator", 15);
+			TraceOut("filteroperator", 16);
+			LeaveRule("filteroperator", 16);
 			LeaveRule_filteroperator();
 		}
-		DebugLocation(58, 85);
+		DebugLocation(61, 85);
 		} finally { DebugExitRule(GrammarFileName, "filteroperator"); }
 		return retval;
 
@@ -1984,9 +2085,9 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		private const string DFA14_eofS =
 			"\x1\xFFFF\x1\x3\x3\xFFFF\x1\x3";
 		private const string DFA14_minS =
-			"\x1\xE\x1\xB\x1\xE\x2\xFFFF\x1\xB";
+			"\x1\xF\x1\xC\x1\xF\x2\xFFFF\x1\xC";
 		private const string DFA14_maxS =
-			"\x1\xE\x1\x20\x1\xE\x2\xFFFF\x1\x20";
+			"\x1\xF\x1\x23\x1\xF\x2\xFFFF\x1\x23";
 		private const string DFA14_acceptS =
 			"\x3\xFFFF\x1\x1\x1\x2\x1\xFFFF";
 		private const string DFA14_specialS =
@@ -1994,11 +2095,13 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		private static readonly string[] DFA14_transitionS =
 			{
 				"\x1\x1",
-				"\x1\x3\xA\xFFFF\x3\x3\x1\x4\x1\xFFFF\x2\x3\x2\xFFFF\x1\x3\x1\x2",
+				"\x1\x3\x3\xFFFF\x1\x3\x8\xFFFF\x3\x3\x1\x4\x1\xFFFF\x2\x3\x2\xFFFF\x1"+
+				"\x3\x1\x2",
 				"\x1\x5",
 				"",
 				"",
-				"\x1\x3\xA\xFFFF\x3\x3\x1\x4\x1\xFFFF\x2\x3\x2\xFFFF\x1\x3\x1\x2"
+				"\x1\x3\x3\xFFFF\x1\x3\x8\xFFFF\x3\x3\x1\x4\x1\xFFFF\x2\x3\x2\xFFFF\x1"+
+				"\x3\x1\x2"
 			};
 
 		private static readonly short[] DFA14_eot = DFA.UnpackEncodedString(DFA14_eotS);
@@ -2032,7 +2135,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			this.transition = DFA14_transition;
 		}
 
-		public override string Description { get { return "50:1: orderpropertyname : ( propertyname -> ^( ASC propertyname ) | propertyname ( SPACE ! ( ASC | DESC ) ^) );"; } }
+		public override string Description { get { return "53:1: orderpropertyname : ( propertyname -> ^( ASC propertyname ) | propertyname ( SPACE ! ( ASC | DESC ) ^) );"; } }
 
 		public override void Error(NoViableAltException nvae)
 		{
@@ -2046,61 +2149,64 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	#region Follow sets
 	private static class Follow
 	{
-		public static readonly BitSet _param_in_prog55 = new BitSet(new ulong[]{0x19C00802UL});
-		public static readonly BitSet _28_in_prog58 = new BitSet(new ulong[]{0x9C00800UL});
-		public static readonly BitSet _param_in_prog61 = new BitSet(new ulong[]{0x19C00802UL});
+		public static readonly BitSet _param_in_prog55 = new BitSet(new ulong[]{0xCE011002UL});
+		public static readonly BitSet _31_in_prog58 = new BitSet(new ulong[]{0x4E011000UL});
+		public static readonly BitSet _param_in_prog61 = new BitSet(new ulong[]{0xCE011002UL});
 		public static readonly BitSet _orderby_in_param74 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _top_in_param78 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _skip_in_param82 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _filter_in_param86 = new BitSet(new ulong[]{0x2UL});
 		public static readonly BitSet _select_in_param90 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _SKIP_in_skip101 = new BitSet(new ulong[]{0x8000UL});
-		public static readonly BitSet _INT_in_skip104 = new BitSet(new ulong[]{0x8002UL});
-		public static readonly BitSet _TOP_in_top115 = new BitSet(new ulong[]{0x8000UL});
-		public static readonly BitSet _INT_in_top118 = new BitSet(new ulong[]{0x8002UL});
-		public static readonly BitSet _FILTER_in_filter129 = new BitSet(new ulong[]{0x20084000UL});
-		public static readonly BitSet _filterexpression_in_filter132 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _SELECT_in_select142 = new BitSet(new ulong[]{0x4000UL});
-		public static readonly BitSet _propertyname_in_select145 = new BitSet(new ulong[]{0x80000002UL});
-		public static readonly BitSet _31_in_select148 = new BitSet(new ulong[]{0x4000UL});
-		public static readonly BitSet _propertyname_in_select151 = new BitSet(new ulong[]{0x80000002UL});
-		public static readonly BitSet _orexpression_in_filterexpression163 = new BitSet(new ulong[]{0x2000002UL});
-		public static readonly BitSet _SPACE_in_filterexpression166 = new BitSet(new ulong[]{0x200000UL});
-		public static readonly BitSet _OR_in_filterexpression169 = new BitSet(new ulong[]{0x2000000UL});
-		public static readonly BitSet _SPACE_in_filterexpression172 = new BitSet(new ulong[]{0x20084000UL});
-		public static readonly BitSet _orexpression_in_filterexpression175 = new BitSet(new ulong[]{0x2000002UL});
-		public static readonly BitSet _andexpression_in_orexpression187 = new BitSet(new ulong[]{0x2000002UL});
-		public static readonly BitSet _SPACE_in_orexpression190 = new BitSet(new ulong[]{0x10UL});
-		public static readonly BitSet _AND_in_orexpression193 = new BitSet(new ulong[]{0x2000000UL});
-		public static readonly BitSet _SPACE_in_orexpression196 = new BitSet(new ulong[]{0x20084000UL});
-		public static readonly BitSet _andexpression_in_orexpression199 = new BitSet(new ulong[]{0x2000002UL});
-		public static readonly BitSet _NOT_in_andexpression211 = new BitSet(new ulong[]{0x2000000UL});
-		public static readonly BitSet _SPACE_in_andexpression214 = new BitSet(new ulong[]{0x20004000UL});
-		public static readonly BitSet _comparisonexpression_in_andexpression216 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _comparisonexpression_in_andexpression221 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _propertyname_in_comparisonexpression232 = new BitSet(new ulong[]{0x2000000UL});
-		public static readonly BitSet _SPACE_in_comparisonexpression234 = new BitSet(new ulong[]{0x133400UL});
-		public static readonly BitSet _filteroperator_in_comparisonexpression237 = new BitSet(new ulong[]{0x2000000UL});
-		public static readonly BitSet _SPACE_in_comparisonexpression240 = new BitSet(new ulong[]{0x4008180UL});
-		public static readonly BitSet _INT_in_comparisonexpression244 = new BitSet(new ulong[]{0x8002UL});
-		public static readonly BitSet _BOOL_in_comparisonexpression249 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _STRING_in_comparisonexpression253 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _DATETIME_in_comparisonexpression257 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _29_in_comparisonexpression263 = new BitSet(new ulong[]{0x20084000UL});
-		public static readonly BitSet _filterexpression_in_comparisonexpression265 = new BitSet(new ulong[]{0x40000000UL});
-		public static readonly BitSet _30_in_comparisonexpression267 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _ORDERBY_in_orderby276 = new BitSet(new ulong[]{0x4000UL});
-		public static readonly BitSet _orderbylist_in_orderby279 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _orderpropertyname_in_orderbylist289 = new BitSet(new ulong[]{0x80000002UL});
-		public static readonly BitSet _31_in_orderbylist292 = new BitSet(new ulong[]{0x4000UL});
-		public static readonly BitSet _orderpropertyname_in_orderbylist295 = new BitSet(new ulong[]{0x80000002UL});
-		public static readonly BitSet _propertyname_in_orderpropertyname306 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _propertyname_in_orderpropertyname320 = new BitSet(new ulong[]{0x2000000UL});
-		public static readonly BitSet _SPACE_in_orderpropertyname323 = new BitSet(new ulong[]{0x220UL});
-		public static readonly BitSet _set_in_orderpropertyname326 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _IDENTIFIER_in_propertyname343 = new BitSet(new ulong[]{0x100000002UL});
-		public static readonly BitSet _32_in_propertyname347 = new BitSet(new ulong[]{0x4000UL});
-		public static readonly BitSet _IDENTIFIER_in_propertyname349 = new BitSet(new ulong[]{0x100000002UL});
+		public static readonly BitSet _inlinecount_in_param94 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _SKIP_in_skip105 = new BitSet(new ulong[]{0x20000UL});
+		public static readonly BitSet _INT_in_skip108 = new BitSet(new ulong[]{0x20002UL});
+		public static readonly BitSet _TOP_in_top119 = new BitSet(new ulong[]{0x20000UL});
+		public static readonly BitSet _INT_in_top122 = new BitSet(new ulong[]{0x20002UL});
+		public static readonly BitSet _FILTER_in_filter133 = new BitSet(new ulong[]{0x100408000UL});
+		public static readonly BitSet _filterexpression_in_filter136 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _SELECT_in_select146 = new BitSet(new ulong[]{0x8000UL});
+		public static readonly BitSet _propertyname_in_select149 = new BitSet(new ulong[]{0x400000002UL});
+		public static readonly BitSet _34_in_select152 = new BitSet(new ulong[]{0x8000UL});
+		public static readonly BitSet _propertyname_in_select155 = new BitSet(new ulong[]{0x400000002UL});
+		public static readonly BitSet _INLINECOUNT_in_inlinecount167 = new BitSet(new ulong[]{0x200010UL});
+		public static readonly BitSet _set_in_inlinecount170 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _orexpression_in_filterexpression184 = new BitSet(new ulong[]{0x10000002UL});
+		public static readonly BitSet _SPACE_in_filterexpression187 = new BitSet(new ulong[]{0x1000000UL});
+		public static readonly BitSet _OR_in_filterexpression190 = new BitSet(new ulong[]{0x10000000UL});
+		public static readonly BitSet _SPACE_in_filterexpression193 = new BitSet(new ulong[]{0x100408000UL});
+		public static readonly BitSet _orexpression_in_filterexpression196 = new BitSet(new ulong[]{0x10000002UL});
+		public static readonly BitSet _andexpression_in_orexpression208 = new BitSet(new ulong[]{0x10000002UL});
+		public static readonly BitSet _SPACE_in_orexpression211 = new BitSet(new ulong[]{0x20UL});
+		public static readonly BitSet _AND_in_orexpression214 = new BitSet(new ulong[]{0x10000000UL});
+		public static readonly BitSet _SPACE_in_orexpression217 = new BitSet(new ulong[]{0x100408000UL});
+		public static readonly BitSet _andexpression_in_orexpression220 = new BitSet(new ulong[]{0x10000002UL});
+		public static readonly BitSet _NOT_in_andexpression232 = new BitSet(new ulong[]{0x10000000UL});
+		public static readonly BitSet _SPACE_in_andexpression235 = new BitSet(new ulong[]{0x100008000UL});
+		public static readonly BitSet _comparisonexpression_in_andexpression237 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _comparisonexpression_in_andexpression242 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _propertyname_in_comparisonexpression253 = new BitSet(new ulong[]{0x10000000UL});
+		public static readonly BitSet _SPACE_in_comparisonexpression255 = new BitSet(new ulong[]{0x8C6800UL});
+		public static readonly BitSet _filteroperator_in_comparisonexpression258 = new BitSet(new ulong[]{0x10000000UL});
+		public static readonly BitSet _SPACE_in_comparisonexpression261 = new BitSet(new ulong[]{0x20020300UL});
+		public static readonly BitSet _INT_in_comparisonexpression265 = new BitSet(new ulong[]{0x20002UL});
+		public static readonly BitSet _BOOL_in_comparisonexpression270 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _STRING_in_comparisonexpression274 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _DATETIME_in_comparisonexpression278 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _32_in_comparisonexpression284 = new BitSet(new ulong[]{0x100408000UL});
+		public static readonly BitSet _filterexpression_in_comparisonexpression286 = new BitSet(new ulong[]{0x200000000UL});
+		public static readonly BitSet _33_in_comparisonexpression288 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _ORDERBY_in_orderby297 = new BitSet(new ulong[]{0x8000UL});
+		public static readonly BitSet _orderbylist_in_orderby300 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _orderpropertyname_in_orderbylist310 = new BitSet(new ulong[]{0x400000002UL});
+		public static readonly BitSet _34_in_orderbylist313 = new BitSet(new ulong[]{0x8000UL});
+		public static readonly BitSet _orderpropertyname_in_orderbylist316 = new BitSet(new ulong[]{0x400000002UL});
+		public static readonly BitSet _propertyname_in_orderpropertyname327 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _propertyname_in_orderpropertyname341 = new BitSet(new ulong[]{0x10000000UL});
+		public static readonly BitSet _SPACE_in_orderpropertyname344 = new BitSet(new ulong[]{0x440UL});
+		public static readonly BitSet _set_in_orderpropertyname347 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _IDENTIFIER_in_propertyname364 = new BitSet(new ulong[]{0x800000002UL});
+		public static readonly BitSet _35_in_propertyname368 = new BitSet(new ulong[]{0x8000UL});
+		public static readonly BitSet _IDENTIFIER_in_propertyname370 = new BitSet(new ulong[]{0x800000002UL});
 	}
 	#endregion Follow sets
 }

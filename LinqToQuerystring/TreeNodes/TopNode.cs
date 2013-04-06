@@ -32,6 +32,11 @@
                 return 1;
             }
 
+            if (other is InlineCountNode)
+            {
+                return -1;
+            }
+
             return 0;
         }
     }

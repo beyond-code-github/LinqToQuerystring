@@ -13,7 +13,7 @@ options
 public prog
 	:	(param ('&'! param)*)*;
 
-param	:	(orderby | top | skip | filter | select);
+param	:	(orderby | top | skip | filter | select | inlinecount);
 
 skip	
 	:	SKIP^ INT+;
@@ -26,6 +26,9 @@ filter
 	
 select
 	:	SELECT^ propertyname (','! propertyname)*;
+	
+inlinecount
+	:	INLINECOUNT^ (ALLPAGES|NONE);
 
 filterexpression	
 	:	orexpression (SPACE! OR^ SPACE! orexpression)*;
@@ -92,6 +95,12 @@ ASC
 	
 DESC	
 	:	'desc';	
+	
+ALLPAGES
+	: 	'allpages';
+	
+NONE
+	:	'none';
 
 SKIP
 	:	'$skip=';
@@ -107,6 +116,9 @@ ORDERBY
 	
 SELECT
 	:	'$select=';
+	
+INLINECOUNT
+	:	'$inlinecount=';
 		
 INT	
 	:	'0'..'9'+;

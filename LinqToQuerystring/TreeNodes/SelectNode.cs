@@ -19,8 +19,7 @@
 
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
-            var fixedexpr = Expression.Call(
-                typeof(Queryable), "Cast", new[] { inputType }, query.Expression);
+            var fixedexpr = Expression.Call(typeof(Queryable), "Cast", new[] { inputType }, query.Expression);
 
             query = query.Provider.CreateQuery(fixedexpr);
 
@@ -40,7 +39,12 @@
 
         public override int CompareTo(TreeNode other)
         {
-            // Select clause should always be last
+            // Select clause should always be last apart from inlinecount
+            if (other is InlineCountNode)
+            {
+                return -1;
+            }
+
             return 1;
         }
     }

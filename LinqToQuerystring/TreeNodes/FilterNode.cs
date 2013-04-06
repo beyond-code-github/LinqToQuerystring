@@ -23,5 +23,15 @@
 
             return Expression.Call(typeof(Queryable), "Where", new[] { query.ElementType }, query.Expression, lambda);
         }
+
+        public override int CompareTo(TreeNode other)
+        {
+            if (other is InlineCountNode)
+            {
+                return -1;
+            }
+
+            return 0;
+        }
     }
 }

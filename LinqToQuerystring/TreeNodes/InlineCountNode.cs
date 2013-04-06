@@ -8,9 +8,9 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class OrderByNode : SingleChildNode
+    public class InlineCountNode : SingleChildNode
     {
-        public OrderByNode(Type inputType, IToken payload)
+        public InlineCountNode(Type inputType, IToken payload)
             : base(inputType, payload)
         {
         }
@@ -18,17 +18,12 @@
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
             throw new NotSupportedException(
-                "Orderby is just a placeholder and should be handled differently in Extensions.cs");
+                "InlineCountNode is just a placeholder and should be handled differently in Extensions.cs");
         }
 
         public override int CompareTo(TreeNode other)
         {
-            if (other is SkipNode || other is InlineCountNode)
-            {
-                return -1;
-            }
-
-            return 0;
+            return 1;
         }
     }
 }
