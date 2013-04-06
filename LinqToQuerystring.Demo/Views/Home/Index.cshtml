@@ -29,6 +29,7 @@
             </li>
             <li class="two">
                 <h3>See the results:</h3>
+                <div id="countContainer"><label>Count:</label><span data-bind="text: count">N/A</span></div>
                 <table>
                     <thead>
                         <tr>
@@ -57,23 +58,35 @@
 
         var model = {
             headings: ko.observableArray(),
-            data: ko.observableArray()
+            data: ko.observableArray(),
+            count: ko.observable()
         };
             
         var load = function() {
             var query = $("#queryexpression").val();
             $.get("/api/Values" + query, function (data) {
                 var headings = [];
-                if (data && data.length > 0) {
-                    for (prop in data[0]) {
-                        if (data[0].hasOwnProperty(prop)) {
+
+                var results = data;
+                if (data && data.Count) {
+                    results = data.Results;
+                }
+
+                if (results && results.length > 0) {
+                    for (prop in results[0]) {
+                        if (results[0].hasOwnProperty(prop)) {
                             headings.push(prop);
                         }
                     }
                 }
                 
+                if (data && data.Count) {
+                    model.count(data.Count);
+                } else {
+                    model.count("N/A");
+                }
                 model.headings(headings);
-                model.data(data);
+                model.data(results);
             });
         };
 
