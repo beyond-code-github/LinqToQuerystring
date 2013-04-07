@@ -50,21 +50,21 @@
 
     public class When_using_ge_filter_on_a_single_bool : Filtering
     {
-        private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Date ge booltime'2003-01-01T00:00'"));
+        private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Complete ge datetime'2003-01-01T00:00'"));
 
         private It should_throw_an_exception = () => ex.ShouldBeOfType<InvalidOperationException>();
     }
 
     public class When_using_lt_filter_on_a_single_bool : Filtering
     {
-        private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Date lt booltime'2003-01-01T00:00'"));
+        private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Complete lt datetime'2003-01-01T00:00'"));
 
         private It should_throw_an_exception = () => ex.ShouldBeOfType<InvalidOperationException>();
     }
 
     public class When_using_le_filter_on_a_single_bool : Filtering
     {
-        private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Date le booltime'2003-01-01T00:00'"));
+        private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Complete le datetime'2003-01-01T00:00'"));
 
         private It should_throw_an_exception = () => ex.ShouldBeOfType<InvalidOperationException>();
     }
