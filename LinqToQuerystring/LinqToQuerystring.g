@@ -43,6 +43,7 @@ andexpression
 		
 comparisonexpression
 	:	propertyname SPACE! filteroperator^ SPACE! (INT+ | BOOL | STRING | DATETIME)
+	|	propertyname -> propertyname ^(EQUALS BOOL["true"])
 	|	'(' filterexpression ')';
 
 orderby
@@ -124,8 +125,7 @@ INLINECOUNT
 INT	
 	:	'0'..'9'+;
 	
-BOOL	
-	:	('true' | 'false');
+BOOL	:	('true' | 'false');
 
 SPACE	
 	:	(' '|'\t')+;

@@ -43,6 +43,28 @@
         };
     }
 
+    #region Filter on implicit boolean identifiers
+
+    public class When_specifying_a_single_boolean_identifier_as_a_filter : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Complete").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(6);
+
+        private It should_only_return_records_where_name_is_apple = () => result.ShouldEachConformTo(o => o.Complete);
+    }
+
+    public class When_specifying_a_negated_single_boolean_identifier_as_a_filter : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Complete").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(5);
+
+        private It should_only_return_records_where_name_is_apple = () => result.ShouldEachConformTo(o => !o.Complete);
+    }
+
+    #endregion
+
     #region Filter on string tests
 
     public class When_using_eq_filter_on_a_single_string : SqlFiltering
