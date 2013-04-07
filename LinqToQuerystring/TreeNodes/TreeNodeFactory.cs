@@ -4,6 +4,8 @@
 
     using Antlr.Runtime.Tree;
 
+    using LinqToQuerystring.TreeNodes.Functions;
+
     public class TreeNodeFactory : CommonTreeAdaptor
     {
         private readonly Type inputType;
@@ -52,6 +54,12 @@
                     return new LessThanNode(inputType, token);
                 case LinqToQuerystringLexer.LESSTHANOREQUAL:
                     return new LessThanOrEqualNode(inputType, token);
+                case LinqToQuerystringLexer.STARTSWITH:
+                    return new StartsWithNode(inputType, token);
+                case LinqToQuerystringLexer.ENDSWITH:
+                    return new EndsWithNode(inputType, token);
+                case LinqToQuerystringLexer.SUBSTRINGOF:
+                    return new SubstringOfNode(inputType, token);
                 case LinqToQuerystringLexer.IDENTIFIER:
                     return new IdentifierNode(inputType, token);
                 case LinqToQuerystringLexer.STRING:

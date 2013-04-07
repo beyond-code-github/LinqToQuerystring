@@ -57,6 +57,9 @@
     <Compile Include="TreeNodes\Base\TreeNode.cs" />
     <Compile Include="TreeNodes\Base\TwoChildNode.cs" />
     <Compile Include="TreeNodes\BoolNode.cs" />
+    <Compile Include="TreeNodes\Functions\SubstringOfNode.cs" />
+    <Compile Include="TreeNodes\Functions\EndsWithNode.cs" />
+    <Compile Include="TreeNodes\Functions\StartsWithNode.cs" />
     <Compile Include="TreeNodes\InlineCountNode.cs" />
     <Compile Include="TreeNodes\SelectNode.cs" />
     <Compile Include="TreeNodes\DateTimeNode.cs" />
@@ -84,6 +87,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Antlr3>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>$(ProjectDir)bin\ANTLR\Antlr3.exe $(ProjectDir)LinqToQuerystring.g -o $(ProjectDir)</PreBuildEvent>

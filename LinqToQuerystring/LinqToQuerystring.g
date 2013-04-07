@@ -47,10 +47,17 @@ booleanexpression
 implicit
 	:	-> ^(EQUALS BOOL["true"]);
 	
-atom	:	propertyname 
-	|	'(' filterexpression ')'
-	|	(INT+ | BOOL | STRING | DATETIME);
+atom	:	'(' filterexpression ')'
+	|	functioncall
+	|	propertyname 
+	|	constant;
 
+functioncall
+	:	function^ '(' (IDENTIFIER | constant) (',' (IDENTIFIER | constant))* ')';
+
+function
+	:	STARTSWITH | ENDSWITH | SUBSTRINGOF;
+	
 orderby
 	:	ORDERBY^ orderbylist;
 	
@@ -60,6 +67,8 @@ orderbylist
 orderpropertyname
 	:	propertyname -> ^(ASC propertyname)
 	| 	propertyname (SPACE! (ASC | DESC)^);
+	
+constant:	(INT+ | BOOL | STRING | DATETIME);
 
 propertyname
 	:	IDENTIFIER  ('/' IDENTIFIER)*;
@@ -126,6 +135,15 @@ SELECT
 	
 INLINECOUNT
 	:	'$inlinecount=';
+	
+STARTSWITH
+	:	'startswith';
+	
+ENDSWITH
+	:	'endswith';
+	
+SUBSTRINGOF
+	:	'substringof';
 		
 INT	
 	:	'0'..'9'+;
