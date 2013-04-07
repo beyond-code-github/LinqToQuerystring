@@ -38,13 +38,18 @@ orexpression
 	:	andexpression (SPACE! AND^ SPACE! andexpression)*;
 	
 andexpression
-	:	NOT^ SPACE comparisonexpression
-	|	comparisonexpression;
+	:	NOT^ SPACE booleanexpression
+	|	booleanexpression;
 		
-comparisonexpression
-	:	propertyname SPACE! filteroperator^ SPACE! (INT+ | BOOL | STRING | DATETIME)
-	|	propertyname -> propertyname ^(EQUALS BOOL["true"])
-	|	'(' filterexpression ')';
+booleanexpression
+	:	atom (SPACE! filteroperator^ SPACE! atom | implicit);
+	
+implicit
+	:	-> ^(EQUALS BOOL["true"]);
+	
+atom	:	propertyname 
+	|	'(' filterexpression ')'
+	|	(INT+ | BOOL | STRING | DATETIME);
 
 orderby
 	:	ORDERBY^ orderbylist;
