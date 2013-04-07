@@ -49,7 +49,7 @@ implicit
 	
 atom	:	'(' filterexpression ')'
 	|	functioncall
-	|	propertyname 
+	|	propertyname
 	|	constant;
 
 functioncall
@@ -150,6 +150,9 @@ INT
 	
 BOOL	:	('true' | 'false');
 
+DATETIME
+	:	'datetime\'' '0'..'9'+ '-' '0'..'9'+ '-' + '0'..'9'+ 'T' '0'..'9'+ ':' '0'..'9'+ (':' '0'..'9'+ ('.' '0'..'9'+)*)* '\'';
+
 SPACE	
 	:	(' '|'\t')+;
 
@@ -159,8 +162,28 @@ NEWLINE
 IDENTIFIER
 	:	('a'..'z'|'A'..'Z'|'0'..'9'|'_')+;
 
-STRING	
-	:	'\'' ('<'|'>'|'a'..'z'|'A'..'Z'|'0'..'9'|'_'|' '|'\t')+ '\'';
+STRING
+    :  '\'' ( ESC_SEQ | ~('\\'|'\'') )* '\''
+    ;
 
-DATETIME
-	:	'datetime\'' '0'..'9'+ '-' '0'..'9'+ '-' + '0'..'9'+ 'T' '0'..'9'+ ':' '0'..'9'+ (':' '0'..'9'+ ('.' '0'..'9'+)*)* '\'';
+fragment
+HEX_DIGIT : ('0'..'9'|'a'..'f'|'A'..'F') ;
+
+fragment
+ESC_SEQ
+    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')
+    |   UNICODE_ESC
+    |   OCTAL_ESC
+    ;
+
+fragment
+OCTAL_ESC
+    :   '\\' ('0'..'3') ('0'..'7') ('0'..'7')
+    |   '\\' ('0'..'7') ('0'..'7')
+    |   '\\' ('0'..'7')
+    ;
+
+fragment
+UNICODE_ESC
+    :   '\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+    ;
