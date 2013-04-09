@@ -1,5 +1,5 @@
-v0.4.1 Overview
-==============
+v0.5 Overview
+=============
 
 Linq to Querystring is an expression parser for .NET that aims to provide a lightweight subset of the OData URI Specification.
 
@@ -27,19 +27,21 @@ Currently supported
 * $filter - simple properties
 * $select - simple properties
 * $inlinecount
+* Support for class indexers
+* Unicode values
+* Functions - startswith, endswith, substringof
 
 In development:
 
 * $select - sub properties & complex types
 * $filter - sub properties
-* Support for class indexers
+* Remaining functions
+* Arithmetic operations (e.g abs, mod)
 
 Future roadmap:
 
 * byte, decimal, double, single, guid, time, int64, datetimeoffset data types
 * $expand (via EF Include method)
-* Arithmetic operations (e.g abs, mod)
-* Other functions (e.g endswith, floor)
 
 * UIToQuerystring - JQuery plugin for building oData\Linq to Querystring expressions
 
@@ -66,8 +68,22 @@ Work directly with Linq to Object IQueryables:
 
     var ordered = collection.LinqToQuerystring("?$orderby=Complete,Age");
     var paged = collection.LinqToQuerystring("?$skip=2$top=2");
+    
+Work with Dynamic objects:
 
-Also tested against Entity Framework:
+    var item1 = new Dictionary<string, object>();
+    item1["Age"] = 25;
+    item1["Name"] = "Kathryn";
+
+    var item2 = new Dictionary<string, object>();
+    item2["Age"] = 28;
+    item2["Name"] = "Pete";
+
+    collection = new List<Dictionary<string, object>> { item1, item2, item3, item4 }.AsQueryable();
+    
+    var ordered = collection.LinqToQuerystring("?$orderby=[Age]");
+    
+Tested against Entity Framework:
 
     var query = this.unitOfWork.Data.Where(o => o.SomeRepoLevelFilter == x);
     var extended = query.LinqToQuerystring("?$filter=Complete eq true and name eq 'Eggs'");
