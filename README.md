@@ -79,7 +79,7 @@ Work with Dynamic objects:
     item2["Age"] = 28;
     item2["Name"] = "Pete";
 
-    collection = new List<Dictionary<string, object>> { item1, item2, item3, item4 }.AsQueryable();
+    collection = new List<Dictionary<string, object>> { item1, item2 }.AsQueryable();
     
     var ordered = collection.LinqToQuerystring("?$orderby=[Age]");
     
