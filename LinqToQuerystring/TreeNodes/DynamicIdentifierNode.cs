@@ -8,16 +8,17 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class IdentifierNode : TreeNode
+    public class DynamicIdentifierNode : TreeNode
     {
-        public IdentifierNode(Type inputType, IToken payload)
+        public DynamicIdentifierNode(Type inputType, IToken payload)
             : base(inputType, payload)
         {
         }
 
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item)
         {
-            return Expression.Property(item, this.Text);
+            var key = this.Text.Trim(new[] { '[', ']' });
+            return Expression.Call(item, "get_Item", null, Expression.Constant(key));
         }
     }
 }

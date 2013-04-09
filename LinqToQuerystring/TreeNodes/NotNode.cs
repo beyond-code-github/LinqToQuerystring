@@ -17,6 +17,11 @@
 
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
+            if (typeof(bool).IsAssignableFrom(expression.Type))
+            {
+                expression = Expression.Convert(expression, typeof(bool));
+            }
+
             return Expression.Not(this.ChildNode.BuildLinqExpression(query, expression, item));
         }
     }

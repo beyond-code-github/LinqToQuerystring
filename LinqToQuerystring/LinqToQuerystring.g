@@ -71,7 +71,7 @@ orderpropertyname
 constant:	(INT+ | BOOL | STRING | DATETIME);
 
 propertyname
-	:	IDENTIFIER  ('/' IDENTIFIER)*;
+	:	(IDENTIFIER|DYNAMICIDENTIFIER)  ('/' (IDENTIFIER|DYNAMICIDENTIFIER))*;
 
 filteroperator
 	:	EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL;
@@ -158,6 +158,9 @@ SPACE
 
 NEWLINE 
 	:	('\r'|'\n')+;
+	
+DYNAMICIDENTIFIER
+	:	'[' ('a'..'z'|'A'..'Z'|'0'..'9'|'_')+ ']';	
 	
 IDENTIFIER
 	:	('a'..'z'|'A'..'Z'|'0'..'9'|'_')+;

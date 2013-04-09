@@ -25,6 +25,11 @@
                 rightExpression = Expression.Convert(rightExpression, leftExpression.Type);
             }
 
+            if (!rightExpression.Type.IsAssignableFrom(leftExpression.Type))
+            {
+                leftExpression = Expression.Convert(leftExpression, rightExpression.Type);
+            }
+
             return Expression.LessThanOrEqual(leftExpression, rightExpression);
         }
     }

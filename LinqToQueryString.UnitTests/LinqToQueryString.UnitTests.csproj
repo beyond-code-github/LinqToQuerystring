@@ -68,6 +68,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Dynamics.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="Filtering.cs" />
     <Compile Include="Functions.cs" />
