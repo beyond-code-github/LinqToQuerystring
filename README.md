@@ -6,12 +6,23 @@ Linq to Querystring is an expression parser for .NET that aims to provide a ligh
 Check out the demo site here: http://linqtoquerystring.azurewebsites.net/
 
 Installation
-===========
+============
 
 Nuget package: https://nuget.org/packages/LinqToQuerystring/
 
 PM> Install-Package LinqToQuerystring
 
+Addressing issues with OData
+============================
+
+The OData specification itself is very extensive, and Linq to Querystring does not claim (or intend) to support all of it. In fact, OData itself seems to split opinion – see here for example: http://stackoverflow.com/questions/9577938/odata-with-servicestack.
+
+In the answer above, it is quite rightly stated that OData has the following key issues which Linq to Querystring is able to address:
+
+* **Poor development practices** – Linq to Querystring is simple, flexible and open source, so it can respond to new technologies and paradigms.
+* **Promotes bad web service practices** – No longer tied to your DBMS as it works with any IQueryable, so you don’t have to expose your data model through your services.
+* **Only used in Microsoft technologies** – The main expression parsing engine of Linq to Querystring is written in ANTLR so can be easily ported to other languages that support construction of expression trees.
+* **OData is slow** - Leaving out certain elements of the protocol helps to keep things fast compared to full blown OData implementations. All Linq to Querystring does is map the AST produced by ANTLR onto an IQueryable expression tree.
 
 Currently supported
 ===================
