@@ -1,9 +1,11 @@
 ﻿namespace LinqToQuerystring
 {
+    using System;
     using System.Linq;
     using System.Net;
     using System.Net.Http;
     using System.Web;
+    using System.Web.Http;
     using System.Web.Http.Filters;
 
     public class LinqToQueryableAttribute : ActionFilterAttribute
@@ -29,7 +31,20 @@
                     var genericType = originalquery.GetType().GetGenericArguments()[0];
                     var query = HttpUtility.UrlDecode(queryString);
 
-                    actionExecutedContext.Response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.OK, originalquery.LinqToQuerystring(query, genericType, forceDynamicProperties));
+                    dynamic reply = originalquery.LinqToQuerystring(query, genericType, this.forceDynamicProperties);
+
+                    var mediaFormatter =
+                        GlobalConfiguration.Configuration.Formatters.FirstOrDefault(o => o.CanWriteType(reply.GetType()));
+
+                    if (mediaFormatter == null)
+                    {
+                        throw new InvalidOperationException(string.Format("No media type formatter was found for the type: {0}", reply.GetType().Name));
+                    }
+
+                    var response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.OK);
+                    response.Content = new ObjectContent(reply.GetType(), reply, mediaFormatter); ;
+
+                    actionExecutedContext.Response = response;
                 }
             }
         }
