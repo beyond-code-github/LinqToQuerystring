@@ -8,6 +8,13 @@
 
     public class LinqToQueryableAttribute : ActionFilterAttribute
     {
+        private readonly bool forceDynamicProperties;
+
+        public LinqToQueryableAttribute(bool forceDynamicProperties = false)
+        {
+            this.forceDynamicProperties = forceDynamicProperties;
+        }
+
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
         {
             object responseObject;
@@ -22,7 +29,7 @@
                     var genericType = originalquery.GetType().GetGenericArguments()[0];
                     var query = HttpUtility.UrlDecode(queryString);
 
-                    actionExecutedContext.Response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.OK, originalquery.LinqToQuerystring(query, genericType));
+                    actionExecutedContext.Response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.OK, originalquery.LinqToQuerystring(query, genericType, forceDynamicProperties));
                 }
             }
         }
