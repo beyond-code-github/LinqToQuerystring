@@ -1,4 +1,4 @@
-v0.5 Overview
+v0.5.1 Overview
 =============
 
 Linq to Querystring is an expression parser for .NET that aims to provide a lightweight subset of the OData URI Specification.
@@ -17,7 +17,7 @@ Addressing issues with OData
 
 The OData specification itself is very extensive, and Linq to Querystring does not claim (or intend) to support all of it. In fact, OData itself seems to split opinion – see here for example: http://stackoverflow.com/questions/9577938/odata-with-servicestack.
 
-In the answer above, it is quite rightly stated that OData has the following key issues which Linq to Querystring is able to address:
+In to the answer above, Mythz states some concerns that proponents of REST often have about OData, which Linq to Querystring goes some way towards addressing:
 
 * **Poor development practices** – Linq to Querystring is simple, flexible and open source, so it can respond to new technologies and paradigms.
 * **Promotes bad web service practices** – No longer tied to your DBMS as it works with any IQueryable, so you don’t have to expose your data model through your services.
@@ -28,6 +28,8 @@ Currently supported
 ===================
 
 * Seamless integration with Asp.Net Web API using LinqToQueryable Attribute 
+* Linq to Objects, Entity framework & MongoDB
+* Support for loosely typed datastructures
 * string, int32, bool, datetime data types
 * $top
 * $skip (must be used in conjunction with orderby in Linq to Entities)
@@ -38,9 +40,8 @@ Currently supported
 * $filter - simple properties
 * $select - simple properties
 * $inlinecount
-* Support for class indexers
-* Unicode values
 * Functions - startswith, endswith, substringof
+* Unicode values
 
 In development:
 
