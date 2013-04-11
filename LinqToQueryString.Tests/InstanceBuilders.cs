@@ -6,13 +6,7 @@ namespace LinqToQueryString.Tests
     {
         public static ConcreteClass BuildConcrete(string name, int age, DateTime date, bool complete)
         {
-            return new ConcreteClass
-                       {
-                           Name = name,
-                           Date = date,
-                           Age = age,
-                           Complete = complete
-                       };
+            return new ConcreteClass { Name = name, Date = date, Age = age, Complete = complete };
         }
     }
 }

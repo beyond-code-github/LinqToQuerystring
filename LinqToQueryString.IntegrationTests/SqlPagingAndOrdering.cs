@@ -1,4 +1,4 @@
-﻿namespace LinqToQueryString.IntegrationTests
+﻿namespace LinqToQueryString.IntegrationTests.Sql
 {
     using System;
     using System.Collections.Generic;

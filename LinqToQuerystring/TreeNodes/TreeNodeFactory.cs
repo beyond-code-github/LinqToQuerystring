@@ -10,9 +10,12 @@
     {
         private readonly Type inputType;
 
-        public TreeNodeFactory(Type inputType)
+        private readonly bool forceDynamicProperties;
+
+        public TreeNodeFactory(Type inputType, bool forceDynamicProperties)
         {
             this.inputType = inputType;
+            this.forceDynamicProperties = forceDynamicProperties;
         }
 
         public override object Create(Antlr.Runtime.IToken token)
@@ -63,6 +66,10 @@
                 case LinqToQuerystringLexer.DYNAMICIDENTIFIER:
                     return new DynamicIdentifierNode(inputType, token);
                 case LinqToQuerystringLexer.IDENTIFIER:
+                    if (forceDynamicProperties)
+                    {
+                        return new DynamicIdentifierNode(inputType, token);
+                    }
                     return new IdentifierNode(inputType, token);
                 case LinqToQuerystringLexer.STRING:
                     return new StringNode(inputType, token);

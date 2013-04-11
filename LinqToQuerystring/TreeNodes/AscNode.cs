@@ -32,7 +32,7 @@
             Debug.Assert(childExpression != null, "childExpression should never be null");
 
             var methodName = "OrderBy";
-            if (query.Provider.GetType().Name.Contains("DbQueryProvider") && !this.IsFirstChild)
+            if ((query.Provider.GetType().Name.Contains("DbQueryProvider") || query.Provider.GetType().Name.Contains("MongoQueryProvider")) && !this.IsFirstChild)
             {
                 methodName = "ThenBy";
             }

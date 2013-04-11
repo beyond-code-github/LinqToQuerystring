@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("LinqToQueryString.IntegrationTests.Sql")]
+[assembly: AssemblyTitle("LinqToQuerystring.IntegrationTests.Mongo")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LinqToQueryString")]
+[assembly: AssemblyProduct("LinqToQuerystring.IntegrationTests.Mongo")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d3add83d-6f36-402d-8ac7-7fb1beda13dd")]
+[assembly: Guid("dd21eed0-3fb8-4bf5-9486-67fcfba1df43")]
 
 // Version information for an assembly consists of the following four values:
 //

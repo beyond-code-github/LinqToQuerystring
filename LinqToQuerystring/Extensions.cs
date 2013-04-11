@@ -14,17 +14,17 @@
 
     public static class Extensions
     {
-        public static TResult LinqToQuerystring<T, TResult>(this IQueryable<T> query, string queryString)
+        public static TResult LinqToQuerystring<T, TResult>(this IQueryable<T> query, string queryString, bool forceDynamicProperties = false)
         {
-            return (TResult)LinqToQuerystring(query, queryString, typeof(T));
+            return (TResult)LinqToQuerystring(query, queryString, typeof(T), forceDynamicProperties);
         }
 
-        public static IQueryable<T> LinqToQuerystring<T>(this IQueryable<T> query, string queryString)
+        public static IQueryable<T> LinqToQuerystring<T>(this IQueryable<T> query, string queryString, bool forceDynamicProperties = false)
         {
-            return (IQueryable<T>)LinqToQuerystring(query, queryString, typeof(T));
+            return (IQueryable<T>)LinqToQuerystring(query, queryString, typeof(T), forceDynamicProperties);
         }
 
-        public static object LinqToQuerystring(this IQueryable query, string queryString, Type inputType)
+        public static object LinqToQuerystring(this IQueryable query, string queryString, Type inputType, bool forceDynamicProperties = false)
         {
             IQueryable queryResult = query;
             IQueryable constrainedQuery = query;
@@ -51,7 +51,7 @@
             var lexer = new LinqToQuerystringLexer(input);
             var tokStream = new CommonTokenStream(lexer);
 
-            var parser = new LinqToQuerystringParser(tokStream) { TreeAdaptor = new TreeNodeFactory(inputType) };
+            var parser = new LinqToQuerystringParser(tokStream) { TreeAdaptor = new TreeNodeFactory(inputType, forceDynamicProperties) };
 
             var result = parser.prog();
 
@@ -132,7 +132,7 @@
             var queryresult = query;
             var orderbyChildren = node.Children.Cast<ExplicitOrderByBase>();
 
-            if (!queryresult.Provider.GetType().Name.Contains("DbQueryProvider"))
+            if (!queryresult.Provider.GetType().Name.Contains("DbQueryProvider") && !queryresult.Provider.GetType().Name.Contains("MongoQueryProvider"))
             {
                 orderbyChildren = orderbyChildren.Reverse();
             }

@@ -38,17 +38,17 @@ orexpression
 	:	andexpression (SPACE! AND^ SPACE! andexpression)*;
 	
 andexpression
-	:	NOT^ SPACE booleanexpression
-	|	booleanexpression;
+	:	NOT^ SPACE ('(' filterexpression ')' | booleanexpression)
+	|	('(' filterexpression ')' | booleanexpression);
 		
 booleanexpression
-	:	atom (SPACE! filteroperator^ SPACE! atom | implicit);
-	
-implicit
-	:	-> ^(EQUALS BOOL["true"]);
-	
-atom	:	'(' filterexpression ')'
-	|	functioncall
+	:	atom1=atom (
+			SPACE (op=EQUALS | op=NOTEQUALS | op=GREATERTHAN | op=GREATERTHANOREQUAL | op=LESSTHAN | op=LESSTHANOREQUAL) SPACE atom2=atom 	
+			-> ^($op $atom1 $atom2)
+		|	-> ^(EQUALS["eq"] $atom1 BOOL["true"])
+		);
+		
+atom	:	functioncall
 	|	propertyname
 	|	constant;
 

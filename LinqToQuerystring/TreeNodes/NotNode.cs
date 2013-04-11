@@ -8,6 +8,8 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
+    using MongoDB.Bson;
+
     public class NotNode : SingleChildNode
     {
         public NotNode(Type inputType, IToken payload)
@@ -17,12 +19,22 @@
 
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
-            if (typeof(bool).IsAssignableFrom(expression.Type))
+            var childExpression = this.ChildNode.BuildLinqExpression(query, expression, item);
+            if (!typeof(bool).IsAssignableFrom(childExpression.Type))
             {
-                expression = Expression.Convert(expression, typeof(bool));
+                //if (query.Provider.GetType().Name.Contains("MongoQueryProvider"))
+                //{
+                //    //childExpression = Expression.TypeAs(childExpression, typeof(BsonBoolean));
+                //}
+                //else
+                //{
+                childExpression = Expression.Convert(childExpression, typeof(bool));
+                //}
+
+
             }
 
-            return Expression.Not(this.ChildNode.BuildLinqExpression(query, expression, item));
+            return Expression.Not(childExpression);
         }
     }
 }
