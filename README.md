@@ -1,16 +1,29 @@
-v0.5.2 Overview
+v0.5.3 Overview
 ===============
 
 Linq to Querystring is an expression parser for .NET that aims to provide a lightweight subset of the OData URI Specification.
 
 Check out the demo site here: http://linqtoquerystring.azurewebsites.net/
 
+***
+**_BREAKING CHANGE AS OF v0.5.3_**
+
+The LinqToQueryable Action Filter for Web API is **no longer provided** with the main Linq to Querystring package. 
+
+Please install the **LinqToQuerystring.WebApi** nuget package.
+***
+
 Installation
 ============
 
-Nuget package: https://nuget.org/packages/LinqToQuerystring/
-
+* Nuget package: https://nuget.org/packages/LinqToQuerystring/
 PM> Install-Package LinqToQuerystring
+
+* Web Api package: https://nuget.org/packages/LinqToQuerystring.WebApi/
+PM> Install-Package LinqToQuerystring.WebApi
+
+* Nancy FX package: https://nuget.org/packages/LinqToQuerystring.Nancy/
+PM> Install-Package LinqToQuerystring.Nancy
 
 Addressing issues with OData
 ============================
@@ -28,6 +41,7 @@ Currently supported
 ===================
 
 * Seamless integration with Asp.Net Web API using LinqToQueryable Attribute 
+* Use Linq to Querystring with Nancy FX modules
 * Linq to Objects, Entity framework & MongoDB
 * Support for loosely typed datastructures
 * string, int32, bool, datetime data types
@@ -57,16 +71,28 @@ Future roadmap:
 
 * UIToQuerystring - JQuery plugin for building oData\Linq to Querystring expressions
 
-Details
-=======
+Getting Started
+===============
 
-Linq to Querystring uses an expression parser written in ANTLR to map a subset of odata-compatible expressions onto any .NET IQueryable.
+### Asp.Net Web API
 
 Get going straight away by adding the [LinqToQueryable] attribute to your Asp.Net Web API controllers:
 
     [LinqToQueryable]
     public IQueryable<Movie> Get()
     
+### Nancy FX
+
+    public MoviesModule()
+    {
+        Get["/"] =
+            _ => this.moviesService.Get().LinqToQuerystring((IDictionary<string, object>)this.Context.Request.Query)
+    }
+    
+### General
+    
+Linq to Querystring uses an expression parser written in ANTLR to map a subset of odata-compatible expressions onto any .NET IQueryable.
+
 Work directly with Linq to Object IQueryables:
 
     var collection = new List<Dummy>
