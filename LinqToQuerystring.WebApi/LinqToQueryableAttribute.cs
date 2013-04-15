@@ -1,4 +1,4 @@
-﻿namespace LinqToQuerystring
+﻿namespace LinqToQuerystring.WebApi
 {
     using System;
     using System.Linq;

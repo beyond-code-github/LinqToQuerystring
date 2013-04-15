@@ -20,6 +20,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToQuerystring.Demo", "L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToQuerystring.IntegrationTests.Mongo", "LinqToQuerystring.IntegrationTests.Mongo\LinqToQuerystring.IntegrationTests.Mongo.csproj", "{F66422D5-B9B0-4C54-9678-C2FD68F063AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToQuerystring.Demo.Nancy", "LinqToQuerystring.Demo.Nancy\LinqToQuerystring.Demo.Nancy.csproj", "{DD871B26-176A-49C3-A022-CE3FC80B62E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToQuerystring.Nancy", "LinqToQuerystring.Nancy\LinqToQuerystring.Nancy.csproj", "{60E15FF4-5729-4B80-B30A-E5BA395BD039}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2313C896-8F93-46A4-9A5A-B148146256F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{D48CA5EF-6966-4F4A-AB4A-6DBF839B818F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToQuerystring.WebApi", "LinqToQuerystring.WebApi\LinqToQuerystring.WebApi.csproj", "{AC211100-2F7A-46A9-B630-C2DF57F50895}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,8 +60,28 @@ Global
 		{F66422D5-B9B0-4C54-9678-C2FD68F063AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F66422D5-B9B0-4C54-9678-C2FD68F063AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F66422D5-B9B0-4C54-9678-C2FD68F063AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD871B26-176A-49C3-A022-CE3FC80B62E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD871B26-176A-49C3-A022-CE3FC80B62E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD871B26-176A-49C3-A022-CE3FC80B62E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD871B26-176A-49C3-A022-CE3FC80B62E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60E15FF4-5729-4B80-B30A-E5BA395BD039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60E15FF4-5729-4B80-B30A-E5BA395BD039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60E15FF4-5729-4B80-B30A-E5BA395BD039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60E15FF4-5729-4B80-B30A-E5BA395BD039}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC211100-2F7A-46A9-B630-C2DF57F50895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC211100-2F7A-46A9-B630-C2DF57F50895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC211100-2F7A-46A9-B630-C2DF57F50895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC211100-2F7A-46A9-B630-C2DF57F50895}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F66422D5-B9B0-4C54-9678-C2FD68F063AA} = {2313C896-8F93-46A4-9A5A-B148146256F3}
+		{354C3452-BCDC-4048-B897-8CC719298B87} = {2313C896-8F93-46A4-9A5A-B148146256F3}
+		{139B0E4C-BC18-4180-8863-FB248CFDA42E} = {2313C896-8F93-46A4-9A5A-B148146256F3}
+		{B60C3B0C-CAD7-4ED2-A1DD-7A6482504F31} = {2313C896-8F93-46A4-9A5A-B148146256F3}
+		{E6309DE6-1640-4E6F-9B47-B1E8890724FE} = {D48CA5EF-6966-4F4A-AB4A-6DBF839B818F}
+		{DD871B26-176A-49C3-A022-CE3FC80B62E0} = {D48CA5EF-6966-4F4A-AB4A-6DBF839B818F}
 	EndGlobalSection
 EndGlobal
