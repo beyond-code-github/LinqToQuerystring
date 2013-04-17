@@ -17,7 +17,17 @@
 
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
-            return Expression.Constant(this.Text.Replace("'", string.Empty));
+            var text = this.Text.Trim('\'');
+            text = text.Replace(@"\\", @"\");
+            text = text.Replace(@"\b", "\b");
+            text = text.Replace(@"\t", "\t");
+            text = text.Replace(@"\n", "\n");
+            text = text.Replace(@"\f", "\f");
+            text = text.Replace(@"\r", "\r");
+            text = text.Replace(@"\'", "'");
+            text = text.Replace(@"''", "'");
+
+            return Expression.Constant(text);
         }
     }
 }

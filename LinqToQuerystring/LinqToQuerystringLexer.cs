@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.4.1.9004 D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g 2013-04-11 15:46:53
+// $ANTLR 3.4.1.9004 D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g 2013-04-17 20:48:57
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
@@ -18,6 +18,9 @@
 #pragma warning disable 1591
 // CLS compliance checking will not be performed on 'type' because it is not visible from outside this assembly.
 #pragma warning disable 3019
+
+
+using LinqToQuerystring.Exceptions;
 
 
 using System.Collections.Generic;
@@ -72,6 +75,17 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	public const int T__42=42;
 	public const int T__43=43;
 
+	public override void ReportError(RecognitionException e) {
+	    if (this.input.LT(1) == '\\')
+	    {
+	        //This will be an invalid escape sequence
+	        throw new InvalidEscapeSequenceException("\\" + (char)e.Character);
+	    }
+
+	    throw e;
+	}
+
+
     // delegates
     // delegators
 
@@ -112,11 +126,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = T__39;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:9:7: ( '&' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:23:7: ( '&' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:9:9: '&'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:23:9: '&'
 			{
-			DebugLocation(9, 9);
+			DebugLocation(23, 9);
 			Match('&'); 
 
 			}
@@ -147,11 +161,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = T__40;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:10:7: ( '(' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:24:7: ( '(' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:10:9: '('
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:24:9: '('
 			{
-			DebugLocation(10, 9);
+			DebugLocation(24, 9);
 			Match('('); 
 
 			}
@@ -182,11 +196,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = T__41;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:11:7: ( ')' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:25:7: ( ')' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:11:9: ')'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:25:9: ')'
 			{
-			DebugLocation(11, 9);
+			DebugLocation(25, 9);
 			Match(')'); 
 
 			}
@@ -217,11 +231,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = T__42;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:12:7: ( ',' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:26:7: ( ',' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:12:9: ','
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:26:9: ','
 			{
-			DebugLocation(12, 9);
+			DebugLocation(26, 9);
 			Match(','); 
 
 			}
@@ -252,11 +266,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = T__43;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:13:7: ( '/' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:27:7: ( '/' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:13:9: '/'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:27:9: '/'
 			{
-			DebugLocation(13, 9);
+			DebugLocation(27, 9);
 			Match('/'); 
 
 			}
@@ -287,11 +301,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = ASSIGN;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:80:2: ( '=' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:96:2: ( '=' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:80:5: '='
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:96:5: '='
 			{
-			DebugLocation(80, 5);
+			DebugLocation(96, 5);
 			Match('='); 
 
 			}
@@ -322,11 +336,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = EQUALS;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:83:2: ( 'eq' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:99:2: ( 'eq' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:83:4: 'eq'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:99:4: 'eq'
 			{
-			DebugLocation(83, 4);
+			DebugLocation(99, 4);
 			Match("eq"); 
 
 
@@ -358,11 +372,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = NOTEQUALS;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:86:2: ( 'ne' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:102:2: ( 'ne' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:86:4: 'ne'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:102:4: 'ne'
 			{
-			DebugLocation(86, 4);
+			DebugLocation(102, 4);
 			Match("ne"); 
 
 
@@ -394,11 +408,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = GREATERTHAN;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:89:2: ( 'gt' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:105:2: ( 'gt' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:89:4: 'gt'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:105:4: 'gt'
 			{
-			DebugLocation(89, 4);
+			DebugLocation(105, 4);
 			Match("gt"); 
 
 
@@ -430,11 +444,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = GREATERTHANOREQUAL;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:92:2: ( 'ge' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:108:2: ( 'ge' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:92:4: 'ge'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:108:4: 'ge'
 			{
-			DebugLocation(92, 4);
+			DebugLocation(108, 4);
 			Match("ge"); 
 
 
@@ -466,11 +480,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = LESSTHAN;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:95:2: ( 'lt' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:111:2: ( 'lt' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:95:4: 'lt'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:111:4: 'lt'
 			{
-			DebugLocation(95, 4);
+			DebugLocation(111, 4);
 			Match("lt"); 
 
 
@@ -502,11 +516,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = LESSTHANOREQUAL;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:98:2: ( 'le' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:114:2: ( 'le' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:98:4: 'le'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:114:4: 'le'
 			{
-			DebugLocation(98, 4);
+			DebugLocation(114, 4);
 			Match("le"); 
 
 
@@ -538,11 +552,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = NOT;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:101:2: ( 'not' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:117:2: ( 'not' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:101:4: 'not'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:117:4: 'not'
 			{
-			DebugLocation(101, 4);
+			DebugLocation(117, 4);
 			Match("not"); 
 
 
@@ -574,11 +588,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = OR;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:104:2: ( 'or' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:120:2: ( 'or' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:104:4: 'or'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:120:4: 'or'
 			{
-			DebugLocation(104, 4);
+			DebugLocation(120, 4);
 			Match("or"); 
 
 
@@ -610,11 +624,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = AND;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:107:2: ( 'and' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:123:2: ( 'and' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:107:5: 'and'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:123:5: 'and'
 			{
-			DebugLocation(107, 5);
+			DebugLocation(123, 5);
 			Match("and"); 
 
 
@@ -646,11 +660,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = ASC;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:110:2: ( 'asc' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:126:2: ( 'asc' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:110:4: 'asc'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:126:4: 'asc'
 			{
-			DebugLocation(110, 4);
+			DebugLocation(126, 4);
 			Match("asc"); 
 
 
@@ -682,11 +696,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = DESC;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:113:2: ( 'desc' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:129:2: ( 'desc' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:113:4: 'desc'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:129:4: 'desc'
 			{
-			DebugLocation(113, 4);
+			DebugLocation(129, 4);
 			Match("desc"); 
 
 
@@ -718,11 +732,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = ALLPAGES;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:116:2: ( 'allpages' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:132:2: ( 'allpages' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:116:5: 'allpages'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:132:5: 'allpages'
 			{
-			DebugLocation(116, 5);
+			DebugLocation(132, 5);
 			Match("allpages"); 
 
 
@@ -754,11 +768,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = NONE;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:119:2: ( 'none' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:135:2: ( 'none' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:119:4: 'none'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:135:4: 'none'
 			{
-			DebugLocation(119, 4);
+			DebugLocation(135, 4);
 			Match("none"); 
 
 
@@ -790,11 +804,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = SKIP;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:122:2: ( '$skip=' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:138:2: ( '$skip=' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:122:4: '$skip='
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:138:4: '$skip='
 			{
-			DebugLocation(122, 4);
+			DebugLocation(138, 4);
 			Match("$skip="); 
 
 
@@ -826,11 +840,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = TOP;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:125:2: ( '$top=' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:141:2: ( '$top=' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:125:4: '$top='
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:141:4: '$top='
 			{
-			DebugLocation(125, 4);
+			DebugLocation(141, 4);
 			Match("$top="); 
 
 
@@ -862,11 +876,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = FILTER;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:128:2: ( '$filter=' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:144:2: ( '$filter=' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:128:4: '$filter='
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:144:4: '$filter='
 			{
-			DebugLocation(128, 4);
+			DebugLocation(144, 4);
 			Match("$filter="); 
 
 
@@ -898,11 +912,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = ORDERBY;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:131:2: ( '$orderby=' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:147:2: ( '$orderby=' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:131:4: '$orderby='
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:147:4: '$orderby='
 			{
-			DebugLocation(131, 4);
+			DebugLocation(147, 4);
 			Match("$orderby="); 
 
 
@@ -934,11 +948,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = SELECT;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:134:2: ( '$select=' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:150:2: ( '$select=' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:134:4: '$select='
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:150:4: '$select='
 			{
-			DebugLocation(134, 4);
+			DebugLocation(150, 4);
 			Match("$select="); 
 
 
@@ -970,11 +984,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = INLINECOUNT;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:137:2: ( '$inlinecount=' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:153:2: ( '$inlinecount=' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:137:4: '$inlinecount='
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:153:4: '$inlinecount='
 			{
-			DebugLocation(137, 4);
+			DebugLocation(153, 4);
 			Match("$inlinecount="); 
 
 
@@ -1006,11 +1020,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = STARTSWITH;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:140:2: ( 'startswith' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:156:2: ( 'startswith' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:140:4: 'startswith'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:156:4: 'startswith'
 			{
-			DebugLocation(140, 4);
+			DebugLocation(156, 4);
 			Match("startswith"); 
 
 
@@ -1042,11 +1056,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = ENDSWITH;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:143:2: ( 'endswith' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:159:2: ( 'endswith' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:143:4: 'endswith'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:159:4: 'endswith'
 			{
-			DebugLocation(143, 4);
+			DebugLocation(159, 4);
 			Match("endswith"); 
 
 
@@ -1078,11 +1092,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = SUBSTRINGOF;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:146:2: ( 'substringof' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:162:2: ( 'substringof' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:146:4: 'substringof'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:162:4: 'substringof'
 			{
-			DebugLocation(146, 4);
+			DebugLocation(162, 4);
 			Match("substringof"); 
 
 
@@ -1114,12 +1128,12 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = INT;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:149:2: ( ( '0' .. '9' )+ )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:165:2: ( ( '0' .. '9' )+ )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:149:4: ( '0' .. '9' )+
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:165:4: ( '0' .. '9' )+
 			{
-			DebugLocation(149, 4);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:149:4: ( '0' .. '9' )+
+			DebugLocation(165, 4);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:165:4: ( '0' .. '9' )+
 			int cnt1=0;
 			try { DebugEnterSubRule(1);
 			while (true)
@@ -1141,7 +1155,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(149, 4);
+					DebugLocation(165, 4);
 					input.Consume();
 
 
@@ -1192,12 +1206,12 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = BOOL;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:151:6: ( ( 'true' | 'false' ) )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:167:6: ( ( 'true' | 'false' ) )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:151:8: ( 'true' | 'false' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:167:8: ( 'true' | 'false' )
 			{
-			DebugLocation(151, 8);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:151:8: ( 'true' | 'false' )
+			DebugLocation(167, 8);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:167:8: ( 'true' | 'false' )
 			int alt2=2;
 			try { DebugEnterSubRule(2);
 			try { DebugEnterDecision(2, false);
@@ -1222,9 +1236,9 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:151:9: 'true'
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:167:9: 'true'
 				{
-				DebugLocation(151, 9);
+				DebugLocation(167, 9);
 				Match("true"); 
 
 
@@ -1232,9 +1246,9 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:151:18: 'false'
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:167:18: 'false'
 				{
-				DebugLocation(151, 18);
+				DebugLocation(167, 18);
 				Match("false"); 
 
 
@@ -1273,15 +1287,15 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = DATETIME;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:154:2: ( 'datetime\\'' ( '0' .. '9' )+ '-' ( '0' .. '9' )+ ( '-' )+ ( '0' .. '9' )+ 'T' ( '0' .. '9' )+ ':' ( '0' .. '9' )+ ( ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )* )* '\\'' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:170:2: ( 'datetime\\'' ( '0' .. '9' )+ '-' ( '0' .. '9' )+ ( '-' )+ ( '0' .. '9' )+ 'T' ( '0' .. '9' )+ ':' ( '0' .. '9' )+ ( ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )* )* '\\'' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:154:4: 'datetime\\'' ( '0' .. '9' )+ '-' ( '0' .. '9' )+ ( '-' )+ ( '0' .. '9' )+ 'T' ( '0' .. '9' )+ ':' ( '0' .. '9' )+ ( ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )* )* '\\''
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:170:4: 'datetime\\'' ( '0' .. '9' )+ '-' ( '0' .. '9' )+ ( '-' )+ ( '0' .. '9' )+ 'T' ( '0' .. '9' )+ ':' ( '0' .. '9' )+ ( ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )* )* '\\''
 			{
-			DebugLocation(154, 4);
+			DebugLocation(170, 4);
 			Match("datetime'"); 
 
-			DebugLocation(154, 17);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:154:17: ( '0' .. '9' )+
+			DebugLocation(170, 17);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:170:17: ( '0' .. '9' )+
 			int cnt3=0;
 			try { DebugEnterSubRule(3);
 			while (true)
@@ -1303,7 +1317,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(154, 17);
+					DebugLocation(170, 17);
 					input.Consume();
 
 
@@ -1325,10 +1339,10 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(3); }
 
-			DebugLocation(154, 27);
+			DebugLocation(170, 27);
 			Match('-'); 
-			DebugLocation(154, 31);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:154:31: ( '0' .. '9' )+
+			DebugLocation(170, 31);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:170:31: ( '0' .. '9' )+
 			int cnt4=0;
 			try { DebugEnterSubRule(4);
 			while (true)
@@ -1350,7 +1364,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(154, 31);
+					DebugLocation(170, 31);
 					input.Consume();
 
 
@@ -1372,8 +1386,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(4); }
 
-			DebugLocation(154, 41);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:154:41: ( '-' )+
+			DebugLocation(170, 41);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:170:41: ( '-' )+
 			int cnt5=0;
 			try { DebugEnterSubRule(5);
 			while (true)
@@ -1393,9 +1407,9 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:154:41: '-'
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:170:41: '-'
 					{
-					DebugLocation(154, 41);
+					DebugLocation(170, 41);
 					Match('-'); 
 
 					}
@@ -1416,8 +1430,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(5); }
 
-			DebugLocation(154, 47);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:154:47: ( '0' .. '9' )+
+			DebugLocation(170, 47);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:170:47: ( '0' .. '9' )+
 			int cnt6=0;
 			try { DebugEnterSubRule(6);
 			while (true)
@@ -1439,7 +1453,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(154, 47);
+					DebugLocation(170, 47);
 					input.Consume();
 
 
@@ -1461,10 +1475,10 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(6); }
 
-			DebugLocation(154, 57);
+			DebugLocation(170, 57);
 			Match('T'); 
-			DebugLocation(154, 61);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:154:61: ( '0' .. '9' )+
+			DebugLocation(170, 61);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:170:61: ( '0' .. '9' )+
 			int cnt7=0;
 			try { DebugEnterSubRule(7);
 			while (true)
@@ -1486,7 +1500,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(154, 61);
+					DebugLocation(170, 61);
 					input.Consume();
 
 
@@ -1508,10 +1522,10 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(7); }
 
-			DebugLocation(154, 71);
+			DebugLocation(170, 71);
 			Match(':'); 
-			DebugLocation(154, 75);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:154:75: ( '0' .. '9' )+
+			DebugLocation(170, 75);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:170:75: ( '0' .. '9' )+
 			int cnt8=0;
 			try { DebugEnterSubRule(8);
 			while (true)
@@ -1533,7 +1547,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(154, 75);
+					DebugLocation(170, 75);
 					input.Consume();
 
 
@@ -1555,8 +1569,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(8); }
 
-			DebugLocation(154, 85);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:154:85: ( ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )* )*
+			DebugLocation(170, 85);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:170:85: ( ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )* )*
 			try { DebugEnterSubRule(12);
 			while (true)
 			{
@@ -1575,12 +1589,12 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:154:86: ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )*
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:170:86: ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )*
 					{
-					DebugLocation(154, 86);
+					DebugLocation(170, 86);
 					Match(':'); 
-					DebugLocation(154, 90);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:154:90: ( '0' .. '9' )+
+					DebugLocation(170, 90);
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:170:90: ( '0' .. '9' )+
 					int cnt9=0;
 					try { DebugEnterSubRule(9);
 					while (true)
@@ -1602,7 +1616,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 							DebugEnterAlt(1);
 							// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 							{
-							DebugLocation(154, 90);
+							DebugLocation(170, 90);
 							input.Consume();
 
 
@@ -1624,8 +1638,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 					} finally { DebugExitSubRule(9); }
 
-					DebugLocation(154, 100);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:154:100: ( '.' ( '0' .. '9' )+ )*
+					DebugLocation(170, 100);
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:170:100: ( '.' ( '0' .. '9' )+ )*
 					try { DebugEnterSubRule(11);
 					while (true)
 					{
@@ -1644,12 +1658,12 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 						{
 						case 1:
 							DebugEnterAlt(1);
-							// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:154:101: '.' ( '0' .. '9' )+
+							// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:170:101: '.' ( '0' .. '9' )+
 							{
-							DebugLocation(154, 101);
+							DebugLocation(170, 101);
 							Match('.'); 
-							DebugLocation(154, 105);
-							// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:154:105: ( '0' .. '9' )+
+							DebugLocation(170, 105);
+							// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:170:105: ( '0' .. '9' )+
 							int cnt10=0;
 							try { DebugEnterSubRule(10);
 							while (true)
@@ -1671,7 +1685,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 									DebugEnterAlt(1);
 									// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 									{
-									DebugLocation(154, 105);
+									DebugLocation(170, 105);
 									input.Consume();
 
 
@@ -1721,7 +1735,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(12); }
 
-			DebugLocation(154, 119);
+			DebugLocation(170, 119);
 			Match('\''); 
 
 			}
@@ -1752,12 +1766,12 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = SPACE;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:157:2: ( ( ' ' | '\\t' )+ )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:173:2: ( ( ' ' | '\\t' )+ )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:157:4: ( ' ' | '\\t' )+
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:173:4: ( ' ' | '\\t' )+
 			{
-			DebugLocation(157, 4);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:157:4: ( ' ' | '\\t' )+
+			DebugLocation(173, 4);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:173:4: ( ' ' | '\\t' )+
 			int cnt13=0;
 			try { DebugEnterSubRule(13);
 			while (true)
@@ -1779,7 +1793,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(157, 4);
+					DebugLocation(173, 4);
 					input.Consume();
 
 
@@ -1830,12 +1844,12 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = NEWLINE;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:160:2: ( ( '\\r' | '\\n' )+ )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:176:2: ( ( '\\r' | '\\n' )+ )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:160:4: ( '\\r' | '\\n' )+
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:176:4: ( '\\r' | '\\n' )+
 			{
-			DebugLocation(160, 4);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:160:4: ( '\\r' | '\\n' )+
+			DebugLocation(176, 4);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:176:4: ( '\\r' | '\\n' )+
 			int cnt14=0;
 			try { DebugEnterSubRule(14);
 			while (true)
@@ -1857,7 +1871,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(160, 4);
+					DebugLocation(176, 4);
 					input.Consume();
 
 
@@ -1908,14 +1922,14 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = DYNAMICIDENTIFIER;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:163:2: ( '[' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+ ']' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:179:2: ( '[' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+ ']' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:163:4: '[' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+ ']'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:179:4: '[' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+ ']'
 			{
-			DebugLocation(163, 4);
+			DebugLocation(179, 4);
 			Match('['); 
-			DebugLocation(163, 8);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:163:8: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+
+			DebugLocation(179, 8);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:179:8: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+
 			int cnt15=0;
 			try { DebugEnterSubRule(15);
 			while (true)
@@ -1937,7 +1951,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(163, 8);
+					DebugLocation(179, 8);
 					input.Consume();
 
 
@@ -1959,7 +1973,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(15); }
 
-			DebugLocation(163, 42);
+			DebugLocation(179, 42);
 			Match(']'); 
 
 			}
@@ -1990,12 +2004,12 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = IDENTIFIER;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:166:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+ )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:182:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+ )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:166:4: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:182:4: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+
 			{
-			DebugLocation(166, 4);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:166:4: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+
+			DebugLocation(182, 4);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:182:4: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+
 			int cnt16=0;
 			try { DebugEnterSubRule(16);
 			while (true)
@@ -2017,7 +2031,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(166, 4);
+					DebugLocation(182, 4);
 					input.Consume();
 
 
@@ -2068,14 +2082,14 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 			int _type = STRING;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:169:5: ( '\\'' ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )* '\\'' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:185:6: ( '\\'' ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )* '\\'' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:169:8: '\\'' ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )* '\\''
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:185:8: '\\'' ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )* '\\''
 			{
-			DebugLocation(169, 8);
+			DebugLocation(185, 8);
 			Match('\''); 
-			DebugLocation(169, 13);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:169:13: ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )*
+			DebugLocation(185, 13);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:185:13: ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )*
 			try { DebugEnterSubRule(17);
 			while (true)
 			{
@@ -2083,7 +2097,18 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				try { DebugEnterDecision(17, false);
 				int LA17_1 = input.LA(1);
 
-				if ((LA17_1=='\\'))
+				if ((LA17_1=='\''))
+				{
+					int LA17_2 = input.LA(2);
+
+					if ((LA17_2=='\''))
+					{
+						alt17 = 1;
+					}
+
+
+				}
+				else if ((LA17_1=='\\'))
 				{
 					alt17 = 1;
 				}
@@ -2098,18 +2123,18 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:169:15: ESC_SEQ
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:185:14: ESC_SEQ
 					{
-					DebugLocation(169, 15);
+					DebugLocation(185, 14);
 					mESC_SEQ(); 
 
 					}
 					break;
 				case 2:
 					DebugEnterAlt(2);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:169:25: ~ ( '\\\\' | '\\'' )
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:185:23: ~ ( '\\\\' | '\\'' )
 					{
-					DebugLocation(169, 25);
+					DebugLocation(185, 23);
 					input.Consume();
 
 
@@ -2126,7 +2151,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(17); }
 
-			DebugLocation(169, 41);
+			DebugLocation(185, 38);
 			Match('\''); 
 
 			}
@@ -2155,11 +2180,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		TraceIn("HEX_DIGIT", 37);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:174:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:189:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
 			DebugEnterAlt(1);
 			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 			{
-			DebugLocation(174, 11);
+			DebugLocation(189, 11);
 			if ((input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='F')||(input.LA(1)>='a' && input.LA(1)<='f'))
 			{
 				input.Consume();
@@ -2197,12 +2222,16 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		TraceIn("ESC_SEQ", 38);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:178:5: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
-			int alt18=3;
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:193:4: ( '\\'\\'' | '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
+			int alt18=4;
 			try { DebugEnterDecision(18, false);
 			int LA18_1 = input.LA(1);
 
-			if ((LA18_1=='\\'))
+			if ((LA18_1=='\''))
+			{
+				alt18 = 1;
+			}
+			else if ((LA18_1=='\\'))
 			{
 				switch (input.LA(2))
 				{
@@ -2215,12 +2244,12 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				case 'r':
 				case 't':
 					{
-					alt18 = 1;
+					alt18 = 2;
 					}
 					break;
 				case 'u':
 					{
-					alt18 = 2;
+					alt18 = 3;
 					}
 					break;
 				case '0':
@@ -2232,12 +2261,12 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				case '6':
 				case '7':
 					{
-					alt18 = 3;
+					alt18 = 4;
 					}
 					break;
 				default:
 					{
-						NoViableAltException nvae = new NoViableAltException("", 18, 1, input, 2);
+						NoViableAltException nvae = new NoViableAltException("", 18, 2, input, 2);
 						DebugRecognitionException(nvae);
 						throw nvae;
 					}
@@ -2255,30 +2284,40 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:178:9: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:193:6: '\\'\\''
 				{
-				DebugLocation(178, 9);
-				Match('\\'); 
-				DebugLocation(178, 14);
-				input.Consume();
+				DebugLocation(193, 6);
+				Match("''"); 
 
 
 				}
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:179:9: UNICODE_ESC
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:194:8: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
 				{
-				DebugLocation(179, 9);
-				mUNICODE_ESC(); 
+				DebugLocation(194, 8);
+				Match('\\'); 
+				DebugLocation(194, 13);
+				input.Consume();
+
 
 				}
 				break;
 			case 3:
 				DebugEnterAlt(3);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:180:9: OCTAL_ESC
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:195:8: UNICODE_ESC
 				{
-				DebugLocation(180, 9);
+				DebugLocation(195, 8);
+				mUNICODE_ESC(); 
+
+				}
+				break;
+			case 4:
+				DebugEnterAlt(4);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:196:8: OCTAL_ESC
+				{
+				DebugLocation(196, 8);
 				mOCTAL_ESC(); 
 
 				}
@@ -2307,7 +2346,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		TraceIn("OCTAL_ESC", 39);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:185:5: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:201:6: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
 			int alt19=3;
 			try { DebugEnterDecision(19, false);
 			int LA19_1 = input.LA(1);
@@ -2369,17 +2408,17 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:185:9: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:201:10: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
 				{
-				DebugLocation(185, 9);
+				DebugLocation(201, 10);
 				Match('\\'); 
-				DebugLocation(185, 14);
+				DebugLocation(201, 15);
 				input.Consume();
 
-				DebugLocation(185, 25);
+				DebugLocation(201, 26);
 				input.Consume();
 
-				DebugLocation(185, 36);
+				DebugLocation(201, 37);
 				input.Consume();
 
 
@@ -2387,14 +2426,14 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:186:9: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:202:10: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
 				{
-				DebugLocation(186, 9);
+				DebugLocation(202, 10);
 				Match('\\'); 
-				DebugLocation(186, 14);
+				DebugLocation(202, 15);
 				input.Consume();
 
-				DebugLocation(186, 25);
+				DebugLocation(202, 26);
 				input.Consume();
 
 
@@ -2402,11 +2441,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				break;
 			case 3:
 				DebugEnterAlt(3);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:187:9: '\\\\' ( '0' .. '7' )
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:203:10: '\\\\' ( '0' .. '7' )
 				{
-				DebugLocation(187, 9);
+				DebugLocation(203, 10);
 				Match('\\'); 
-				DebugLocation(187, 14);
+				DebugLocation(203, 15);
 				input.Consume();
 
 
@@ -2436,21 +2475,21 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		TraceIn("UNICODE_ESC", 40);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:192:5: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:208:6: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:192:9: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:208:10: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
 			{
-			DebugLocation(192, 9);
+			DebugLocation(208, 10);
 			Match('\\'); 
-			DebugLocation(192, 14);
+			DebugLocation(208, 15);
 			Match('u'); 
-			DebugLocation(192, 18);
+			DebugLocation(208, 19);
 			mHEX_DIGIT(); 
-			DebugLocation(192, 28);
+			DebugLocation(208, 29);
 			mHEX_DIGIT(); 
-			DebugLocation(192, 38);
+			DebugLocation(208, 39);
 			mHEX_DIGIT(); 
-			DebugLocation(192, 48);
+			DebugLocation(208, 49);
 			mHEX_DIGIT(); 
 
 			}

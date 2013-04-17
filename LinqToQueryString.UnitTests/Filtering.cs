@@ -22,6 +22,8 @@
 
         protected static List<ComplexClass> complexCollection;
 
+        protected static List<ConcreteClass> edgeCaseCollection;
+
         private Establish context = () =>
         {
             concreteCollection = new List<ConcreteClass>
@@ -38,6 +40,18 @@
                                              InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2004, 01, 01), false),
                                              InstanceBuilders.BuildConcrete("Dogfood", 5, new DateTime(2001, 01, 01), true)
                                          };
+
+            edgeCaseCollection = new List<ConcreteClass>
+                                     {
+                                         InstanceBuilders.BuildConcrete("Apple\\Bob", 1, new DateTime(2002, 01, 01), true),
+                                         InstanceBuilders.BuildConcrete("Apple\bBob", 1, new DateTime(2002, 01, 01), true),
+                                         InstanceBuilders.BuildConcrete("Apple\tBob", 1, new DateTime(2002, 01, 01), true),
+                                         InstanceBuilders.BuildConcrete("Apple\nBob", 1, new DateTime(2002, 01, 01), true),
+                                         InstanceBuilders.BuildConcrete("Apple\fBob", 1, new DateTime(2002, 01, 01), true),
+                                         InstanceBuilders.BuildConcrete("Apple\rBob", 1, new DateTime(2002, 01, 01), true),
+                                         InstanceBuilders.BuildConcrete("Apple\"Bob", 1, new DateTime(2002  , 01, 01), true),
+                                         InstanceBuilders.BuildConcrete("Apple'Bob", 1, new DateTime(2002, 01, 01), true),
+                                     };
 
             complexCollection = new List<ComplexClass>
                                          {
@@ -108,6 +122,91 @@
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
         private It should_only_return_records_where_name_is_apple = () => result.ShouldEachConformTo(o => o.Name == "Apple");
+    }
+
+    #endregion
+
+    #region Filter on string escape character tests
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_slash : Filtering
+    {
+        private Because of = () => result = edgeCaseCollection.AsQueryable().LinqToQuerystring(@"?$filter=Name eq 'Apple\\Bob'");
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o.Name == "Apple\\Bob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_backspace : Filtering
+    {
+        private Because of = () => result = edgeCaseCollection.AsQueryable().LinqToQuerystring(@"?$filter=Name eq 'Apple\bBob'");
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o.Name == "Apple\bBob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_tab : Filtering
+    {
+        private Because of = () => result = edgeCaseCollection.AsQueryable().LinqToQuerystring(@"?$filter=Name eq 'Apple\tBob'");
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o.Name == "Apple\tBob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_newline : Filtering
+    {
+        private Because of = () => result = edgeCaseCollection.AsQueryable().LinqToQuerystring(@"?$filter=Name eq 'Apple\nBob'");
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o.Name == "Apple\nBob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_formfeed : Filtering
+    {
+        private Because of = () => result = edgeCaseCollection.AsQueryable().LinqToQuerystring(@"?$filter=Name eq 'Apple\fBob'");
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o.Name == "Apple\fBob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_carriage_return : Filtering
+    {
+        private Because of = () => result = edgeCaseCollection.AsQueryable().LinqToQuerystring(@"?$filter=Name eq 'Apple\rBob'");
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o.Name == "Apple\rBob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_quote : Filtering
+    {
+        private Because of = () => result = edgeCaseCollection.AsQueryable().LinqToQuerystring(@"?$filter=Name eq 'Apple""Bob'");
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o.Name == @"Apple""Bob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_double_escaped_single_quote : Filtering
+    {
+        private Because of = () => result = edgeCaseCollection.AsQueryable().LinqToQuerystring(@"?$filter=Name eq 'Apple''Bob'");
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o.Name == "Apple'Bob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_single_quote : Filtering
+    {
+        private Because of = () => result = edgeCaseCollection.AsQueryable().LinqToQuerystring(@"?$filter=Name eq 'Apple\'Bob'");
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o.Name == "Apple'Bob");
     }
 
     #endregion

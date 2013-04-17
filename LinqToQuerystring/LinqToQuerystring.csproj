@@ -37,6 +37,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\InvalidEscapeSequenceException.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="LinqToQuerystringLexer.cs" />
     <Compile Include="LinqToQuerystringParser.cs" />

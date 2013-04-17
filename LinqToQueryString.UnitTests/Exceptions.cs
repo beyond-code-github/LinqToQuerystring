@@ -4,10 +4,18 @@
     using System.Linq;
 
     using LinqToQuerystring;
+    using LinqToQuerystring.Exceptions;
 
     using Machine.Specifications;
 
     #region Filter on String tests
+
+    public class When_using_eq_filter_on_a_single_with_an_invalid_escape_sequence : Filtering
+    {
+        private Because of = () => ex = Catch.Exception(() => result = edgeCaseCollection.AsQueryable().LinqToQuerystring(@"?$filter=Name eq 'Apple\Bob'"));
+
+        private It should_throw_an_exception = () => ex.ShouldBeOfType<InvalidEscapeSequenceException>();
+    }
 
     public class When_using_gt_filter_on_a_single_string : Filtering
     {

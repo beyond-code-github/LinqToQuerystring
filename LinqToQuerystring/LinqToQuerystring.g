@@ -8,7 +8,23 @@ options
 
 @parser::namespace { LinqToQuerystring }
 
+@lexer::header {
+using LinqToQuerystring.Exceptions;
+}
+
 @lexer::namespace { LinqToQuerystring }
+
+@lexer::members {
+public override void ReportError(RecognitionException e) {
+    if (this.input.LT(1) == '\\')
+    {
+        //This will be an invalid escape sequence
+        throw new InvalidEscapeSequenceException("\\" + (char)e.Character);
+    }
+
+    throw e;
+}
+}
 
 public prog
 	:	(param ('&'! param)*)*;
@@ -48,12 +64,12 @@ booleanexpression
 		|	-> ^(EQUALS["eq"] $atom1 BOOL["true"])
 		);
 		
-atom	:	functioncall
-	|	propertyname
-	|	constant;
-
+atom	:	functioncall	
+	|	constant
+	|	propertyname;
+	
 functioncall
-	:	function^ '(' (IDENTIFIER | constant) (',' (IDENTIFIER | constant))* ')';
+	:	function^ '(' atom (',' atom)* ')';
 
 function
 	:	STARTSWITH | ENDSWITH | SUBSTRINGOF;
@@ -71,7 +87,7 @@ orderpropertyname
 constant:	(INT+ | BOOL | STRING | DATETIME);
 
 propertyname
-	:	(IDENTIFIER|DYNAMICIDENTIFIER)  ('/' (IDENTIFIER|DYNAMICIDENTIFIER))*;
+	:	(IDENTIFIER|DYNAMICIDENTIFIER) ('/' (IDENTIFIER|DYNAMICIDENTIFIER))*;
 
 filteroperator
 	:	EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL;
@@ -166,27 +182,27 @@ IDENTIFIER
 	:	('a'..'z'|'A'..'Z'|'0'..'9'|'_')+;
 
 STRING
-    :  '\'' ( ESC_SEQ | ~('\\'|'\'') )* '\''
-    ;
+    	: '\'' (ESC_SEQ| ~('\\'|'\''))* '\'';
 
 fragment
 HEX_DIGIT : ('0'..'9'|'a'..'f'|'A'..'F') ;
 
 fragment
 ESC_SEQ
-    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')
-    |   UNICODE_ESC
-    |   OCTAL_ESC
-    ;
+  	: '\'\''
+    	| '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')
+    	| UNICODE_ESC
+    	| OCTAL_ESC
+    	;
 
 fragment
 OCTAL_ESC
-    :   '\\' ('0'..'3') ('0'..'7') ('0'..'7')
-    |   '\\' ('0'..'7') ('0'..'7')
-    |   '\\' ('0'..'7')
-    ;
+    	:   '\\' ('0'..'3') ('0'..'7') ('0'..'7')
+    	|   '\\' ('0'..'7') ('0'..'7')
+    	|   '\\' ('0'..'7')
+    	;
 
 fragment
 UNICODE_ESC
-    :   '\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
-    ;
+    	:   '\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+    	;
