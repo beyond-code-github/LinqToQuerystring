@@ -24,7 +24,7 @@
                                 ReleaseDate = new DateTime(1999, 3, 31),
                                 DurationInMinutes = 136,
                                 MetaScore = 73,
-                                Director = "Wachowski Brothers",
+                                Director = "Andy Wachowski\\Lana Wachowski",
                                 Recommended = true
                             },
                         new Movie
@@ -72,6 +72,15 @@
                                 Director = "Peter Jackson",
                                 Recommended = false
                             },
+                        new Movie
+                            {
+                                Title = "Ferris Bueller's Day Off",
+                                ReleaseDate = new DateTime(2012, 6, 11),
+                                DurationInMinutes = 103,
+                                MetaScore = 60,
+                                Director = "John Hughes",
+                                Recommended = true
+                            }
                     }.AsQueryable();
         }
     }

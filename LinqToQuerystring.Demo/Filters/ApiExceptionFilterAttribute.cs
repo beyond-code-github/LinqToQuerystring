@@ -9,11 +9,11 @@
     {
         public override void OnException(HttpActionExecutedContext actionExecutedContext)
         {
-            var argumentException = actionExecutedContext.Exception as ArgumentException;
+            var argumentException = actionExecutedContext.Exception as Exception;
             if (argumentException != null)
             {
                 var message = string.IsNullOrEmpty(argumentException.Message)
-                                  ? "An argument exception occurred"
+                                  ? "An exception occurred"
                                   : argumentException.Message;
 
                 actionExecutedContext.Response = actionExecutedContext.Request.CreateErrorResponse(HttpStatusCode.BadRequest, message);
