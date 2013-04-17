@@ -76,4 +76,15 @@
         private It should_only_return_records_where_name_contains_urn =
             () => result.ShouldEachConformTo(o => o.Name.Contains("urn"));
     }
+
+    public class When_filtering_on_substringof_function_with_escape_character : Filtering
+    {
+        private Because of =
+            () => result = edgeCaseCollection.AsQueryable().LinqToQuerystring(@"?$filter=substringof(Name,'\\')");
+
+        private It should_return_four_records = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_contains_urn =
+            () => result.ShouldEachConformTo(o => o.Name.Contains("\\"));
+    }
 }
