@@ -1,4 +1,4 @@
-v0.5.3 Overview
+v0.5.4 Overview
 ===============
 
 Linq to Querystring is an expression parser for .NET that aims to provide a lightweight subset of the OData URI Specification.
@@ -40,6 +40,7 @@ In to the answer above, Mythz states some concerns that proponents of REST often
 Currently supported
 ===================
 
+* String escape sequences: \\ \' \t \r \n \f ''
 * Seamless integration with Asp.Net Web API using LinqToQueryable Attribute 
 * Use Linq to Querystring with Nancy FX modules
 * Linq to Objects, Entity framework & MongoDB
