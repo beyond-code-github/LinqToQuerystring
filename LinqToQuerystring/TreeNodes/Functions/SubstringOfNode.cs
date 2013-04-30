@@ -25,7 +25,7 @@
                 rightExpression = Expression.Convert(rightExpression, leftExpression.Type);
             }
 
-            return Expression.Call(leftExpression, "Contains", null, new[] { rightExpression });
+            return Expression.Call(rightExpression, "Contains", null, new[] { leftExpression });
         }
     }
 }
