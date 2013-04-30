@@ -1,6 +1,7 @@
 ﻿namespace LinqToQueryString.IntegrationTests.Sql
 {
     using System;
+    using System.Data.Entity.Core;
     using System.Linq;
 
     using LinqToQuerystring;
@@ -23,5 +24,18 @@
         private Because of = () => ex = Catch.Exception(() => complexResult = testDb.ComplexCollection.LinqToQuerystring("?$orderby=concrete").ToList());
 
         private It should_throw_an_exception = () => ex.ShouldBeOfType<ArgumentException>();
+    }
+
+    public class When_filtering_on_endswith_function : SqlFunctions
+    {
+        private static Exception ex;
+
+        private Because of = () => ex = Catch.Exception(() => testDb.ConcreteCollection.LinqToQuerystring("?$filter=endswith(Name,'day')").ToList());
+
+        private It should_throw_an_exception = () => ex.ShouldBeOfType<EntityCommandCompilationException>();
+
+        private It should_fail_due_to_SQL_CE_not_supporting_endswith =
+            () =>
+            ex.InnerException.Message.ShouldEqual("The function 'Reverse' is not supported by SQL Server Compact.");
     }
 }

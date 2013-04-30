@@ -64,6 +64,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -86,6 +87,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Exceptions.cs" />
+    <Compile Include="SqlFunctions.cs" />
     <Compile Include="SqlInlineCount.cs" />
     <Compile Include="SqlProjection.cs" />
     <Compile Include="SqlFiltering.cs" />
