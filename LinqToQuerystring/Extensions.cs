@@ -45,7 +45,7 @@
             }
 
             var odataQueries = string.Join(
-                "&", queryString.Split('&').Where(o => o.StartsWith("$")));
+                "&", queryString.Split('&').Where(o => o.StartsWith("$")).ToArray());
 
             var input = new ANTLRReaderStream(new StringReader(odataQueries));
             var lexer = new LinqToQuerystringLexer(input);
