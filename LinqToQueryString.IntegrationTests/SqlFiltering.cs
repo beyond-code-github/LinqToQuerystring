@@ -17,7 +17,11 @@
 
         protected static List<ConcreteClass> result;
 
+        protected static List<EdgeCaseClass> edgeCaseResult;
+
         protected static List<ConcreteClass> concreteCollection;
+
+        protected static List<EdgeCaseClass> edgeCaseCollection;
 
         private Establish context = () =>
         {
@@ -37,9 +41,19 @@
             testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2004, 01, 01), false));
             testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Dogfood", 5, new DateTime(2001, 01, 01), true));
 
+            testDb.EdgeCaseCollection.Add(InstanceBuilders.BuildEdgeCase("Apple\\Bob", 1, new DateTime(2002, 01, 01), true));
+            testDb.EdgeCaseCollection.Add(InstanceBuilders.BuildEdgeCase("Apple\bBob", 1, new DateTime(2002, 01, 01), true));
+            testDb.EdgeCaseCollection.Add(InstanceBuilders.BuildEdgeCase("Apple\tBob", 1, new DateTime(2002, 01, 01), true));
+            testDb.EdgeCaseCollection.Add(InstanceBuilders.BuildEdgeCase("Apple\nBob", 1, new DateTime(2002, 01, 01), true));
+            testDb.EdgeCaseCollection.Add(InstanceBuilders.BuildEdgeCase("Apple\fBob", 1, new DateTime(2002, 01, 01), true));
+            testDb.EdgeCaseCollection.Add(InstanceBuilders.BuildEdgeCase("Apple\rBob", 1, new DateTime(2002, 01, 01), true));
+            testDb.EdgeCaseCollection.Add(InstanceBuilders.BuildEdgeCase("Apple\"Bob", 1, new DateTime(2002, 01, 01), true));
+            testDb.EdgeCaseCollection.Add(InstanceBuilders.BuildEdgeCase("Apple'Bob", 1, new DateTime(2002, 01, 01), true));
+
             testDb.SaveChanges();
 
             concreteCollection = testDb.ConcreteCollection.ToList();
+            edgeCaseCollection = testDb.EdgeCaseCollection.ToList();
         };
     }
 
@@ -101,6 +115,92 @@
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
         private It should_only_return_records_where_name_is_apple = () => result.ShouldEachConformTo(o => o.Name == "Apple");
+    }
+
+    #endregion
+
+    #region Filter on string escape character tests
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_slash : SqlFiltering
+    {
+        private Because of =
+            () => edgeCaseResult = testDb.EdgeCaseCollection.LinqToQuerystring(@"?$filter=Name eq 'Apple\\Bob'").ToList();
+
+        private It should_return_one_record = () => edgeCaseResult.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => edgeCaseResult.ShouldEachConformTo(o => o.Name == "Apple\\Bob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_backspace : SqlFiltering
+    {
+        private Because of = () => edgeCaseResult = testDb.EdgeCaseCollection.LinqToQuerystring(@"?$filter=Name eq 'Apple\bBob'").ToList();
+
+        private It should_return_one_record = () => edgeCaseResult.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => edgeCaseResult.ShouldEachConformTo(o => o.Name == "Apple\bBob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_tab : SqlFiltering
+    {
+        private Because of = () => edgeCaseResult = testDb.EdgeCaseCollection.LinqToQuerystring(@"?$filter=Name eq 'Apple\tBob'").ToList();
+
+        private It should_return_one_record = () => edgeCaseResult.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => edgeCaseResult.ShouldEachConformTo(o => o.Name == "Apple\tBob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_newline : SqlFiltering
+    {
+        private Because of = () => edgeCaseResult = testDb.EdgeCaseCollection.LinqToQuerystring(@"?$filter=Name eq 'Apple\nBob'").ToList();
+
+        private It should_return_one_record = () => edgeCaseResult.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => edgeCaseResult.ShouldEachConformTo(o => o.Name == "Apple\nBob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_formfeed : SqlFiltering
+    {
+        private Because of = () => edgeCaseResult = testDb.EdgeCaseCollection.LinqToQuerystring(@"?$filter=Name eq 'Apple\fBob'").ToList();
+
+        private It should_return_one_record = () => edgeCaseResult.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => edgeCaseResult.ShouldEachConformTo(o => o.Name == "Apple\fBob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_carriage_return : SqlFiltering
+    {
+        private Because of = () => edgeCaseResult = testDb.EdgeCaseCollection.LinqToQuerystring(@"?$filter=Name eq 'Apple\rBob'").ToList();
+
+        private It should_return_one_record = () => edgeCaseResult.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => edgeCaseResult.ShouldEachConformTo(o => o.Name == "Apple\rBob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_quote : SqlFiltering
+    {
+        private Because of = () => edgeCaseResult = testDb.EdgeCaseCollection.LinqToQuerystring(@"?$filter=Name eq 'Apple""Bob'").ToList();
+
+        private It should_return_one_record = () => edgeCaseResult.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => edgeCaseResult.ShouldEachConformTo(o => o.Name == @"Apple""Bob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_double_escaped_single_quote : SqlFiltering
+    {
+        private Because of = () => edgeCaseResult = testDb.EdgeCaseCollection.LinqToQuerystring(@"?$filter=Name eq 'Apple''Bob'").ToList();
+
+        private It should_return_one_record = () => edgeCaseResult.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => edgeCaseResult.ShouldEachConformTo(o => o.Name == "Apple'Bob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_single_quote : SqlFiltering
+    {
+        private Because of = () => edgeCaseResult = testDb.EdgeCaseCollection.LinqToQuerystring(@"?$filter=Name eq 'Apple\'Bob'").ToList();
+
+        private It should_return_one_record = () => edgeCaseResult.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => edgeCaseResult.ShouldEachConformTo(o => o.Name == "Apple'Bob");
     }
 
     #endregion

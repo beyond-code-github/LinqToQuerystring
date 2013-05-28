@@ -19,5 +19,12 @@ namespace LinqToQuerystring.IntegrationTests.Mongo
                 new MongoDocument(
                     new BsonDocument { { "Title", title }, { "Concrete", concrete } });
         }
+
+        public static MongoDocument BuildEdgeCase(string name, int age, DateTime date, bool complete)
+        {
+            return
+                new MongoDocument(
+                    new BsonDocument { { "Name", name }, { "Date", date }, { "Age", age }, { "Complete", complete } });
+        }
     }
 }

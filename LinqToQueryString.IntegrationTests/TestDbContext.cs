@@ -9,5 +9,7 @@
         public DbSet<ConcreteClass> ConcreteCollection { get; set; }
 
         public DbSet<ComplexClass> ComplexCollection { get; set; }
+
+        public DbSet<EdgeCaseClass> EdgeCaseCollection { get; set; }
     }
 }

@@ -19,12 +19,17 @@
 
         protected static List<MongoDocument> concreteCollection;
 
+        protected static IQueryable<MongoDocument> edgeCaseCollection;
+
         protected static IQueryable<MongoDocument> collection;
 
         private Cleanup cleanup = () =>
             {
                 var mongoCollection = database.GetCollection<MongoDocument>("Dynamic");
                 mongoCollection.RemoveAll();
+
+                var edgeCases = database.GetCollection<MongoDocument>("EdgeCases");
+                edgeCases.RemoveAll();
             };
 
         private Establish context = () =>
@@ -46,8 +51,21 @@
                 mongoCollection.Insert(InstanceBuilders.BuildMongoDocument("Dogfood", 4, new DateTime(2004, 01, 01), false));
                 mongoCollection.Insert(InstanceBuilders.BuildMongoDocument("Dogfood", 5, new DateTime(2001, 01, 01), true));
 
+                var mongoEdgeCaseCollection = database.GetCollection<MongoDocument>("EdgeCases");
+
+                mongoEdgeCaseCollection.Insert(InstanceBuilders.BuildEdgeCase("Apple\\Bob", 1, new DateTime(2002, 01, 01), true));
+                mongoEdgeCaseCollection.Insert(InstanceBuilders.BuildEdgeCase("Apple\bBob", 1, new DateTime(2002, 01, 01), true));
+                mongoEdgeCaseCollection.Insert(InstanceBuilders.BuildEdgeCase("Apple\tBob", 1, new DateTime(2002, 01, 01), true));
+                mongoEdgeCaseCollection.Insert(InstanceBuilders.BuildEdgeCase("Apple\nBob", 1, new DateTime(2002, 01, 01), true));
+                mongoEdgeCaseCollection.Insert(InstanceBuilders.BuildEdgeCase("Apple\fBob", 1, new DateTime(2002, 01, 01), true));
+                mongoEdgeCaseCollection.Insert(InstanceBuilders.BuildEdgeCase("Apple\rBob", 1, new DateTime(2002, 01, 01), true));
+                mongoEdgeCaseCollection.Insert(InstanceBuilders.BuildEdgeCase("Apple\"Bob", 1, new DateTime(2002, 01, 01), true));
+                mongoEdgeCaseCollection.Insert(InstanceBuilders.BuildEdgeCase("Apple'Bob", 1, new DateTime(2002, 01, 01), true));
+
                 collection = mongoCollection.AsQueryable();
+
                 concreteCollection = collection.ToList();
+                edgeCaseCollection = mongoEdgeCaseCollection.AsQueryable();
             };
     }
 
@@ -116,6 +134,92 @@
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
         private It should_only_return_records_where_name_is_apple = () => result.ShouldEachConformTo(o => o["Name"].AsString == "Apple");
+    }
+
+    #endregion
+
+    #region Filter on string escape character tests
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_slash : MongoFiltering
+    {
+        private Because of =
+            () => result = edgeCaseCollection.LinqToQuerystring(@"?$filter=Name eq 'Apple\\Bob'", true).ToList();
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o["Name"] == "Apple\\Bob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_backspace : MongoFiltering
+    {
+        private Because of = () => result = edgeCaseCollection.LinqToQuerystring(@"?$filter=Name eq 'Apple\bBob'", true).ToList();
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o["Name"] == "Apple\bBob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_tab : MongoFiltering
+    {
+        private Because of = () => result = edgeCaseCollection.LinqToQuerystring(@"?$filter=Name eq 'Apple\tBob'", true).ToList();
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o["Name"] == "Apple\tBob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_newline : MongoFiltering
+    {
+        private Because of = () => result = edgeCaseCollection.LinqToQuerystring(@"?$filter=Name eq 'Apple\nBob'", true).ToList();
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o["Name"] == "Apple\nBob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_formfeed : MongoFiltering
+    {
+        private Because of = () => result = edgeCaseCollection.LinqToQuerystring(@"?$filter=Name eq 'Apple\fBob'", true).ToList();
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o["Name"] == "Apple\fBob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_carriage_return : MongoFiltering
+    {
+        private Because of = () => result = edgeCaseCollection.LinqToQuerystring(@"?$filter=Name eq 'Apple\rBob'", true).ToList();
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o["Name"] == "Apple\rBob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_quote : MongoFiltering
+    {
+        private Because of = () => result = edgeCaseCollection.LinqToQuerystring(@"?$filter=Name eq 'Apple""Bob'", true).ToList();
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o["Name"] == @"Apple""Bob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_double_escaped_single_quote : MongoFiltering
+    {
+        private Because of = () => result = edgeCaseCollection.LinqToQuerystring(@"?$filter=Name eq 'Apple''Bob'", true).ToList();
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o["Name"] == "Apple'Bob");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_escaped_single_quote : MongoFiltering
+    {
+        private Because of = () => result = edgeCaseCollection.LinqToQuerystring(@"?$filter=Name eq 'Apple\'Bob'", true).ToList();
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o["Name"] == "Apple'Bob");
     }
 
     #endregion
