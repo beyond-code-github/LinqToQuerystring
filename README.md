@@ -1,4 +1,4 @@
-v0.5.5 Overview
+v0.5.6 Overview
 ===============
 
 Linq to Querystring is an expression parser for .NET that aims to provide a lightweight subset of the OData URI Specification.
@@ -62,7 +62,7 @@ Currently supported
 * $filter - simple properties
 * $select - simple properties
 * $inlinecount
-* Functions - startswith, endswith, substringof
+* Functions - startswith, endswith, substringof, tolower
 * Unicode values
 
 In development:
