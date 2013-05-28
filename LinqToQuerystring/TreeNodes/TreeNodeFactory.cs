@@ -63,6 +63,8 @@
                     return new EndsWithNode(inputType, token);
                 case LinqToQuerystringLexer.SUBSTRINGOF:
                     return new SubstringOfNode(inputType, token);
+                case LinqToQuerystringLexer.TOLOWER:
+                    return new ToLowerNode(inputType, token);
                 case LinqToQuerystringLexer.DYNAMICIDENTIFIER:
                     return new DynamicIdentifierNode(inputType, token);
                 case LinqToQuerystringLexer.IDENTIFIER:

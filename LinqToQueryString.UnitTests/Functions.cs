@@ -87,4 +87,15 @@
         private It should_only_return_records_where_name_contains_escaped_slash =
             () => result.ShouldEachConformTo(o => o.Name.Contains("\\"));
     }
+
+    public class When_filtering_on_substringof_function_with_tolower : Functions
+    {
+        private Because of =
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring(@"?$filter=substringof('sat',tolower(Name))");
+
+        private It should_return_four_records = () => result.Count().ShouldEqual(4);
+
+        private It should_only_return_records_where_name_contains_sat =
+            () => result.ShouldEachConformTo(o => o.Name.Contains("Sat"));
+    }
 }

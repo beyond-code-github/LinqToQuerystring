@@ -72,7 +72,7 @@ functioncall
 	:	function^ '(' atom (',' atom)* ')';
 
 function
-	:	STARTSWITH | ENDSWITH | SUBSTRINGOF;
+	:	STARTSWITH | ENDSWITH | SUBSTRINGOF | TOLOWER;
 	
 orderby
 	:	ORDERBY^ orderbylist;
@@ -160,6 +160,9 @@ ENDSWITH
 	
 SUBSTRINGOF
 	:	'substringof';
+
+TOLOWER
+	:	'tolower';
 		
 INT	
 	:	'0'..'9'+;
