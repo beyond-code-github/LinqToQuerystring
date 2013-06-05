@@ -4,6 +4,8 @@
 
     using Antlr.Runtime.Tree;
 
+    using LinqToQuerystring.TreeNodes.Aggregates;
+    using LinqToQuerystring.TreeNodes.Base;
     using LinqToQuerystring.TreeNodes.Functions;
 
     public class TreeNodeFactory : CommonTreeAdaptor
@@ -65,6 +67,10 @@
                     return new SubstringOfNode(inputType, token);
                 case LinqToQuerystringLexer.TOLOWER:
                     return new ToLowerNode(inputType, token);
+                case LinqToQuerystringLexer.ANY:
+                    return new AnyNode(inputType, token);
+                case LinqToQuerystringLexer.ALIAS:
+                    return new AliasNode(inputType, token);
                 case LinqToQuerystringLexer.DYNAMICIDENTIFIER:
                     return new DynamicIdentifierNode(inputType, token);
                 case LinqToQuerystringLexer.IDENTIFIER:

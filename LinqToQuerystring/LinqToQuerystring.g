@@ -6,6 +6,10 @@ options
     output=AST;
 }
 
+tokens {
+    ALIAS;
+}
+
 @parser::namespace { LinqToQuerystring }
 
 @lexer::header {
@@ -38,42 +42,48 @@ top
 	:	TOP^ INT+;
 
 filter	
-	:	FILTER^ filterexpression;
+	:	FILTER^ filterexpression[false];
 	
 select
-	:	SELECT^ propertyname (','! propertyname)*;
+	:	SELECT^ propertyname[false] (','! propertyname[false])*;
 	
 inlinecount
 	:	INLINECOUNT^ ALLPAGES
 	|	INLINECOUNT NONE ->;
 
-filterexpression	
-	:	orexpression (SPACE! OR^ SPACE! orexpression)*;
+filterexpression[bool subquery]
+	:	orexpression[subquery] (SPACE! OR^ SPACE! orexpression[subquery])*;
 	
-orexpression
-	:	andexpression (SPACE! AND^ SPACE! andexpression)*;
+orexpression[bool subquery]
+	:	andexpression[subquery] (SPACE! AND^ SPACE! andexpression[subquery])*;
 	
-andexpression
-	:	NOT^ SPACE ('(' filterexpression ')' | booleanexpression)
-	|	('(' filterexpression ')' | booleanexpression);
+andexpression[bool subquery]
+	:	NOT^ SPACE ('(' filterexpression[subquery] ')' | booleanexpression[subquery])
+	|	('(' filterexpression[subquery] ')' | booleanexpression[subquery]);
 		
-booleanexpression
-	:	atom1=atom (
-			SPACE (op=EQUALS | op=NOTEQUALS | op=GREATERTHAN | op=GREATERTHANOREQUAL | op=LESSTHAN | op=LESSTHANOREQUAL) SPACE atom2=atom 	
+booleanexpression[bool subquery]
+	:	atom1=atom[subquery] (
+			SPACE (op=EQUALS | op=NOTEQUALS | op=GREATERTHAN | op=GREATERTHANOREQUAL | op=LESSTHAN | op=LESSTHANOREQUAL) SPACE atom2=atom[subquery] 	
 			-> ^($op $atom1 $atom2)
 		|	-> ^(EQUALS["eq"] $atom1 BOOL["true"])
 		);
 		
-atom	:	functioncall	
+atom[bool subquery]
+	:	functioncall[subquery]
 	|	constant
-	|	propertyname;
+	|	accessor[subquery];
 	
-functioncall
-	:	function^ '(' atom (',' atom)* ')';
-
+functioncall[bool subquery]
+	:	function^ '(' atom[subquery] (',' atom[subquery])* ')';
+	
+accessor[bool subquery]:
+		(propertyname[subquery] -> propertyname) (
+			'/' (func=ANY | func=ALL) '(' id=IDENTIFIER ':' SPACE filterexpression[true] ')' -> ^($func $accessor ALIAS[$id] filterexpression)
+		)?;
+	
 function
 	:	STARTSWITH | ENDSWITH | SUBSTRINGOF | TOLOWER;
-	
+		
 orderby
 	:	ORDERBY^ orderbylist;
 	
@@ -81,13 +91,18 @@ orderbylist
 	:	orderpropertyname (','! orderpropertyname)*;
 
 orderpropertyname
-	:	propertyname -> ^(ASC propertyname)
-	| 	propertyname (SPACE! (ASC | DESC)^);
+	:	propertyname[false] (
+			-> ^(ASC["asc"] propertyname)
+			| (SPACE (op=ASC | op=DESC)) -> ^($op propertyname)
+		);
 	
 constant:	(INT+ | BOOL | STRING | DATETIME);
 
-propertyname
-	:	(IDENTIFIER|DYNAMICIDENTIFIER) ('/' (IDENTIFIER|DYNAMICIDENTIFIER))*;
+propertyname[bool subquery]
+	:	(id=IDENTIFIER -> {subquery}? ALIAS[$id]
+				-> $id
+		|
+		id=DYNAMICIDENTIFIER -> DYNAMICIDENTIFIER) ('/' next=propertyname[false] -> $id '/' $next)?;
 
 filteroperator
 	:	EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL;
@@ -163,6 +178,10 @@ SUBSTRINGOF
 
 TOLOWER
 	:	'tolower';
+	
+ANY	: 	'any';
+	
+ALL	:	'all';
 		
 INT	
 	:	'0'..'9'+;
@@ -183,7 +202,7 @@ DYNAMICIDENTIFIER
 	
 IDENTIFIER
 	:	('a'..'z'|'A'..'Z'|'0'..'9'|'_')+;
-
+	
 STRING
     	: '\'' (ESC_SEQ| ~('\\'|'\''))* '\'';
 
