@@ -1,6 +1,7 @@
 ﻿namespace LinqToQueryString.Tests
 {
     using System;
+    using System.Collections.Generic;
 
     public class ConcreteClass : IComparable<ConcreteClass>
     {
@@ -13,6 +14,8 @@
         public bool Complete { get; set; }
 
         public int Age { get; set; }
+
+        public List<string> StringCollection { get; set; }
 
         public int CompareTo(ConcreteClass other)
         {
