@@ -10,8 +10,8 @@
 
     public class FilterNode : SingleChildNode
     {
-        public FilterNode(Type inputType, IToken payload)
-            : base(inputType, payload)
+        public FilterNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(inputType, payload, treeNodeFactory)
         {
         }
 

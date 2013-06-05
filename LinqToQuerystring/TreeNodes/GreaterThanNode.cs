@@ -10,8 +10,8 @@
 
     public class GreaterThanNode : TwoChildNode
     {
-        public GreaterThanNode(Type inputType, IToken payload)
-            : base(inputType, payload)
+        public GreaterThanNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(inputType, payload, treeNodeFactory)
         {
         }
 

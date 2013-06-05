@@ -10,8 +10,8 @@
 
     public class OrNode : TwoChildNode
     {
-        public OrNode(Type inputType, IToken payload)
-            : base(inputType, payload)
+        public OrNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(inputType, payload, treeNodeFactory)
         {
         }
 

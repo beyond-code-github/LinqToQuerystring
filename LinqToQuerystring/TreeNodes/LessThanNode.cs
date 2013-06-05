@@ -10,8 +10,8 @@
 
     public class LessThanNode : TwoChildNode
     {
-        public LessThanNode(Type inputType, IToken payload)
-            : base(inputType, payload)
+        public LessThanNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(inputType, payload, treeNodeFactory)
         {
         }
 

@@ -99,10 +99,15 @@ orderpropertyname
 constant:	(INT+ | BOOL | STRING | DATETIME);
 
 propertyname[bool subquery]
+	:	(identifierpart[subquery] -> identifierpart) ('/' next=subpropertyname[false] -> ^($propertyname $next))?;
+
+subpropertyname[bool subquery]
+	:	propertyname[false];
+	
+identifierpart[bool subquery]
 	:	(id=IDENTIFIER -> {subquery}? ALIAS[$id]
-				-> $id
-		|
-		id=DYNAMICIDENTIFIER -> DYNAMICIDENTIFIER) ('/' next=propertyname[false] -> $id '/' $next)?;
+				-> IDENTIFIER[$id]
+		| DYNAMICIDENTIFIER -> DYNAMICIDENTIFIER);
 
 filteroperator
 	:	EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL;

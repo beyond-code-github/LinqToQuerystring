@@ -31,7 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime">
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\ANTLR\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -43,6 +44,7 @@
     <Compile Include="LinqToQuerystringLexer.cs" />
     <Compile Include="LinqToQuerystringParser.cs" />
     <Compile Include="TreeNodes\Aggregates\AnyNode.cs" />
+    <Compile Include="TreeNodes\Aggregates\AllNode.cs" />
     <Compile Include="TreeNodes\AliasNode.cs" />
     <Compile Include="TreeNodes\AndNode.cs" />
     <Compile Include="TreeNodes\AscNode.cs" />

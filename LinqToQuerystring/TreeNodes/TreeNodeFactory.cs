@@ -5,7 +5,6 @@
     using Antlr.Runtime.Tree;
 
     using LinqToQuerystring.TreeNodes.Aggregates;
-    using LinqToQuerystring.TreeNodes.Base;
     using LinqToQuerystring.TreeNodes.Functions;
 
     public class TreeNodeFactory : CommonTreeAdaptor
@@ -30,67 +29,69 @@
             switch (token.Type)
             {
                 case LinqToQuerystringLexer.TOP:
-                    return new TopNode(inputType, token);
+                    return new TopNode(inputType, token, this);
                 case LinqToQuerystringLexer.SKIP:
-                    return new SkipNode(inputType, token);
+                    return new SkipNode(inputType, token, this);
                 case LinqToQuerystringLexer.ORDERBY:
-                    return new OrderByNode(inputType, token);
+                    return new OrderByNode(inputType, token, this);
                 case LinqToQuerystringLexer.FILTER:
-                    return new FilterNode(inputType, token);
+                    return new FilterNode(inputType, token, this);
                 case LinqToQuerystringLexer.SELECT:
-                    return new SelectNode(inputType, token);
+                    return new SelectNode(inputType, token, this);
                 case LinqToQuerystringLexer.INLINECOUNT:
-                    return new InlineCountNode(inputType, token);
+                    return new InlineCountNode(inputType, token, this);
                 case LinqToQuerystringLexer.NOT:
-                    return new NotNode(inputType, token);
+                    return new NotNode(inputType, token, this);
                 case LinqToQuerystringLexer.AND:
-                    return new AndNode(inputType, token);
+                    return new AndNode(inputType, token, this);
                 case LinqToQuerystringLexer.OR:
-                    return new OrNode(inputType, token);
+                    return new OrNode(inputType, token, this);
                 case LinqToQuerystringLexer.EQUALS:
-                    return new EqualsNode(inputType, token);
+                    return new EqualsNode(inputType, token, this);
                 case LinqToQuerystringLexer.NOTEQUALS:
-                    return new NotEqualsNode(inputType, token);
+                    return new NotEqualsNode(inputType, token, this);
                 case LinqToQuerystringLexer.GREATERTHAN:
-                    return new GreaterThanNode(inputType, token);
+                    return new GreaterThanNode(inputType, token, this);
                 case LinqToQuerystringLexer.GREATERTHANOREQUAL:
-                    return new GreaterThanOrEqualNode(inputType, token);
+                    return new GreaterThanOrEqualNode(inputType, token, this);
                 case LinqToQuerystringLexer.LESSTHAN:
-                    return new LessThanNode(inputType, token);
+                    return new LessThanNode(inputType, token, this);
                 case LinqToQuerystringLexer.LESSTHANOREQUAL:
-                    return new LessThanOrEqualNode(inputType, token);
+                    return new LessThanOrEqualNode(inputType, token, this);
                 case LinqToQuerystringLexer.STARTSWITH:
-                    return new StartsWithNode(inputType, token);
+                    return new StartsWithNode(inputType, token, this);
                 case LinqToQuerystringLexer.ENDSWITH:
-                    return new EndsWithNode(inputType, token);
+                    return new EndsWithNode(inputType, token, this);
                 case LinqToQuerystringLexer.SUBSTRINGOF:
-                    return new SubstringOfNode(inputType, token);
+                    return new SubstringOfNode(inputType, token, this);
                 case LinqToQuerystringLexer.TOLOWER:
-                    return new ToLowerNode(inputType, token);
+                    return new ToLowerNode(inputType, token, this);
                 case LinqToQuerystringLexer.ANY:
-                    return new AnyNode(inputType, token);
+                    return new AnyNode(inputType, token, this);
+                case LinqToQuerystringLexer.ALL:
+                    return new AllNode(inputType, token, this);
                 case LinqToQuerystringLexer.ALIAS:
-                    return new AliasNode(inputType, token);
+                    return new AliasNode(inputType, token, this);
                 case LinqToQuerystringLexer.DYNAMICIDENTIFIER:
-                    return new DynamicIdentifierNode(inputType, token);
+                    return new DynamicIdentifierNode(inputType, token, this);
                 case LinqToQuerystringLexer.IDENTIFIER:
                     if (forceDynamicProperties)
                     {
-                        return new DynamicIdentifierNode(inputType, token);
+                        return new DynamicIdentifierNode(inputType, token, this);
                     }
-                    return new IdentifierNode(inputType, token);
+                    return new IdentifierNode(inputType, token, this);
                 case LinqToQuerystringLexer.STRING:
-                    return new StringNode(inputType, token);
+                    return new StringNode(inputType, token, this);
                 case LinqToQuerystringLexer.BOOL:
-                    return new BoolNode(inputType, token);
+                    return new BoolNode(inputType, token, this);
                 case LinqToQuerystringLexer.INT:
-                    return new IntNode(inputType, token);
+                    return new IntNode(inputType, token, this);
                 case LinqToQuerystringLexer.DATETIME:
-                    return new DateTimeNode(inputType, token);
+                    return new DateTimeNode(inputType, token, this);
                 case LinqToQuerystringLexer.DESC:
-                    return new DescNode(inputType, token);
+                    return new DescNode(inputType, token, this);
                 case LinqToQuerystringLexer.ASC:
-                    return new AscNode(inputType, token);
+                    return new AscNode(inputType, token, this);
             }
 
             return null;

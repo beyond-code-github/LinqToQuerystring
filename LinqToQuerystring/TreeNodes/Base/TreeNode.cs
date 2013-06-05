@@ -1,6 +1,7 @@
 ﻿namespace LinqToQuerystring.TreeNodes.Base
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
 
@@ -11,10 +12,46 @@
     {
         protected readonly Type inputType;
 
-        protected TreeNode(Type inputType, IToken payload)
+        protected readonly TreeNodeFactory factory;
+
+        protected TreeNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload)
         {
             this.inputType = inputType;
+            this.factory = treeNodeFactory;
+        }
+
+        /// <summary>
+        /// This hacky property overwrites the base property which has a bug when using tree rewrites
+        /// </summary>
+        protected new IEnumerable<TreeNode> Children
+        {
+            get
+            {
+                var result = new List<TreeNode>();
+                if (base.ChildCount <= 0)
+                {
+                    return result;
+                }
+
+                foreach (var child in base.Children)
+                {
+                    var node = child as TreeNode;
+                    if (node == null)
+                    {
+                        node = (TreeNode)this.factory.Create(new CommonToken(child.Type, child.Text));
+                        var tree = child as CommonTree;
+                        if (tree != null)
+                        {
+                            node.AddChildren(tree.Children);
+                        }
+                    }
+
+                    result.Add(node);
+                }
+
+                return result;
+            }
         }
 
         public abstract Expression BuildLinqExpression(

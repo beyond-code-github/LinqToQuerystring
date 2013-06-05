@@ -10,8 +10,8 @@
 
     public class OrderByNode : SingleChildNode
     {
-        public OrderByNode(Type inputType, IToken payload)
-            : base(inputType, payload)
+        public OrderByNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(inputType, payload, treeNodeFactory)
         {
         }
 

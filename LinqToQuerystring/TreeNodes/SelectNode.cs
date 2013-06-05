@@ -12,8 +12,8 @@
 
     public class SelectNode : SingleChildNode
     {
-        public SelectNode(Type inputType, IToken payload)
-            : base(inputType, payload)
+        public SelectNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(inputType, payload, treeNodeFactory)
         {
         }
 

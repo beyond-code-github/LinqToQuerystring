@@ -10,8 +10,8 @@
 
     public class DynamicIdentifierNode : TreeNode
     {
-        public DynamicIdentifierNode(Type inputType, IToken payload)
-            : base(inputType, payload)
+        public DynamicIdentifierNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(inputType, payload, treeNodeFactory)
         {
         }
 

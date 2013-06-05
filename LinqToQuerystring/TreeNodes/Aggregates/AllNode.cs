@@ -8,9 +8,9 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class AnyNode : TreeNode
+    public class AllNode : TreeNode
     {
-        public AnyNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public AllNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
             : base(inputType, payload, treeNodeFactory)
         {
         }
@@ -27,7 +27,7 @@
             var lambda = Expression.Lambda(
                 filter.BuildLinqExpression(query, expression, parameter), new[] { parameter });
 
-            return Expression.Call(typeof(Enumerable), "Any", new[] { underlyingType }, property, lambda);
+            return Expression.Call(typeof(Enumerable), "All", new[] { underlyingType }, property, lambda);
         }
     }
 }

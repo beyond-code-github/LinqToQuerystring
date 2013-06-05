@@ -11,8 +11,8 @@
 
     public class DateTimeNode : TreeNode
     {
-        public DateTimeNode(Type inputType, IToken payload)
-            : base(inputType, payload)
+        public DateTimeNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(inputType, payload, treeNodeFactory)
         {
         }
 

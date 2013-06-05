@@ -11,8 +11,8 @@
 
     public class AscNode : ExplicitOrderByBase
     {
-        public AscNode(Type inputType, IToken payload)
-            : base(inputType, payload)
+        public AscNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(inputType, payload, treeNodeFactory)
         {
         }
 
@@ -22,8 +22,7 @@
             Expression childExpression = expression;
 
             var temp = parameter;
-
-            foreach (var child in this.Children.Cast<TreeNode>())
+            foreach (var child in this.Children)
             {
                 childExpression = child.BuildLinqExpression(query, childExpression, temp);
                 temp = childExpression;

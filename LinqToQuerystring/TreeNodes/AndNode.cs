@@ -10,8 +10,8 @@
 
     public class AndNode : TwoChildNode
     {
-        public AndNode(Type inputType, IToken payload)
-            : base(inputType, payload)
+        public AndNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(inputType, payload, treeNodeFactory)
         {
         }
 

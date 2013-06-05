@@ -10,8 +10,8 @@
 
     public class EqualsNode : TwoChildNode
     {
-        public EqualsNode(Type inputType, IToken payload)
-            : base(inputType, payload)
+        public EqualsNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(inputType, payload, treeNodeFactory)
         {
         }
 

@@ -10,8 +10,8 @@
 
     public class GreaterThanOrEqualNode : TwoChildNode
     {
-        public GreaterThanOrEqualNode(Type inputType, IToken payload)
-            : base(inputType, payload)
+        public GreaterThanOrEqualNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(inputType, payload, treeNodeFactory)
         {
         }
 

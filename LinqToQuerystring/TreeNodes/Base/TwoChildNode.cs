@@ -1,13 +1,14 @@
 ﻿namespace LinqToQuerystring.TreeNodes.Base
 {
     using System;
+    using System.Linq;
 
     using Antlr.Runtime;
 
     public abstract class TwoChildNode : TreeNode
     {
-        protected TwoChildNode(Type inputType, IToken payload)
-            : base(inputType, payload)
+        protected TwoChildNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(inputType, payload, treeNodeFactory)
         {
         }
 
@@ -15,7 +16,7 @@
         {
             get
             {
-                var leftNode = this.Children[0] as TreeNode;
+                var leftNode = this.Children.ElementAtOrDefault(0);
                 if (leftNode == null)
                 {
                     throw new InvalidOperationException(string.Format("No valid left node for {0}", this.GetType()));
@@ -29,7 +30,7 @@
         {
             get
             {
-                var rightNode = this.Children[1] as TreeNode;
+                var rightNode = this.Children.ElementAtOrDefault(1);
                 if (rightNode == null)
                 {
                     throw new InvalidOperationException(string.Format("No valid right node for {0}", this.GetType()));

@@ -10,8 +10,8 @@
 
     public class NotEqualsNode : TwoChildNode
     {
-        public NotEqualsNode(Type inputType, IToken payload)
-            : base(inputType, payload)
+        public NotEqualsNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(inputType, payload, treeNodeFactory)
         {
         }
 

@@ -10,8 +10,8 @@
 
     public class BoolNode : TreeNode
     {
-        public BoolNode(Type inputType, IToken payload)
-            : base(inputType, payload)
+        public BoolNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(inputType, payload, treeNodeFactory)
         {
         }
 

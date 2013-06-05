@@ -10,8 +10,8 @@
 
     public class TopNode : SingleChildNode
     {
-        public TopNode(Type inputType, IToken payload)
-            : base(inputType, payload)
+        public TopNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(inputType, payload, treeNodeFactory)
         {
         }
 

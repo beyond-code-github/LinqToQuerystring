@@ -10,8 +10,8 @@
 
     public class EndsWithNode : TwoChildNode
     {
-        public EndsWithNode(Type inputType, IToken payload)
-            : base(inputType, payload)
+        public EndsWithNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+            : base(inputType, payload, treeNodeFactory)
         {
         }
 
