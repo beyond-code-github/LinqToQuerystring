@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="ComplexClass.cs" />
     <Compile Include="ConcreteClass.cs" />
+    <Compile Include="IndexedClass.cs" />
     <Compile Include="InstanceBuilders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomDataGenerators.cs" />

@@ -73,7 +73,6 @@
     <Compile Include="Exceptions.cs" />
     <Compile Include="Filtering.cs" />
     <Compile Include="Functions.cs" />
-    <Compile Include="IndexedClass.cs" />
     <Compile Include="InlineCount.cs" />
     <Compile Include="PagingAndOrdering.cs" />
     <Compile Include="Projection.cs" />

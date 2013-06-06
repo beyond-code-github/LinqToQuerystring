@@ -1,4 +1,4 @@
-﻿namespace TestHarness
+﻿namespace LinqToQueryString.Tests
 {
     using System.Collections.Generic;
 
@@ -15,11 +15,11 @@
         {
             get
             {
-                return dictionary[index];
+                return this.dictionary[index];
             }
             set
             {
-                dictionary[index] = value;
+                this.dictionary[index] = value;
             }
         }
     }
