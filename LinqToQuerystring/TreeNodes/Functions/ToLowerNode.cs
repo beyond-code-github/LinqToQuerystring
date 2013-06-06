@@ -18,6 +18,12 @@
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
             var childexpression = this.ChildNode.BuildLinqExpression(query, expression, item);
+
+            if (!childexpression.Type.IsAssignableFrom(typeof(string)))
+            {
+                childexpression = Expression.Convert(childexpression, typeof(string));
+            }
+
             return Expression.Call(childexpression, "ToLower", null, null);
         }
     }
