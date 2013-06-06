@@ -1,6 +1,8 @@
 ﻿namespace LinqToQuerystring.TreeNodes.Aggregates
 {
     using System;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
 
@@ -21,7 +23,19 @@
             var alias = Children.ElementAt(1).Text;
             var filter = Children.ElementAt(2);
 
-            var underlyingType = property.Type.GetGenericArguments()[0];
+            var underlyingType = property.Type;
+            if (typeof(IEnumerable).IsAssignableFrom(property.Type) && property.Type.GetGenericArguments().Any())
+            {
+                underlyingType = property.Type.GetGenericArguments()[0];
+            }
+            else
+            {
+                //We will sometimes need to cater for special cases here, such as Enumerating BsonValues
+                underlyingType = Configuration.MapTypeForEnumerable(underlyingType);
+                var enumerable = typeof(IEnumerable<>).MakeGenericType(underlyingType);
+                property = Expression.Convert(property, enumerable);
+            }
+
             var parameter = Expression.Parameter(underlyingType, alias);
 
             var lambda = Expression.Lambda(
