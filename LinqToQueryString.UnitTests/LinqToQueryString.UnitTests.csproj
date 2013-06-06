@@ -74,6 +74,7 @@
     <Compile Include="Filtering.cs" />
     <Compile Include="Functions.cs" />
     <Compile Include="InlineCount.cs" />
+    <Compile Include="Options.cs" />
     <Compile Include="PagingAndOrdering.cs" />
     <Compile Include="Projection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

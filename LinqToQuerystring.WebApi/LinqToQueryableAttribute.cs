@@ -12,9 +12,12 @@
     {
         private readonly bool forceDynamicProperties;
 
-        public LinqToQueryableAttribute(bool forceDynamicProperties = false)
+        private readonly int maxPageSize;
+
+        public LinqToQueryableAttribute(bool forceDynamicProperties = false, int maxPageSize = -1)
         {
             this.forceDynamicProperties = forceDynamicProperties;
+            this.maxPageSize = maxPageSize;
         }
 
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
@@ -26,26 +29,24 @@
             if (originalquery != null)
             {
                 var queryString = actionExecutedContext.Request.RequestUri.Query;
-                if (!string.IsNullOrEmpty(queryString))
+
+                var genericType = originalquery.GetType().GetGenericArguments()[0];
+                var query = HttpUtility.UrlDecode(queryString);
+
+                dynamic reply = originalquery.LinqToQuerystring(genericType, query, this.forceDynamicProperties, this.maxPageSize);
+
+                var mediaFormatter =
+                    GlobalConfiguration.Configuration.Formatters.FirstOrDefault(o => o.CanWriteType(reply.GetType()));
+
+                if (mediaFormatter == null)
                 {
-                    var genericType = originalquery.GetType().GetGenericArguments()[0];
-                    var query = HttpUtility.UrlDecode(queryString);
-
-                    dynamic reply = originalquery.LinqToQuerystring(query, genericType, this.forceDynamicProperties);
-
-                    var mediaFormatter =
-                        GlobalConfiguration.Configuration.Formatters.FirstOrDefault(o => o.CanWriteType(reply.GetType()));
-
-                    if (mediaFormatter == null)
-                    {
-                        throw new InvalidOperationException(string.Format("No media type formatter was found for the type: {0}", reply.GetType().Name));
-                    }
-
-                    var response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.OK);
-                    response.Content = new ObjectContent(reply.GetType(), reply, mediaFormatter); ;
-
-                    actionExecutedContext.Response = response;
+                    throw new InvalidOperationException(string.Format("No media type formatter was found for the type: {0}", reply.GetType().Name));
                 }
+
+                var response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.OK);
+                response.Content = new ObjectContent(reply.GetType(), reply, mediaFormatter); ;
+
+                actionExecutedContext.Response = response;
             }
         }
     }

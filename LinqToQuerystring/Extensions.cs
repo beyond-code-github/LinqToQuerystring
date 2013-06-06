@@ -14,17 +14,17 @@
 
     public static class Extensions
     {
-        public static TResult LinqToQuerystring<T, TResult>(this IQueryable<T> query, string queryString, bool forceDynamicProperties = false)
+        public static TResult LinqToQuerystring<T, TResult>(this IQueryable<T> query, string queryString = "", bool forceDynamicProperties = false, int maxPageSize = -1)
         {
-            return (TResult)LinqToQuerystring(query, queryString, typeof(T), forceDynamicProperties);
+            return (TResult)LinqToQuerystring(query, typeof(T), queryString, forceDynamicProperties, maxPageSize);
         }
 
-        public static IQueryable<T> LinqToQuerystring<T>(this IQueryable<T> query, string queryString, bool forceDynamicProperties = false)
+        public static IQueryable<T> LinqToQuerystring<T>(this IQueryable<T> query, string queryString = "", bool forceDynamicProperties = false, int maxPageSize = -1)
         {
-            return (IQueryable<T>)LinqToQuerystring(query, queryString, typeof(T), forceDynamicProperties);
+            return (IQueryable<T>)LinqToQuerystring(query, typeof(T), queryString, forceDynamicProperties, maxPageSize);
         }
 
-        public static object LinqToQuerystring(this IQueryable query, string queryString, Type inputType, bool forceDynamicProperties = false)
+        public static object LinqToQuerystring(this IQueryable query, Type inputType, string queryString = "", bool forceDynamicProperties = false, int maxPageSize = -1)
         {
             IQueryable queryResult = query;
             IQueryable constrainedQuery = query;
@@ -44,10 +44,28 @@
                 queryString = queryString.Substring(1);
             }
 
-            var odataQueries = string.Join(
-                "&", queryString.Split('&').Where(o => o.StartsWith("$")).ToArray());
+            var odataQueries = queryString.Split('&').Where(o => o.StartsWith("$")).ToList();
+            if (maxPageSize > 0)
+            {
+                var top = odataQueries.FirstOrDefault(o => o.StartsWith("$top"));
+                if (top != null)
+                {
+                    int pagesize;
+                    if (!int.TryParse(top.Split('=')[1], out pagesize) || pagesize >= maxPageSize)
+                    {
+                        odataQueries.Remove(top);
+                        odataQueries.Add("$top=" + maxPageSize);
+                    }
+                }
+                else
+                {
+                    odataQueries.Add("$top=" + maxPageSize);
+                }
+            }
 
-            var input = new ANTLRReaderStream(new StringReader(odataQueries));
+            var odataQuerystring = string.Join("&", odataQueries.ToArray());
+
+            var input = new ANTLRReaderStream(new StringReader(odataQuerystring));
             var lexer = new LinqToQuerystringLexer(input);
             var tokStream = new CommonTokenStream(lexer);
 
