@@ -18,7 +18,15 @@
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item)
         {
             var key = this.Text.Trim(new[] { '[', ']' });
-            return Expression.Call(item, "get_Item", null, Expression.Constant(key));
+            var property = Expression.Call(item, "get_Item", null, Expression.Constant(key));
+
+            var child = this.Children.FirstOrDefault();
+            if (child != null)
+            {
+                return child.BuildLinqExpression(query, expression, property);
+            }
+
+            return property;
         }
     }
 }
