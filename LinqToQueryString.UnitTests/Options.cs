@@ -1,8 +1,6 @@
-﻿namespace LinqToQueryString.UnitTest
+﻿namespace LinqToQueryString.UnitTests
 {
     using System.Linq;
-
-    using LinqToQueryString.UnitTests;
 
     using LinqToQuerystring;
 
