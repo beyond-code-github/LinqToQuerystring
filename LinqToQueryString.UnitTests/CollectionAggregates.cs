@@ -196,9 +196,9 @@
 
     #endregion
 
-    #region Nested Complex collections
+    #region Nested Simple collections
 
-    public class When_filtering_on_a_nested_complex_collection_property_using_any : CollectionAggregates
+    public class When_filtering_on_a_nested_simple_collection_property_using_any : CollectionAggregates
     {
         private Because of = () => result = complexCollection.AsQueryable().LinqToQuerystring("$filter=Concrete/StringCollection/any(string: string eq 'Banana')");
 
@@ -207,7 +207,7 @@
         private It should_only_return_records_where_string_collection_contains_apple = () => result.ShouldEachConformTo(o => o.Concrete.StringCollection.Any(s => s == "Banana"));
     }
 
-    public class When_filtering_on_a_nested_complex_collection_property_using_any_with_an_or : CollectionAggregates
+    public class When_filtering_on_a_nested_simple_collection_property_using_any_with_an_or : CollectionAggregates
     {
         private Because of = () => result = complexCollection.AsQueryable().LinqToQuerystring("$filter=Concrete/StringCollection/any(string: string eq 'Banana' or string eq 'Eggs')");
 
@@ -216,7 +216,7 @@
         private It should_only_return_records_where_string_collection_contains_apple = () => result.ShouldEachConformTo(o => o.Concrete.StringCollection.Any(s => s == "Banana" || s == "Eggs"));
     }
 
-    public class When_filtering_on_a_nested_complex_collection_property_using_any_with_functions : CollectionAggregates
+    public class When_filtering_on_a_nested_simple_collection_property_using_any_with_functions : CollectionAggregates
     {
         private Because of = () => result = complexCollection.AsQueryable().LinqToQuerystring("$filter=Concrete/StringCollection/any(string: startswith(string,'Dog'))");
 
@@ -225,7 +225,7 @@
         private It should_only_return_records_where_string_collection_contains_apple = () => result.ShouldEachConformTo(o => o.Concrete.StringCollection.Any(s => s.StartsWith("Dog")));
     }
 
-    public class When_filtering_on_a_nested_complex_collection_property_using_all : CollectionAggregates
+    public class When_filtering_on_a_nested_simple_collection_property_using_all : CollectionAggregates
     {
         private Because of = () => result = complexCollection.AsQueryable().LinqToQuerystring("$filter=Concrete/StringCollection/all(string: string eq 'Apple')");
 
@@ -234,7 +234,7 @@
         private It should_only_return_records_where_string_collection_contains_apple = () => result.ShouldEachConformTo(o => o.Concrete.StringCollection.All(s => s == "Apple"));
     }
 
-    public class When_filtering_on_a_nested_complex_collection_property_using_all_with_an_or : CollectionAggregates
+    public class When_filtering_on_a_nested_simple_collection_property_using_all_with_an_or : CollectionAggregates
     {
         private Because of = () => result = complexCollection.AsQueryable().LinqToQuerystring("$filter=Concrete/StringCollection/all(string: string eq 'Apple' or string eq 'Banana')");
 
@@ -243,7 +243,7 @@
         private It should_only_return_records_where_string_collection_contains_apple = () => result.ShouldEachConformTo(o => o.Concrete.StringCollection.All(s => s == "Apple" || s == "Banana"));
     }
 
-    public class When_filtering_on_a_nested_complex_property_using_all_with_functions : CollectionAggregates
+    public class When_filtering_on_a_nested_simple_property_using_all_with_functions : CollectionAggregates
     {
         private Because of = () => result = complexCollection.AsQueryable().LinqToQuerystring("$filter=Concrete/StringCollection/all(string: startswith(string,'App'))");
 
