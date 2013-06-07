@@ -86,6 +86,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="SqlCollectionAggregates.cs" />
     <Compile Include="Exceptions.cs" />
     <Compile Include="SqlFunctions.cs" />
     <Compile Include="SqlInlineCount.cs" />

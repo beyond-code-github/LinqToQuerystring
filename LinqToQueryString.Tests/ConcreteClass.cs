@@ -5,6 +5,11 @@
 
     public class ConcreteClass : IComparable<ConcreteClass>
     {
+        public ConcreteClass()
+        {
+            Date = DateTime.UtcNow;
+        }
+
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -15,7 +20,9 @@
 
         public int Age { get; set; }
 
-        public List<string> StringCollection { get; set; }
+        public List<EdgeCaseClass> Children { get; set; }
+
+        public IEnumerable<string> StringCollection { get; set; }
 
         public int CompareTo(ConcreteClass other)
         {
@@ -25,6 +32,11 @@
 
     public class EdgeCaseClass : IComparable<EdgeCaseClass>
     {
+        public EdgeCaseClass()
+        {
+            Date = DateTime.UtcNow;
+        }
+
         public int Id { get; set; }
 
         public string Name { get; set; }
