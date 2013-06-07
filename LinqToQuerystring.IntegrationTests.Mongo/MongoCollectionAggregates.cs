@@ -116,7 +116,7 @@
 
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
-        private It should_only_return_records_where_string_collection_contains_apple = () => result.ShouldEachConformTo(o => o["StringCollection"].AsBsonArray.Any(s => s == "Banana"));
+        private It should_only_return_records_where_concrete_collection_contains_element_with_name_banana = () => result.ShouldEachConformTo(o => o["ConcreteCollection"].AsBsonArray.Any(s => ((string)s["Name"]) == "Banana"));
     }
 
     public class When_filtering_on_a_complex_collection_property_using_any_with_an_or : MongoCollectionAggregates
@@ -125,7 +125,7 @@
 
         private It should_return_four_records = () => result.Count().ShouldEqual(4);
 
-        private It should_only_return_records_where_string_collection_contains_apple = () => result.ShouldEachConformTo(o => o["StringCollection"].AsBsonArray.Any(s => s == "Banana" || s == "Eggs"));
+        private It should_only_return_records_where_concrete_collection_contains_element_with_name_banana_or_eggs = () => result.ShouldEachConformTo(o => o["ConcreteCollection"].AsBsonArray.Any(s => ((string)s["Name"]) == "Banana" || ((string)s["Name"]) == "Eggs"));
     }
 
     public class When_filtering_on_a_complex_collection_property_using_any_with_functions : MongoCollectionAggregates
@@ -134,7 +134,43 @@
 
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
-        private It should_only_return_records_where_string_collection_contains_apple = () => result.ShouldEachConformTo(o => o["StringCollection"].AsBsonArray.Any(s => ((string)s).StartsWith("Dog")));
+        private It should_only_return_records_where_concrete_collection_contains_element_with_name_starts_with_dog = () => result.ShouldEachConformTo(o => o["ConcreteCollection"].AsBsonArray.Any(s => ((string)s["Name"]).StartsWith("Dog")));
+    }
+
+    public class When_filtering_on_a_complex_collection_property_using_count_greater_than : MongoCollectionAggregates
+    {
+        private Because of = () => result = collection.LinqToQuerystring("$filter=ConcreteCollection/count() gt 3", true).ToList();
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_concrete_collection_count_greater_than_three = () => result.ShouldEachConformTo(o => o["ConcreteCollection"].AsBsonArray.Count() > 3);
+    }
+
+    public class When_filtering_on_a_complex_collection_property_using_count_greater_than_or_equals : MongoCollectionAggregates
+    {
+        private Because of = () => result = collection.LinqToQuerystring("$filter=ConcreteCollection/count() ge 3", true).ToList();
+
+        private It should_return_three_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_concrete_collection_count_greater_than_or_equal_to_three = () => result.ShouldEachConformTo(o => o["ConcreteCollection"].AsBsonArray.Count() >= 3);
+    }
+
+    public class When_filtering_on_a_complex_collection_property_using_count_less_than : MongoCollectionAggregates
+    {
+        private Because of = () => result = collection.LinqToQuerystring("$filter=ConcreteCollection/count() lt 3", true).ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_concrete_collection_count_less_than_three = () => result.ShouldEachConformTo(o => o["ConcreteCollection"].AsBsonArray.Count() < 3);
+    }
+
+    public class When_filtering_on_a_complex_collection_property_using_count_less_than_or_equals : MongoCollectionAggregates
+    {
+        private Because of = () => result = collection.LinqToQuerystring("$filter=ConcreteCollection/count() le 3", true).ToList();
+
+        private It should_return_four_records = () => result.Count().ShouldEqual(4);
+
+        private It should_only_return_records_where_concrete_collection_count_less_than_or_equal_to_three = () => result.ShouldEachConformTo(o => o["ConcreteCollection"].AsBsonArray.Count() <= 3);
     }
 
     #endregion
@@ -147,25 +183,7 @@
 
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
-        private It should_only_return_records_where_string_collection_contains_apple = () => result.ShouldEachConformTo(o => o["Concrete"]["ComplexCollection"].AsBsonArray.Any(s => s["Name"] == "Banana"));
-    }
-
-    public class When_filtering_on_a_nested_complex_collection_property_using_any_with_an_or : MongoCollectionAggregates
-    {
-        private Because of = () => result = collection.LinqToQuerystring("$filter=Concrete/ComplexCollection/any(complex: complex/Name eq 'Banana' or complex/Name eq 'Eggs')", true).ToList();
-
-        private It should_return_four_records = () => result.Count().ShouldEqual(4);
-
-        private It should_only_return_records_where_string_collection_contains_apple = () => result.ShouldEachConformTo(o => o["Concrete"]["ComplexCollection"].AsBsonArray.Any(s => s["Name"] == "Banana" || s["Name"] == "Eggs"));
-    }
-
-    public class When_filtering_on_a_nested_complex_collection_property_using_any_with_functions : MongoCollectionAggregates
-    {
-        private Because of = () => result = collection.LinqToQuerystring("$filter=Concrete/ComplexCollection/any(complex: startswith(complex/Name,'Dog'))", true).ToList();
-
-        private It should_return_two_records = () => result.Count().ShouldEqual(2);
-
-        private It should_only_return_records_where_string_collection_contains_apple = () => result.ShouldEachConformTo(o => o["Concrete"]["ComplexCollection"].AsBsonArray.Any(s => ((string)s["Name"]).StartsWith("Dog")));
+        private It should_only_return_records_where_concrete_complex_collection_contains_element_with_name_banana = () => result.ShouldEachConformTo(o => o["Concrete"]["ComplexCollection"].AsBsonArray.Any(s => s["Name"] == "Banana"));
     }
 
     #endregion

@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
 
@@ -24,6 +25,13 @@
             if (typeof(IEnumerable).IsAssignableFrom(property.Type) && property.Type.GetGenericArguments().Any())
             {
                 underlyingType = property.Type.GetGenericArguments()[0];
+            }
+            else
+            {
+                //We will sometimes need to cater for special cases here, such as Enumerating BsonValues
+                underlyingType = Configuration.MapTypeForEnumerable(underlyingType);
+                var enumerable = typeof(IEnumerable<>).MakeGenericType(underlyingType);
+                property = Expression.Convert(property, enumerable);
             }
 
             return Expression.Call(typeof(Enumerable), "Count", new[] { underlyingType }, property);
