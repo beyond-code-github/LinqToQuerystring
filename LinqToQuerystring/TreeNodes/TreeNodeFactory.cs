@@ -70,6 +70,16 @@
                     return new AnyNode(inputType, token, this);
                 case LinqToQuerystringLexer.ALL:
                     return new AllNode(inputType, token, this);
+                case LinqToQuerystringLexer.COUNT:
+                    return new CountNode(inputType, token, this);
+                case LinqToQuerystringLexer.AVERAGE:
+                    return new AverageNode(inputType, token, this);
+                case LinqToQuerystringLexer.MAX:
+                    return new MaxNode(inputType, token, this);
+                case LinqToQuerystringLexer.MIN:
+                    return new MinNode(inputType, token, this);
+                case LinqToQuerystringLexer.SUM:
+                    return new SumNode(inputType, token, this);
                 case LinqToQuerystringLexer.ALIAS:
                     return new AliasNode(inputType, token, this);
                 case LinqToQuerystringLexer.DYNAMICIDENTIFIER:

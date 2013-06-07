@@ -78,7 +78,11 @@ functioncall[bool subquery]
 	
 accessor[bool subquery]:
 		(propertyname[subquery] -> propertyname) (
-			'/' (func=ANY | func=ALL) '(' id=IDENTIFIER ':' SPACE filterexpression[true] ')' -> ^($func $accessor ALIAS[$id] filterexpression)
+			'/' (func=ANY | func=ALL | func=COUNT | func=MAX | func=MIN | func=SUM | func=AVERAGE) 
+			'(' (
+				(id=IDENTIFIER ':' SPACE filterexpression[true]) -> ^($func $accessor ALIAS[$id] filterexpression)
+				| -> ^($func $accessor) )
+			')' 
 		)?;
 	
 function
@@ -180,13 +184,23 @@ ENDSWITH
 	
 SUBSTRINGOF
 	:	'substringof';
-
+	
 TOLOWER
 	:	'tolower';
 	
 ANY	: 	'any';
 	
 ALL	:	'all';
+
+COUNT	:	'count';
+
+MIN	:	'min';
+
+MAX	:	'max';
+
+SUM	:	'sum';
+
+AVERAGE	:	'average';
 		
 INT	
 	:	'0'..'9'+;

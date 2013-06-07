@@ -13,5 +13,7 @@
         public List<ConcreteClass> ConcreteCollection { get; set; }
 
         public string Title { get; set; }
+
+        public List<int> IntCollection { get; set; }
     }
 }
