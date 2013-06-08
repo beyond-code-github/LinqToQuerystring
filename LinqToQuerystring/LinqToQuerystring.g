@@ -100,7 +100,7 @@ orderpropertyname
 			| (SPACE (op=ASC | op=DESC)) -> ^($op propertyname)
 		);
 	
-constant:	(INT+ | BOOL | STRING | DATETIME);
+constant:	(INT^ | BOOL^ | STRING^ | DATETIME^ | LONG^ | SINGLE^ | DOUBLE^ | GUID^ | BYTE^);
 
 propertyname[bool subquery]
 	:	(identifierpart[subquery] -> identifierpart) ('/' next=subpropertyname[false] -> ^($propertyname $next))?;
@@ -202,28 +202,38 @@ SUM	:	'sum';
 
 AVERAGE	:	'average';
 		
-INT	
-	:	'0'..'9'+;
+INT	:	'0'..'9'+;
+	
+LONG	:	('0'..'9')+ 'L';
+	
+DOUBLE	:	('0'..'9')+ '.' ('0'..'9')+;
+	
+SINGLE	:	('0'..'9')+ '.' ('0'..'9')+ 'f';
 	
 BOOL	:	('true' | 'false');
 
 DATETIME
 	:	'datetime\'' '0'..'9'+ '-' '0'..'9'+ '-' + '0'..'9'+ 'T' '0'..'9'+ ':' '0'..'9'+ (':' '0'..'9'+ ('.' '0'..'9'+)*)* '\'';
+	
+GUID	:	'guid\'' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '\'';
 
-SPACE	
-	:	(' '|'\t')+;
+BYTE	:	'0x' HEX_PAIR;
 
-NEWLINE 
-	:	('\r'|'\n')+;
+SPACE	:	(' '|'\t')+;
+
+NEWLINE :	('\r'|'\n')+;
 	
 DYNAMICIDENTIFIER
 	:	'[' ('a'..'z'|'A'..'Z'|'0'..'9'|'_')+ ']';	
 	
+fragment
+HEX_PAIR
+	: HEX_DIGIT HEX_DIGIT;
+	
 IDENTIFIER
 	:	('a'..'z'|'A'..'Z'|'0'..'9'|'_')+;
 	
-STRING
-    	: '\'' (ESC_SEQ| ~('\\'|'\''))* '\'';
+STRING 	: 	'\'' (ESC_SEQ| ~('\\'|'\''))* '\'';
 
 fragment
 HEX_DIGIT : ('0'..'9'|'a'..'f'|'A'..'F') ;

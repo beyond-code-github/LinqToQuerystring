@@ -60,7 +60,12 @@
     <Compile Include="TreeNodes\Base\SingleChildNode.cs" />
     <Compile Include="TreeNodes\Base\TreeNode.cs" />
     <Compile Include="TreeNodes\Base\TwoChildNode.cs" />
-    <Compile Include="TreeNodes\BoolNode.cs" />
+    <Compile Include="TreeNodes\DataTypes\BoolNode.cs" />
+    <Compile Include="TreeNodes\DataTypes\ByteNode.cs" />
+    <Compile Include="TreeNodes\DataTypes\GuidNode.cs" />
+    <Compile Include="TreeNodes\DataTypes\SingleNode.cs" />
+    <Compile Include="TreeNodes\DataTypes\DoubleNode.cs" />
+    <Compile Include="TreeNodes\DataTypes\LongNode.cs" />
     <Compile Include="TreeNodes\DynamicIdentifierNode.cs" />
     <Compile Include="TreeNodes\Functions\ToLowerNode.cs" />
     <Compile Include="TreeNodes\Functions\SubstringOfNode.cs" />
@@ -68,7 +73,7 @@
     <Compile Include="TreeNodes\Functions\StartsWithNode.cs" />
     <Compile Include="TreeNodes\InlineCountNode.cs" />
     <Compile Include="TreeNodes\SelectNode.cs" />
-    <Compile Include="TreeNodes\DateTimeNode.cs" />
+    <Compile Include="TreeNodes\DataTypes\DateTimeNode.cs" />
     <Compile Include="TreeNodes\LessThanNode.cs" />
     <Compile Include="TreeNodes\LessThanOrEqualNode.cs" />
     <Compile Include="TreeNodes\GreaterThanOrEqualNode.cs" />
@@ -78,12 +83,12 @@
     <Compile Include="TreeNodes\EqualsNode.cs" />
     <Compile Include="TreeNodes\FilterNode.cs" />
     <Compile Include="TreeNodes\IdentifierNode.cs" />
-    <Compile Include="TreeNodes\IntNode.cs" />
+    <Compile Include="TreeNodes\DataTypes\IntNode.cs" />
     <Compile Include="TreeNodes\NotNode.cs" />
     <Compile Include="TreeNodes\OrderByNode.cs" />
     <Compile Include="TreeNodes\OrNode.cs" />
     <Compile Include="TreeNodes\SkipNode.cs" />
-    <Compile Include="TreeNodes\StringNode.cs" />
+    <Compile Include="TreeNodes\DataTypes\StringNode.cs" />
     <Compile Include="TreeNodes\TopNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TreeNodes\TreeNodeFactory.cs" />

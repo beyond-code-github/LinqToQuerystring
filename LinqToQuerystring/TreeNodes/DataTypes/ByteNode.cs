@@ -1,4 +1,4 @@
-﻿namespace LinqToQuerystring.TreeNodes
+﻿namespace LinqToQuerystring.TreeNodes.DataTypes
 {
     using System;
     using System.Linq;
@@ -8,16 +8,16 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class BoolNode : TreeNode
+    public class ByteNode : TreeNode
     {
-        public BoolNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public ByteNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
             : base(inputType, payload, treeNodeFactory)
         {
         }
 
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
-            return Expression.Constant(Convert.ToBoolean(this.Text));
+            return Expression.Constant(Convert.ToByte(this.Text.Replace("0x", string.Empty), 16));
         }
     }
 }

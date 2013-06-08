@@ -5,6 +5,7 @@
     using Antlr.Runtime.Tree;
 
     using LinqToQuerystring.TreeNodes.Aggregates;
+    using LinqToQuerystring.TreeNodes.DataTypes;
     using LinqToQuerystring.TreeNodes.Functions;
 
     public class TreeNodeFactory : CommonTreeAdaptor
@@ -98,6 +99,16 @@
                     return new IntNode(inputType, token, this);
                 case LinqToQuerystringLexer.DATETIME:
                     return new DateTimeNode(inputType, token, this);
+                case LinqToQuerystringLexer.DOUBLE:
+                    return new DoubleNode(inputType, token, this);
+                case LinqToQuerystringLexer.SINGLE:
+                    return new SingleNode(inputType, token, this);
+                case LinqToQuerystringLexer.LONG:
+                    return new LongNode(inputType, token, this);
+                case LinqToQuerystringLexer.BYTE:
+                    return new ByteNode(inputType, token, this);
+                case LinqToQuerystringLexer.GUID:
+                    return new GuidNode(inputType, token, this);
                 case LinqToQuerystringLexer.DESC:
                     return new DescNode(inputType, token, this);
                 case LinqToQuerystringLexer.ASC:

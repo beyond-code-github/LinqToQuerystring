@@ -1,4 +1,4 @@
-﻿namespace LinqToQuerystring.TreeNodes
+﻿namespace LinqToQuerystring.TreeNodes.DataTypes
 {
     using System;
     using System.Linq;

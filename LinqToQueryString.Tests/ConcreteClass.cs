@@ -24,6 +24,16 @@
 
         public IEnumerable<string> StringCollection { get; set; }
 
+        public long Population { get; set; }
+
+        public double Value { get; set; }
+
+        public float Cost { get; set; }
+
+        public byte Code { get; set; }
+
+        public Guid Guid { get; set; }
+
         public int CompareTo(ConcreteClass other)
         {
             return String.CompareOrdinal(this.Name, other.Name);
