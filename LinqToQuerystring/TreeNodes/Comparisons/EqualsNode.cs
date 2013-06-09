@@ -1,4 +1,4 @@
-﻿namespace LinqToQuerystring.TreeNodes
+﻿namespace LinqToQuerystring.TreeNodes.Comparisons
 {
     using System;
     using System.Linq;
@@ -42,15 +42,7 @@
                 return Expression.Not(rightExpression);
             }
 
-            if (!leftExpression.Type.IsAssignableFrom(rightExpression.Type))
-            {
-                rightExpression = Expression.Convert(rightExpression, leftExpression.Type);
-            }
-
-            if (!rightExpression.Type.IsAssignableFrom(leftExpression.Type))
-            {
-                leftExpression = Expression.Convert(leftExpression, rightExpression.Type);
-            }
+            NormalizeTypes(ref leftExpression, ref rightExpression);
 
             return Expression.Equal(leftExpression, rightExpression);
         }

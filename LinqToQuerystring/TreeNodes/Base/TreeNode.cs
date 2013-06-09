@@ -61,5 +61,65 @@
         {
             return 0;
         }
+
+        protected static void NormalizeTypes(ref Expression leftSide, ref Expression rightSide)
+        {
+            var rightSideIsConstant = rightSide is ConstantExpression;
+            var leftSideIsConstant = leftSide is ConstantExpression;
+
+            if (rightSideIsConstant && leftSideIsConstant)
+            {
+                return;
+            }
+
+            if (rightSideIsConstant)
+            {
+                // If we are comparing to an object try to cast it to the same type as the constant
+                if (leftSide.Type == typeof(object))
+                {
+                    leftSide = MapAndCast(leftSide, rightSide);
+                }
+                else
+                {
+                    rightSide = MapAndCast(rightSide, leftSide);
+                }
+            }
+
+            if (leftSideIsConstant)
+            {
+                // If we are comparing to an object try to cast it to the same type as the constant
+                if (rightSide.Type == typeof(object))
+                {
+                    rightSide = MapAndCast(rightSide, leftSide);
+                }
+                else
+                {
+                    leftSide = MapAndCast(leftSide, rightSide);
+                }
+            }
+        }
+
+        private static Expression MapAndCast(Expression from, Expression to)
+        {
+            var mapped = Configuration.TypeConversionMap(from.Type, to.Type);
+            if (mapped != from.Type)
+            {
+                from = CastIfNeeded(from, mapped);
+            }
+
+            return CastIfNeeded(from, to.Type);
+        }
+
+        protected static Expression CastIfNeeded(Expression expression, Type type)
+        {
+            var converted = expression;
+            if (!type.IsAssignableFrom(expression.Type))
+            {
+                var convertToType = Configuration.TypeConversionMap(expression.Type, type);
+                converted = Expression.Convert(expression, convertToType);
+            }
+
+            return converted;
+        }
     }
 }

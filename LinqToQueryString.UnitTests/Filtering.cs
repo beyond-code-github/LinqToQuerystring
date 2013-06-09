@@ -101,6 +101,15 @@
         private It should_only_return_records_where_name_is_apple = () => result.ShouldEachConformTo(o => o.Name == "Apple");
     }
 
+    public class When_using_eq_filter_on_a_single_string_with_reversed_parameters : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter='Apple' eq Name");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_name_is_apple = () => result.ShouldEachConformTo(o => o.Name == "Apple");
+    }
+
     public class When_using_not_eq_filter_on_a_single_string : Filtering
     {
         private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Name eq 'Apple'");

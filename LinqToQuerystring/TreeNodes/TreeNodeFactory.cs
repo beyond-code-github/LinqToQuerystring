@@ -5,6 +5,7 @@
     using Antlr.Runtime.Tree;
 
     using LinqToQuerystring.TreeNodes.Aggregates;
+    using LinqToQuerystring.TreeNodes.Comparisons;
     using LinqToQuerystring.TreeNodes.DataTypes;
     using LinqToQuerystring.TreeNodes.Functions;
 

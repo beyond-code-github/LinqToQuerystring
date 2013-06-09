@@ -60,5 +60,12 @@ namespace LinqToQuerystring.IntegrationTests.Mongo
                             }
                         });
         }
+
+        public static MongoDocument BuildMongoDocument(string name, int age, DateTime date, bool complete, long population, double value, float cost, byte code, Guid guid)
+        {
+            return
+                new MongoDocument(
+                    new BsonDocument { { "Name", name }, { "Date", date }, { "Age", age }, { "Complete", complete }, { "Population", population }, { "Value", value }, { "Cost", cost }, { "Code", code }, { "Guid", guid } });
+        }
     }
 }

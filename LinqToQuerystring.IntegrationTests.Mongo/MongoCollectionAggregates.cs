@@ -30,14 +30,14 @@
 
         private Establish context = () =>
             {
-                Configuration.MapTypeForEnumerable = (type) =>
+                Configuration.EnumerableTypeMap = (type) =>
                     {
                         if (type == typeof(BsonValue))
                         {
                             return typeof(MongoDocument);
                         }
 
-                        return Configuration.DefaultMapTypeForEnumerable(type);
+                        return Configuration.DefaultTypeMap(type);
                     };
 
                 server = MongoServer.Create("mongodb://localhost/LinqToQuerystring?safe=true");

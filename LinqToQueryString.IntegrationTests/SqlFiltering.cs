@@ -23,23 +23,27 @@
 
         protected static List<EdgeCaseClass> edgeCaseCollection;
 
+        protected static Guid[] guidArray;
+
         private Establish context = () =>
         {
+            guidArray = Enumerable.Range(1, 5).Select(o => Guid.NewGuid()).ToArray();
+
             testDb = new TestDbContext();
             Database.SetInitializer(new DropCreateDatabaseAlways<TestDbContext>());
             testDb.Database.Initialize(true);
 
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Apple", 1, new DateTime(2002, 01, 01), true));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Apple", 2, new DateTime(2005, 01, 01), false));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Custard", 1, new DateTime(2003, 01, 01), true));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Custard", 2, new DateTime(2002, 01, 01), false));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Custard", 3, new DateTime(2002, 01, 01), true));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Banana", 3, new DateTime(2003, 01, 01), false));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Eggs", 1, new DateTime(2005, 01, 01), true));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Eggs", 3, new DateTime(2001, 01, 01), false));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2003, 01, 01), true));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2004, 01, 01), false));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Dogfood", 5, new DateTime(2001, 01, 01), true));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Apple", 1, new DateTime(2002, 01, 01), true, 10000000000, 111.111, 111.111f, 0x00, guidArray[0]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Apple", 2, new DateTime(2005, 01, 01), false, 30000000000, 333.333, 333.333f, 0x22, guidArray[2]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Custard", 1, new DateTime(2003, 01, 01), true, 50000000000, 555.555, 555.555f, 0xDD, guidArray[4]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Custard", 2, new DateTime(2002, 01, 01), false, 30000000000, 333.333, 333.333f, 0x00, guidArray[2]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Custard", 3, new DateTime(2002, 01, 01), true, 40000000000, 444.444, 444.444f, 0x22, guidArray[3]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Banana", 3, new DateTime(2003, 01, 01), false, 10000000000, 111.111, 111.111f, 0x00, guidArray[0]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Eggs", 1, new DateTime(2005, 01, 01), true, 40000000000, 444.444, 444.444f, 0xCC, guidArray[3]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Eggs", 3, new DateTime(2001, 01, 01), false, 20000000000, 222.222, 222.222f, 0xCC, guidArray[1]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2003, 01, 01), true, 30000000000, 333.333, 333.333f, 0xEE, guidArray[2]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2004, 01, 01), false, 10000000000, 111.111, 111.111f, 0xDD, guidArray[0]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Dogfood", 5, new DateTime(2001, 01, 01), true, 20000000000, 222.222, 222.222f, 0xCC, guidArray[1]));
 
             testDb.EdgeCaseCollection.Add(InstanceBuilders.BuildEdgeCase("Apple\\Bob", 1, new DateTime(2002, 01, 01), true));
             testDb.EdgeCaseCollection.Add(InstanceBuilders.BuildEdgeCase("Apple\bBob", 1, new DateTime(2002, 01, 01), true));
@@ -84,6 +88,15 @@
     public class When_using_eq_filter_on_a_single_string : SqlFiltering
     {
         private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Name eq 'Apple'").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_name_is_apple = () => result.ShouldEachConformTo(o => o.Name == "Apple");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_with_reversed_parameters : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter='Apple' eq Name").ToList();
 
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
@@ -313,6 +326,503 @@
         private It should_return_two_records = () => result.Count().ShouldEqual(3);
 
         private It should_only_return_records_where_age_is_not_less_than_or_equal_to_3 = () => result.ShouldEachConformTo(o => !(o.Age <= 3));
+    }
+
+    #endregion
+
+    #region Filter on long tests
+
+    public class When_using_eq_filter_on_a_single_long : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Population eq 40000000000L").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_population_is_40000000000 = () => result.ShouldEachConformTo(o => o.Population == 40000000000);
+    }
+
+    public class When_using_not_eq_filter_on_a_single_long : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Population eq 40000000000L").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(9);
+
+        private It should_only_return_records_where_population_is_not_40000000000 = () => result.ShouldEachConformTo(o => o.Population != 40000000000);
+    }
+
+    public class When_using_ne_filter_on_a_single_long : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Population ne 40000000000L").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(9);
+
+        private It should_only_return_records_where_population_is_not_40000000000 = () => result.ShouldEachConformTo(o => o.Population != 40000000000);
+    }
+
+    public class When_using_not_ne_filter_on_a_single_long : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Population ne 40000000000L").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_population_is_40000000000 = () => result.ShouldEachConformTo(o => o.Population == 40000000000);
+    }
+
+    public class When_using_gt_filter_on_a_single_long : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Population gt 30000000000L").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_population_is_greater_than_30000000000 = () => result.ShouldEachConformTo(o => o.Population > 30000000000);
+    }
+
+    public class When_using_not_gt_filter_on_a_single_long : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Population gt 30000000000L").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(8);
+
+        private It should_only_return_records_where_population_is_not_greater_than_30000000000 = () => result.ShouldEachConformTo(o => !(o.Population > 30000000000));
+    }
+
+    public class When_using_ge_filter_on_a_single_long : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Population ge 30000000000L").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(6);
+
+        private It should_only_return_records_where_population_is_greater_than_or_equal_to_30000000000 = () => result.ShouldEachConformTo(o => o.Population >= 30000000000);
+    }
+
+    public class When_using_not_ge_filter_on_a_single_long : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Population ge 30000000000L").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(5);
+
+        private It should_only_return_records_where_population_is_not_greater_than_or_equal_to_30000000000 = () => result.ShouldEachConformTo(o => !(o.Population >= 30000000000));
+    }
+
+    public class When_using_lt_filter_on_a_single_long : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Population lt 30000000000L").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(5);
+
+        private It should_only_return_records_where_population_is_less_than_30000000000 = () => result.ShouldEachConformTo(o => o.Population < 30000000000);
+    }
+
+    public class When_using_not_lt_filter_on_a_single_long : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Population lt 30000000000L").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(6);
+
+        private It should_only_return_records_where_population_is_not_less_than_30000000000 = () => result.ShouldEachConformTo(o => !(o.Population < 30000000000));
+    }
+
+    public class When_using_le_filter_on_a_single_long : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Population le 30000000000L").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(8);
+
+        private It should_only_return_records_where_population_is_less_than_or_equal_to_30000000000 = () => result.ShouldEachConformTo(o => o.Population <= 30000000000);
+    }
+
+    public class When_using_not_le_filter_on_a_single_long : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Population le 30000000000L").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_population_is_not_less_than_or_equal_to_30000000000 = () => result.ShouldEachConformTo(o => !(o.Population <= 0000000000));
+    }
+
+    #endregion
+
+    #region Filter on byte tests
+
+    public class When_using_eq_filter_on_a_single_byte_numerically : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Code eq 34").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_code_is_0x22 = () => result.ShouldEachConformTo(o => o.Code == 0x22);
+    }
+
+    public class When_using_eq_filter_on_a_single_byte : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Code eq 0x22").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_code_is_0x22 = () => result.ShouldEachConformTo(o => o.Code == 0x22);
+    }
+
+    public class When_using_not_eq_filter_on_a_single_byte : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Code eq 0x22").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(9);
+
+        private It should_only_return_records_where_code_is_not_0x22 = () => result.ShouldEachConformTo(o => o.Code != 0x22);
+    }
+
+    public class When_using_ne_filter_on_a_single_byte : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Code ne 0x22").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(9);
+
+        private It should_only_return_records_where_code_is_not_0x22 = () => result.ShouldEachConformTo(o => o.Code != 0x22);
+    }
+
+    public class When_using_not_ne_filter_on_a_single_byte : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Code ne 0x22").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_code_is_0x22 = () => result.ShouldEachConformTo(o => o.Code == 0x22);
+    }
+
+    public class When_using_gt_filter_on_a_single_byte : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Code gt 0xCC").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_code_is_greater_than_0xCC = () => result.ShouldEachConformTo(o => o.Code > 0xCC);
+    }
+
+    public class When_using_not_gt_filter_on_a_single_byte : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Code gt 0xCC").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(8);
+
+        private It should_only_return_records_where_code_is_not_greater_than_0xCC = () => result.ShouldEachConformTo(o => !(o.Code > 0xCC));
+    }
+
+    public class When_using_ge_filter_on_a_single_byte : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Code ge 0xCC").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(6);
+
+        private It should_only_return_records_where_code_is_greater_than_or_equal_to_0xCC = () => result.ShouldEachConformTo(o => o.Code >= 0xCC);
+    }
+
+    public class When_using_not_ge_filter_on_a_single_byte : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Code ge 0xCC").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(5);
+
+        private It should_only_return_records_where_code_is_not_greater_than_or_equal_to_0xCC = () => result.ShouldEachConformTo(o => !(o.Code >= 0xCC));
+    }
+
+    public class When_using_lt_filter_on_a_single_byte : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Code lt 0xCC").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(5);
+
+        private It should_only_return_records_where_code_is_less_than_0xCC = () => result.ShouldEachConformTo(o => o.Code < 0xCC);
+    }
+
+    public class When_using_not_lt_filter_on_a_single_byte : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Code lt 0xCC").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(6);
+
+        private It should_only_return_records_where_code_is_not_less_than_0xCC = () => result.ShouldEachConformTo(o => !(o.Code < 0xCC));
+    }
+
+    public class When_using_le_filter_on_a_single_byte : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Code le 0xCC").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(8);
+
+        private It should_only_return_records_where_code_is_less_than_or_equal_to_0xCC = () => result.ShouldEachConformTo(o => o.Code <= 0xCC);
+    }
+
+    public class When_using_not_le_filter_on_a_single_byte : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Code le 0xCC").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_code_is_not_less_than_or_equal_to_0xCC = () => result.ShouldEachConformTo(o => !(o.Code <= 0000000000));
+    }
+
+    #endregion
+
+    #region Filter on guid tests
+
+    public class When_using_eq_filter_on_a_single_guid : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring(string.Format("?$filter=Guid eq guid'{0}'", guidArray[1])).ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_guid_matches = () => result.ShouldEachConformTo(o => o.Guid == guidArray[1]);
+    }
+
+    public class When_using_not_eq_filter_on_a_single_guid : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring(string.Format("?$filter=not Guid eq guid'{0}'", guidArray[1])).ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(9);
+
+        private It should_only_return_records_where_guid_matches = () => result.ShouldEachConformTo(o => o.Guid != guidArray[1]);
+    }
+
+    public class When_using_ne_filter_on_a_single_guid : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring(string.Format("?$filter=Guid ne guid'{0}'", guidArray[1])).ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(9);
+
+        private It should_only_return_records_where_guid_matches = () => result.ShouldEachConformTo(o => o.Guid != guidArray[1]);
+    }
+
+    public class When_using_not_ne_filter_on_a_single_guid : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring(string.Format("?$filter=not Guid ne guid'{0}'", guidArray[1])).ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_guid_matches = () => result.ShouldEachConformTo(o => o.Guid == guidArray[1]);
+    }
+
+    #endregion
+
+    #region Filter on single tests
+
+    public class When_using_eq_filter_on_a_single_single : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Cost eq 444.444f").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_cost_is_444point444 = () => result.ShouldEachConformTo(o => o.Cost == 444.444f);
+    }
+
+    public class When_using_not_eq_filter_on_a_single_single : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Cost eq 444.444f").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(9);
+
+        private It should_only_return_records_where_cost_is_not_444point444 = () => result.ShouldEachConformTo(o => o.Cost != 444.444f);
+    }
+
+    public class When_using_ne_filter_on_a_single_single : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Cost ne 444.444f").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(9);
+
+        private It should_only_return_records_where_cost_is_not_444point444 = () => result.ShouldEachConformTo(o => o.Cost != 444.444f);
+    }
+
+    public class When_using_not_ne_filter_on_a_single_single : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Cost ne 444.444f").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_cost_is_444point444 = () => result.ShouldEachConformTo(o => o.Cost == 444.444f);
+    }
+
+    public class When_using_gt_filter_on_a_single_single : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Cost gt 333.333f").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_cost_is_greater_than_333point333 = () => result.ShouldEachConformTo(o => o.Cost > 333.333f);
+    }
+
+    public class When_using_not_gt_filter_on_a_single_single : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Cost gt 333.333f").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(8);
+
+        private It should_only_return_records_where_cost_is_not_greater_than_333point333 = () => result.ShouldEachConformTo(o => !(o.Cost > 333.333f));
+    }
+
+    public class When_using_ge_filter_on_a_single_single : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Cost ge 333.333f").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(6);
+
+        private It should_only_return_records_where_cost_is_greater_than_or_equal_to_333point333 = () => result.ShouldEachConformTo(o => o.Cost >= 333.333f);
+    }
+
+    public class When_using_not_ge_filter_on_a_single_single : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Cost ge 333.333f").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(5);
+
+        private It should_only_return_records_where_cost_is_not_greater_than_or_equal_to_333point333 = () => result.ShouldEachConformTo(o => !(o.Cost >= 333.333f));
+    }
+
+    public class When_using_lt_filter_on_a_single_single : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Cost lt 333.333f").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(5);
+
+        private It should_only_return_records_where_cost_is_less_than_333point333 = () => result.ShouldEachConformTo(o => o.Cost < 333.333f);
+    }
+
+    public class When_using_not_lt_filter_on_a_single_single : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Cost lt 333.333f").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(6);
+
+        private It should_only_return_records_where_cost_is_not_less_than_333point333 = () => result.ShouldEachConformTo(o => !(o.Cost < 333.333f));
+    }
+
+    public class When_using_le_filter_on_a_single_single : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Cost le 333.333f").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(8);
+
+        private It should_only_return_records_where_cost_is_less_than_or_equal_to_333point333 = () => result.ShouldEachConformTo(o => o.Cost <= 333.333f);
+    }
+
+    public class When_using_not_le_filter_on_a_single_single : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Cost le 333.333f").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_cost_is_not_less_than_or_equal_to_333point333 = () => result.ShouldEachConformTo(o => !(o.Cost <= 333.333f));
+    }
+
+    #endregion
+
+    #region Filter on double tests
+
+    public class When_using_eq_filter_on_a_single_double : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Value eq 444.444").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_value_is_444point444 = () => result.ShouldEachConformTo(o => o.Value == 444.444);
+    }
+
+    public class When_using_not_eq_filter_on_a_single_double : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Value eq 444.444").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(9);
+
+        private It should_only_return_records_where_value_is_not_444point444 = () => result.ShouldEachConformTo(o => o.Value != 444.444);
+    }
+
+    public class When_using_ne_filter_on_a_single_double : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Value ne 444.444").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(9);
+
+        private It should_only_return_records_where_value_is_not_444point444 = () => result.ShouldEachConformTo(o => o.Value != 444.444);
+    }
+
+    public class When_using_not_ne_filter_on_a_single_double : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Value ne 444.444").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_value_is_444point444 = () => result.ShouldEachConformTo(o => o.Value == 444.444);
+    }
+
+    public class When_using_gt_filter_on_a_single_double : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Value gt 333.333").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_value_is_greater_than_333point333 = () => result.ShouldEachConformTo(o => o.Value > 333.333);
+    }
+
+    public class When_using_not_gt_filter_on_a_single_double : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Value gt 333.333").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(8);
+
+        private It should_only_return_records_where_value_is_not_greater_than_333point333 = () => result.ShouldEachConformTo(o => !(o.Value > 333.333));
+    }
+
+    public class When_using_ge_filter_on_a_single_double : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Value ge 333.333").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(6);
+
+        private It should_only_return_records_where_value_is_greater_than_or_equal_to_333point333 = () => result.ShouldEachConformTo(o => o.Value >= 333.333);
+    }
+
+    public class When_using_not_ge_filter_on_a_single_double : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Value ge 333.333").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(5);
+
+        private It should_only_return_records_where_value_is_not_greater_than_or_equal_to_333point333 = () => result.ShouldEachConformTo(o => !(o.Value >= 333.333));
+    }
+
+    public class When_using_lt_filter_on_a_single_double : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Value lt 333.333").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(5);
+
+        private It should_only_return_records_where_value_is_less_than_333point333 = () => result.ShouldEachConformTo(o => o.Value < 333.333);
+    }
+
+    public class When_using_not_lt_filter_on_a_single_double : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Value lt 333.333").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(6);
+
+        private It should_only_return_records_where_value_is_not_less_than_333point333 = () => result.ShouldEachConformTo(o => !(o.Value < 333.333));
+    }
+
+    public class When_using_le_filter_on_a_single_double : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Value le 333.333").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(8);
+
+        private It should_only_return_records_where_value_is_less_than_or_equal_to_333point333 = () => result.ShouldEachConformTo(o => o.Value <= 333.333);
+    }
+
+    public class When_using_not_le_filter_on_a_single_double : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Value le 333.333").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_value_is_not_less_than_or_equal_to_333point333 = () => result.ShouldEachConformTo(o => !(o.Value <= 333.333));
     }
 
     #endregion

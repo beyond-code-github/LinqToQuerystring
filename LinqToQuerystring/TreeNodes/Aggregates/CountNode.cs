@@ -29,7 +29,7 @@
             else
             {
                 //We will sometimes need to cater for special cases here, such as Enumerating BsonValues
-                underlyingType = Configuration.MapTypeForEnumerable(underlyingType);
+                underlyingType = Configuration.EnumerableTypeMap(underlyingType);
                 var enumerable = typeof(IEnumerable<>).MakeGenericType(underlyingType);
                 property = Expression.Convert(property, enumerable);
             }

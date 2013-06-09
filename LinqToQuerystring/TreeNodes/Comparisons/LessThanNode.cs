@@ -1,4 +1,4 @@
-﻿namespace LinqToQuerystring.TreeNodes
+﻿namespace LinqToQuerystring.TreeNodes.Comparisons
 {
     using System;
     using System.Linq;
@@ -20,15 +20,7 @@
             var leftExpression = this.LeftNode.BuildLinqExpression(query, expression, item);
             var rightExpression = this.RightNode.BuildLinqExpression(query, expression, item);
 
-            if (!leftExpression.Type.IsAssignableFrom(rightExpression.Type))
-            {
-                rightExpression = Expression.Convert(rightExpression, leftExpression.Type);
-            }
-
-            if (!rightExpression.Type.IsAssignableFrom(leftExpression.Type))
-            {
-                leftExpression = Expression.Convert(leftExpression, rightExpression.Type);
-            }
+            NormalizeTypes(ref leftExpression, ref rightExpression);
 
             return Expression.LessThan(leftExpression, rightExpression);
         }

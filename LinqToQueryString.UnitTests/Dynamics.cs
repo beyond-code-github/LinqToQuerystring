@@ -77,6 +77,13 @@
         private It should_return_two_results = () => result.Count().ShouldEqual(1);
     }
 
+    public class When_using_eq_filter_on_a_dynamic_type_with_reversed_parameters : Dynamics
+    {
+        private Because of = () => result = collection.AsQueryable().LinqToQuerystring("$filter=25 eq [Age]");
+
+        private It should_return_two_results = () => result.Count().ShouldEqual(1);
+    }
+
     public class When_using_order_by_on_a_dynamic_type : Dynamics
     {
         private Because of = () => result = collection.AsQueryable().LinqToQuerystring("$orderby=[Age]");

@@ -1,4 +1,4 @@
-﻿namespace LinqToQuerystring.TreeNodes
+﻿namespace LinqToQuerystring.TreeNodes.Comparisons
 {
     using System;
     using System.Linq;
@@ -8,9 +8,9 @@
 
     using LinqToQuerystring.TreeNodes.Base;
 
-    public class NotEqualsNode : TwoChildNode
+    public class LessThanOrEqualNode : TwoChildNode
     {
-        public NotEqualsNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
+        public LessThanOrEqualNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
             : base(inputType, payload, treeNodeFactory)
         {
         }
@@ -20,12 +20,9 @@
             var leftExpression = this.LeftNode.BuildLinqExpression(query, expression, item);
             var rightExpression = this.RightNode.BuildLinqExpression(query, expression, item);
 
-            if (!leftExpression.Type.IsAssignableFrom(rightExpression.Type))
-            {
-                rightExpression = Expression.Convert(rightExpression, leftExpression.Type);
-            }
+            NormalizeTypes(ref leftExpression, ref rightExpression);
 
-            return Expression.NotEqual(leftExpression, rightExpression);
+            return Expression.LessThanOrEqual(leftExpression, rightExpression);
         }
     }
 }
