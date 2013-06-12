@@ -1,6 +1,7 @@
 ﻿namespace LinqToQuerystring.Demo.Models
 {
     using System;
+    using System.Collections.Generic;
 
     public class Movie
     {
@@ -15,5 +16,9 @@
         public int MetaScore { get; set; }
 
         public bool Recommended { get; set; }
+
+        public List<string> Tags { get; set; }
+
+        public List<double> UserScores { get; set; }
     }
 }

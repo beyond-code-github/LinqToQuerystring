@@ -6,13 +6,15 @@
             </hgroup>
             <p>
                 Linq to Querystring is an expression parser for .NET Web API that supports a subset of the OData URI Specification. 
-                Currently in a pre-release alpha release, the following odata query options are supported (with some caveats):
+                Currently in beta, the following odata query options are supported:
                 <ul>
                     <li>Paging and Ordering with <strong>$top</strong>, <strong>$skip</strong> & <strong>$orderby</strong> & <strong>$inlinecount</strong>
                     </li>
-                    <li>Filtering on simple properties with <strong>$filter</strong>
+                    <li>Filtering on simple & complex properties with <strong>$filter</strong>
                     </li>
                     <li>Projections on simple properties with <strong>$select</strong>
+                    </li>
+                    <li>Aggregates on collection properties such as <strong>Any, All, Count, Sum, Min/Max & Average</strong>
                     </li>
                 </ul>
                 See the <a href="https://github.com/Roysvork/LinqToQuerystring">GitHub Repo</a> for more information on currently supported features.
@@ -23,15 +25,39 @@
         <h3>Try it out:</h3>
         <ol class="round">
             <li class="one">
-                <h5>Type your oData query here:</h5>
+                <h5>Select one of our sample queries...</h5>
+                <select id="demoQueries" data-bind="value: demoQuery">
+                    <option value="">** Please choose... **</option>
+                    <option value="?$orderby=DurationInMinutes">?$orderby=DurationInMinutes</option>
+                    <option value="?$orderby=Director desc,MetaScore">?$orderby=Director desc,MetaScore</option>
+                    @*<option value="?$orderby=Userscore/average()">?$orderby=Userscore/average()</option>*@
+                    <option value="?$top=2&skip=2&$inlinecount=allpages">?$top=2&skip=2&$inlinecount=allpages</option>
+                    <option value="?$top=1&skip=1&$inlinecount=allpages&$filter=startswith(Director,'Peter')">?$top=1&skip=1&$inlinecount=allpages&$filter=startswith(Director,'Peter')</option>
+                    <option value="?$filter=ReleaseDate lt datetime'2000-01-01T00:00'">?$filter=ReleaseDate lt datetime'2000-01-01T00:00'</option>
+                    <option value="?$filter=Recommended eq true and MetaScore gt 50&$orderby=ReleaseDate desc">?$filter=Recommended eq true and MetaScore gt 50&$orderby=ReleaseDate desc</option>
+                    <option value="?$filter=substringof('(The)',Title)">?$filter=substringof('(The)',Title)</option>
+                    <option value="?$filter=UserScores/all(score: score gt 66.6)">?$filter=UserScores/all(score: score gt 66.6)</option>
+                    <option value="?$filter=UserScores/max() lt 70">?$filter=UserScores/max() lt 70</option>
+                    <option value="?$filter=Tags/any(tag: tag eq 'Comedy')">?$filter=Tags/any(tag: tag eq 'Comedy')</option>
+                    <option value="?$select=Recommended,Title,Director">?$select=Recommended,Title,Director</option>
+                    <option value="?$select=Title,UserScores&$filter=UserScores/sum() gt 300">?$select=Title,UserScores&$filter=UserScores/sum() gt 300"</option>
+                </select>
+            </li>
+            <li class="two">
+                <h5>...compose one yourself...</h5>
+                <input type="text" id="filter"/>
+            </li>
+            <li class="three">
+                <h5>...or type your oData query here:</h5>
                 http://api/movies
                 <input type="text" id="queryexpression" value="?$orderby=Title" /><input type="button" id="go" value="Go" />
             </li>
-            <li class="two">
+            <li class="four">
                 <h3>See the results:</h3>
                 <div id="error" data-bind="if: hasError"><span class="error" data-bind="    text: error"></span></div>
                 <div id="countContainer">
-                    <label>Count:</label><span data-bind="text: count">N/A</span></div>
+                    <label>Count:</label><span data-bind="text: count">N/A</span>
+                </div>
                 <table>
                     <thead>
                         <tr>
@@ -59,6 +85,7 @@
     <script type="text/javascript">
 
         var model = {};
+        model.demoQuery = ko.observable();
         model.headings = ko.observableArray();
         model.data = ko.observableArray(),
         model.count = ko.observable(),
@@ -68,6 +95,10 @@
             {
                 return true;
             }
+        });
+
+        model.demoQuery.subscribe(function(value) {
+            if(value) $("#queryexpression").val(value);
         });
 
         $(document).ajaxError(function (event, jqxhr, settings, exception) {
@@ -108,6 +139,25 @@
         $(document).ready(function () {
 
             ko.applyBindings(model);
+            
+            model.FilterModel = $("#filter").oDataFilterUI({
+                Fields: [
+                    { text: "Title", value: "Title", type: "string" },
+                    { text: "Duration in Minutes", value: "DurationInMinutes", type: "int" },
+                    { text: "Release Date", value: "ReleaseDate", type: "datetime" },
+                    { text: "Director", value: "Director", type: "string" },
+                    { text: "MetaScore", value: "MetaScore", type: "int" },
+                    { text: "Recommended", value: "Recommended", type: "bool" },
+                    { text: "Tags", value: "Tags", type: "array[string]" },
+                    { text: "UserScores", value: "UserScores", type: "array[double]" }
+                ]
+            }).Model;
+
+            // wake up observable
+            model.FilterModel.getODataFilter();
+            model.FilterModel.getODataFilter.subscribe(function(value) {
+                if (value) $("#queryexpression").val("?" + value);
+            });
 
             $("#go").click(load);
             load();

@@ -14,6 +14,59 @@ body {
     padding: 0;
 }
 
+
+/* Filter styles */
+#filter + div li {
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+}
+
+div > span {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+#filter + div div {
+    display: inline-block;
+}
+
+#filter + div > ol {
+    display: block;
+    margin: 0px;
+    padding: 0px;
+}
+
+#filter + div > ol ol {
+    display: inline-block;
+    margin-left: 40px;
+    padding: 0px;
+}
+
+#filter + div a {
+    margin-left: 10px;
+}
+
+#filter + div a, #filter + div + a {
+    display: inline-block;
+    text-transform: capitalize;
+    text-decoration:none;
+}
+
+.filterRemove, .addAnother {
+    background-color: #d3dce0;
+    border: 1px solid #787878;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: 7px;
+    margin-right: 8px;
+    width: auto;
+}
+
+/* End Filter styles */
+
 a {
     color: #333;
     outline: none;
@@ -423,14 +476,13 @@ label {
         display: inline;
     }
 
-input, textarea {
+input, select, textarea {
     border: 1px solid #e2e2e2;
     background: #fff;
     color: #333;
     font-size: 1.2em;
     margin: 5px 0 6px 0;
     padding: 5px;
-    width: 300px;
 }
 
 textarea {
