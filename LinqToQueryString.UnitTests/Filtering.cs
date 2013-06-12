@@ -235,6 +235,15 @@
         private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o.Age == 4);
     }
 
+    public class When_using_eq_filter_on_a_negative_int : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Age gt -4");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(11);
+
+        private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o.Age > -4);
+    }
+
     public class When_using_not_eq_filter_on_a_single_int : Filtering
     {
         private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Age eq 4");
@@ -345,6 +354,15 @@
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
         private It should_only_return_records_where_population_is_40000000000 = () => result.ShouldEachConformTo(o => o.Population == 40000000000);
+    }
+
+    public class When_using_eq_filter_on_a_negative_long : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Population gt -40000000000L");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(11);
+
+        private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o.Age > -40000000000);
     }
 
     public class When_using_not_eq_filter_on_a_single_long : Filtering
@@ -620,6 +638,15 @@
         private It should_only_return_records_where_cost_is_444point444 = () => result.ShouldEachConformTo(o => o.Cost == 444.444f);
     }
 
+    public class When_using_eq_filter_on_a_negative_single : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Cost gt -444.444f");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(11);
+
+        private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o.Cost > -444.444f);
+    }
+
     public class When_using_not_eq_filter_on_a_single_single : Filtering
     {
         private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Cost eq 444.444f");
@@ -730,6 +757,15 @@
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
         private It should_only_return_records_where_value_is_444point444 = () => result.ShouldEachConformTo(o => o.Value == 444.444);
+    }
+
+    public class When_using_eq_filter_on_a_negative_double : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Cost gt -444.444");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(11);
+
+        private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o.Cost > -444.444);
     }
 
     public class When_using_not_eq_filter_on_a_single_double : Filtering
