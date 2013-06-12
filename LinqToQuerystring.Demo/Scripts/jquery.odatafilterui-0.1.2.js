@@ -28,7 +28,7 @@
         }, options );
 
         // Convert input to hidden
-        this.attr("type", "hidden");
+        this.css("display", "none");
 
         // Append container
         var container = this.wrap($('<div>')).parent();
