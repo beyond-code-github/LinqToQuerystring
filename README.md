@@ -1,7 +1,49 @@
-v0.5.6 Overview
-===============
+Linq to Querystring v0.6.1
+==========================
 
-Linq to Querystring is an expression parser for .NET that aims to provide a lightweight subset of the OData URI Specification.
+## What is it?
+
+Linq to Querystring is an expression parser for .NET that aims to provide a lightweight subset of the OData URI Specification. We focus only on the query aspect of the specification which is one of the most useful and flexible elements of OData.
+
+The project started out as an experiment of mine in ANLTR, and then grew as part of a requirement in a project I was on to perform OData queries against loosely typed data in MongoDB, which at the time of writing is functionality that no other OData provider can offer.
+
+## Why are we doing this?
+
+Currently the main proponents of OData are the Microsoft ASP.net team, and they're doing a great job with the OData specification and driving their implementation forward. However, it relies heavily on Microsoft technologies and is tied to the release cycle of MVC 4/Web API.
+
+It's always beneficial for a technology to have multiple implementations, especially when those implementations can all contribute to an open standard. But rather than 'competing' with other offerings, Linq to Querystring specialies in implementing a part of the spec, that which pertains to querying data via URIs.
+
+With smaller goals, a more focussed development effort and by addressing community concerns, Linq to Querystring can provide a more developer-centric implementation, with concise syntax, and increased interoperability, both with other web frameworks and database providers such as Mongo. And maybe we'll help push the standards forward along the way!
+
+## Installation
+
+* Nuget package: https://nuget.org/packages/LinqToQuerystring/
+PM> Install-Package LinqToQuerystring
+
+* Web Api package: https://nuget.org/packages/LinqToQuerystring.WebApi/
+PM> Install-Package LinqToQuerystring.WebApi
+
+* Nancy FX package: https://nuget.org/packages/LinqToQuerystring.Nancy/
+PM> Install-Package LinqToQuerystring.Nancy
+
+## Getting Started
+
+### Asp.Net Web API
+
+Get going straight away by adding the [LinqToQueryable] attribute to your Asp.Net Web API controllers:
+
+    [LinqToQueryable]
+    public IQueryable<Movie> Get()
+    
+### Nancy FX
+
+    public MoviesModule()
+    {
+        Get["/"] =
+            _ => this.moviesService.Get().LinqToQuerystring((IDictionary<string, object>)this.Context.Request.Query)
+    }
+
+## Key Release Notes
 
 As of v0.5.5 the core library now targets .net 3.5 and above. Beware however that support prior to 4.5 is largely untested in a real-world scenario... if you use it in this version please let me know how it goes.
 
@@ -19,85 +61,8 @@ The LinqToQueryable Action Filter for Web API is **no longer provided** with the
 
 Please install the **LinqToQuerystring.WebApi** nuget package.
 ***
-
-Installation
-============
-
-* Nuget package: https://nuget.org/packages/LinqToQuerystring/
-PM> Install-Package LinqToQuerystring
-
-* Web Api package: https://nuget.org/packages/LinqToQuerystring.WebApi/
-PM> Install-Package LinqToQuerystring.WebApi
-
-* Nancy FX package: https://nuget.org/packages/LinqToQuerystring.Nancy/
-PM> Install-Package LinqToQuerystring.Nancy
-
-Addressing issues with OData
-============================
-
-The OData specification itself is very extensive, and Linq to Querystring does not claim (or intend) to support all of it. In fact, OData itself seems to split opinion – see here for example: http://stackoverflow.com/questions/9577938/odata-with-servicestack.
-
-In to the answer above, Mythz states some concerns that proponents of REST often have about OData, which Linq to Querystring goes some way towards addressing:
-
-* **Poor development practices** – Linq to Querystring is simple, flexible and open source, so it can respond to new technologies and paradigms.
-* **Promotes bad web service practices** – No longer tied to your DBMS as it works with any IQueryable, so you don’t have to expose your data model through your services.
-* **Only used in Microsoft technologies** – The main expression parsing engine of Linq to Querystring is written in ANTLR so can be easily ported to other languages that support construction of expression trees.
-* **OData is slow** - Leaving out certain elements of the protocol helps to keep things fast compared to full blown OData implementations. All Linq to Querystring does is map the AST produced by ANTLR onto an IQueryable expression tree.
-
-Currently supported
-===================
-
-* String escape sequences: \\\\ \' \t \r \n \f ''
-* Seamless integration with Asp.Net Web API using LinqToQueryable Attribute 
-* Use Linq to Querystring with Nancy FX modules
-* Linq to Objects, Entity framework & MongoDB
-* Support for loosely typed datastructures
-* string, int32, bool, datetime data types
-* $top
-* $skip (must be used in conjunction with orderby in Linq to Entities)
-* $orderby:
-    * simple types, 
-    * subproperties
-    * complex types ( Linq to Objects only, via IComparable, )
-* $filter - simple properties
-* $select - simple properties
-* $inlinecount
-* Functions - startswith, endswith, substringof, tolower
-* Unicode values
-
-In development:
-
-* $select - sub properties & complex types
-* $filter - sub properties
-* Remaining functions
-* Arithmetic operations (e.g abs, mod)
-
-Future roadmap:
-
-* byte, decimal, double, single, guid, time, int64, datetimeoffset data types
-* $expand (via EF Include method)
-
-* UIToQuerystring - JQuery plugin for building oData\Linq to Querystring expressions
-
-Getting Started
-===============
-
-### Asp.Net Web API
-
-Get going straight away by adding the [LinqToQueryable] attribute to your Asp.Net Web API controllers:
-
-    [LinqToQueryable]
-    public IQueryable<Movie> Get()
     
-### Nancy FX
-
-    public MoviesModule()
-    {
-        Get["/"] =
-            _ => this.moviesService.Get().LinqToQuerystring((IDictionary<string, object>)this.Context.Request.Query)
-    }
-    
-### General
+## Examples
     
 Linq to Querystring uses an expression parser written in ANTLR to map a subset of odata-compatible expressions onto any .NET IQueryable.
 
@@ -132,4 +97,40 @@ Work with Dynamic objects:
 Tested against Entity Framework:
 
     var query = this.unitOfWork.Data.Where(o => o.SomeRepoLevelFilter == x);
-    var extended = query.LinqToQuerystring("?$filter=Complete eq true and name eq 'Eggs'");
+    var extended = query.LinqToQuerystring("?$filter=Complete eq true and Name eq 'Eggs'");
+    
+Tested against Mongo DB
+
+    var query = mongoCollection.AsQueryable();
+    var extended = query.LinqToQuerystring("?$filter=[Complete] eq true and [Name] eq 'Eggs'");
+
+## Current features
+
+* String escape sequences: \\\\ \' \t \r \n \f ''
+* Seamless integration with Asp.Net Web API using LinqToQueryable Attribute 
+* Use Linq to Querystring with Nancy FX modules
+* Linq to Objects, Entity framework & MongoDB
+* Support for loosely typed datastructures
+* string, int32, bool, datetime, byte, decimal, double, single, guid, long data types
+* $top
+* $skip (must be used in conjunction with orderby in Linq to Entities)
+* $orderby:
+    * simple types, 
+    * subproperties
+    * complex types ( Linq to Objects only, via IComparable, )
+* $filter - simple properties & subproperties
+* $select - simple properties
+* $inlinecount
+* Functions - startswith, endswith, substringof, tolower
+* Collection Aggregates:
+    * Any / All with predicates
+    * Count, Sum, Average, Min, Max
+* Unicode values
+* UIToQuerystring (alpha) - JQuery plugin for building oData\Linq to Querystring expressions
+
+## Future roadmap:
+
+* Website & improved documentation
+* $select - sub properties & complex types
+* More functions/Arithmetic operations (e.g abs, mod)
+* $expand (via EF Include method)
