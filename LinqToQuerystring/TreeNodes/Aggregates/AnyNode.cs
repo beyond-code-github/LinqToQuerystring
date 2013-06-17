@@ -19,9 +19,9 @@
 
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
-            var property = Children.ElementAt(0).BuildLinqExpression(query, expression, item);
-            var alias = Children.ElementAt(1).Text;
-            var filter = Children.ElementAt(2);
+            var property = this.ChildNodes.ElementAt(0).BuildLinqExpression(query, expression, item);
+            var alias = this.ChildNodes.ElementAt(1).Text;
+            var filter = this.ChildNodes.ElementAt(2);
 
             var underlyingType = property.Type;
             if (typeof(IEnumerable).IsAssignableFrom(property.Type) && property.Type.GetGenericArguments().Any())

@@ -17,7 +17,7 @@
 
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
-            var property = Children.ElementAt(0).BuildLinqExpression(query, expression, item);
+            var property = this.ChildNodes.ElementAt(0).BuildLinqExpression(query, expression, item);
             return Expression.Call(typeof(Enumerable), "Average", null, property);
         }
     }

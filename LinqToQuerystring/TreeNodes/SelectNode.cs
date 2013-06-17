@@ -27,7 +27,7 @@
             Expression childExpression = fixedexpr;
 
             MethodInfo addMethod = typeof(Dictionary<string, object>).GetMethod("Add");
-            var elements = this.Children.Cast<TreeNode>().Select(
+            var elements = this.ChildNodes.Select(
                 o => Expression.ElementInit(addMethod, Expression.Constant(o.Text), Expression.Convert(o.BuildLinqExpression(query, childExpression, parameter), typeof(object))));
 
             var newDictionary = Expression.New(typeof(Dictionary<string, object>));

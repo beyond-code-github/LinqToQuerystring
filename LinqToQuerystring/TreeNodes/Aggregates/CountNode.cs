@@ -19,7 +19,7 @@
 
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
-            var property = Children.ElementAt(0).BuildLinqExpression(query, expression, item);
+            var property = this.ChildNodes.ElementAt(0).BuildLinqExpression(query, expression, item);
 
             var underlyingType = property.Type;
             if (typeof(IEnumerable).IsAssignableFrom(property.Type) && property.Type.GetGenericArguments().Any())

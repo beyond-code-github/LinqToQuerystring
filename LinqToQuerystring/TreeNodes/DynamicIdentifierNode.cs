@@ -20,7 +20,7 @@
             var key = this.Text.Trim(new[] { '[', ']' });
             var property = Expression.Call(item, "get_Item", null, Expression.Constant(key));
 
-            var child = this.Children.FirstOrDefault();
+            var child = this.ChildNodes.FirstOrDefault();
             if (child != null)
             {
                 return child.BuildLinqExpression(query, expression, property);

@@ -16,7 +16,7 @@
         {
             get
             {
-                var childNode = this.Children.FirstOrDefault();
+                var childNode = this.ChildNodes.FirstOrDefault();
                 if (childNode == null)
                 {
                     throw new InvalidOperationException(string.Format("No valid child for {0}", this.GetType()));

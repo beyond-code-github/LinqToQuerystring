@@ -27,7 +27,7 @@
         /// <summary>
         /// This hacky property overwrites the base property which has a bug when using tree rewrites
         /// </summary>
-        protected new IEnumerable<TreeNode> Children
+        protected IEnumerable<TreeNode> ChildNodes
         {
             get
             {

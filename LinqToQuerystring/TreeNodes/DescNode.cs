@@ -23,7 +23,7 @@
 
             var temp = parameter;
 
-            foreach (var child in this.Children.Cast<TreeNode>())
+            foreach (var child in this.ChildNodes.Cast<TreeNode>())
             {
                 childExpression = child.BuildLinqExpression(query, childExpression, temp);
                 temp = childExpression;

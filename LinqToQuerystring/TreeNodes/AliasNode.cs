@@ -17,7 +17,7 @@
 
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
-            var child = this.Children.FirstOrDefault();
+            var child = this.ChildNodes.FirstOrDefault();
             if (child != null)
             {
                 return child.BuildLinqExpression(query, expression, item);

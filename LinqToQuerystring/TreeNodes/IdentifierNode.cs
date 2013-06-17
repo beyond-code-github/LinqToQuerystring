@@ -19,7 +19,7 @@
         {
             var property = Expression.Property(item, this.Text);
 
-            var child = this.Children.FirstOrDefault();
+            var child = this.ChildNodes.FirstOrDefault();
             if (child != null)
             {
                 return child.BuildLinqExpression(query, expression, property);

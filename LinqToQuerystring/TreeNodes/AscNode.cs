@@ -22,7 +22,7 @@
             Expression childExpression = expression;
 
             var temp = parameter;
-            foreach (var child in this.Children)
+            foreach (var child in this.ChildNodes)
             {
                 childExpression = child.BuildLinqExpression(query, childExpression, temp);
                 temp = childExpression;
