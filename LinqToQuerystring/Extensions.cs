@@ -120,11 +120,22 @@
 
         private static void BuildQuery(TreeNode node, ref IQueryable queryResult, ref IQueryable constrainedQuery)
         {
+            var type = queryResult.Expression.Type.BaseType;
+            var mappings = (type != null && Configuration.CustomNodes.ContainsKey(type))
+                               ? Configuration.CustomNodes[type]
+                               : null;
+
+            if (mappings != null)
+            {
+                node = mappings.MapNode(node, queryResult.Expression);
+            }
+
             if (!(node is TopNode) && !(node is SkipNode))
             {
-                if (node is OrderByNode)
+                var modifier = node as QueryModifier;
+                if (modifier != null)
                 {
-                    queryResult = ApplyOrderBy(queryResult, node);
+                    queryResult = modifier.ModifyQuery(queryResult);
                 }
                 else
                 {
@@ -133,9 +144,10 @@
                 }
             }
 
-            if (node is OrderByNode)
+            var queryModifier = node as QueryModifier;
+            if (queryModifier != null)
             {
-                constrainedQuery = ApplyOrderBy(constrainedQuery, node);
+                constrainedQuery = queryModifier.ModifyQuery(constrainedQuery);
             }
             else
             {
@@ -143,27 +155,6 @@
                     constrainedQuery.Provider.CreateQuery(
                         node.BuildLinqExpression(constrainedQuery, constrainedQuery.Expression));
             }
-        }
-
-        private static IQueryable ApplyOrderBy(IQueryable query, TreeNode node)
-        {
-            var queryresult = query;
-            var orderbyChildren = node.Children.Cast<ExplicitOrderByBase>();
-
-            if (!queryresult.Provider.GetType().Name.Contains("DbQueryProvider") && !queryresult.Provider.GetType().Name.Contains("MongoQueryProvider"))
-            {
-                orderbyChildren = orderbyChildren.Reverse();
-            }
-
-            var explicitOrderByNodes = orderbyChildren as IList<ExplicitOrderByBase> ?? orderbyChildren.ToList();
-            explicitOrderByNodes.First().IsFirstChild = true;
-
-            foreach (var child in explicitOrderByNodes)
-            {
-                queryresult = queryresult.Provider.CreateQuery(child.BuildLinqExpression(queryresult, queryresult.Expression));
-            }
-
-            return queryresult;
         }
 
         private static IQueryable ProjectQuery(IQueryable query, IQueryable constrainedQuery, TreeNode node)

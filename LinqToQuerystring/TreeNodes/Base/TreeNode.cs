@@ -10,14 +10,17 @@
 
     public abstract class TreeNode : CommonTree, IComparable<TreeNode>
     {
-        protected readonly Type inputType;
+        protected internal readonly Type inputType;
 
-        protected readonly TreeNodeFactory factory;
+        protected internal readonly IToken payload;
+
+        protected internal readonly TreeNodeFactory factory;
 
         protected TreeNode(Type inputType, IToken payload, TreeNodeFactory treeNodeFactory)
             : base(payload)
         {
             this.inputType = inputType;
+            this.payload = payload;
             this.factory = treeNodeFactory;
         }
 

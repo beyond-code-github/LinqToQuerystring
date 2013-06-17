@@ -1,6 +1,9 @@
 ﻿namespace LinqToQuerystring
 {
     using System;
+    using System.Collections.Generic;
+
+    using LinqToQuerystring.Utils;
 
     public static class Configuration
     {
@@ -18,10 +21,21 @@
         /// </summary>
         public static Func<Type, Type, Type> TypeConversionMap { get; set; }
 
-        static Configuration()
+        /// <summary>
+        /// Allows the specification of custom tree nodes for particular situations, i.e Entity Framework include
+        /// </summary>
+        public static Dictionary<Type, CustomNodeMappings> CustomNodes { get; set; }
+
+        public static void Reset()
         {
             EnumerableTypeMap = DefaultTypeMap;
             TypeConversionMap = DefaultTypeConversionMap;
+            CustomNodes = new Dictionary<Type, CustomNodeMappings>();
+        }
+
+        static Configuration()
+        {
+            Reset();
         }
     }
 }

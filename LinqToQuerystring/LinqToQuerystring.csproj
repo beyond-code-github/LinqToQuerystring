@@ -57,6 +57,7 @@
     <Compile Include="TreeNodes\AndNode.cs" />
     <Compile Include="TreeNodes\AscNode.cs" />
     <Compile Include="TreeNodes\Base\ExplicitOrderByBase.cs" />
+    <Compile Include="TreeNodes\Base\QueryModifier.cs" />
     <Compile Include="TreeNodes\Base\SingleChildNode.cs" />
     <Compile Include="TreeNodes\Base\TreeNode.cs" />
     <Compile Include="TreeNodes\Base\TwoChildNode.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="TreeNodes\TopNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TreeNodes\TreeNodeFactory.cs" />
+    <Compile Include="Utils\CustomNodeMappings.cs" />
   </ItemGroup>
   <ItemGroup>
     <Antlr3 Include="LinqToQuerystring.g">
