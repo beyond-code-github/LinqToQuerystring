@@ -2,12 +2,12 @@ grammar LinqToQuerystring;
 
 options
 {
-    language=CSharp3;
-    output=AST;
+	language=CSharp3;
+	output=AST;
 }
 
 tokens {
-    ALIAS;
+	ALIAS;
 }
 
 @parser::namespace { LinqToQuerystring }
@@ -20,20 +20,20 @@ using LinqToQuerystring.Exceptions;
 
 @lexer::members {
 public override void ReportError(RecognitionException e) {
-    if (this.input.LT(1) == '\\')
-    {
-        //This will be an invalid escape sequence
-        throw new InvalidEscapeSequenceException("\\" + (char)e.Character);
-    }
+	if (this.input.LT(1) == '\\')
+	{
+		//This will be an invalid escape sequence
+		throw new InvalidEscapeSequenceException("\\" + (char)e.Character);
+	}
 
-    throw e;
+	throw e;
 }
 }
 
 public prog
 	:	(param ('&'! param)*)*;
 
-param	:	(orderby | top | skip | filter | select | inlinecount);
+param	:	(orderby | top | skip | filter | select | inlinecount | expand);
 
 skip	
 	:	SKIP^ INT+;
@@ -46,6 +46,9 @@ filter
 	
 select
 	:	SELECT^ propertyname[false] (','! propertyname[false])*;
+			
+expand
+	:	EXPAND^ propertyname[false] (','! propertyname[false])*;
 	
 inlinecount
 	:	INLINECOUNT^ ALLPAGES
@@ -176,6 +179,8 @@ SELECT
 INLINECOUNT
 	:	'$inlinecount=';
 	
+EXPAND	:	'$expand=';
+	
 STARTSWITH
 	:	'startswith';
 	
@@ -240,20 +245,20 @@ HEX_DIGIT : ('0'..'9'|'a'..'f'|'A'..'F') ;
 
 fragment
 ESC_SEQ
-  	: '\'\''
-    	| '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')
-    	| UNICODE_ESC
-    	| OCTAL_ESC
-    	;
+	: '\'\''
+		| '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')
+		| UNICODE_ESC
+		| OCTAL_ESC
+		;
 
 fragment
 OCTAL_ESC
-    	:   '\\' ('0'..'3') ('0'..'7') ('0'..'7')
-    	|   '\\' ('0'..'7') ('0'..'7')
-    	|   '\\' ('0'..'7')
-    	;
+		:   '\\' ('0'..'3') ('0'..'7') ('0'..'7')
+		|   '\\' ('0'..'7') ('0'..'7')
+		|   '\\' ('0'..'7')
+		;
 
 fragment
 UNICODE_ESC
-    	:   '\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
-    	;
+		:   '\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+		;

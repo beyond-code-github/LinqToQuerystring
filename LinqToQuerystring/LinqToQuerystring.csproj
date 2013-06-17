@@ -68,6 +68,7 @@
     <Compile Include="TreeNodes\DataTypes\DoubleNode.cs" />
     <Compile Include="TreeNodes\DataTypes\LongNode.cs" />
     <Compile Include="TreeNodes\DynamicIdentifierNode.cs" />
+    <Compile Include="TreeNodes\ExpandNode.cs" />
     <Compile Include="TreeNodes\Functions\ToLowerNode.cs" />
     <Compile Include="TreeNodes\Functions\SubstringOfNode.cs" />
     <Compile Include="TreeNodes\Functions\EndsWithNode.cs" />

@@ -42,6 +42,8 @@
                     return new SelectNode(inputType, token, this);
                 case LinqToQuerystringLexer.INLINECOUNT:
                     return new InlineCountNode(inputType, token, this);
+                case LinqToQuerystringLexer.EXPAND:
+                    return new ExpandNode(inputType, token, this);
                 case LinqToQuerystringLexer.NOT:
                     return new NotNode(inputType, token, this);
                 case LinqToQuerystringLexer.AND:

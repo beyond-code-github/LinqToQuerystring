@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.5.0.2 D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g 2013-06-12 12:10:42
+// $ANTLR 3.5.0.2 D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g 2013-06-17 16:26:40
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
@@ -35,7 +35,7 @@ namespace  LinqToQuerystring
 public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 {
 	internal static readonly string[] tokenNames = new string[] {
-		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "ALIAS", "ALL", "ALLPAGES", "AND", "ANY", "ASC", "ASSIGN", "AVERAGE", "BOOL", "BYTE", "COUNT", "DATETIME", "DESC", "DOUBLE", "DYNAMICIDENTIFIER", "ENDSWITH", "EQUALS", "ESC_SEQ", "FILTER", "GREATERTHAN", "GREATERTHANOREQUAL", "GUID", "HEX_DIGIT", "HEX_PAIR", "IDENTIFIER", "INLINECOUNT", "INT", "LESSTHAN", "LESSTHANOREQUAL", "LONG", "MAX", "MIN", "NEWLINE", "NONE", "NOT", "NOTEQUALS", "OCTAL_ESC", "OR", "ORDERBY", "SELECT", "SINGLE", "SKIP", "SPACE", "STARTSWITH", "STRING", "SUBSTRINGOF", "SUM", "TOLOWER", "TOP", "UNICODE_ESC", "'&'", "'('", "')'", "','", "'/'", "':'"
+		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "ALIAS", "ALL", "ALLPAGES", "AND", "ANY", "ASC", "ASSIGN", "AVERAGE", "BOOL", "BYTE", "COUNT", "DATETIME", "DESC", "DOUBLE", "DYNAMICIDENTIFIER", "ENDSWITH", "EQUALS", "ESC_SEQ", "EXPAND", "FILTER", "GREATERTHAN", "GREATERTHANOREQUAL", "GUID", "HEX_DIGIT", "HEX_PAIR", "IDENTIFIER", "INLINECOUNT", "INT", "LESSTHAN", "LESSTHANOREQUAL", "LONG", "MAX", "MIN", "NEWLINE", "NONE", "NOT", "NOTEQUALS", "OCTAL_ESC", "OR", "ORDERBY", "SELECT", "SINGLE", "SKIP", "SPACE", "STARTSWITH", "STRING", "SUBSTRINGOF", "SUM", "TOLOWER", "TOP", "UNICODE_ESC", "'&'", "'('", "')'", "','", "'/'", "':'"
 	};
 	public const int EOF=-1;
 	public const int ALIAS=4;
@@ -56,44 +56,45 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	public const int ENDSWITH=19;
 	public const int EQUALS=20;
 	public const int ESC_SEQ=21;
-	public const int FILTER=22;
-	public const int GREATERTHAN=23;
-	public const int GREATERTHANOREQUAL=24;
-	public const int GUID=25;
-	public const int HEX_DIGIT=26;
-	public const int HEX_PAIR=27;
-	public const int IDENTIFIER=28;
-	public const int INLINECOUNT=29;
-	public const int INT=30;
-	public const int LESSTHAN=31;
-	public const int LESSTHANOREQUAL=32;
-	public const int LONG=33;
-	public const int MAX=34;
-	public const int MIN=35;
-	public const int NEWLINE=36;
-	public const int NONE=37;
-	public const int NOT=38;
-	public const int NOTEQUALS=39;
-	public const int OCTAL_ESC=40;
-	public const int OR=41;
-	public const int ORDERBY=42;
-	public const int SELECT=43;
-	public const int SINGLE=44;
-	public const int SKIP=45;
-	public const int SPACE=46;
-	public const int STARTSWITH=47;
-	public const int STRING=48;
-	public const int SUBSTRINGOF=49;
-	public const int SUM=50;
-	public const int TOLOWER=51;
-	public const int TOP=52;
-	public const int UNICODE_ESC=53;
-	public const int T__54=54;
+	public const int EXPAND=22;
+	public const int FILTER=23;
+	public const int GREATERTHAN=24;
+	public const int GREATERTHANOREQUAL=25;
+	public const int GUID=26;
+	public const int HEX_DIGIT=27;
+	public const int HEX_PAIR=28;
+	public const int IDENTIFIER=29;
+	public const int INLINECOUNT=30;
+	public const int INT=31;
+	public const int LESSTHAN=32;
+	public const int LESSTHANOREQUAL=33;
+	public const int LONG=34;
+	public const int MAX=35;
+	public const int MIN=36;
+	public const int NEWLINE=37;
+	public const int NONE=38;
+	public const int NOT=39;
+	public const int NOTEQUALS=40;
+	public const int OCTAL_ESC=41;
+	public const int OR=42;
+	public const int ORDERBY=43;
+	public const int SELECT=44;
+	public const int SINGLE=45;
+	public const int SKIP=46;
+	public const int SPACE=47;
+	public const int STARTSWITH=48;
+	public const int STRING=49;
+	public const int SUBSTRINGOF=50;
+	public const int SUM=51;
+	public const int TOLOWER=52;
+	public const int TOP=53;
+	public const int UNICODE_ESC=54;
 	public const int T__55=55;
 	public const int T__56=56;
 	public const int T__57=57;
 	public const int T__58=58;
 	public const int T__59=59;
+	public const int T__60=60;
 
 	public LinqToQuerystringParser(ITokenStream input)
 		: this(input, new RecognizerSharedState())
@@ -173,7 +174,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(2, false);
 				int LA2_1 = input.LA(1);
 
-				if ((LA2_1==FILTER||LA2_1==INLINECOUNT||(LA2_1>=ORDERBY && LA2_1<=SELECT)||LA2_1==SKIP||LA2_1==TOP))
+				if (((LA2_1>=EXPAND && LA2_1<=FILTER)||LA2_1==INLINECOUNT||(LA2_1>=ORDERBY && LA2_1<=SELECT)||LA2_1==SKIP||LA2_1==TOP))
 				{
 					alt2 = 1;
 				}
@@ -187,7 +188,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:34:5: param ( '&' ! param )*
 					{
 					DebugLocation(34, 5);
-					PushFollow(Follow._param_in_prog85);
+					PushFollow(Follow._param_in_prog76);
 					param1=param();
 					PopFollow();
 
@@ -201,7 +202,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 						try { DebugEnterDecision(1, false);
 						int LA1_1 = input.LA(1);
 
-						if ((LA1_1==54))
+						if ((LA1_1==55))
 						{
 							alt1 = 1;
 						}
@@ -215,9 +216,9 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 							// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:34:12: '&' ! param
 							{
 							DebugLocation(34, 15);
-							char_literal2=(IToken)Match(input,54,Follow._54_in_prog88); 
+							char_literal2=(IToken)Match(input,55,Follow._55_in_prog79); 
 							DebugLocation(34, 17);
-							PushFollow(Follow._param_in_prog91);
+							PushFollow(Follow._param_in_prog82);
 							param3=param();
 							PopFollow();
 
@@ -282,7 +283,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_param();
 	partial void LeaveRule_param();
 	// $ANTLR start "param"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:36:1: param : ( orderby | top | skip | filter | select | inlinecount ) ;
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:36:1: param : ( orderby | top | skip | filter | select | inlinecount | expand ) ;
 	[GrammarRule("param")]
 	private AstParserRuleReturnScope<object, IToken> param()
 	{
@@ -300,20 +301,21 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		AstParserRuleReturnScope<object, IToken> filter7 = default(AstParserRuleReturnScope<object, IToken>);
 		AstParserRuleReturnScope<object, IToken> select8 = default(AstParserRuleReturnScope<object, IToken>);
 		AstParserRuleReturnScope<object, IToken> inlinecount9 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> expand10 = default(AstParserRuleReturnScope<object, IToken>);
 
 		try { DebugEnterRule(GrammarFileName, "param");
-		DebugLocation(36, 62);
+		DebugLocation(36, 71);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:36:7: ( ( orderby | top | skip | filter | select | inlinecount ) )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:36:7: ( ( orderby | top | skip | filter | select | inlinecount | expand ) )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:36:9: ( orderby | top | skip | filter | select | inlinecount )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:36:9: ( orderby | top | skip | filter | select | inlinecount | expand )
 			{
 			root_0 = (object)adaptor.Nil();
 
 			DebugLocation(36, 9);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:36:9: ( orderby | top | skip | filter | select | inlinecount )
-			int alt3=6;
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:36:9: ( orderby | top | skip | filter | select | inlinecount | expand )
+			int alt3=7;
 			try { DebugEnterSubRule(3);
 			try { DebugEnterDecision(3, false);
 			switch (input.LA(1))
@@ -348,6 +350,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				alt3 = 6;
 				}
 				break;
+			case EXPAND:
+				{
+				alt3 = 7;
+				}
+				break;
 			default:
 				{
 					NoViableAltException nvae = new NoViableAltException("", 3, 0, input, 1);
@@ -364,7 +371,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:36:10: orderby
 				{
 				DebugLocation(36, 10);
-				PushFollow(Follow._orderby_in_param104);
+				PushFollow(Follow._orderby_in_param95);
 				orderby4=orderby();
 				PopFollow();
 
@@ -377,7 +384,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:36:20: top
 				{
 				DebugLocation(36, 20);
-				PushFollow(Follow._top_in_param108);
+				PushFollow(Follow._top_in_param99);
 				top5=top();
 				PopFollow();
 
@@ -390,7 +397,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:36:26: skip
 				{
 				DebugLocation(36, 26);
-				PushFollow(Follow._skip_in_param112);
+				PushFollow(Follow._skip_in_param103);
 				skip6=skip();
 				PopFollow();
 
@@ -403,7 +410,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:36:33: filter
 				{
 				DebugLocation(36, 33);
-				PushFollow(Follow._filter_in_param116);
+				PushFollow(Follow._filter_in_param107);
 				filter7=filter();
 				PopFollow();
 
@@ -416,7 +423,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:36:42: select
 				{
 				DebugLocation(36, 42);
-				PushFollow(Follow._select_in_param120);
+				PushFollow(Follow._select_in_param111);
 				select8=select();
 				PopFollow();
 
@@ -429,11 +436,24 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:36:51: inlinecount
 				{
 				DebugLocation(36, 51);
-				PushFollow(Follow._inlinecount_in_param124);
+				PushFollow(Follow._inlinecount_in_param115);
 				inlinecount9=inlinecount();
 				PopFollow();
 
 				adaptor.AddChild(root_0, inlinecount9.Tree);
+
+				}
+				break;
+			case 7:
+				DebugEnterAlt(7);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:36:65: expand
+				{
+				DebugLocation(36, 65);
+				PushFollow(Follow._expand_in_param119);
+				expand10=expand();
+				PopFollow();
+
+				adaptor.AddChild(root_0, expand10.Tree);
 
 				}
 				break;
@@ -463,7 +483,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			LeaveRule("param", 2);
 			LeaveRule_param();
 		}
-		DebugLocation(36, 62);
+		DebugLocation(36, 71);
 		} finally { DebugExitRule(GrammarFileName, "param"); }
 		return retval;
 
@@ -485,11 +505,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 
 		object root_0 = default(object);
 
-		IToken SKIP10 = default(IToken);
-		IToken INT11 = default(IToken);
+		IToken SKIP11 = default(IToken);
+		IToken INT12 = default(IToken);
 
-		object SKIP10_tree = default(object);
-		object INT11_tree = default(object);
+		object SKIP11_tree = default(object);
+		object INT12_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "skip");
 		DebugLocation(38, 13);
 		try
@@ -501,9 +521,9 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			root_0 = (object)adaptor.Nil();
 
 			DebugLocation(39, 8);
-			SKIP10=(IToken)Match(input,SKIP,Follow._SKIP_in_skip135); 
-			SKIP10_tree = (object)adaptor.Create(SKIP10);
-			root_0 = (object)adaptor.BecomeRoot(SKIP10_tree, root_0);
+			SKIP11=(IToken)Match(input,SKIP,Follow._SKIP_in_skip130); 
+			SKIP11_tree = (object)adaptor.Create(SKIP11);
+			root_0 = (object)adaptor.BecomeRoot(SKIP11_tree, root_0);
 			DebugLocation(39, 10);
 			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:39:10: ( INT )+
 			int cnt4=0;
@@ -528,9 +548,9 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:39:10: INT
 					{
 					DebugLocation(39, 10);
-					INT11=(IToken)Match(input,INT,Follow._INT_in_skip138); 
-					INT11_tree = (object)adaptor.Create(INT11);
-					adaptor.AddChild(root_0, INT11_tree);
+					INT12=(IToken)Match(input,INT,Follow._INT_in_skip133); 
+					INT12_tree = (object)adaptor.Create(INT12);
+					adaptor.AddChild(root_0, INT12_tree);
 
 					}
 					break;
@@ -594,11 +614,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 
 		object root_0 = default(object);
 
-		IToken TOP12 = default(IToken);
-		IToken INT13 = default(IToken);
+		IToken TOP13 = default(IToken);
+		IToken INT14 = default(IToken);
 
-		object TOP12_tree = default(object);
-		object INT13_tree = default(object);
+		object TOP13_tree = default(object);
+		object INT14_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "top");
 		DebugLocation(41, 12);
 		try
@@ -610,9 +630,9 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			root_0 = (object)adaptor.Nil();
 
 			DebugLocation(42, 7);
-			TOP12=(IToken)Match(input,TOP,Follow._TOP_in_top149); 
-			TOP12_tree = (object)adaptor.Create(TOP12);
-			root_0 = (object)adaptor.BecomeRoot(TOP12_tree, root_0);
+			TOP13=(IToken)Match(input,TOP,Follow._TOP_in_top144); 
+			TOP13_tree = (object)adaptor.Create(TOP13);
+			root_0 = (object)adaptor.BecomeRoot(TOP13_tree, root_0);
 			DebugLocation(42, 9);
 			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:42:9: ( INT )+
 			int cnt5=0;
@@ -637,9 +657,9 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:42:9: INT
 					{
 					DebugLocation(42, 9);
-					INT13=(IToken)Match(input,INT,Follow._INT_in_top152); 
-					INT13_tree = (object)adaptor.Create(INT13);
-					adaptor.AddChild(root_0, INT13_tree);
+					INT14=(IToken)Match(input,INT,Follow._INT_in_top147); 
+					INT14_tree = (object)adaptor.Create(INT14);
+					adaptor.AddChild(root_0, INT14_tree);
 
 					}
 					break;
@@ -703,10 +723,10 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 
 		object root_0 = default(object);
 
-		IToken FILTER14 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> filterexpression15 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken FILTER15 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> filterexpression16 = default(AstParserRuleReturnScope<object, IToken>);
 
-		object FILTER14_tree = default(object);
+		object FILTER15_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "filter");
 		DebugLocation(44, 34);
 		try
@@ -718,15 +738,15 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			root_0 = (object)adaptor.Nil();
 
 			DebugLocation(45, 10);
-			FILTER14=(IToken)Match(input,FILTER,Follow._FILTER_in_filter163); 
-			FILTER14_tree = (object)adaptor.Create(FILTER14);
-			root_0 = (object)adaptor.BecomeRoot(FILTER14_tree, root_0);
+			FILTER15=(IToken)Match(input,FILTER,Follow._FILTER_in_filter158); 
+			FILTER15_tree = (object)adaptor.Create(FILTER15);
+			root_0 = (object)adaptor.BecomeRoot(FILTER15_tree, root_0);
 			DebugLocation(45, 12);
-			PushFollow(Follow._filterexpression_in_filter166);
-			filterexpression15=filterexpression(false);
+			PushFollow(Follow._filterexpression_in_filter161);
+			filterexpression16=filterexpression(false);
 			PopFollow();
 
-			adaptor.AddChild(root_0, filterexpression15.Tree);
+			adaptor.AddChild(root_0, filterexpression16.Tree);
 
 			}
 
@@ -771,13 +791,13 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 
 		object root_0 = default(object);
 
-		IToken SELECT16 = default(IToken);
-		IToken char_literal18 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> propertyname17 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> propertyname19 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken SELECT17 = default(IToken);
+		IToken char_literal19 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> propertyname18 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> propertyname20 = default(AstParserRuleReturnScope<object, IToken>);
 
-		object SELECT16_tree = default(object);
-		object char_literal18_tree = default(object);
+		object SELECT17_tree = default(object);
+		object char_literal19_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "select");
 		DebugLocation(47, 58);
 		try
@@ -789,15 +809,15 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			root_0 = (object)adaptor.Nil();
 
 			DebugLocation(48, 10);
-			SELECT16=(IToken)Match(input,SELECT,Follow._SELECT_in_select177); 
-			SELECT16_tree = (object)adaptor.Create(SELECT16);
-			root_0 = (object)adaptor.BecomeRoot(SELECT16_tree, root_0);
+			SELECT17=(IToken)Match(input,SELECT,Follow._SELECT_in_select172); 
+			SELECT17_tree = (object)adaptor.Create(SELECT17);
+			root_0 = (object)adaptor.BecomeRoot(SELECT17_tree, root_0);
 			DebugLocation(48, 12);
-			PushFollow(Follow._propertyname_in_select180);
-			propertyname17=propertyname(false);
+			PushFollow(Follow._propertyname_in_select175);
+			propertyname18=propertyname(false);
 			PopFollow();
 
-			adaptor.AddChild(root_0, propertyname17.Tree);
+			adaptor.AddChild(root_0, propertyname18.Tree);
 			DebugLocation(48, 32);
 			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:48:32: ( ',' ! propertyname[false] )*
 			try { DebugEnterSubRule(6);
@@ -807,7 +827,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				try { DebugEnterDecision(6, false);
 				int LA6_1 = input.LA(1);
 
-				if ((LA6_1==57))
+				if ((LA6_1==58))
 				{
 					alt6 = 1;
 				}
@@ -821,13 +841,13 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:48:33: ',' ! propertyname[false]
 					{
 					DebugLocation(48, 36);
-					char_literal18=(IToken)Match(input,57,Follow._57_in_select184); 
+					char_literal19=(IToken)Match(input,58,Follow._58_in_select179); 
 					DebugLocation(48, 38);
-					PushFollow(Follow._propertyname_in_select187);
-					propertyname19=propertyname(false);
+					PushFollow(Follow._propertyname_in_select182);
+					propertyname20=propertyname(false);
 					PopFollow();
 
-					adaptor.AddChild(root_0, propertyname19.Tree);
+					adaptor.AddChild(root_0, propertyname20.Tree);
 
 					}
 					break;
@@ -871,97 +891,212 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	}
 	// $ANTLR end "select"
 
-	partial void EnterRule_inlinecount();
-	partial void LeaveRule_inlinecount();
-	// $ANTLR start "inlinecount"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:50:1: inlinecount : ( INLINECOUNT ^ ALLPAGES | INLINECOUNT NONE ->);
-	[GrammarRule("inlinecount")]
-	private AstParserRuleReturnScope<object, IToken> inlinecount()
+	partial void EnterRule_expand();
+	partial void LeaveRule_expand();
+	// $ANTLR start "expand"
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:50:1: expand : EXPAND ^ propertyname[false] ( ',' ! propertyname[false] )* ;
+	[GrammarRule("expand")]
+	private AstParserRuleReturnScope<object, IToken> expand()
 	{
-		EnterRule_inlinecount();
-		EnterRule("inlinecount", 7);
-		TraceIn("inlinecount", 7);
+		EnterRule_expand();
+		EnterRule("expand", 7);
+		TraceIn("expand", 7);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		IToken INLINECOUNT20 = default(IToken);
-		IToken ALLPAGES21 = default(IToken);
-		IToken INLINECOUNT22 = default(IToken);
-		IToken NONE23 = default(IToken);
+		IToken EXPAND21 = default(IToken);
+		IToken char_literal23 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> propertyname22 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> propertyname24 = default(AstParserRuleReturnScope<object, IToken>);
 
-		object INLINECOUNT20_tree = default(object);
-		object ALLPAGES21_tree = default(object);
-		object INLINECOUNT22_tree = default(object);
-		object NONE23_tree = default(object);
-		RewriteRuleITokenStream stream_INLINECOUNT=new RewriteRuleITokenStream(adaptor,"token INLINECOUNT");
-		RewriteRuleITokenStream stream_NONE=new RewriteRuleITokenStream(adaptor,"token NONE");
-		try { DebugEnterRule(GrammarFileName, "inlinecount");
-		DebugLocation(50, 22);
+		object EXPAND21_tree = default(object);
+		object char_literal23_tree = default(object);
+		try { DebugEnterRule(GrammarFileName, "expand");
+		DebugLocation(50, 58);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:51:2: ( INLINECOUNT ^ ALLPAGES | INLINECOUNT NONE ->)
-			int alt7=2;
-			try { DebugEnterDecision(7, false);
-			int LA7_1 = input.LA(1);
-
-			if ((LA7_1==INLINECOUNT))
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:51:2: ( EXPAND ^ propertyname[false] ( ',' ! propertyname[false] )* )
+			DebugEnterAlt(1);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:51:4: EXPAND ^ propertyname[false] ( ',' ! propertyname[false] )*
 			{
-				int LA7_2 = input.LA(2);
+			root_0 = (object)adaptor.Nil();
 
-				if ((LA7_2==ALLPAGES))
+			DebugLocation(51, 10);
+			EXPAND21=(IToken)Match(input,EXPAND,Follow._EXPAND_in_expand197); 
+			EXPAND21_tree = (object)adaptor.Create(EXPAND21);
+			root_0 = (object)adaptor.BecomeRoot(EXPAND21_tree, root_0);
+			DebugLocation(51, 12);
+			PushFollow(Follow._propertyname_in_expand200);
+			propertyname22=propertyname(false);
+			PopFollow();
+
+			adaptor.AddChild(root_0, propertyname22.Tree);
+			DebugLocation(51, 32);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:51:32: ( ',' ! propertyname[false] )*
+			try { DebugEnterSubRule(7);
+			while (true)
+			{
+				int alt7=2;
+				try { DebugEnterDecision(7, false);
+				int LA7_1 = input.LA(1);
+
+				if ((LA7_1==58))
 				{
 					alt7 = 1;
 				}
-				else if ((LA7_2==NONE))
+
+
+				} finally { DebugExitDecision(7); }
+				switch ( alt7 )
 				{
-					alt7 = 2;
+				case 1:
+					DebugEnterAlt(1);
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:51:33: ',' ! propertyname[false]
+					{
+					DebugLocation(51, 36);
+					char_literal23=(IToken)Match(input,58,Follow._58_in_expand204); 
+					DebugLocation(51, 38);
+					PushFollow(Follow._propertyname_in_expand207);
+					propertyname24=propertyname(false);
+					PopFollow();
+
+					adaptor.AddChild(root_0, propertyname24.Tree);
+
+					}
+					break;
+
+				default:
+					goto loop7;
+				}
+			}
+
+			loop7:
+				;
+
+			} finally { DebugExitSubRule(7); }
+
+
+			}
+
+			retval.Stop = (IToken)input.LT(-1);
+
+			retval.Tree = (object)adaptor.RulePostProcessing(root_0);
+			adaptor.SetTokenBoundaries(retval.Tree, retval.Start, retval.Stop);
+
+		}
+		catch (RecognitionException re)
+		{
+			ReportError(re);
+			Recover(input,re);
+			retval.Tree = (object)adaptor.ErrorNode(input, retval.Start, input.LT(-1), re);
+
+		}
+		finally
+		{
+			TraceOut("expand", 7);
+			LeaveRule("expand", 7);
+			LeaveRule_expand();
+		}
+		DebugLocation(51, 58);
+		} finally { DebugExitRule(GrammarFileName, "expand"); }
+		return retval;
+
+	}
+	// $ANTLR end "expand"
+
+	partial void EnterRule_inlinecount();
+	partial void LeaveRule_inlinecount();
+	// $ANTLR start "inlinecount"
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:53:1: inlinecount : ( INLINECOUNT ^ ALLPAGES | INLINECOUNT NONE ->);
+	[GrammarRule("inlinecount")]
+	private AstParserRuleReturnScope<object, IToken> inlinecount()
+	{
+		EnterRule_inlinecount();
+		EnterRule("inlinecount", 8);
+		TraceIn("inlinecount", 8);
+		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
+		retval.Start = (IToken)input.LT(1);
+
+		object root_0 = default(object);
+
+		IToken INLINECOUNT25 = default(IToken);
+		IToken ALLPAGES26 = default(IToken);
+		IToken INLINECOUNT27 = default(IToken);
+		IToken NONE28 = default(IToken);
+
+		object INLINECOUNT25_tree = default(object);
+		object ALLPAGES26_tree = default(object);
+		object INLINECOUNT27_tree = default(object);
+		object NONE28_tree = default(object);
+		RewriteRuleITokenStream stream_INLINECOUNT=new RewriteRuleITokenStream(adaptor,"token INLINECOUNT");
+		RewriteRuleITokenStream stream_NONE=new RewriteRuleITokenStream(adaptor,"token NONE");
+		try { DebugEnterRule(GrammarFileName, "inlinecount");
+		DebugLocation(53, 22);
+		try
+		{
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:54:2: ( INLINECOUNT ^ ALLPAGES | INLINECOUNT NONE ->)
+			int alt8=2;
+			try { DebugEnterDecision(8, false);
+			int LA8_1 = input.LA(1);
+
+			if ((LA8_1==INLINECOUNT))
+			{
+				int LA8_2 = input.LA(2);
+
+				if ((LA8_2==ALLPAGES))
+				{
+					alt8 = 1;
+				}
+				else if ((LA8_2==NONE))
+				{
+					alt8 = 2;
 				}
 				else
 				{
-					NoViableAltException nvae = new NoViableAltException("", 7, 1, input, 2);
+					NoViableAltException nvae = new NoViableAltException("", 8, 1, input, 2);
 					DebugRecognitionException(nvae);
 					throw nvae;
 				}
 			}
 			else
 			{
-				NoViableAltException nvae = new NoViableAltException("", 7, 0, input, 1);
+				NoViableAltException nvae = new NoViableAltException("", 8, 0, input, 1);
 				DebugRecognitionException(nvae);
 				throw nvae;
 			}
-			} finally { DebugExitDecision(7); }
-			switch (alt7)
+			} finally { DebugExitDecision(8); }
+			switch (alt8)
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:51:4: INLINECOUNT ^ ALLPAGES
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:54:4: INLINECOUNT ^ ALLPAGES
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(51, 15);
-				INLINECOUNT20=(IToken)Match(input,INLINECOUNT,Follow._INLINECOUNT_in_inlinecount200); 
-				INLINECOUNT20_tree = (object)adaptor.Create(INLINECOUNT20);
-				root_0 = (object)adaptor.BecomeRoot(INLINECOUNT20_tree, root_0);
-				DebugLocation(51, 17);
-				ALLPAGES21=(IToken)Match(input,ALLPAGES,Follow._ALLPAGES_in_inlinecount203); 
-				ALLPAGES21_tree = (object)adaptor.Create(ALLPAGES21);
-				adaptor.AddChild(root_0, ALLPAGES21_tree);
+				DebugLocation(54, 15);
+				INLINECOUNT25=(IToken)Match(input,INLINECOUNT,Follow._INLINECOUNT_in_inlinecount220); 
+				INLINECOUNT25_tree = (object)adaptor.Create(INLINECOUNT25);
+				root_0 = (object)adaptor.BecomeRoot(INLINECOUNT25_tree, root_0);
+				DebugLocation(54, 17);
+				ALLPAGES26=(IToken)Match(input,ALLPAGES,Follow._ALLPAGES_in_inlinecount223); 
+				ALLPAGES26_tree = (object)adaptor.Create(ALLPAGES26);
+				adaptor.AddChild(root_0, ALLPAGES26_tree);
 
 				}
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:52:4: INLINECOUNT NONE
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:55:4: INLINECOUNT NONE
 				{
-				DebugLocation(52, 4);
-				INLINECOUNT22=(IToken)Match(input,INLINECOUNT,Follow._INLINECOUNT_in_inlinecount208);  
-				stream_INLINECOUNT.Add(INLINECOUNT22);
+				DebugLocation(55, 4);
+				INLINECOUNT27=(IToken)Match(input,INLINECOUNT,Follow._INLINECOUNT_in_inlinecount228);  
+				stream_INLINECOUNT.Add(INLINECOUNT27);
 
-				DebugLocation(52, 16);
-				NONE23=(IToken)Match(input,NONE,Follow._NONE_in_inlinecount210);  
-				stream_NONE.Add(NONE23);
+				DebugLocation(55, 16);
+				NONE28=(IToken)Match(input,NONE,Follow._NONE_in_inlinecount230);  
+				stream_NONE.Add(NONE28);
 
 
 
@@ -977,9 +1112,9 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 				root_0 = (object)adaptor.Nil();
-				// 52:21: ->
+				// 55:21: ->
 				{
-					DebugLocation(52, 23);
+					DebugLocation(55, 23);
 					root_0 = null;
 				}
 
@@ -1005,11 +1140,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("inlinecount", 7);
-			LeaveRule("inlinecount", 7);
+			TraceOut("inlinecount", 8);
+			LeaveRule("inlinecount", 8);
 			LeaveRule_inlinecount();
 		}
-		DebugLocation(52, 22);
+		DebugLocation(55, 22);
 		} finally { DebugExitRule(GrammarFileName, "inlinecount"); }
 		return retval;
 
@@ -1019,164 +1154,45 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_filterexpression();
 	partial void LeaveRule_filterexpression();
 	// $ANTLR start "filterexpression"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:54:1: filterexpression[bool subquery] : orexpression[subquery] ( SPACE ! OR ^ SPACE ! orexpression[subquery] )* ;
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:57:1: filterexpression[bool subquery] : orexpression[subquery] ( SPACE ! OR ^ SPACE ! orexpression[subquery] )* ;
 	[GrammarRule("filterexpression")]
 	private AstParserRuleReturnScope<object, IToken> filterexpression(bool subquery)
 	{
 		EnterRule_filterexpression();
-		EnterRule("filterexpression", 8);
-		TraceIn("filterexpression", 8);
-		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
-		retval.Start = (IToken)input.LT(1);
-
-		object root_0 = default(object);
-
-		IToken SPACE25 = default(IToken);
-		IToken OR26 = default(IToken);
-		IToken SPACE27 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> orexpression24 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> orexpression28 = default(AstParserRuleReturnScope<object, IToken>);
-
-		object SPACE25_tree = default(object);
-		object OR26_tree = default(object);
-		object SPACE27_tree = default(object);
-		try { DebugEnterRule(GrammarFileName, "filterexpression");
-		DebugLocation(54, 69);
-		try
-		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:55:2: ( orexpression[subquery] ( SPACE ! OR ^ SPACE ! orexpression[subquery] )* )
-			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:55:4: orexpression[subquery] ( SPACE ! OR ^ SPACE ! orexpression[subquery] )*
-			{
-			root_0 = (object)adaptor.Nil();
-
-			DebugLocation(55, 4);
-			PushFollow(Follow._orexpression_in_filterexpression222);
-			orexpression24=orexpression(subquery);
-			PopFollow();
-
-			adaptor.AddChild(root_0, orexpression24.Tree);
-			DebugLocation(55, 27);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:55:27: ( SPACE ! OR ^ SPACE ! orexpression[subquery] )*
-			try { DebugEnterSubRule(8);
-			while (true)
-			{
-				int alt8=2;
-				try { DebugEnterDecision(8, false);
-				int LA8_1 = input.LA(1);
-
-				if ((LA8_1==SPACE))
-				{
-					alt8 = 1;
-				}
-
-
-				} finally { DebugExitDecision(8); }
-				switch ( alt8 )
-				{
-				case 1:
-					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:55:28: SPACE ! OR ^ SPACE ! orexpression[subquery]
-					{
-					DebugLocation(55, 33);
-					SPACE25=(IToken)Match(input,SPACE,Follow._SPACE_in_filterexpression226); 
-					DebugLocation(55, 37);
-					OR26=(IToken)Match(input,OR,Follow._OR_in_filterexpression229); 
-					OR26_tree = (object)adaptor.Create(OR26);
-					root_0 = (object)adaptor.BecomeRoot(OR26_tree, root_0);
-					DebugLocation(55, 44);
-					SPACE27=(IToken)Match(input,SPACE,Follow._SPACE_in_filterexpression232); 
-					DebugLocation(55, 46);
-					PushFollow(Follow._orexpression_in_filterexpression235);
-					orexpression28=orexpression(subquery);
-					PopFollow();
-
-					adaptor.AddChild(root_0, orexpression28.Tree);
-
-					}
-					break;
-
-				default:
-					goto loop8;
-				}
-			}
-
-			loop8:
-				;
-
-			} finally { DebugExitSubRule(8); }
-
-
-			}
-
-			retval.Stop = (IToken)input.LT(-1);
-
-			retval.Tree = (object)adaptor.RulePostProcessing(root_0);
-			adaptor.SetTokenBoundaries(retval.Tree, retval.Start, retval.Stop);
-
-		}
-		catch (RecognitionException re)
-		{
-			ReportError(re);
-			Recover(input,re);
-			retval.Tree = (object)adaptor.ErrorNode(input, retval.Start, input.LT(-1), re);
-
-		}
-		finally
-		{
-			TraceOut("filterexpression", 8);
-			LeaveRule("filterexpression", 8);
-			LeaveRule_filterexpression();
-		}
-		DebugLocation(55, 69);
-		} finally { DebugExitRule(GrammarFileName, "filterexpression"); }
-		return retval;
-
-	}
-	// $ANTLR end "filterexpression"
-
-	partial void EnterRule_orexpression();
-	partial void LeaveRule_orexpression();
-	// $ANTLR start "orexpression"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:57:1: orexpression[bool subquery] : andexpression[subquery] ( SPACE ! AND ^ SPACE ! andexpression[subquery] )* ;
-	[GrammarRule("orexpression")]
-	private AstParserRuleReturnScope<object, IToken> orexpression(bool subquery)
-	{
-		EnterRule_orexpression();
-		EnterRule("orexpression", 9);
-		TraceIn("orexpression", 9);
+		EnterRule("filterexpression", 9);
+		TraceIn("filterexpression", 9);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
 		IToken SPACE30 = default(IToken);
-		IToken AND31 = default(IToken);
+		IToken OR31 = default(IToken);
 		IToken SPACE32 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> andexpression29 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> andexpression33 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> orexpression29 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> orexpression33 = default(AstParserRuleReturnScope<object, IToken>);
 
 		object SPACE30_tree = default(object);
-		object AND31_tree = default(object);
+		object OR31_tree = default(object);
 		object SPACE32_tree = default(object);
-		try { DebugEnterRule(GrammarFileName, "orexpression");
-		DebugLocation(57, 72);
+		try { DebugEnterRule(GrammarFileName, "filterexpression");
+		DebugLocation(57, 69);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:58:2: ( andexpression[subquery] ( SPACE ! AND ^ SPACE ! andexpression[subquery] )* )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:58:2: ( orexpression[subquery] ( SPACE ! OR ^ SPACE ! orexpression[subquery] )* )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:58:4: andexpression[subquery] ( SPACE ! AND ^ SPACE ! andexpression[subquery] )*
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:58:4: orexpression[subquery] ( SPACE ! OR ^ SPACE ! orexpression[subquery] )*
 			{
 			root_0 = (object)adaptor.Nil();
 
 			DebugLocation(58, 4);
-			PushFollow(Follow._andexpression_in_orexpression249);
-			andexpression29=andexpression(subquery);
+			PushFollow(Follow._orexpression_in_filterexpression242);
+			orexpression29=orexpression(subquery);
 			PopFollow();
 
-			adaptor.AddChild(root_0, andexpression29.Tree);
-			DebugLocation(58, 28);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:58:28: ( SPACE ! AND ^ SPACE ! andexpression[subquery] )*
+			adaptor.AddChild(root_0, orexpression29.Tree);
+			DebugLocation(58, 27);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:58:27: ( SPACE ! OR ^ SPACE ! orexpression[subquery] )*
 			try { DebugEnterSubRule(9);
 			while (true)
 			{
@@ -1186,14 +1202,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 
 				if ((LA9_1==SPACE))
 				{
-					int LA9_2 = input.LA(2);
-
-					if ((LA9_2==AND))
-					{
-						alt9 = 1;
-					}
-
-
+					alt9 = 1;
 				}
 
 
@@ -1202,22 +1211,22 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:58:29: SPACE ! AND ^ SPACE ! andexpression[subquery]
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:58:28: SPACE ! OR ^ SPACE ! orexpression[subquery]
 					{
-					DebugLocation(58, 34);
-					SPACE30=(IToken)Match(input,SPACE,Follow._SPACE_in_orexpression253); 
-					DebugLocation(58, 39);
-					AND31=(IToken)Match(input,AND,Follow._AND_in_orexpression256); 
-					AND31_tree = (object)adaptor.Create(AND31);
-					root_0 = (object)adaptor.BecomeRoot(AND31_tree, root_0);
+					DebugLocation(58, 33);
+					SPACE30=(IToken)Match(input,SPACE,Follow._SPACE_in_filterexpression246); 
+					DebugLocation(58, 37);
+					OR31=(IToken)Match(input,OR,Follow._OR_in_filterexpression249); 
+					OR31_tree = (object)adaptor.Create(OR31);
+					root_0 = (object)adaptor.BecomeRoot(OR31_tree, root_0);
+					DebugLocation(58, 44);
+					SPACE32=(IToken)Match(input,SPACE,Follow._SPACE_in_filterexpression252); 
 					DebugLocation(58, 46);
-					SPACE32=(IToken)Match(input,SPACE,Follow._SPACE_in_orexpression259); 
-					DebugLocation(58, 48);
-					PushFollow(Follow._andexpression_in_orexpression262);
-					andexpression33=andexpression(subquery);
+					PushFollow(Follow._orexpression_in_filterexpression255);
+					orexpression33=orexpression(subquery);
 					PopFollow();
 
-					adaptor.AddChild(root_0, andexpression33.Tree);
+					adaptor.AddChild(root_0, orexpression33.Tree);
 
 					}
 					break;
@@ -1250,11 +1259,137 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("orexpression", 9);
-			LeaveRule("orexpression", 9);
+			TraceOut("filterexpression", 9);
+			LeaveRule("filterexpression", 9);
+			LeaveRule_filterexpression();
+		}
+		DebugLocation(58, 69);
+		} finally { DebugExitRule(GrammarFileName, "filterexpression"); }
+		return retval;
+
+	}
+	// $ANTLR end "filterexpression"
+
+	partial void EnterRule_orexpression();
+	partial void LeaveRule_orexpression();
+	// $ANTLR start "orexpression"
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:60:1: orexpression[bool subquery] : andexpression[subquery] ( SPACE ! AND ^ SPACE ! andexpression[subquery] )* ;
+	[GrammarRule("orexpression")]
+	private AstParserRuleReturnScope<object, IToken> orexpression(bool subquery)
+	{
+		EnterRule_orexpression();
+		EnterRule("orexpression", 10);
+		TraceIn("orexpression", 10);
+		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
+		retval.Start = (IToken)input.LT(1);
+
+		object root_0 = default(object);
+
+		IToken SPACE35 = default(IToken);
+		IToken AND36 = default(IToken);
+		IToken SPACE37 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> andexpression34 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> andexpression38 = default(AstParserRuleReturnScope<object, IToken>);
+
+		object SPACE35_tree = default(object);
+		object AND36_tree = default(object);
+		object SPACE37_tree = default(object);
+		try { DebugEnterRule(GrammarFileName, "orexpression");
+		DebugLocation(60, 72);
+		try
+		{
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:61:2: ( andexpression[subquery] ( SPACE ! AND ^ SPACE ! andexpression[subquery] )* )
+			DebugEnterAlt(1);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:61:4: andexpression[subquery] ( SPACE ! AND ^ SPACE ! andexpression[subquery] )*
+			{
+			root_0 = (object)adaptor.Nil();
+
+			DebugLocation(61, 4);
+			PushFollow(Follow._andexpression_in_orexpression269);
+			andexpression34=andexpression(subquery);
+			PopFollow();
+
+			adaptor.AddChild(root_0, andexpression34.Tree);
+			DebugLocation(61, 28);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:61:28: ( SPACE ! AND ^ SPACE ! andexpression[subquery] )*
+			try { DebugEnterSubRule(10);
+			while (true)
+			{
+				int alt10=2;
+				try { DebugEnterDecision(10, false);
+				int LA10_1 = input.LA(1);
+
+				if ((LA10_1==SPACE))
+				{
+					int LA10_2 = input.LA(2);
+
+					if ((LA10_2==AND))
+					{
+						alt10 = 1;
+					}
+
+
+				}
+
+
+				} finally { DebugExitDecision(10); }
+				switch ( alt10 )
+				{
+				case 1:
+					DebugEnterAlt(1);
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:61:29: SPACE ! AND ^ SPACE ! andexpression[subquery]
+					{
+					DebugLocation(61, 34);
+					SPACE35=(IToken)Match(input,SPACE,Follow._SPACE_in_orexpression273); 
+					DebugLocation(61, 39);
+					AND36=(IToken)Match(input,AND,Follow._AND_in_orexpression276); 
+					AND36_tree = (object)adaptor.Create(AND36);
+					root_0 = (object)adaptor.BecomeRoot(AND36_tree, root_0);
+					DebugLocation(61, 46);
+					SPACE37=(IToken)Match(input,SPACE,Follow._SPACE_in_orexpression279); 
+					DebugLocation(61, 48);
+					PushFollow(Follow._andexpression_in_orexpression282);
+					andexpression38=andexpression(subquery);
+					PopFollow();
+
+					adaptor.AddChild(root_0, andexpression38.Tree);
+
+					}
+					break;
+
+				default:
+					goto loop10;
+				}
+			}
+
+			loop10:
+				;
+
+			} finally { DebugExitSubRule(10); }
+
+
+			}
+
+			retval.Stop = (IToken)input.LT(-1);
+
+			retval.Tree = (object)adaptor.RulePostProcessing(root_0);
+			adaptor.SetTokenBoundaries(retval.Tree, retval.Start, retval.Stop);
+
+		}
+		catch (RecognitionException re)
+		{
+			ReportError(re);
+			Recover(input,re);
+			retval.Tree = (object)adaptor.ErrorNode(input, retval.Start, input.LT(-1), re);
+
+		}
+		finally
+		{
+			TraceOut("orexpression", 10);
+			LeaveRule("orexpression", 10);
 			LeaveRule_orexpression();
 		}
-		DebugLocation(58, 72);
+		DebugLocation(61, 72);
 		} finally { DebugExitRule(GrammarFileName, "orexpression"); }
 		return retval;
 
@@ -1264,154 +1399,83 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_andexpression();
 	partial void LeaveRule_andexpression();
 	// $ANTLR start "andexpression"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:60:1: andexpression[bool subquery] : ( NOT ^ SPACE ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] ) | ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] ) );
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:63:1: andexpression[bool subquery] : ( NOT ^ SPACE ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] ) | ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] ) );
 	[GrammarRule("andexpression")]
 	private AstParserRuleReturnScope<object, IToken> andexpression(bool subquery)
 	{
 		EnterRule_andexpression();
-		EnterRule("andexpression", 10);
-		TraceIn("andexpression", 10);
+		EnterRule("andexpression", 11);
+		TraceIn("andexpression", 11);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		IToken NOT34 = default(IToken);
-		IToken SPACE35 = default(IToken);
-		IToken char_literal36 = default(IToken);
-		IToken char_literal38 = default(IToken);
-		IToken char_literal40 = default(IToken);
-		IToken char_literal42 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> filterexpression37 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> booleanexpression39 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> filterexpression41 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> booleanexpression43 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken NOT39 = default(IToken);
+		IToken SPACE40 = default(IToken);
+		IToken char_literal41 = default(IToken);
+		IToken char_literal43 = default(IToken);
+		IToken char_literal45 = default(IToken);
+		IToken char_literal47 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> filterexpression42 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> booleanexpression44 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> filterexpression46 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> booleanexpression48 = default(AstParserRuleReturnScope<object, IToken>);
 
-		object NOT34_tree = default(object);
-		object SPACE35_tree = default(object);
-		object char_literal36_tree = default(object);
-		object char_literal38_tree = default(object);
-		object char_literal40_tree = default(object);
-		object char_literal42_tree = default(object);
+		object NOT39_tree = default(object);
+		object SPACE40_tree = default(object);
+		object char_literal41_tree = default(object);
+		object char_literal43_tree = default(object);
+		object char_literal45_tree = default(object);
+		object char_literal47_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "andexpression");
-		DebugLocation(60, 69);
+		DebugLocation(63, 69);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:61:2: ( NOT ^ SPACE ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] ) | ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] ) )
-			int alt12=2;
-			try { DebugEnterDecision(12, false);
-			int LA12_1 = input.LA(1);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:64:2: ( NOT ^ SPACE ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] ) | ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] ) )
+			int alt13=2;
+			try { DebugEnterDecision(13, false);
+			int LA13_1 = input.LA(1);
 
-			if ((LA12_1==NOT))
+			if ((LA13_1==NOT))
 			{
-				alt12 = 1;
+				alt13 = 1;
 			}
-			else if (((LA12_1>=BOOL && LA12_1<=BYTE)||LA12_1==DATETIME||(LA12_1>=DOUBLE && LA12_1<=ENDSWITH)||LA12_1==GUID||LA12_1==IDENTIFIER||LA12_1==INT||LA12_1==LONG||LA12_1==SINGLE||(LA12_1>=STARTSWITH && LA12_1<=SUBSTRINGOF)||LA12_1==TOLOWER||LA12_1==55))
+			else if (((LA13_1>=BOOL && LA13_1<=BYTE)||LA13_1==DATETIME||(LA13_1>=DOUBLE && LA13_1<=ENDSWITH)||LA13_1==GUID||LA13_1==IDENTIFIER||LA13_1==INT||LA13_1==LONG||LA13_1==SINGLE||(LA13_1>=STARTSWITH && LA13_1<=SUBSTRINGOF)||LA13_1==TOLOWER||LA13_1==56))
 			{
-				alt12 = 2;
+				alt13 = 2;
 			}
 			else
 			{
-				NoViableAltException nvae = new NoViableAltException("", 12, 0, input, 1);
+				NoViableAltException nvae = new NoViableAltException("", 13, 0, input, 1);
 				DebugRecognitionException(nvae);
 				throw nvae;
 			}
-			} finally { DebugExitDecision(12); }
-			switch (alt12)
+			} finally { DebugExitDecision(13); }
+			switch (alt13)
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:61:4: NOT ^ SPACE ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] )
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:64:4: NOT ^ SPACE ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] )
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(61, 7);
-				NOT34=(IToken)Match(input,NOT,Follow._NOT_in_andexpression276); 
-				NOT34_tree = (object)adaptor.Create(NOT34);
-				root_0 = (object)adaptor.BecomeRoot(NOT34_tree, root_0);
-				DebugLocation(61, 9);
-				SPACE35=(IToken)Match(input,SPACE,Follow._SPACE_in_andexpression279); 
-				SPACE35_tree = (object)adaptor.Create(SPACE35);
-				adaptor.AddChild(root_0, SPACE35_tree);
-				DebugLocation(61, 15);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:61:15: ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] )
-				int alt10=2;
-				try { DebugEnterSubRule(10);
-				try { DebugEnterDecision(10, false);
-				int LA10_1 = input.LA(1);
-
-				if ((LA10_1==55))
-				{
-					alt10 = 1;
-				}
-				else if (((LA10_1>=BOOL && LA10_1<=BYTE)||LA10_1==DATETIME||(LA10_1>=DOUBLE && LA10_1<=ENDSWITH)||LA10_1==GUID||LA10_1==IDENTIFIER||LA10_1==INT||LA10_1==LONG||LA10_1==SINGLE||(LA10_1>=STARTSWITH && LA10_1<=SUBSTRINGOF)||LA10_1==TOLOWER))
-				{
-					alt10 = 2;
-				}
-				else
-				{
-					NoViableAltException nvae = new NoViableAltException("", 10, 0, input, 1);
-					DebugRecognitionException(nvae);
-					throw nvae;
-				}
-				} finally { DebugExitDecision(10); }
-				switch (alt10)
-				{
-				case 1:
-					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:61:16: '(' filterexpression[subquery] ')'
-					{
-					DebugLocation(61, 16);
-					char_literal36=(IToken)Match(input,55,Follow._55_in_andexpression282); 
-					char_literal36_tree = (object)adaptor.Create(char_literal36);
-					adaptor.AddChild(root_0, char_literal36_tree);
-					DebugLocation(61, 20);
-					PushFollow(Follow._filterexpression_in_andexpression284);
-					filterexpression37=filterexpression(subquery);
-					PopFollow();
-
-					adaptor.AddChild(root_0, filterexpression37.Tree);
-					DebugLocation(61, 47);
-					char_literal38=(IToken)Match(input,56,Follow._56_in_andexpression287); 
-					char_literal38_tree = (object)adaptor.Create(char_literal38);
-					adaptor.AddChild(root_0, char_literal38_tree);
-
-					}
-					break;
-				case 2:
-					DebugEnterAlt(2);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:61:53: booleanexpression[subquery]
-					{
-					DebugLocation(61, 53);
-					PushFollow(Follow._booleanexpression_in_andexpression291);
-					booleanexpression39=booleanexpression(subquery);
-					PopFollow();
-
-					adaptor.AddChild(root_0, booleanexpression39.Tree);
-
-					}
-					break;
-
-				}
-				} finally { DebugExitSubRule(10); }
-
-
-				}
-				break;
-			case 2:
-				DebugEnterAlt(2);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:62:4: ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] )
-				{
-				root_0 = (object)adaptor.Nil();
-
-				DebugLocation(62, 4);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:62:4: ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] )
+				DebugLocation(64, 7);
+				NOT39=(IToken)Match(input,NOT,Follow._NOT_in_andexpression296); 
+				NOT39_tree = (object)adaptor.Create(NOT39);
+				root_0 = (object)adaptor.BecomeRoot(NOT39_tree, root_0);
+				DebugLocation(64, 9);
+				SPACE40=(IToken)Match(input,SPACE,Follow._SPACE_in_andexpression299); 
+				SPACE40_tree = (object)adaptor.Create(SPACE40);
+				adaptor.AddChild(root_0, SPACE40_tree);
+				DebugLocation(64, 15);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:64:15: ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] )
 				int alt11=2;
 				try { DebugEnterSubRule(11);
 				try { DebugEnterDecision(11, false);
 				int LA11_1 = input.LA(1);
 
-				if ((LA11_1==55))
+				if ((LA11_1==56))
 				{
 					alt11 = 1;
 				}
@@ -1430,41 +1494,112 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:62:5: '(' filterexpression[subquery] ')'
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:64:16: '(' filterexpression[subquery] ')'
 					{
-					DebugLocation(62, 5);
-					char_literal40=(IToken)Match(input,55,Follow._55_in_andexpression299); 
-					char_literal40_tree = (object)adaptor.Create(char_literal40);
-					adaptor.AddChild(root_0, char_literal40_tree);
-					DebugLocation(62, 9);
-					PushFollow(Follow._filterexpression_in_andexpression301);
-					filterexpression41=filterexpression(subquery);
+					DebugLocation(64, 16);
+					char_literal41=(IToken)Match(input,56,Follow._56_in_andexpression302); 
+					char_literal41_tree = (object)adaptor.Create(char_literal41);
+					adaptor.AddChild(root_0, char_literal41_tree);
+					DebugLocation(64, 20);
+					PushFollow(Follow._filterexpression_in_andexpression304);
+					filterexpression42=filterexpression(subquery);
 					PopFollow();
 
-					adaptor.AddChild(root_0, filterexpression41.Tree);
-					DebugLocation(62, 36);
-					char_literal42=(IToken)Match(input,56,Follow._56_in_andexpression304); 
-					char_literal42_tree = (object)adaptor.Create(char_literal42);
-					adaptor.AddChild(root_0, char_literal42_tree);
+					adaptor.AddChild(root_0, filterexpression42.Tree);
+					DebugLocation(64, 47);
+					char_literal43=(IToken)Match(input,57,Follow._57_in_andexpression307); 
+					char_literal43_tree = (object)adaptor.Create(char_literal43);
+					adaptor.AddChild(root_0, char_literal43_tree);
 
 					}
 					break;
 				case 2:
 					DebugEnterAlt(2);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:62:42: booleanexpression[subquery]
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:64:53: booleanexpression[subquery]
 					{
-					DebugLocation(62, 42);
-					PushFollow(Follow._booleanexpression_in_andexpression308);
-					booleanexpression43=booleanexpression(subquery);
+					DebugLocation(64, 53);
+					PushFollow(Follow._booleanexpression_in_andexpression311);
+					booleanexpression44=booleanexpression(subquery);
 					PopFollow();
 
-					adaptor.AddChild(root_0, booleanexpression43.Tree);
+					adaptor.AddChild(root_0, booleanexpression44.Tree);
 
 					}
 					break;
 
 				}
 				} finally { DebugExitSubRule(11); }
+
+
+				}
+				break;
+			case 2:
+				DebugEnterAlt(2);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:65:4: ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] )
+				{
+				root_0 = (object)adaptor.Nil();
+
+				DebugLocation(65, 4);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:65:4: ( '(' filterexpression[subquery] ')' | booleanexpression[subquery] )
+				int alt12=2;
+				try { DebugEnterSubRule(12);
+				try { DebugEnterDecision(12, false);
+				int LA12_1 = input.LA(1);
+
+				if ((LA12_1==56))
+				{
+					alt12 = 1;
+				}
+				else if (((LA12_1>=BOOL && LA12_1<=BYTE)||LA12_1==DATETIME||(LA12_1>=DOUBLE && LA12_1<=ENDSWITH)||LA12_1==GUID||LA12_1==IDENTIFIER||LA12_1==INT||LA12_1==LONG||LA12_1==SINGLE||(LA12_1>=STARTSWITH && LA12_1<=SUBSTRINGOF)||LA12_1==TOLOWER))
+				{
+					alt12 = 2;
+				}
+				else
+				{
+					NoViableAltException nvae = new NoViableAltException("", 12, 0, input, 1);
+					DebugRecognitionException(nvae);
+					throw nvae;
+				}
+				} finally { DebugExitDecision(12); }
+				switch (alt12)
+				{
+				case 1:
+					DebugEnterAlt(1);
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:65:5: '(' filterexpression[subquery] ')'
+					{
+					DebugLocation(65, 5);
+					char_literal45=(IToken)Match(input,56,Follow._56_in_andexpression319); 
+					char_literal45_tree = (object)adaptor.Create(char_literal45);
+					adaptor.AddChild(root_0, char_literal45_tree);
+					DebugLocation(65, 9);
+					PushFollow(Follow._filterexpression_in_andexpression321);
+					filterexpression46=filterexpression(subquery);
+					PopFollow();
+
+					adaptor.AddChild(root_0, filterexpression46.Tree);
+					DebugLocation(65, 36);
+					char_literal47=(IToken)Match(input,57,Follow._57_in_andexpression324); 
+					char_literal47_tree = (object)adaptor.Create(char_literal47);
+					adaptor.AddChild(root_0, char_literal47_tree);
+
+					}
+					break;
+				case 2:
+					DebugEnterAlt(2);
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:65:42: booleanexpression[subquery]
+					{
+					DebugLocation(65, 42);
+					PushFollow(Follow._booleanexpression_in_andexpression328);
+					booleanexpression48=booleanexpression(subquery);
+					PopFollow();
+
+					adaptor.AddChild(root_0, booleanexpression48.Tree);
+
+					}
+					break;
+
+				}
+				} finally { DebugExitSubRule(12); }
 
 
 				}
@@ -1486,11 +1621,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("andexpression", 10);
-			LeaveRule("andexpression", 10);
+			TraceOut("andexpression", 11);
+			LeaveRule("andexpression", 11);
 			LeaveRule_andexpression();
 		}
-		DebugLocation(62, 69);
+		DebugLocation(65, 69);
 		} finally { DebugExitRule(GrammarFileName, "andexpression"); }
 		return retval;
 
@@ -1500,27 +1635,27 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_booleanexpression();
 	partial void LeaveRule_booleanexpression();
 	// $ANTLR start "booleanexpression"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:64:1: booleanexpression[bool subquery] : atom1= atom[subquery] ( SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery] -> ^( $op $atom1 $atom2) | -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] ) ) ;
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:67:1: booleanexpression[bool subquery] : atom1= atom[subquery] ( SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery] -> ^( $op $atom1 $atom2) | -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] ) ) ;
 	[GrammarRule("booleanexpression")]
 	private AstParserRuleReturnScope<object, IToken> booleanexpression(bool subquery)
 	{
 		EnterRule_booleanexpression();
-		EnterRule("booleanexpression", 11);
-		TraceIn("booleanexpression", 11);
+		EnterRule("booleanexpression", 12);
+		TraceIn("booleanexpression", 12);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
 		IToken op = default(IToken);
-		IToken SPACE44 = default(IToken);
-		IToken SPACE45 = default(IToken);
+		IToken SPACE49 = default(IToken);
+		IToken SPACE50 = default(IToken);
 		AstParserRuleReturnScope<object, IToken> atom1 = default(AstParserRuleReturnScope<object, IToken>);
 		AstParserRuleReturnScope<object, IToken> atom2 = default(AstParserRuleReturnScope<object, IToken>);
 
 		object op_tree = default(object);
-		object SPACE44_tree = default(object);
-		object SPACE45_tree = default(object);
+		object SPACE49_tree = default(object);
+		object SPACE50_tree = default(object);
 		RewriteRuleITokenStream stream_SPACE=new RewriteRuleITokenStream(adaptor,"token SPACE");
 		RewriteRuleITokenStream stream_EQUALS=new RewriteRuleITokenStream(adaptor,"token EQUALS");
 		RewriteRuleITokenStream stream_NOTEQUALS=new RewriteRuleITokenStream(adaptor,"token NOTEQUALS");
@@ -1530,120 +1665,120 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		RewriteRuleITokenStream stream_LESSTHANOREQUAL=new RewriteRuleITokenStream(adaptor,"token LESSTHANOREQUAL");
 		RewriteRuleSubtreeStream stream_atom=new RewriteRuleSubtreeStream(adaptor,"rule atom");
 		try { DebugEnterRule(GrammarFileName, "booleanexpression");
-		DebugLocation(64, 3);
+		DebugLocation(67, 3);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:65:2: (atom1= atom[subquery] ( SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery] -> ^( $op $atom1 $atom2) | -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] ) ) )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:68:2: (atom1= atom[subquery] ( SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery] -> ^( $op $atom1 $atom2) | -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] ) ) )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:65:4: atom1= atom[subquery] ( SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery] -> ^( $op $atom1 $atom2) | -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] ) )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:68:4: atom1= atom[subquery] ( SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery] -> ^( $op $atom1 $atom2) | -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] ) )
 			{
-			DebugLocation(65, 9);
-			PushFollow(Follow._atom_in_booleanexpression324);
+			DebugLocation(68, 9);
+			PushFollow(Follow._atom_in_booleanexpression344);
 			atom1=atom(subquery);
 			PopFollow();
 
 			stream_atom.Add(atom1.Tree);
-			DebugLocation(65, 25);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:65:25: ( SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery] -> ^( $op $atom1 $atom2) | -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] ) )
-			int alt14=2;
-			try { DebugEnterSubRule(14);
-			try { DebugEnterDecision(14, false);
-			int LA14_1 = input.LA(1);
+			DebugLocation(68, 25);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:68:25: ( SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery] -> ^( $op $atom1 $atom2) | -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] ) )
+			int alt15=2;
+			try { DebugEnterSubRule(15);
+			try { DebugEnterDecision(15, false);
+			int LA15_1 = input.LA(1);
 
-			if ((LA14_1==SPACE))
+			if ((LA15_1==SPACE))
 			{
-				int LA14_2 = input.LA(2);
+				int LA15_2 = input.LA(2);
 
-				if ((LA14_2==AND||LA14_2==OR))
+				if ((LA15_2==AND||LA15_2==OR))
 				{
-					alt14 = 2;
+					alt15 = 2;
 				}
-				else if ((LA14_2==EQUALS||(LA14_2>=GREATERTHAN && LA14_2<=GREATERTHANOREQUAL)||(LA14_2>=LESSTHAN && LA14_2<=LESSTHANOREQUAL)||LA14_2==NOTEQUALS))
+				else if ((LA15_2==EQUALS||(LA15_2>=GREATERTHAN && LA15_2<=GREATERTHANOREQUAL)||(LA15_2>=LESSTHAN && LA15_2<=LESSTHANOREQUAL)||LA15_2==NOTEQUALS))
 				{
-					alt14 = 1;
+					alt15 = 1;
 				}
 				else
 				{
-					NoViableAltException nvae = new NoViableAltException("", 14, 1, input, 2);
+					NoViableAltException nvae = new NoViableAltException("", 15, 1, input, 2);
 					DebugRecognitionException(nvae);
 					throw nvae;
 				}
 			}
-			else if ((LA14_1==EOF||LA14_1==FILTER||LA14_1==INLINECOUNT||(LA14_1>=ORDERBY && LA14_1<=SELECT)||LA14_1==SKIP||LA14_1==TOP||LA14_1==54||LA14_1==56))
+			else if ((LA15_1==EOF||(LA15_1>=EXPAND && LA15_1<=FILTER)||LA15_1==INLINECOUNT||(LA15_1>=ORDERBY && LA15_1<=SELECT)||LA15_1==SKIP||LA15_1==TOP||LA15_1==55||LA15_1==57))
 			{
-				alt14 = 2;
+				alt15 = 2;
 			}
 			else
 			{
-				NoViableAltException nvae = new NoViableAltException("", 14, 0, input, 1);
+				NoViableAltException nvae = new NoViableAltException("", 15, 0, input, 1);
 				DebugRecognitionException(nvae);
 				throw nvae;
 			}
-			} finally { DebugExitDecision(14); }
-			switch (alt14)
+			} finally { DebugExitDecision(15); }
+			switch (alt15)
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:66:4: SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery]
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:69:4: SPACE (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL ) SPACE atom2= atom[subquery]
 				{
-				DebugLocation(66, 4);
-				SPACE44=(IToken)Match(input,SPACE,Follow._SPACE_in_booleanexpression332);  
-				stream_SPACE.Add(SPACE44);
+				DebugLocation(69, 4);
+				SPACE49=(IToken)Match(input,SPACE,Follow._SPACE_in_booleanexpression352);  
+				stream_SPACE.Add(SPACE49);
 
-				DebugLocation(66, 10);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:66:10: (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL )
-				int alt13=6;
-				try { DebugEnterSubRule(13);
-				try { DebugEnterDecision(13, false);
+				DebugLocation(69, 10);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:69:10: (op= EQUALS |op= NOTEQUALS |op= GREATERTHAN |op= GREATERTHANOREQUAL |op= LESSTHAN |op= LESSTHANOREQUAL )
+				int alt14=6;
+				try { DebugEnterSubRule(14);
+				try { DebugEnterDecision(14, false);
 				switch (input.LA(1))
 				{
 				case EQUALS:
 					{
-					alt13 = 1;
+					alt14 = 1;
 					}
 					break;
 				case NOTEQUALS:
 					{
-					alt13 = 2;
+					alt14 = 2;
 					}
 					break;
 				case GREATERTHAN:
 					{
-					alt13 = 3;
+					alt14 = 3;
 					}
 					break;
 				case GREATERTHANOREQUAL:
 					{
-					alt13 = 4;
+					alt14 = 4;
 					}
 					break;
 				case LESSTHAN:
 					{
-					alt13 = 5;
+					alt14 = 5;
 					}
 					break;
 				case LESSTHANOREQUAL:
 					{
-					alt13 = 6;
+					alt14 = 6;
 					}
 					break;
 				default:
 					{
-						NoViableAltException nvae = new NoViableAltException("", 13, 0, input, 1);
+						NoViableAltException nvae = new NoViableAltException("", 14, 0, input, 1);
 						DebugRecognitionException(nvae);
 						throw nvae;
 					}
 				}
 
-				} finally { DebugExitDecision(13); }
-				switch (alt13)
+				} finally { DebugExitDecision(14); }
+				switch (alt14)
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:66:11: op= EQUALS
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:69:11: op= EQUALS
 					{
-					DebugLocation(66, 13);
-					op=(IToken)Match(input,EQUALS,Follow._EQUALS_in_booleanexpression337);  
+					DebugLocation(69, 13);
+					op=(IToken)Match(input,EQUALS,Follow._EQUALS_in_booleanexpression357);  
 					stream_EQUALS.Add(op);
 
 
@@ -1651,10 +1786,10 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					break;
 				case 2:
 					DebugEnterAlt(2);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:66:23: op= NOTEQUALS
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:69:23: op= NOTEQUALS
 					{
-					DebugLocation(66, 25);
-					op=(IToken)Match(input,NOTEQUALS,Follow._NOTEQUALS_in_booleanexpression343);  
+					DebugLocation(69, 25);
+					op=(IToken)Match(input,NOTEQUALS,Follow._NOTEQUALS_in_booleanexpression363);  
 					stream_NOTEQUALS.Add(op);
 
 
@@ -1662,10 +1797,10 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					break;
 				case 3:
 					DebugEnterAlt(3);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:66:38: op= GREATERTHAN
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:69:38: op= GREATERTHAN
 					{
-					DebugLocation(66, 40);
-					op=(IToken)Match(input,GREATERTHAN,Follow._GREATERTHAN_in_booleanexpression349);  
+					DebugLocation(69, 40);
+					op=(IToken)Match(input,GREATERTHAN,Follow._GREATERTHAN_in_booleanexpression369);  
 					stream_GREATERTHAN.Add(op);
 
 
@@ -1673,10 +1808,10 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					break;
 				case 4:
 					DebugEnterAlt(4);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:66:55: op= GREATERTHANOREQUAL
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:69:55: op= GREATERTHANOREQUAL
 					{
-					DebugLocation(66, 57);
-					op=(IToken)Match(input,GREATERTHANOREQUAL,Follow._GREATERTHANOREQUAL_in_booleanexpression355);  
+					DebugLocation(69, 57);
+					op=(IToken)Match(input,GREATERTHANOREQUAL,Follow._GREATERTHANOREQUAL_in_booleanexpression375);  
 					stream_GREATERTHANOREQUAL.Add(op);
 
 
@@ -1684,10 +1819,10 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					break;
 				case 5:
 					DebugEnterAlt(5);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:66:79: op= LESSTHAN
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:69:79: op= LESSTHAN
 					{
-					DebugLocation(66, 81);
-					op=(IToken)Match(input,LESSTHAN,Follow._LESSTHAN_in_booleanexpression361);  
+					DebugLocation(69, 81);
+					op=(IToken)Match(input,LESSTHAN,Follow._LESSTHAN_in_booleanexpression381);  
 					stream_LESSTHAN.Add(op);
 
 
@@ -1695,10 +1830,10 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					break;
 				case 6:
 					DebugEnterAlt(6);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:66:93: op= LESSTHANOREQUAL
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:69:93: op= LESSTHANOREQUAL
 					{
-					DebugLocation(66, 95);
-					op=(IToken)Match(input,LESSTHANOREQUAL,Follow._LESSTHANOREQUAL_in_booleanexpression367);  
+					DebugLocation(69, 95);
+					op=(IToken)Match(input,LESSTHANOREQUAL,Follow._LESSTHANOREQUAL_in_booleanexpression387);  
 					stream_LESSTHANOREQUAL.Add(op);
 
 
@@ -1706,14 +1841,14 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					break;
 
 				}
-				} finally { DebugExitSubRule(13); }
+				} finally { DebugExitSubRule(14); }
 
-				DebugLocation(66, 113);
-				SPACE45=(IToken)Match(input,SPACE,Follow._SPACE_in_booleanexpression370);  
-				stream_SPACE.Add(SPACE45);
+				DebugLocation(69, 113);
+				SPACE50=(IToken)Match(input,SPACE,Follow._SPACE_in_booleanexpression390);  
+				stream_SPACE.Add(SPACE50);
 
-				DebugLocation(66, 124);
-				PushFollow(Follow._atom_in_booleanexpression374);
+				DebugLocation(69, 124);
+				PushFollow(Follow._atom_in_booleanexpression394);
 				atom2=atom(subquery);
 				PopFollow();
 
@@ -1735,18 +1870,18 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 				root_0 = (object)adaptor.Nil();
-				// 67:4: -> ^( $op $atom1 $atom2)
+				// 70:4: -> ^( $op $atom1 $atom2)
 				{
-					DebugLocation(67, 7);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:67:7: ^( $op $atom1 $atom2)
+					DebugLocation(70, 7);
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:70:7: ^( $op $atom1 $atom2)
 					{
 					object root_1 = (object)adaptor.Nil();
-					DebugLocation(67, 10);
+					DebugLocation(70, 10);
 					root_1 = (object)adaptor.BecomeRoot(stream_op.NextNode(), root_1);
 
-					DebugLocation(67, 14);
+					DebugLocation(70, 14);
 					adaptor.AddChild(root_1, stream_atom1.NextTree());
-					DebugLocation(67, 21);
+					DebugLocation(70, 21);
 					adaptor.AddChild(root_1, stream_atom2.NextTree());
 
 					adaptor.AddChild(root_0, root_1);
@@ -1761,7 +1896,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:68:5: 
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:71:5: 
 				{
 
 				{
@@ -1777,18 +1912,18 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 				root_0 = (object)adaptor.Nil();
-				// 68:5: -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] )
+				// 71:5: -> ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] )
 				{
-					DebugLocation(68, 8);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:68:8: ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] )
+					DebugLocation(71, 8);
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:71:8: ^( EQUALS[\"eq\"] $atom1 BOOL[\"true\"] )
 					{
 					object root_1 = (object)adaptor.Nil();
-					DebugLocation(68, 10);
+					DebugLocation(71, 10);
 					root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(EQUALS, "eq"), root_1);
 
-					DebugLocation(68, 24);
+					DebugLocation(71, 24);
 					adaptor.AddChild(root_1, stream_atom1.NextTree());
-					DebugLocation(68, 30);
+					DebugLocation(71, 30);
 					adaptor.AddChild(root_1, (object)adaptor.Create(BOOL, "true"));
 
 					adaptor.AddChild(root_0, root_1);
@@ -1803,7 +1938,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				break;
 
 			}
-			} finally { DebugExitSubRule(14); }
+			} finally { DebugExitSubRule(15); }
 
 
 			}
@@ -1823,11 +1958,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("booleanexpression", 11);
-			LeaveRule("booleanexpression", 11);
+			TraceOut("booleanexpression", 12);
+			LeaveRule("booleanexpression", 12);
 			LeaveRule_booleanexpression();
 		}
-		DebugLocation(69, 3);
+		DebugLocation(72, 3);
 		} finally { DebugExitRule(GrammarFileName, "booleanexpression"); }
 		return retval;
 
@@ -1837,29 +1972,29 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_atom();
 	partial void LeaveRule_atom();
 	// $ANTLR start "atom"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:71:1: atom[bool subquery] : ( functioncall[subquery] | constant | accessor[subquery] );
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:74:1: atom[bool subquery] : ( functioncall[subquery] | constant | accessor[subquery] );
 	[GrammarRule("atom")]
 	private AstParserRuleReturnScope<object, IToken> atom(bool subquery)
 	{
 		EnterRule_atom();
-		EnterRule("atom", 12);
-		TraceIn("atom", 12);
+		EnterRule("atom", 13);
+		TraceIn("atom", 13);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		AstParserRuleReturnScope<object, IToken> functioncall46 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> constant47 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> accessor48 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> functioncall51 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> constant52 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> accessor53 = default(AstParserRuleReturnScope<object, IToken>);
 
 		try { DebugEnterRule(GrammarFileName, "atom");
-		DebugLocation(71, 21);
+		DebugLocation(74, 21);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:72:2: ( functioncall[subquery] | constant | accessor[subquery] )
-			int alt15=3;
-			try { DebugEnterDecision(15, false);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:75:2: ( functioncall[subquery] | constant | accessor[subquery] )
+			int alt16=3;
+			try { DebugEnterDecision(16, false);
 			switch (input.LA(1))
 			{
 			case ENDSWITH:
@@ -1867,7 +2002,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			case SUBSTRINGOF:
 			case TOLOWER:
 				{
-				alt15 = 1;
+				alt16 = 1;
 				}
 				break;
 			case BOOL:
@@ -1880,68 +2015,68 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			case SINGLE:
 			case STRING:
 				{
-				alt15 = 2;
+				alt16 = 2;
 				}
 				break;
 			case DYNAMICIDENTIFIER:
 			case IDENTIFIER:
 				{
-				alt15 = 3;
+				alt16 = 3;
 				}
 				break;
 			default:
 				{
-					NoViableAltException nvae = new NoViableAltException("", 15, 0, input, 1);
+					NoViableAltException nvae = new NoViableAltException("", 16, 0, input, 1);
 					DebugRecognitionException(nvae);
 					throw nvae;
 				}
 			}
 
-			} finally { DebugExitDecision(15); }
-			switch (alt15)
+			} finally { DebugExitDecision(16); }
+			switch (alt16)
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:72:4: functioncall[subquery]
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:75:4: functioncall[subquery]
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(72, 4);
-				PushFollow(Follow._functioncall_in_atom426);
-				functioncall46=functioncall(subquery);
+				DebugLocation(75, 4);
+				PushFollow(Follow._functioncall_in_atom446);
+				functioncall51=functioncall(subquery);
 				PopFollow();
 
-				adaptor.AddChild(root_0, functioncall46.Tree);
+				adaptor.AddChild(root_0, functioncall51.Tree);
 
 				}
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:73:4: constant
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:76:4: constant
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(73, 4);
-				PushFollow(Follow._constant_in_atom432);
-				constant47=constant();
+				DebugLocation(76, 4);
+				PushFollow(Follow._constant_in_atom452);
+				constant52=constant();
 				PopFollow();
 
-				adaptor.AddChild(root_0, constant47.Tree);
+				adaptor.AddChild(root_0, constant52.Tree);
 
 				}
 				break;
 			case 3:
 				DebugEnterAlt(3);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:74:4: accessor[subquery]
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:77:4: accessor[subquery]
 				{
 				root_0 = (object)adaptor.Nil();
 
-				DebugLocation(74, 4);
-				PushFollow(Follow._accessor_in_atom437);
-				accessor48=accessor(subquery);
+				DebugLocation(77, 4);
+				PushFollow(Follow._accessor_in_atom457);
+				accessor53=accessor(subquery);
 				PopFollow();
 
-				adaptor.AddChild(root_0, accessor48.Tree);
+				adaptor.AddChild(root_0, accessor53.Tree);
 
 				}
 				break;
@@ -1962,11 +2097,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("atom", 12);
-			LeaveRule("atom", 12);
+			TraceOut("atom", 13);
+			LeaveRule("atom", 13);
 			LeaveRule_atom();
 		}
-		DebugLocation(74, 21);
+		DebugLocation(77, 21);
 		} finally { DebugExitRule(GrammarFileName, "atom"); }
 		return retval;
 
@@ -1976,104 +2111,104 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_functioncall();
 	partial void LeaveRule_functioncall();
 	// $ANTLR start "functioncall"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:76:1: functioncall[bool subquery] : function ^ '(' atom[subquery] ( ',' atom[subquery] )* ')' ;
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:79:1: functioncall[bool subquery] : function ^ '(' atom[subquery] ( ',' atom[subquery] )* ')' ;
 	[GrammarRule("functioncall")]
 	private AstParserRuleReturnScope<object, IToken> functioncall(bool subquery)
 	{
 		EnterRule_functioncall();
-		EnterRule("functioncall", 13);
-		TraceIn("functioncall", 13);
+		EnterRule("functioncall", 14);
+		TraceIn("functioncall", 14);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		IToken char_literal50 = default(IToken);
-		IToken char_literal52 = default(IToken);
-		IToken char_literal54 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> function49 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> atom51 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> atom53 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken char_literal55 = default(IToken);
+		IToken char_literal57 = default(IToken);
+		IToken char_literal59 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> function54 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> atom56 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> atom58 = default(AstParserRuleReturnScope<object, IToken>);
 
-		object char_literal50_tree = default(object);
-		object char_literal52_tree = default(object);
-		object char_literal54_tree = default(object);
+		object char_literal55_tree = default(object);
+		object char_literal57_tree = default(object);
+		object char_literal59_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "functioncall");
-		DebugLocation(76, 57);
+		DebugLocation(79, 57);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:77:2: ( function ^ '(' atom[subquery] ( ',' atom[subquery] )* ')' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:80:2: ( function ^ '(' atom[subquery] ( ',' atom[subquery] )* ')' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:77:4: function ^ '(' atom[subquery] ( ',' atom[subquery] )* ')'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:80:4: function ^ '(' atom[subquery] ( ',' atom[subquery] )* ')'
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(77, 12);
-			PushFollow(Follow._function_in_functioncall449);
-			function49=function();
+			DebugLocation(80, 12);
+			PushFollow(Follow._function_in_functioncall469);
+			function54=function();
 			PopFollow();
 
-			root_0 = (object)adaptor.BecomeRoot(function49.Tree, root_0);
-			DebugLocation(77, 14);
-			char_literal50=(IToken)Match(input,55,Follow._55_in_functioncall452); 
-			char_literal50_tree = (object)adaptor.Create(char_literal50);
-			adaptor.AddChild(root_0, char_literal50_tree);
-			DebugLocation(77, 18);
-			PushFollow(Follow._atom_in_functioncall454);
-			atom51=atom(subquery);
+			root_0 = (object)adaptor.BecomeRoot(function54.Tree, root_0);
+			DebugLocation(80, 14);
+			char_literal55=(IToken)Match(input,56,Follow._56_in_functioncall472); 
+			char_literal55_tree = (object)adaptor.Create(char_literal55);
+			adaptor.AddChild(root_0, char_literal55_tree);
+			DebugLocation(80, 18);
+			PushFollow(Follow._atom_in_functioncall474);
+			atom56=atom(subquery);
 			PopFollow();
 
-			adaptor.AddChild(root_0, atom51.Tree);
-			DebugLocation(77, 33);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:77:33: ( ',' atom[subquery] )*
-			try { DebugEnterSubRule(16);
+			adaptor.AddChild(root_0, atom56.Tree);
+			DebugLocation(80, 33);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:80:33: ( ',' atom[subquery] )*
+			try { DebugEnterSubRule(17);
 			while (true)
 			{
-				int alt16=2;
-				try { DebugEnterDecision(16, false);
-				int LA16_1 = input.LA(1);
+				int alt17=2;
+				try { DebugEnterDecision(17, false);
+				int LA17_1 = input.LA(1);
 
-				if ((LA16_1==57))
+				if ((LA17_1==58))
 				{
-					alt16 = 1;
+					alt17 = 1;
 				}
 
 
-				} finally { DebugExitDecision(16); }
-				switch ( alt16 )
+				} finally { DebugExitDecision(17); }
+				switch ( alt17 )
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:77:34: ',' atom[subquery]
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:80:34: ',' atom[subquery]
 					{
-					DebugLocation(77, 34);
-					char_literal52=(IToken)Match(input,57,Follow._57_in_functioncall458); 
-					char_literal52_tree = (object)adaptor.Create(char_literal52);
-					adaptor.AddChild(root_0, char_literal52_tree);
-					DebugLocation(77, 38);
-					PushFollow(Follow._atom_in_functioncall460);
-					atom53=atom(subquery);
+					DebugLocation(80, 34);
+					char_literal57=(IToken)Match(input,58,Follow._58_in_functioncall478); 
+					char_literal57_tree = (object)adaptor.Create(char_literal57);
+					adaptor.AddChild(root_0, char_literal57_tree);
+					DebugLocation(80, 38);
+					PushFollow(Follow._atom_in_functioncall480);
+					atom58=atom(subquery);
 					PopFollow();
 
-					adaptor.AddChild(root_0, atom53.Tree);
+					adaptor.AddChild(root_0, atom58.Tree);
 
 					}
 					break;
 
 				default:
-					goto loop16;
+					goto loop17;
 				}
 			}
 
-			loop16:
+			loop17:
 				;
 
-			} finally { DebugExitSubRule(16); }
+			} finally { DebugExitSubRule(17); }
 
-			DebugLocation(77, 55);
-			char_literal54=(IToken)Match(input,56,Follow._56_in_functioncall465); 
-			char_literal54_tree = (object)adaptor.Create(char_literal54);
-			adaptor.AddChild(root_0, char_literal54_tree);
+			DebugLocation(80, 55);
+			char_literal59=(IToken)Match(input,57,Follow._57_in_functioncall485); 
+			char_literal59_tree = (object)adaptor.Create(char_literal59);
+			adaptor.AddChild(root_0, char_literal59_tree);
 
 			}
 
@@ -2092,11 +2227,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("functioncall", 13);
-			LeaveRule("functioncall", 13);
+			TraceOut("functioncall", 14);
+			LeaveRule("functioncall", 14);
 			LeaveRule_functioncall();
 		}
-		DebugLocation(77, 57);
+		DebugLocation(80, 57);
 		} finally { DebugExitRule(GrammarFileName, "functioncall"); }
 		return retval;
 
@@ -2106,13 +2241,13 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_accessor();
 	partial void LeaveRule_accessor();
 	// $ANTLR start "accessor"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:79:1: accessor[bool subquery] : ( propertyname[subquery] -> propertyname ) ( '/' (func= ANY |func= ALL |func= COUNT |func= MAX |func= MIN |func= SUM |func= AVERAGE ) '(' ( (id= IDENTIFIER ':' SPACE filterexpression[true] ) -> ^( $func $accessor ALIAS[$id] filterexpression ) | -> ^( $func $accessor) ) ')' )? ;
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:82:1: accessor[bool subquery] : ( propertyname[subquery] -> propertyname ) ( '/' (func= ANY |func= ALL |func= COUNT |func= MAX |func= MIN |func= SUM |func= AVERAGE ) '(' ( (id= IDENTIFIER ':' SPACE filterexpression[true] ) -> ^( $func $accessor ALIAS[$id] filterexpression ) | -> ^( $func $accessor) ) ')' )? ;
 	[GrammarRule("accessor")]
 	private AstParserRuleReturnScope<object, IToken> accessor(bool subquery)
 	{
 		EnterRule_accessor();
-		EnterRule("accessor", 14);
-		TraceIn("accessor", 14);
+		EnterRule("accessor", 15);
+		TraceIn("accessor", 15);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
@@ -2120,22 +2255,22 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 
 		IToken func = default(IToken);
 		IToken id = default(IToken);
-		IToken char_literal56 = default(IToken);
-		IToken char_literal57 = default(IToken);
-		IToken char_literal58 = default(IToken);
-		IToken SPACE59 = default(IToken);
 		IToken char_literal61 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> propertyname55 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> filterexpression60 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken char_literal62 = default(IToken);
+		IToken char_literal63 = default(IToken);
+		IToken SPACE64 = default(IToken);
+		IToken char_literal66 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> propertyname60 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> filterexpression65 = default(AstParserRuleReturnScope<object, IToken>);
 
 		object func_tree = default(object);
 		object id_tree = default(object);
-		object char_literal56_tree = default(object);
-		object char_literal57_tree = default(object);
-		object char_literal58_tree = default(object);
-		object SPACE59_tree = default(object);
 		object char_literal61_tree = default(object);
-		RewriteRuleITokenStream stream_58=new RewriteRuleITokenStream(adaptor,"token 58");
+		object char_literal62_tree = default(object);
+		object char_literal63_tree = default(object);
+		object SPACE64_tree = default(object);
+		object char_literal66_tree = default(object);
+		RewriteRuleITokenStream stream_59=new RewriteRuleITokenStream(adaptor,"token 59");
 		RewriteRuleITokenStream stream_ANY=new RewriteRuleITokenStream(adaptor,"token ANY");
 		RewriteRuleITokenStream stream_ALL=new RewriteRuleITokenStream(adaptor,"token ALL");
 		RewriteRuleITokenStream stream_COUNT=new RewriteRuleITokenStream(adaptor,"token COUNT");
@@ -2143,32 +2278,32 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		RewriteRuleITokenStream stream_MIN=new RewriteRuleITokenStream(adaptor,"token MIN");
 		RewriteRuleITokenStream stream_SUM=new RewriteRuleITokenStream(adaptor,"token SUM");
 		RewriteRuleITokenStream stream_AVERAGE=new RewriteRuleITokenStream(adaptor,"token AVERAGE");
-		RewriteRuleITokenStream stream_55=new RewriteRuleITokenStream(adaptor,"token 55");
-		RewriteRuleITokenStream stream_IDENTIFIER=new RewriteRuleITokenStream(adaptor,"token IDENTIFIER");
-		RewriteRuleITokenStream stream_59=new RewriteRuleITokenStream(adaptor,"token 59");
-		RewriteRuleITokenStream stream_SPACE=new RewriteRuleITokenStream(adaptor,"token SPACE");
 		RewriteRuleITokenStream stream_56=new RewriteRuleITokenStream(adaptor,"token 56");
+		RewriteRuleITokenStream stream_IDENTIFIER=new RewriteRuleITokenStream(adaptor,"token IDENTIFIER");
+		RewriteRuleITokenStream stream_60=new RewriteRuleITokenStream(adaptor,"token 60");
+		RewriteRuleITokenStream stream_SPACE=new RewriteRuleITokenStream(adaptor,"token SPACE");
+		RewriteRuleITokenStream stream_57=new RewriteRuleITokenStream(adaptor,"token 57");
 		RewriteRuleSubtreeStream stream_propertyname=new RewriteRuleSubtreeStream(adaptor,"rule propertyname");
 		RewriteRuleSubtreeStream stream_filterexpression=new RewriteRuleSubtreeStream(adaptor,"rule filterexpression");
 		try { DebugEnterRule(GrammarFileName, "accessor");
-		DebugLocation(79, 4);
+		DebugLocation(82, 4);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:79:24: ( ( propertyname[subquery] -> propertyname ) ( '/' (func= ANY |func= ALL |func= COUNT |func= MAX |func= MIN |func= SUM |func= AVERAGE ) '(' ( (id= IDENTIFIER ':' SPACE filterexpression[true] ) -> ^( $func $accessor ALIAS[$id] filterexpression ) | -> ^( $func $accessor) ) ')' )? )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:82:24: ( ( propertyname[subquery] -> propertyname ) ( '/' (func= ANY |func= ALL |func= COUNT |func= MAX |func= MIN |func= SUM |func= AVERAGE ) '(' ( (id= IDENTIFIER ':' SPACE filterexpression[true] ) -> ^( $func $accessor ALIAS[$id] filterexpression ) | -> ^( $func $accessor) ) ')' )? )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:80:3: ( propertyname[subquery] -> propertyname ) ( '/' (func= ANY |func= ALL |func= COUNT |func= MAX |func= MIN |func= SUM |func= AVERAGE ) '(' ( (id= IDENTIFIER ':' SPACE filterexpression[true] ) -> ^( $func $accessor ALIAS[$id] filterexpression ) | -> ^( $func $accessor) ) ')' )?
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:83:3: ( propertyname[subquery] -> propertyname ) ( '/' (func= ANY |func= ALL |func= COUNT |func= MAX |func= MIN |func= SUM |func= AVERAGE ) '(' ( (id= IDENTIFIER ':' SPACE filterexpression[true] ) -> ^( $func $accessor ALIAS[$id] filterexpression ) | -> ^( $func $accessor) ) ')' )?
 			{
-			DebugLocation(80, 3);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:80:3: ( propertyname[subquery] -> propertyname )
+			DebugLocation(83, 3);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:83:3: ( propertyname[subquery] -> propertyname )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:80:4: propertyname[subquery]
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:83:4: propertyname[subquery]
 			{
-			DebugLocation(80, 4);
-			PushFollow(Follow._propertyname_in_accessor477);
-			propertyname55=propertyname(subquery);
+			DebugLocation(83, 4);
+			PushFollow(Follow._propertyname_in_accessor497);
+			propertyname60=propertyname(subquery);
 			PopFollow();
 
-			stream_propertyname.Add(propertyname55.Tree);
+			stream_propertyname.Add(propertyname60.Tree);
 
 
 			{
@@ -2183,9 +2318,9 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 			root_0 = (object)adaptor.Nil();
-			// 80:27: -> propertyname
+			// 83:27: -> propertyname
 			{
-				DebugLocation(80, 30);
+				DebugLocation(83, 30);
 				adaptor.AddChild(root_0, stream_propertyname.NextTree());
 
 			}
@@ -2195,87 +2330,87 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 
 			}
 
-			DebugLocation(80, 44);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:80:44: ( '/' (func= ANY |func= ALL |func= COUNT |func= MAX |func= MIN |func= SUM |func= AVERAGE ) '(' ( (id= IDENTIFIER ':' SPACE filterexpression[true] ) -> ^( $func $accessor ALIAS[$id] filterexpression ) | -> ^( $func $accessor) ) ')' )?
-			int alt19=2;
-			try { DebugEnterSubRule(19);
-			try { DebugEnterDecision(19, false);
-			int LA19_1 = input.LA(1);
+			DebugLocation(83, 44);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:83:44: ( '/' (func= ANY |func= ALL |func= COUNT |func= MAX |func= MIN |func= SUM |func= AVERAGE ) '(' ( (id= IDENTIFIER ':' SPACE filterexpression[true] ) -> ^( $func $accessor ALIAS[$id] filterexpression ) | -> ^( $func $accessor) ) ')' )?
+			int alt20=2;
+			try { DebugEnterSubRule(20);
+			try { DebugEnterDecision(20, false);
+			int LA20_1 = input.LA(1);
 
-			if ((LA19_1==58))
+			if ((LA20_1==59))
 			{
-				alt19 = 1;
+				alt20 = 1;
 			}
-			} finally { DebugExitDecision(19); }
-			switch (alt19)
+			} finally { DebugExitDecision(20); }
+			switch (alt20)
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:81:4: '/' (func= ANY |func= ALL |func= COUNT |func= MAX |func= MIN |func= SUM |func= AVERAGE ) '(' ( (id= IDENTIFIER ':' SPACE filterexpression[true] ) -> ^( $func $accessor ALIAS[$id] filterexpression ) | -> ^( $func $accessor) ) ')'
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:84:4: '/' (func= ANY |func= ALL |func= COUNT |func= MAX |func= MIN |func= SUM |func= AVERAGE ) '(' ( (id= IDENTIFIER ':' SPACE filterexpression[true] ) -> ^( $func $accessor ALIAS[$id] filterexpression ) | -> ^( $func $accessor) ) ')'
 				{
-				DebugLocation(81, 4);
-				char_literal56=(IToken)Match(input,58,Follow._58_in_accessor490);  
-				stream_58.Add(char_literal56);
+				DebugLocation(84, 4);
+				char_literal61=(IToken)Match(input,59,Follow._59_in_accessor510);  
+				stream_59.Add(char_literal61);
 
-				DebugLocation(81, 8);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:81:8: (func= ANY |func= ALL |func= COUNT |func= MAX |func= MIN |func= SUM |func= AVERAGE )
-				int alt17=7;
-				try { DebugEnterSubRule(17);
-				try { DebugEnterDecision(17, false);
+				DebugLocation(84, 8);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:84:8: (func= ANY |func= ALL |func= COUNT |func= MAX |func= MIN |func= SUM |func= AVERAGE )
+				int alt18=7;
+				try { DebugEnterSubRule(18);
+				try { DebugEnterDecision(18, false);
 				switch (input.LA(1))
 				{
 				case ANY:
 					{
-					alt17 = 1;
+					alt18 = 1;
 					}
 					break;
 				case ALL:
 					{
-					alt17 = 2;
+					alt18 = 2;
 					}
 					break;
 				case COUNT:
 					{
-					alt17 = 3;
+					alt18 = 3;
 					}
 					break;
 				case MAX:
 					{
-					alt17 = 4;
+					alt18 = 4;
 					}
 					break;
 				case MIN:
 					{
-					alt17 = 5;
+					alt18 = 5;
 					}
 					break;
 				case SUM:
 					{
-					alt17 = 6;
+					alt18 = 6;
 					}
 					break;
 				case AVERAGE:
 					{
-					alt17 = 7;
+					alt18 = 7;
 					}
 					break;
 				default:
 					{
-						NoViableAltException nvae = new NoViableAltException("", 17, 0, input, 1);
+						NoViableAltException nvae = new NoViableAltException("", 18, 0, input, 1);
 						DebugRecognitionException(nvae);
 						throw nvae;
 					}
 				}
 
-				} finally { DebugExitDecision(17); }
-				switch (alt17)
+				} finally { DebugExitDecision(18); }
+				switch (alt18)
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:81:9: func= ANY
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:84:9: func= ANY
 					{
-					DebugLocation(81, 13);
-					func=(IToken)Match(input,ANY,Follow._ANY_in_accessor495);  
+					DebugLocation(84, 13);
+					func=(IToken)Match(input,ANY,Follow._ANY_in_accessor515);  
 					stream_ANY.Add(func);
 
 
@@ -2283,10 +2418,10 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					break;
 				case 2:
 					DebugEnterAlt(2);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:81:20: func= ALL
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:84:20: func= ALL
 					{
-					DebugLocation(81, 24);
-					func=(IToken)Match(input,ALL,Follow._ALL_in_accessor501);  
+					DebugLocation(84, 24);
+					func=(IToken)Match(input,ALL,Follow._ALL_in_accessor521);  
 					stream_ALL.Add(func);
 
 
@@ -2294,10 +2429,10 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					break;
 				case 3:
 					DebugEnterAlt(3);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:81:31: func= COUNT
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:84:31: func= COUNT
 					{
-					DebugLocation(81, 35);
-					func=(IToken)Match(input,COUNT,Follow._COUNT_in_accessor507);  
+					DebugLocation(84, 35);
+					func=(IToken)Match(input,COUNT,Follow._COUNT_in_accessor527);  
 					stream_COUNT.Add(func);
 
 
@@ -2305,10 +2440,10 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					break;
 				case 4:
 					DebugEnterAlt(4);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:81:44: func= MAX
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:84:44: func= MAX
 					{
-					DebugLocation(81, 48);
-					func=(IToken)Match(input,MAX,Follow._MAX_in_accessor513);  
+					DebugLocation(84, 48);
+					func=(IToken)Match(input,MAX,Follow._MAX_in_accessor533);  
 					stream_MAX.Add(func);
 
 
@@ -2316,10 +2451,10 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					break;
 				case 5:
 					DebugEnterAlt(5);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:81:55: func= MIN
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:84:55: func= MIN
 					{
-					DebugLocation(81, 59);
-					func=(IToken)Match(input,MIN,Follow._MIN_in_accessor519);  
+					DebugLocation(84, 59);
+					func=(IToken)Match(input,MIN,Follow._MIN_in_accessor539);  
 					stream_MIN.Add(func);
 
 
@@ -2327,10 +2462,10 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					break;
 				case 6:
 					DebugEnterAlt(6);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:81:66: func= SUM
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:84:66: func= SUM
 					{
-					DebugLocation(81, 70);
-					func=(IToken)Match(input,SUM,Follow._SUM_in_accessor525);  
+					DebugLocation(84, 70);
+					func=(IToken)Match(input,SUM,Follow._SUM_in_accessor545);  
 					stream_SUM.Add(func);
 
 
@@ -2338,10 +2473,10 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					break;
 				case 7:
 					DebugEnterAlt(7);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:81:77: func= AVERAGE
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:84:77: func= AVERAGE
 					{
-					DebugLocation(81, 81);
-					func=(IToken)Match(input,AVERAGE,Follow._AVERAGE_in_accessor531);  
+					DebugLocation(84, 81);
+					func=(IToken)Match(input,AVERAGE,Follow._AVERAGE_in_accessor551);  
 					stream_AVERAGE.Add(func);
 
 
@@ -2349,63 +2484,63 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					break;
 
 				}
-				} finally { DebugExitSubRule(17); }
+				} finally { DebugExitSubRule(18); }
 
-				DebugLocation(82, 4);
-				char_literal57=(IToken)Match(input,55,Follow._55_in_accessor538);  
-				stream_55.Add(char_literal57);
+				DebugLocation(85, 4);
+				char_literal62=(IToken)Match(input,56,Follow._56_in_accessor558);  
+				stream_56.Add(char_literal62);
 
-				DebugLocation(82, 8);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:82:8: ( (id= IDENTIFIER ':' SPACE filterexpression[true] ) -> ^( $func $accessor ALIAS[$id] filterexpression ) | -> ^( $func $accessor) )
-				int alt18=2;
-				try { DebugEnterSubRule(18);
-				try { DebugEnterDecision(18, false);
-				int LA18_1 = input.LA(1);
+				DebugLocation(85, 8);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:85:8: ( (id= IDENTIFIER ':' SPACE filterexpression[true] ) -> ^( $func $accessor ALIAS[$id] filterexpression ) | -> ^( $func $accessor) )
+				int alt19=2;
+				try { DebugEnterSubRule(19);
+				try { DebugEnterDecision(19, false);
+				int LA19_1 = input.LA(1);
 
-				if ((LA18_1==IDENTIFIER))
+				if ((LA19_1==IDENTIFIER))
 				{
-					alt18 = 1;
+					alt19 = 1;
 				}
-				else if ((LA18_1==56))
+				else if ((LA19_1==57))
 				{
-					alt18 = 2;
+					alt19 = 2;
 				}
 				else
 				{
-					NoViableAltException nvae = new NoViableAltException("", 18, 0, input, 1);
+					NoViableAltException nvae = new NoViableAltException("", 19, 0, input, 1);
 					DebugRecognitionException(nvae);
 					throw nvae;
 				}
-				} finally { DebugExitDecision(18); }
-				switch (alt18)
+				} finally { DebugExitDecision(19); }
+				switch (alt19)
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:83:5: (id= IDENTIFIER ':' SPACE filterexpression[true] )
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:86:5: (id= IDENTIFIER ':' SPACE filterexpression[true] )
 					{
-					DebugLocation(83, 5);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:83:5: (id= IDENTIFIER ':' SPACE filterexpression[true] )
+					DebugLocation(86, 5);
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:86:5: (id= IDENTIFIER ':' SPACE filterexpression[true] )
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:83:6: id= IDENTIFIER ':' SPACE filterexpression[true]
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:86:6: id= IDENTIFIER ':' SPACE filterexpression[true]
 					{
-					DebugLocation(83, 8);
-					id=(IToken)Match(input,IDENTIFIER,Follow._IDENTIFIER_in_accessor549);  
+					DebugLocation(86, 8);
+					id=(IToken)Match(input,IDENTIFIER,Follow._IDENTIFIER_in_accessor569);  
 					stream_IDENTIFIER.Add(id);
 
-					DebugLocation(83, 20);
-					char_literal58=(IToken)Match(input,59,Follow._59_in_accessor551);  
-					stream_59.Add(char_literal58);
+					DebugLocation(86, 20);
+					char_literal63=(IToken)Match(input,60,Follow._60_in_accessor571);  
+					stream_60.Add(char_literal63);
 
-					DebugLocation(83, 24);
-					SPACE59=(IToken)Match(input,SPACE,Follow._SPACE_in_accessor553);  
-					stream_SPACE.Add(SPACE59);
+					DebugLocation(86, 24);
+					SPACE64=(IToken)Match(input,SPACE,Follow._SPACE_in_accessor573);  
+					stream_SPACE.Add(SPACE64);
 
-					DebugLocation(83, 30);
-					PushFollow(Follow._filterexpression_in_accessor555);
-					filterexpression60=filterexpression(true);
+					DebugLocation(86, 30);
+					PushFollow(Follow._filterexpression_in_accessor575);
+					filterexpression65=filterexpression(true);
 					PopFollow();
 
-					stream_filterexpression.Add(filterexpression60.Tree);
+					stream_filterexpression.Add(filterexpression65.Tree);
 
 					}
 
@@ -2424,20 +2559,20 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 					root_0 = (object)adaptor.Nil();
-					// 83:54: -> ^( $func $accessor ALIAS[$id] filterexpression )
+					// 86:54: -> ^( $func $accessor ALIAS[$id] filterexpression )
 					{
-						DebugLocation(83, 57);
-						// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:83:57: ^( $func $accessor ALIAS[$id] filterexpression )
+						DebugLocation(86, 57);
+						// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:86:57: ^( $func $accessor ALIAS[$id] filterexpression )
 						{
 						object root_1 = (object)adaptor.Nil();
-						DebugLocation(83, 60);
+						DebugLocation(86, 60);
 						root_1 = (object)adaptor.BecomeRoot(stream_func.NextNode(), root_1);
 
-						DebugLocation(83, 66);
+						DebugLocation(86, 66);
 						adaptor.AddChild(root_1, stream_retval.NextTree());
-						DebugLocation(83, 75);
+						DebugLocation(86, 75);
 						adaptor.AddChild(root_1, (object)adaptor.Create(ALIAS, id));
-						DebugLocation(83, 86);
+						DebugLocation(86, 86);
 						adaptor.AddChild(root_1, stream_filterexpression.NextTree());
 
 						adaptor.AddChild(root_0, root_1);
@@ -2452,7 +2587,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					break;
 				case 2:
 					DebugEnterAlt(2);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:84:7: 
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:87:7: 
 					{
 
 					{
@@ -2468,16 +2603,16 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 					root_0 = (object)adaptor.Nil();
-					// 84:7: -> ^( $func $accessor)
+					// 87:7: -> ^( $func $accessor)
 					{
-						DebugLocation(84, 10);
-						// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:84:10: ^( $func $accessor)
+						DebugLocation(87, 10);
+						// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:87:10: ^( $func $accessor)
 						{
 						object root_1 = (object)adaptor.Nil();
-						DebugLocation(84, 13);
+						DebugLocation(87, 13);
 						root_1 = (object)adaptor.BecomeRoot(stream_func.NextNode(), root_1);
 
-						DebugLocation(84, 19);
+						DebugLocation(87, 19);
 						adaptor.AddChild(root_1, stream_retval.NextTree());
 
 						adaptor.AddChild(root_0, root_1);
@@ -2492,18 +2627,18 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					break;
 
 				}
-				} finally { DebugExitSubRule(18); }
+				} finally { DebugExitSubRule(19); }
 
-				DebugLocation(85, 4);
-				char_literal61=(IToken)Match(input,56,Follow._56_in_accessor595);  
-				stream_56.Add(char_literal61);
+				DebugLocation(88, 4);
+				char_literal66=(IToken)Match(input,57,Follow._57_in_accessor615);  
+				stream_57.Add(char_literal66);
 
 
 				}
 				break;
 
 			}
-			} finally { DebugExitSubRule(19); }
+			} finally { DebugExitSubRule(20); }
 
 
 			}
@@ -2523,11 +2658,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("accessor", 14);
-			LeaveRule("accessor", 14);
+			TraceOut("accessor", 15);
+			LeaveRule("accessor", 15);
 			LeaveRule_accessor();
 		}
-		DebugLocation(86, 4);
+		DebugLocation(89, 4);
 		} finally { DebugExitRule(GrammarFileName, "accessor"); }
 		return retval;
 
@@ -2537,38 +2672,38 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_function();
 	partial void LeaveRule_function();
 	// $ANTLR start "function"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:88:1: function : ( STARTSWITH | ENDSWITH | SUBSTRINGOF | TOLOWER );
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:91:1: function : ( STARTSWITH | ENDSWITH | SUBSTRINGOF | TOLOWER );
 	[GrammarRule("function")]
 	private AstParserRuleReturnScope<object, IToken> function()
 	{
 		EnterRule_function();
-		EnterRule("function", 15);
-		TraceIn("function", 15);
+		EnterRule("function", 16);
+		TraceIn("function", 16);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		IToken set62 = default(IToken);
+		IToken set67 = default(IToken);
 
-		object set62_tree = default(object);
+		object set67_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "function");
-		DebugLocation(88, 48);
+		DebugLocation(91, 48);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:89:2: ( STARTSWITH | ENDSWITH | SUBSTRINGOF | TOLOWER )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:92:2: ( STARTSWITH | ENDSWITH | SUBSTRINGOF | TOLOWER )
 			DebugEnterAlt(1);
 			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(89, 2);
+			DebugLocation(92, 2);
 
-			set62=(IToken)input.LT(1);
+			set67=(IToken)input.LT(1);
 			if (input.LA(1)==ENDSWITH||input.LA(1)==STARTSWITH||input.LA(1)==SUBSTRINGOF||input.LA(1)==TOLOWER)
 			{
 				input.Consume();
-				adaptor.AddChild(root_0, (object)adaptor.Create(set62));
+				adaptor.AddChild(root_0, (object)adaptor.Create(set67));
 				state.errorRecovery=false;
 			}
 			else
@@ -2596,11 +2731,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("function", 15);
-			LeaveRule("function", 15);
+			TraceOut("function", 16);
+			LeaveRule("function", 16);
 			LeaveRule_function();
 		}
-		DebugLocation(89, 48);
+		DebugLocation(92, 48);
 		} finally { DebugExitRule(GrammarFileName, "function"); }
 		return retval;
 
@@ -2610,42 +2745,42 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_orderby();
 	partial void LeaveRule_orderby();
 	// $ANTLR start "orderby"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:91:1: orderby : ORDERBY ^ orderbylist ;
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:94:1: orderby : ORDERBY ^ orderbylist ;
 	[GrammarRule("orderby")]
 	private AstParserRuleReturnScope<object, IToken> orderby()
 	{
 		EnterRule_orderby();
-		EnterRule("orderby", 16);
-		TraceIn("orderby", 16);
+		EnterRule("orderby", 17);
+		TraceIn("orderby", 17);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		IToken ORDERBY63 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> orderbylist64 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken ORDERBY68 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> orderbylist69 = default(AstParserRuleReturnScope<object, IToken>);
 
-		object ORDERBY63_tree = default(object);
+		object ORDERBY68_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "orderby");
-		DebugLocation(91, 23);
+		DebugLocation(94, 23);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:92:2: ( ORDERBY ^ orderbylist )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:95:2: ( ORDERBY ^ orderbylist )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:92:4: ORDERBY ^ orderbylist
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:95:4: ORDERBY ^ orderbylist
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(92, 11);
-			ORDERBY63=(IToken)Match(input,ORDERBY,Follow._ORDERBY_in_orderby634); 
-			ORDERBY63_tree = (object)adaptor.Create(ORDERBY63);
-			root_0 = (object)adaptor.BecomeRoot(ORDERBY63_tree, root_0);
-			DebugLocation(92, 13);
-			PushFollow(Follow._orderbylist_in_orderby637);
-			orderbylist64=orderbylist();
+			DebugLocation(95, 11);
+			ORDERBY68=(IToken)Match(input,ORDERBY,Follow._ORDERBY_in_orderby654); 
+			ORDERBY68_tree = (object)adaptor.Create(ORDERBY68);
+			root_0 = (object)adaptor.BecomeRoot(ORDERBY68_tree, root_0);
+			DebugLocation(95, 13);
+			PushFollow(Follow._orderbylist_in_orderby657);
+			orderbylist69=orderbylist();
 			PopFollow();
 
-			adaptor.AddChild(root_0, orderbylist64.Tree);
+			adaptor.AddChild(root_0, orderbylist69.Tree);
 
 			}
 
@@ -2664,11 +2799,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("orderby", 16);
-			LeaveRule("orderby", 16);
+			TraceOut("orderby", 17);
+			LeaveRule("orderby", 17);
 			LeaveRule_orderby();
 		}
-		DebugLocation(92, 23);
+		DebugLocation(95, 23);
 		} finally { DebugExitRule(GrammarFileName, "orderby"); }
 		return retval;
 
@@ -2678,82 +2813,82 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_orderbylist();
 	partial void LeaveRule_orderbylist();
 	// $ANTLR start "orderbylist"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:94:1: orderbylist : orderpropertyname ( ',' ! orderpropertyname )* ;
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:97:1: orderbylist : orderpropertyname ( ',' ! orderpropertyname )* ;
 	[GrammarRule("orderbylist")]
 	private AstParserRuleReturnScope<object, IToken> orderbylist()
 	{
 		EnterRule_orderbylist();
-		EnterRule("orderbylist", 17);
-		TraceIn("orderbylist", 17);
+		EnterRule("orderbylist", 18);
+		TraceIn("orderbylist", 18);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		IToken char_literal66 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> orderpropertyname65 = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> orderpropertyname67 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken char_literal71 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> orderpropertyname70 = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> orderpropertyname72 = default(AstParserRuleReturnScope<object, IToken>);
 
-		object char_literal66_tree = default(object);
+		object char_literal71_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "orderbylist");
-		DebugLocation(94, 46);
+		DebugLocation(97, 46);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:95:2: ( orderpropertyname ( ',' ! orderpropertyname )* )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:98:2: ( orderpropertyname ( ',' ! orderpropertyname )* )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:95:4: orderpropertyname ( ',' ! orderpropertyname )*
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:98:4: orderpropertyname ( ',' ! orderpropertyname )*
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(95, 4);
-			PushFollow(Follow._orderpropertyname_in_orderbylist647);
-			orderpropertyname65=orderpropertyname();
+			DebugLocation(98, 4);
+			PushFollow(Follow._orderpropertyname_in_orderbylist667);
+			orderpropertyname70=orderpropertyname();
 			PopFollow();
 
-			adaptor.AddChild(root_0, orderpropertyname65.Tree);
-			DebugLocation(95, 22);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:95:22: ( ',' ! orderpropertyname )*
-			try { DebugEnterSubRule(20);
+			adaptor.AddChild(root_0, orderpropertyname70.Tree);
+			DebugLocation(98, 22);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:98:22: ( ',' ! orderpropertyname )*
+			try { DebugEnterSubRule(21);
 			while (true)
 			{
-				int alt20=2;
-				try { DebugEnterDecision(20, false);
-				int LA20_1 = input.LA(1);
+				int alt21=2;
+				try { DebugEnterDecision(21, false);
+				int LA21_1 = input.LA(1);
 
-				if ((LA20_1==57))
+				if ((LA21_1==58))
 				{
-					alt20 = 1;
+					alt21 = 1;
 				}
 
 
-				} finally { DebugExitDecision(20); }
-				switch ( alt20 )
+				} finally { DebugExitDecision(21); }
+				switch ( alt21 )
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:95:23: ',' ! orderpropertyname
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:98:23: ',' ! orderpropertyname
 					{
-					DebugLocation(95, 26);
-					char_literal66=(IToken)Match(input,57,Follow._57_in_orderbylist650); 
-					DebugLocation(95, 28);
-					PushFollow(Follow._orderpropertyname_in_orderbylist653);
-					orderpropertyname67=orderpropertyname();
+					DebugLocation(98, 26);
+					char_literal71=(IToken)Match(input,58,Follow._58_in_orderbylist670); 
+					DebugLocation(98, 28);
+					PushFollow(Follow._orderpropertyname_in_orderbylist673);
+					orderpropertyname72=orderpropertyname();
 					PopFollow();
 
-					adaptor.AddChild(root_0, orderpropertyname67.Tree);
+					adaptor.AddChild(root_0, orderpropertyname72.Tree);
 
 					}
 					break;
 
 				default:
-					goto loop20;
+					goto loop21;
 				}
 			}
 
-			loop20:
+			loop21:
 				;
 
-			} finally { DebugExitSubRule(20); }
+			} finally { DebugExitSubRule(21); }
 
 
 			}
@@ -2773,11 +2908,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("orderbylist", 17);
-			LeaveRule("orderbylist", 17);
+			TraceOut("orderbylist", 18);
+			LeaveRule("orderbylist", 18);
 			LeaveRule_orderbylist();
 		}
-		DebugLocation(95, 46);
+		DebugLocation(98, 46);
 		} finally { DebugExitRule(GrammarFileName, "orderbylist"); }
 		return retval;
 
@@ -2787,69 +2922,69 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_orderpropertyname();
 	partial void LeaveRule_orderpropertyname();
 	// $ANTLR start "orderpropertyname"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:97:1: orderpropertyname : propertyname[false] ( -> ^( ASC[\"asc\"] propertyname ) | ( SPACE (op= ASC |op= DESC ) ) -> ^( $op propertyname ) ) ;
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:100:1: orderpropertyname : propertyname[false] ( -> ^( ASC[\"asc\"] propertyname ) | ( SPACE (op= ASC |op= DESC ) ) -> ^( $op propertyname ) ) ;
 	[GrammarRule("orderpropertyname")]
 	private AstParserRuleReturnScope<object, IToken> orderpropertyname()
 	{
 		EnterRule_orderpropertyname();
-		EnterRule("orderpropertyname", 18);
-		TraceIn("orderpropertyname", 18);
+		EnterRule("orderpropertyname", 19);
+		TraceIn("orderpropertyname", 19);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
 		IToken op = default(IToken);
-		IToken SPACE69 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> propertyname68 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken SPACE74 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> propertyname73 = default(AstParserRuleReturnScope<object, IToken>);
 
 		object op_tree = default(object);
-		object SPACE69_tree = default(object);
+		object SPACE74_tree = default(object);
 		RewriteRuleITokenStream stream_SPACE=new RewriteRuleITokenStream(adaptor,"token SPACE");
 		RewriteRuleITokenStream stream_ASC=new RewriteRuleITokenStream(adaptor,"token ASC");
 		RewriteRuleITokenStream stream_DESC=new RewriteRuleITokenStream(adaptor,"token DESC");
 		RewriteRuleSubtreeStream stream_propertyname=new RewriteRuleSubtreeStream(adaptor,"rule propertyname");
 		try { DebugEnterRule(GrammarFileName, "orderpropertyname");
-		DebugLocation(97, 3);
+		DebugLocation(100, 3);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:98:2: ( propertyname[false] ( -> ^( ASC[\"asc\"] propertyname ) | ( SPACE (op= ASC |op= DESC ) ) -> ^( $op propertyname ) ) )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:101:2: ( propertyname[false] ( -> ^( ASC[\"asc\"] propertyname ) | ( SPACE (op= ASC |op= DESC ) ) -> ^( $op propertyname ) ) )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:98:4: propertyname[false] ( -> ^( ASC[\"asc\"] propertyname ) | ( SPACE (op= ASC |op= DESC ) ) -> ^( $op propertyname ) )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:101:4: propertyname[false] ( -> ^( ASC[\"asc\"] propertyname ) | ( SPACE (op= ASC |op= DESC ) ) -> ^( $op propertyname ) )
 			{
-			DebugLocation(98, 4);
-			PushFollow(Follow._propertyname_in_orderpropertyname664);
-			propertyname68=propertyname(false);
+			DebugLocation(101, 4);
+			PushFollow(Follow._propertyname_in_orderpropertyname684);
+			propertyname73=propertyname(false);
 			PopFollow();
 
-			stream_propertyname.Add(propertyname68.Tree);
-			DebugLocation(98, 24);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:98:24: ( -> ^( ASC[\"asc\"] propertyname ) | ( SPACE (op= ASC |op= DESC ) ) -> ^( $op propertyname ) )
-			int alt22=2;
-			try { DebugEnterSubRule(22);
-			try { DebugEnterDecision(22, false);
-			int LA22_1 = input.LA(1);
+			stream_propertyname.Add(propertyname73.Tree);
+			DebugLocation(101, 24);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:101:24: ( -> ^( ASC[\"asc\"] propertyname ) | ( SPACE (op= ASC |op= DESC ) ) -> ^( $op propertyname ) )
+			int alt23=2;
+			try { DebugEnterSubRule(23);
+			try { DebugEnterDecision(23, false);
+			int LA23_1 = input.LA(1);
 
-			if ((LA22_1==EOF||LA22_1==FILTER||LA22_1==INLINECOUNT||(LA22_1>=ORDERBY && LA22_1<=SELECT)||LA22_1==SKIP||LA22_1==TOP||LA22_1==54||LA22_1==57))
+			if ((LA23_1==EOF||(LA23_1>=EXPAND && LA23_1<=FILTER)||LA23_1==INLINECOUNT||(LA23_1>=ORDERBY && LA23_1<=SELECT)||LA23_1==SKIP||LA23_1==TOP||LA23_1==55||LA23_1==58))
 			{
-				alt22 = 1;
+				alt23 = 1;
 			}
-			else if ((LA22_1==SPACE))
+			else if ((LA23_1==SPACE))
 			{
-				alt22 = 2;
+				alt23 = 2;
 			}
 			else
 			{
-				NoViableAltException nvae = new NoViableAltException("", 22, 0, input, 1);
+				NoViableAltException nvae = new NoViableAltException("", 23, 0, input, 1);
 				DebugRecognitionException(nvae);
 				throw nvae;
 			}
-			} finally { DebugExitDecision(22); }
-			switch (alt22)
+			} finally { DebugExitDecision(23); }
+			switch (alt23)
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:99:4: 
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:102:4: 
 				{
 
 				{
@@ -2864,16 +2999,16 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 				root_0 = (object)adaptor.Nil();
-				// 99:4: -> ^( ASC[\"asc\"] propertyname )
+				// 102:4: -> ^( ASC[\"asc\"] propertyname )
 				{
-					DebugLocation(99, 7);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:99:7: ^( ASC[\"asc\"] propertyname )
+					DebugLocation(102, 7);
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:102:7: ^( ASC[\"asc\"] propertyname )
 					{
 					object root_1 = (object)adaptor.Nil();
-					DebugLocation(99, 9);
+					DebugLocation(102, 9);
 					root_1 = (object)adaptor.BecomeRoot((object)adaptor.Create(ASC, "asc"), root_1);
 
-					DebugLocation(99, 20);
+					DebugLocation(102, 20);
 					adaptor.AddChild(root_1, stream_propertyname.NextTree());
 
 					adaptor.AddChild(root_0, root_1);
@@ -2888,47 +3023,47 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:100:6: ( SPACE (op= ASC |op= DESC ) )
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:6: ( SPACE (op= ASC |op= DESC ) )
 				{
-				DebugLocation(100, 6);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:100:6: ( SPACE (op= ASC |op= DESC ) )
+				DebugLocation(103, 6);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:6: ( SPACE (op= ASC |op= DESC ) )
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:100:7: SPACE (op= ASC |op= DESC )
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:7: SPACE (op= ASC |op= DESC )
 				{
-				DebugLocation(100, 7);
-				SPACE69=(IToken)Match(input,SPACE,Follow._SPACE_in_orderpropertyname687);  
-				stream_SPACE.Add(SPACE69);
+				DebugLocation(103, 7);
+				SPACE74=(IToken)Match(input,SPACE,Follow._SPACE_in_orderpropertyname707);  
+				stream_SPACE.Add(SPACE74);
 
-				DebugLocation(100, 13);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:100:13: (op= ASC |op= DESC )
-				int alt21=2;
-				try { DebugEnterSubRule(21);
-				try { DebugEnterDecision(21, false);
-				int LA21_1 = input.LA(1);
+				DebugLocation(103, 13);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:13: (op= ASC |op= DESC )
+				int alt22=2;
+				try { DebugEnterSubRule(22);
+				try { DebugEnterDecision(22, false);
+				int LA22_1 = input.LA(1);
 
-				if ((LA21_1==ASC))
+				if ((LA22_1==ASC))
 				{
-					alt21 = 1;
+					alt22 = 1;
 				}
-				else if ((LA21_1==DESC))
+				else if ((LA22_1==DESC))
 				{
-					alt21 = 2;
+					alt22 = 2;
 				}
 				else
 				{
-					NoViableAltException nvae = new NoViableAltException("", 21, 0, input, 1);
+					NoViableAltException nvae = new NoViableAltException("", 22, 0, input, 1);
 					DebugRecognitionException(nvae);
 					throw nvae;
 				}
-				} finally { DebugExitDecision(21); }
-				switch (alt21)
+				} finally { DebugExitDecision(22); }
+				switch (alt22)
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:100:14: op= ASC
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:14: op= ASC
 					{
-					DebugLocation(100, 16);
-					op=(IToken)Match(input,ASC,Follow._ASC_in_orderpropertyname692);  
+					DebugLocation(103, 16);
+					op=(IToken)Match(input,ASC,Follow._ASC_in_orderpropertyname712);  
 					stream_ASC.Add(op);
 
 
@@ -2936,10 +3071,10 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					break;
 				case 2:
 					DebugEnterAlt(2);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:100:23: op= DESC
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:23: op= DESC
 					{
-					DebugLocation(100, 25);
-					op=(IToken)Match(input,DESC,Follow._DESC_in_orderpropertyname698);  
+					DebugLocation(103, 25);
+					op=(IToken)Match(input,DESC,Follow._DESC_in_orderpropertyname718);  
 					stream_DESC.Add(op);
 
 
@@ -2947,7 +3082,7 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 					break;
 
 				}
-				} finally { DebugExitSubRule(21); }
+				} finally { DebugExitSubRule(22); }
 
 
 				}
@@ -2967,16 +3102,16 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 				RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 				root_0 = (object)adaptor.Nil();
-				// 100:33: -> ^( $op propertyname )
+				// 103:33: -> ^( $op propertyname )
 				{
-					DebugLocation(100, 36);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:100:36: ^( $op propertyname )
+					DebugLocation(103, 36);
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:36: ^( $op propertyname )
 					{
 					object root_1 = (object)adaptor.Nil();
-					DebugLocation(100, 39);
+					DebugLocation(103, 39);
 					root_1 = (object)adaptor.BecomeRoot(stream_op.NextNode(), root_1);
 
-					DebugLocation(100, 42);
+					DebugLocation(103, 42);
 					adaptor.AddChild(root_1, stream_propertyname.NextTree());
 
 					adaptor.AddChild(root_0, root_1);
@@ -2986,245 +3121,6 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 
 				retval.Tree = root_0;
 				}
-
-				}
-				break;
-
-			}
-			} finally { DebugExitSubRule(22); }
-
-
-			}
-
-			retval.Stop = (IToken)input.LT(-1);
-
-			retval.Tree = (object)adaptor.RulePostProcessing(root_0);
-			adaptor.SetTokenBoundaries(retval.Tree, retval.Start, retval.Stop);
-
-		}
-		catch (RecognitionException re)
-		{
-			ReportError(re);
-			Recover(input,re);
-			retval.Tree = (object)adaptor.ErrorNode(input, retval.Start, input.LT(-1), re);
-
-		}
-		finally
-		{
-			TraceOut("orderpropertyname", 18);
-			LeaveRule("orderpropertyname", 18);
-			LeaveRule_orderpropertyname();
-		}
-		DebugLocation(101, 3);
-		} finally { DebugExitRule(GrammarFileName, "orderpropertyname"); }
-		return retval;
-
-	}
-	// $ANTLR end "orderpropertyname"
-
-	partial void EnterRule_constant();
-	partial void LeaveRule_constant();
-	// $ANTLR start "constant"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:1: constant : ( INT ^| BOOL ^| STRING ^| DATETIME ^| LONG ^| SINGLE ^| DOUBLE ^| GUID ^| BYTE ^) ;
-	[GrammarRule("constant")]
-	private AstParserRuleReturnScope<object, IToken> constant()
-	{
-		EnterRule_constant();
-		EnterRule("constant", 19);
-		TraceIn("constant", 19);
-		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
-		retval.Start = (IToken)input.LT(1);
-
-		object root_0 = default(object);
-
-		IToken INT70 = default(IToken);
-		IToken BOOL71 = default(IToken);
-		IToken STRING72 = default(IToken);
-		IToken DATETIME73 = default(IToken);
-		IToken LONG74 = default(IToken);
-		IToken SINGLE75 = default(IToken);
-		IToken DOUBLE76 = default(IToken);
-		IToken GUID77 = default(IToken);
-		IToken BYTE78 = default(IToken);
-
-		object INT70_tree = default(object);
-		object BOOL71_tree = default(object);
-		object STRING72_tree = default(object);
-		object DATETIME73_tree = default(object);
-		object LONG74_tree = default(object);
-		object SINGLE75_tree = default(object);
-		object DOUBLE76_tree = default(object);
-		object GUID77_tree = default(object);
-		object BYTE78_tree = default(object);
-		try { DebugEnterRule(GrammarFileName, "constant");
-		DebugLocation(103, 90);
-		try
-		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:9: ( ( INT ^| BOOL ^| STRING ^| DATETIME ^| LONG ^| SINGLE ^| DOUBLE ^| GUID ^| BYTE ^) )
-			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:11: ( INT ^| BOOL ^| STRING ^| DATETIME ^| LONG ^| SINGLE ^| DOUBLE ^| GUID ^| BYTE ^)
-			{
-			root_0 = (object)adaptor.Nil();
-
-			DebugLocation(103, 11);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:11: ( INT ^| BOOL ^| STRING ^| DATETIME ^| LONG ^| SINGLE ^| DOUBLE ^| GUID ^| BYTE ^)
-			int alt23=9;
-			try { DebugEnterSubRule(23);
-			try { DebugEnterDecision(23, false);
-			switch (input.LA(1))
-			{
-			case INT:
-				{
-				alt23 = 1;
-				}
-				break;
-			case BOOL:
-				{
-				alt23 = 2;
-				}
-				break;
-			case STRING:
-				{
-				alt23 = 3;
-				}
-				break;
-			case DATETIME:
-				{
-				alt23 = 4;
-				}
-				break;
-			case LONG:
-				{
-				alt23 = 5;
-				}
-				break;
-			case SINGLE:
-				{
-				alt23 = 6;
-				}
-				break;
-			case DOUBLE:
-				{
-				alt23 = 7;
-				}
-				break;
-			case GUID:
-				{
-				alt23 = 8;
-				}
-				break;
-			case BYTE:
-				{
-				alt23 = 9;
-				}
-				break;
-			default:
-				{
-					NoViableAltException nvae = new NoViableAltException("", 23, 0, input, 1);
-					DebugRecognitionException(nvae);
-					throw nvae;
-				}
-			}
-
-			} finally { DebugExitDecision(23); }
-			switch (alt23)
-			{
-			case 1:
-				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:12: INT ^
-				{
-				DebugLocation(103, 15);
-				INT70=(IToken)Match(input,INT,Follow._INT_in_constant722); 
-				INT70_tree = (object)adaptor.Create(INT70);
-				root_0 = (object)adaptor.BecomeRoot(INT70_tree, root_0);
-
-				}
-				break;
-			case 2:
-				DebugEnterAlt(2);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:19: BOOL ^
-				{
-				DebugLocation(103, 23);
-				BOOL71=(IToken)Match(input,BOOL,Follow._BOOL_in_constant727); 
-				BOOL71_tree = (object)adaptor.Create(BOOL71);
-				root_0 = (object)adaptor.BecomeRoot(BOOL71_tree, root_0);
-
-				}
-				break;
-			case 3:
-				DebugEnterAlt(3);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:27: STRING ^
-				{
-				DebugLocation(103, 33);
-				STRING72=(IToken)Match(input,STRING,Follow._STRING_in_constant732); 
-				STRING72_tree = (object)adaptor.Create(STRING72);
-				root_0 = (object)adaptor.BecomeRoot(STRING72_tree, root_0);
-
-				}
-				break;
-			case 4:
-				DebugEnterAlt(4);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:37: DATETIME ^
-				{
-				DebugLocation(103, 45);
-				DATETIME73=(IToken)Match(input,DATETIME,Follow._DATETIME_in_constant737); 
-				DATETIME73_tree = (object)adaptor.Create(DATETIME73);
-				root_0 = (object)adaptor.BecomeRoot(DATETIME73_tree, root_0);
-
-				}
-				break;
-			case 5:
-				DebugEnterAlt(5);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:49: LONG ^
-				{
-				DebugLocation(103, 53);
-				LONG74=(IToken)Match(input,LONG,Follow._LONG_in_constant742); 
-				LONG74_tree = (object)adaptor.Create(LONG74);
-				root_0 = (object)adaptor.BecomeRoot(LONG74_tree, root_0);
-
-				}
-				break;
-			case 6:
-				DebugEnterAlt(6);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:57: SINGLE ^
-				{
-				DebugLocation(103, 63);
-				SINGLE75=(IToken)Match(input,SINGLE,Follow._SINGLE_in_constant747); 
-				SINGLE75_tree = (object)adaptor.Create(SINGLE75);
-				root_0 = (object)adaptor.BecomeRoot(SINGLE75_tree, root_0);
-
-				}
-				break;
-			case 7:
-				DebugEnterAlt(7);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:67: DOUBLE ^
-				{
-				DebugLocation(103, 73);
-				DOUBLE76=(IToken)Match(input,DOUBLE,Follow._DOUBLE_in_constant752); 
-				DOUBLE76_tree = (object)adaptor.Create(DOUBLE76);
-				root_0 = (object)adaptor.BecomeRoot(DOUBLE76_tree, root_0);
-
-				}
-				break;
-			case 8:
-				DebugEnterAlt(8);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:77: GUID ^
-				{
-				DebugLocation(103, 81);
-				GUID77=(IToken)Match(input,GUID,Follow._GUID_in_constant757); 
-				GUID77_tree = (object)adaptor.Create(GUID77);
-				root_0 = (object)adaptor.BecomeRoot(GUID77_tree, root_0);
-
-				}
-				break;
-			case 9:
-				DebugEnterAlt(9);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:103:85: BYTE ^
-				{
-				DebugLocation(103, 89);
-				BYTE78=(IToken)Match(input,BYTE,Follow._BYTE_in_constant762); 
-				BYTE78_tree = (object)adaptor.Create(BYTE78);
-				root_0 = (object)adaptor.BecomeRoot(BYTE78_tree, root_0);
 
 				}
 				break;
@@ -3250,152 +3146,220 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("constant", 19);
-			LeaveRule("constant", 19);
-			LeaveRule_constant();
+			TraceOut("orderpropertyname", 19);
+			LeaveRule("orderpropertyname", 19);
+			LeaveRule_orderpropertyname();
 		}
-		DebugLocation(103, 90);
-		} finally { DebugExitRule(GrammarFileName, "constant"); }
+		DebugLocation(104, 3);
+		} finally { DebugExitRule(GrammarFileName, "orderpropertyname"); }
 		return retval;
 
 	}
-	// $ANTLR end "constant"
+	// $ANTLR end "orderpropertyname"
 
-	partial void EnterRule_propertyname();
-	partial void LeaveRule_propertyname();
-	// $ANTLR start "propertyname"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:105:1: propertyname[bool subquery] : ( identifierpart[subquery] -> identifierpart ) ( '/' next= subpropertyname[false] -> ^( $propertyname $next) )? ;
-	[GrammarRule("propertyname")]
-	private AstParserRuleReturnScope<object, IToken> propertyname(bool subquery)
+	partial void EnterRule_constant();
+	partial void LeaveRule_constant();
+	// $ANTLR start "constant"
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:1: constant : ( INT ^| BOOL ^| STRING ^| DATETIME ^| LONG ^| SINGLE ^| DOUBLE ^| GUID ^| BYTE ^) ;
+	[GrammarRule("constant")]
+	private AstParserRuleReturnScope<object, IToken> constant()
 	{
-		EnterRule_propertyname();
-		EnterRule("propertyname", 20);
-		TraceIn("propertyname", 20);
+		EnterRule_constant();
+		EnterRule("constant", 20);
+		TraceIn("constant", 20);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		IToken char_literal80 = default(IToken);
-		AstParserRuleReturnScope<object, IToken> next = default(AstParserRuleReturnScope<object, IToken>);
-		AstParserRuleReturnScope<object, IToken> identifierpart79 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken INT75 = default(IToken);
+		IToken BOOL76 = default(IToken);
+		IToken STRING77 = default(IToken);
+		IToken DATETIME78 = default(IToken);
+		IToken LONG79 = default(IToken);
+		IToken SINGLE80 = default(IToken);
+		IToken DOUBLE81 = default(IToken);
+		IToken GUID82 = default(IToken);
+		IToken BYTE83 = default(IToken);
 
-		object char_literal80_tree = default(object);
-		RewriteRuleITokenStream stream_58=new RewriteRuleITokenStream(adaptor,"token 58");
-		RewriteRuleSubtreeStream stream_identifierpart=new RewriteRuleSubtreeStream(adaptor,"rule identifierpart");
-		RewriteRuleSubtreeStream stream_subpropertyname=new RewriteRuleSubtreeStream(adaptor,"rule subpropertyname");
-		try { DebugEnterRule(GrammarFileName, "propertyname");
-		DebugLocation(105, 108);
+		object INT75_tree = default(object);
+		object BOOL76_tree = default(object);
+		object STRING77_tree = default(object);
+		object DATETIME78_tree = default(object);
+		object LONG79_tree = default(object);
+		object SINGLE80_tree = default(object);
+		object DOUBLE81_tree = default(object);
+		object GUID82_tree = default(object);
+		object BYTE83_tree = default(object);
+		try { DebugEnterRule(GrammarFileName, "constant");
+		DebugLocation(106, 90);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:2: ( ( identifierpart[subquery] -> identifierpart ) ( '/' next= subpropertyname[false] -> ^( $propertyname $next) )? )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:9: ( ( INT ^| BOOL ^| STRING ^| DATETIME ^| LONG ^| SINGLE ^| DOUBLE ^| GUID ^| BYTE ^) )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:4: ( identifierpart[subquery] -> identifierpart ) ( '/' next= subpropertyname[false] -> ^( $propertyname $next) )?
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:11: ( INT ^| BOOL ^| STRING ^| DATETIME ^| LONG ^| SINGLE ^| DOUBLE ^| GUID ^| BYTE ^)
 			{
-			DebugLocation(106, 4);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:4: ( identifierpart[subquery] -> identifierpart )
-			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:5: identifierpart[subquery]
-			{
-			DebugLocation(106, 5);
-			PushFollow(Follow._identifierpart_in_propertyname775);
-			identifierpart79=identifierpart(subquery);
-			PopFollow();
-
-			stream_identifierpart.Add(identifierpart79.Tree);
-
-
-			{
-			// AST REWRITE
-			// elements: identifierpart
-			// token labels: 
-			// rule labels: retval
-			// token list labels: 
-			// rule list labels: 
-			// wildcard labels: 
-			retval.Tree = root_0;
-			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
-
 			root_0 = (object)adaptor.Nil();
-			// 106:30: -> identifierpart
-			{
-				DebugLocation(106, 33);
-				adaptor.AddChild(root_0, stream_identifierpart.NextTree());
 
-			}
-
-			retval.Tree = root_0;
-			}
-
-			}
-
-			DebugLocation(106, 49);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:49: ( '/' next= subpropertyname[false] -> ^( $propertyname $next) )?
-			int alt24=2;
+			DebugLocation(106, 11);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:11: ( INT ^| BOOL ^| STRING ^| DATETIME ^| LONG ^| SINGLE ^| DOUBLE ^| GUID ^| BYTE ^)
+			int alt24=9;
 			try { DebugEnterSubRule(24);
 			try { DebugEnterDecision(24, false);
-			int LA24_1 = input.LA(1);
-
-			if ((LA24_1==58))
+			switch (input.LA(1))
 			{
-				int LA24_2 = input.LA(2);
-
-				if ((LA24_2==DYNAMICIDENTIFIER||LA24_2==IDENTIFIER))
+			case INT:
 				{
-					alt24 = 1;
+				alt24 = 1;
+				}
+				break;
+			case BOOL:
+				{
+				alt24 = 2;
+				}
+				break;
+			case STRING:
+				{
+				alt24 = 3;
+				}
+				break;
+			case DATETIME:
+				{
+				alt24 = 4;
+				}
+				break;
+			case LONG:
+				{
+				alt24 = 5;
+				}
+				break;
+			case SINGLE:
+				{
+				alt24 = 6;
+				}
+				break;
+			case DOUBLE:
+				{
+				alt24 = 7;
+				}
+				break;
+			case GUID:
+				{
+				alt24 = 8;
+				}
+				break;
+			case BYTE:
+				{
+				alt24 = 9;
+				}
+				break;
+			default:
+				{
+					NoViableAltException nvae = new NoViableAltException("", 24, 0, input, 1);
+					DebugRecognitionException(nvae);
+					throw nvae;
 				}
 			}
+
 			} finally { DebugExitDecision(24); }
 			switch (alt24)
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:50: '/' next= subpropertyname[false]
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:12: INT ^
 				{
-				DebugLocation(106, 50);
-				char_literal80=(IToken)Match(input,58,Follow._58_in_propertyname784);  
-				stream_58.Add(char_literal80);
-
-				DebugLocation(106, 58);
-				PushFollow(Follow._subpropertyname_in_propertyname788);
-				next=subpropertyname(false);
-				PopFollow();
-
-				stream_subpropertyname.Add(next.Tree);
-
-
-				{
-				// AST REWRITE
-				// elements: propertyname, next
-				// token labels: 
-				// rule labels: next, retval
-				// token list labels: 
-				// rule list labels: 
-				// wildcard labels: 
-				retval.Tree = root_0;
-				RewriteRuleSubtreeStream stream_next=new RewriteRuleSubtreeStream(adaptor,"rule next",next!=null?next.Tree:null);
-				RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
-
-				root_0 = (object)adaptor.Nil();
-				// 106:82: -> ^( $propertyname $next)
-				{
-					DebugLocation(106, 85);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:85: ^( $propertyname $next)
-					{
-					object root_1 = (object)adaptor.Nil();
-					DebugLocation(106, 88);
-					root_1 = (object)adaptor.BecomeRoot(stream_retval.NextNode(), root_1);
-
-					DebugLocation(106, 102);
-					adaptor.AddChild(root_1, stream_next.NextTree());
-
-					adaptor.AddChild(root_0, root_1);
-					}
+				DebugLocation(106, 15);
+				INT75=(IToken)Match(input,INT,Follow._INT_in_constant742); 
+				INT75_tree = (object)adaptor.Create(INT75);
+				root_0 = (object)adaptor.BecomeRoot(INT75_tree, root_0);
 
 				}
+				break;
+			case 2:
+				DebugEnterAlt(2);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:19: BOOL ^
+				{
+				DebugLocation(106, 23);
+				BOOL76=(IToken)Match(input,BOOL,Follow._BOOL_in_constant747); 
+				BOOL76_tree = (object)adaptor.Create(BOOL76);
+				root_0 = (object)adaptor.BecomeRoot(BOOL76_tree, root_0);
 
-				retval.Tree = root_0;
 				}
+				break;
+			case 3:
+				DebugEnterAlt(3);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:27: STRING ^
+				{
+				DebugLocation(106, 33);
+				STRING77=(IToken)Match(input,STRING,Follow._STRING_in_constant752); 
+				STRING77_tree = (object)adaptor.Create(STRING77);
+				root_0 = (object)adaptor.BecomeRoot(STRING77_tree, root_0);
+
+				}
+				break;
+			case 4:
+				DebugEnterAlt(4);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:37: DATETIME ^
+				{
+				DebugLocation(106, 45);
+				DATETIME78=(IToken)Match(input,DATETIME,Follow._DATETIME_in_constant757); 
+				DATETIME78_tree = (object)adaptor.Create(DATETIME78);
+				root_0 = (object)adaptor.BecomeRoot(DATETIME78_tree, root_0);
+
+				}
+				break;
+			case 5:
+				DebugEnterAlt(5);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:49: LONG ^
+				{
+				DebugLocation(106, 53);
+				LONG79=(IToken)Match(input,LONG,Follow._LONG_in_constant762); 
+				LONG79_tree = (object)adaptor.Create(LONG79);
+				root_0 = (object)adaptor.BecomeRoot(LONG79_tree, root_0);
+
+				}
+				break;
+			case 6:
+				DebugEnterAlt(6);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:57: SINGLE ^
+				{
+				DebugLocation(106, 63);
+				SINGLE80=(IToken)Match(input,SINGLE,Follow._SINGLE_in_constant767); 
+				SINGLE80_tree = (object)adaptor.Create(SINGLE80);
+				root_0 = (object)adaptor.BecomeRoot(SINGLE80_tree, root_0);
+
+				}
+				break;
+			case 7:
+				DebugEnterAlt(7);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:67: DOUBLE ^
+				{
+				DebugLocation(106, 73);
+				DOUBLE81=(IToken)Match(input,DOUBLE,Follow._DOUBLE_in_constant772); 
+				DOUBLE81_tree = (object)adaptor.Create(DOUBLE81);
+				root_0 = (object)adaptor.BecomeRoot(DOUBLE81_tree, root_0);
+
+				}
+				break;
+			case 8:
+				DebugEnterAlt(8);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:77: GUID ^
+				{
+				DebugLocation(106, 81);
+				GUID82=(IToken)Match(input,GUID,Follow._GUID_in_constant777); 
+				GUID82_tree = (object)adaptor.Create(GUID82);
+				root_0 = (object)adaptor.BecomeRoot(GUID82_tree, root_0);
+
+				}
+				break;
+			case 9:
+				DebugEnterAlt(9);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:106:85: BYTE ^
+				{
+				DebugLocation(106, 89);
+				BYTE83=(IToken)Match(input,BYTE,Follow._BYTE_in_constant782); 
+				BYTE83_tree = (object)adaptor.Create(BYTE83);
+				root_0 = (object)adaptor.BecomeRoot(BYTE83_tree, root_0);
 
 				}
 				break;
@@ -3421,200 +3385,147 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("propertyname", 20);
-			LeaveRule("propertyname", 20);
-			LeaveRule_propertyname();
+			TraceOut("constant", 20);
+			LeaveRule("constant", 20);
+			LeaveRule_constant();
 		}
-		DebugLocation(106, 108);
-		} finally { DebugExitRule(GrammarFileName, "propertyname"); }
+		DebugLocation(106, 90);
+		} finally { DebugExitRule(GrammarFileName, "constant"); }
 		return retval;
 
 	}
-	// $ANTLR end "propertyname"
+	// $ANTLR end "constant"
 
-	partial void EnterRule_subpropertyname();
-	partial void LeaveRule_subpropertyname();
-	// $ANTLR start "subpropertyname"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:108:1: subpropertyname[bool subquery] : propertyname[false] ;
-	[GrammarRule("subpropertyname")]
-	private AstParserRuleReturnScope<object, IToken> subpropertyname(bool subquery)
+	partial void EnterRule_propertyname();
+	partial void LeaveRule_propertyname();
+	// $ANTLR start "propertyname"
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:108:1: propertyname[bool subquery] : ( identifierpart[subquery] -> identifierpart ) ( '/' next= subpropertyname[false] -> ^( $propertyname $next) )? ;
+	[GrammarRule("propertyname")]
+	private AstParserRuleReturnScope<object, IToken> propertyname(bool subquery)
 	{
-		EnterRule_subpropertyname();
-		EnterRule("subpropertyname", 21);
-		TraceIn("subpropertyname", 21);
+		EnterRule_propertyname();
+		EnterRule("propertyname", 21);
+		TraceIn("propertyname", 21);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		AstParserRuleReturnScope<object, IToken> propertyname81 = default(AstParserRuleReturnScope<object, IToken>);
+		IToken char_literal85 = default(IToken);
+		AstParserRuleReturnScope<object, IToken> next = default(AstParserRuleReturnScope<object, IToken>);
+		AstParserRuleReturnScope<object, IToken> identifierpart84 = default(AstParserRuleReturnScope<object, IToken>);
 
-		try { DebugEnterRule(GrammarFileName, "subpropertyname");
-		DebugLocation(108, 22);
+		object char_literal85_tree = default(object);
+		RewriteRuleITokenStream stream_59=new RewriteRuleITokenStream(adaptor,"token 59");
+		RewriteRuleSubtreeStream stream_identifierpart=new RewriteRuleSubtreeStream(adaptor,"rule identifierpart");
+		RewriteRuleSubtreeStream stream_subpropertyname=new RewriteRuleSubtreeStream(adaptor,"rule subpropertyname");
+		try { DebugEnterRule(GrammarFileName, "propertyname");
+		DebugLocation(108, 108);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:109:2: ( propertyname[false] )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:109:2: ( ( identifierpart[subquery] -> identifierpart ) ( '/' next= subpropertyname[false] -> ^( $propertyname $next) )? )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:109:4: propertyname[false]
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:109:4: ( identifierpart[subquery] -> identifierpart ) ( '/' next= subpropertyname[false] -> ^( $propertyname $next) )?
 			{
-			root_0 = (object)adaptor.Nil();
-
 			DebugLocation(109, 4);
-			PushFollow(Follow._propertyname_in_subpropertyname811);
-			propertyname81=propertyname(false);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:109:4: ( identifierpart[subquery] -> identifierpart )
+			DebugEnterAlt(1);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:109:5: identifierpart[subquery]
+			{
+			DebugLocation(109, 5);
+			PushFollow(Follow._identifierpart_in_propertyname795);
+			identifierpart84=identifierpart(subquery);
 			PopFollow();
 
-			adaptor.AddChild(root_0, propertyname81.Tree);
+			stream_identifierpart.Add(identifierpart84.Tree);
+
+
+			{
+			// AST REWRITE
+			// elements: identifierpart
+			// token labels: 
+			// rule labels: retval
+			// token list labels: 
+			// rule list labels: 
+			// wildcard labels: 
+			retval.Tree = root_0;
+			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
+
+			root_0 = (object)adaptor.Nil();
+			// 109:30: -> identifierpart
+			{
+				DebugLocation(109, 33);
+				adaptor.AddChild(root_0, stream_identifierpart.NextTree());
 
 			}
 
-			retval.Stop = (IToken)input.LT(-1);
+			retval.Tree = root_0;
+			}
 
-			retval.Tree = (object)adaptor.RulePostProcessing(root_0);
-			adaptor.SetTokenBoundaries(retval.Tree, retval.Start, retval.Stop);
+			}
 
-		}
-		catch (RecognitionException re)
-		{
-			ReportError(re);
-			Recover(input,re);
-			retval.Tree = (object)adaptor.ErrorNode(input, retval.Start, input.LT(-1), re);
-
-		}
-		finally
-		{
-			TraceOut("subpropertyname", 21);
-			LeaveRule("subpropertyname", 21);
-			LeaveRule_subpropertyname();
-		}
-		DebugLocation(109, 22);
-		} finally { DebugExitRule(GrammarFileName, "subpropertyname"); }
-		return retval;
-
-	}
-	// $ANTLR end "subpropertyname"
-
-	partial void EnterRule_identifierpart();
-	partial void LeaveRule_identifierpart();
-	// $ANTLR start "identifierpart"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:111:1: identifierpart[bool subquery] : (id= IDENTIFIER -> {subquery}? ALIAS[$id] -> IDENTIFIER[$id] | DYNAMICIDENTIFIER -> DYNAMICIDENTIFIER ) ;
-	[GrammarRule("identifierpart")]
-	private AstParserRuleReturnScope<object, IToken> identifierpart(bool subquery)
-	{
-		EnterRule_identifierpart();
-		EnterRule("identifierpart", 22);
-		TraceIn("identifierpart", 22);
-		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
-		retval.Start = (IToken)input.LT(1);
-
-		object root_0 = default(object);
-
-		IToken id = default(IToken);
-		IToken DYNAMICIDENTIFIER82 = default(IToken);
-
-		object id_tree = default(object);
-		object DYNAMICIDENTIFIER82_tree = default(object);
-		RewriteRuleITokenStream stream_IDENTIFIER=new RewriteRuleITokenStream(adaptor,"token IDENTIFIER");
-		RewriteRuleITokenStream stream_DYNAMICIDENTIFIER=new RewriteRuleITokenStream(adaptor,"token DYNAMICIDENTIFIER");
-		try { DebugEnterRule(GrammarFileName, "identifierpart");
-		DebugLocation(111, 43);
-		try
-		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:112:2: ( (id= IDENTIFIER -> {subquery}? ALIAS[$id] -> IDENTIFIER[$id] | DYNAMICIDENTIFIER -> DYNAMICIDENTIFIER ) )
-			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:112:4: (id= IDENTIFIER -> {subquery}? ALIAS[$id] -> IDENTIFIER[$id] | DYNAMICIDENTIFIER -> DYNAMICIDENTIFIER )
-			{
-			DebugLocation(112, 4);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:112:4: (id= IDENTIFIER -> {subquery}? ALIAS[$id] -> IDENTIFIER[$id] | DYNAMICIDENTIFIER -> DYNAMICIDENTIFIER )
+			DebugLocation(109, 49);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:109:49: ( '/' next= subpropertyname[false] -> ^( $propertyname $next) )?
 			int alt25=2;
 			try { DebugEnterSubRule(25);
 			try { DebugEnterDecision(25, false);
 			int LA25_1 = input.LA(1);
 
-			if ((LA25_1==IDENTIFIER))
+			if ((LA25_1==59))
 			{
-				alt25 = 1;
-			}
-			else if ((LA25_1==DYNAMICIDENTIFIER))
-			{
-				alt25 = 2;
-			}
-			else
-			{
-				NoViableAltException nvae = new NoViableAltException("", 25, 0, input, 1);
-				DebugRecognitionException(nvae);
-				throw nvae;
+				int LA25_2 = input.LA(2);
+
+				if ((LA25_2==DYNAMICIDENTIFIER||LA25_2==IDENTIFIER))
+				{
+					alt25 = 1;
+				}
 			}
 			} finally { DebugExitDecision(25); }
 			switch (alt25)
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:112:5: id= IDENTIFIER
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:109:50: '/' next= subpropertyname[false]
 				{
-				DebugLocation(112, 7);
-				id=(IToken)Match(input,IDENTIFIER,Follow._IDENTIFIER_in_identifierpart826);  
-				stream_IDENTIFIER.Add(id);
+				DebugLocation(109, 50);
+				char_literal85=(IToken)Match(input,59,Follow._59_in_propertyname804);  
+				stream_59.Add(char_literal85);
 
+				DebugLocation(109, 58);
+				PushFollow(Follow._subpropertyname_in_propertyname808);
+				next=subpropertyname(false);
+				PopFollow();
 
-
-				{
-				// AST REWRITE
-				// elements: IDENTIFIER
-				// token labels: 
-				// rule labels: retval
-				// token list labels: 
-				// rule list labels: 
-				// wildcard labels: 
-				retval.Tree = root_0;
-				RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
-
-				root_0 = (object)adaptor.Nil();
-				// 112:19: -> {subquery}? ALIAS[$id]
-				if (subquery)
-				{
-					DebugLocation(112, 34);
-					adaptor.AddChild(root_0, (object)adaptor.Create(ALIAS, id));
-
-				}
-				else // 113:5: -> IDENTIFIER[$id]
-				{
-					DebugLocation(113, 8);
-					adaptor.AddChild(root_0, (object)adaptor.Create(IDENTIFIER, id));
-
-				}
-
-				retval.Tree = root_0;
-				}
-
-				}
-				break;
-			case 2:
-				DebugEnterAlt(2);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:114:5: DYNAMICIDENTIFIER
-				{
-				DebugLocation(114, 5);
-				DYNAMICIDENTIFIER82=(IToken)Match(input,DYNAMICIDENTIFIER,Follow._DYNAMICIDENTIFIER_in_identifierpart848);  
-				stream_DYNAMICIDENTIFIER.Add(DYNAMICIDENTIFIER82);
-
+				stream_subpropertyname.Add(next.Tree);
 
 
 				{
 				// AST REWRITE
-				// elements: DYNAMICIDENTIFIER
+				// elements: propertyname, next
 				// token labels: 
-				// rule labels: retval
+				// rule labels: next, retval
 				// token list labels: 
 				// rule list labels: 
 				// wildcard labels: 
 				retval.Tree = root_0;
+				RewriteRuleSubtreeStream stream_next=new RewriteRuleSubtreeStream(adaptor,"rule next",next!=null?next.Tree:null);
 				RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
 
 				root_0 = (object)adaptor.Nil();
-				// 114:23: -> DYNAMICIDENTIFIER
+				// 109:82: -> ^( $propertyname $next)
 				{
-					DebugLocation(114, 26);
-					adaptor.AddChild(root_0, stream_DYNAMICIDENTIFIER.NextNode());
+					DebugLocation(109, 85);
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:109:85: ^( $propertyname $next)
+					{
+					object root_1 = (object)adaptor.Nil();
+					DebugLocation(109, 88);
+					root_1 = (object)adaptor.BecomeRoot(stream_retval.NextNode(), root_1);
+
+					DebugLocation(109, 102);
+					adaptor.AddChild(root_1, stream_next.NextTree());
+
+					adaptor.AddChild(root_0, root_1);
+					}
 
 				}
 
@@ -3645,11 +3556,235 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("identifierpart", 22);
-			LeaveRule("identifierpart", 22);
+			TraceOut("propertyname", 21);
+			LeaveRule("propertyname", 21);
+			LeaveRule_propertyname();
+		}
+		DebugLocation(109, 108);
+		} finally { DebugExitRule(GrammarFileName, "propertyname"); }
+		return retval;
+
+	}
+	// $ANTLR end "propertyname"
+
+	partial void EnterRule_subpropertyname();
+	partial void LeaveRule_subpropertyname();
+	// $ANTLR start "subpropertyname"
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:111:1: subpropertyname[bool subquery] : propertyname[false] ;
+	[GrammarRule("subpropertyname")]
+	private AstParserRuleReturnScope<object, IToken> subpropertyname(bool subquery)
+	{
+		EnterRule_subpropertyname();
+		EnterRule("subpropertyname", 22);
+		TraceIn("subpropertyname", 22);
+		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
+		retval.Start = (IToken)input.LT(1);
+
+		object root_0 = default(object);
+
+		AstParserRuleReturnScope<object, IToken> propertyname86 = default(AstParserRuleReturnScope<object, IToken>);
+
+		try { DebugEnterRule(GrammarFileName, "subpropertyname");
+		DebugLocation(111, 22);
+		try
+		{
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:112:2: ( propertyname[false] )
+			DebugEnterAlt(1);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:112:4: propertyname[false]
+			{
+			root_0 = (object)adaptor.Nil();
+
+			DebugLocation(112, 4);
+			PushFollow(Follow._propertyname_in_subpropertyname831);
+			propertyname86=propertyname(false);
+			PopFollow();
+
+			adaptor.AddChild(root_0, propertyname86.Tree);
+
+			}
+
+			retval.Stop = (IToken)input.LT(-1);
+
+			retval.Tree = (object)adaptor.RulePostProcessing(root_0);
+			adaptor.SetTokenBoundaries(retval.Tree, retval.Start, retval.Stop);
+
+		}
+		catch (RecognitionException re)
+		{
+			ReportError(re);
+			Recover(input,re);
+			retval.Tree = (object)adaptor.ErrorNode(input, retval.Start, input.LT(-1), re);
+
+		}
+		finally
+		{
+			TraceOut("subpropertyname", 22);
+			LeaveRule("subpropertyname", 22);
+			LeaveRule_subpropertyname();
+		}
+		DebugLocation(112, 22);
+		} finally { DebugExitRule(GrammarFileName, "subpropertyname"); }
+		return retval;
+
+	}
+	// $ANTLR end "subpropertyname"
+
+	partial void EnterRule_identifierpart();
+	partial void LeaveRule_identifierpart();
+	// $ANTLR start "identifierpart"
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:114:1: identifierpart[bool subquery] : (id= IDENTIFIER -> {subquery}? ALIAS[$id] -> IDENTIFIER[$id] | DYNAMICIDENTIFIER -> DYNAMICIDENTIFIER ) ;
+	[GrammarRule("identifierpart")]
+	private AstParserRuleReturnScope<object, IToken> identifierpart(bool subquery)
+	{
+		EnterRule_identifierpart();
+		EnterRule("identifierpart", 23);
+		TraceIn("identifierpart", 23);
+		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
+		retval.Start = (IToken)input.LT(1);
+
+		object root_0 = default(object);
+
+		IToken id = default(IToken);
+		IToken DYNAMICIDENTIFIER87 = default(IToken);
+
+		object id_tree = default(object);
+		object DYNAMICIDENTIFIER87_tree = default(object);
+		RewriteRuleITokenStream stream_IDENTIFIER=new RewriteRuleITokenStream(adaptor,"token IDENTIFIER");
+		RewriteRuleITokenStream stream_DYNAMICIDENTIFIER=new RewriteRuleITokenStream(adaptor,"token DYNAMICIDENTIFIER");
+		try { DebugEnterRule(GrammarFileName, "identifierpart");
+		DebugLocation(114, 43);
+		try
+		{
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:115:2: ( (id= IDENTIFIER -> {subquery}? ALIAS[$id] -> IDENTIFIER[$id] | DYNAMICIDENTIFIER -> DYNAMICIDENTIFIER ) )
+			DebugEnterAlt(1);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:115:4: (id= IDENTIFIER -> {subquery}? ALIAS[$id] -> IDENTIFIER[$id] | DYNAMICIDENTIFIER -> DYNAMICIDENTIFIER )
+			{
+			DebugLocation(115, 4);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:115:4: (id= IDENTIFIER -> {subquery}? ALIAS[$id] -> IDENTIFIER[$id] | DYNAMICIDENTIFIER -> DYNAMICIDENTIFIER )
+			int alt26=2;
+			try { DebugEnterSubRule(26);
+			try { DebugEnterDecision(26, false);
+			int LA26_1 = input.LA(1);
+
+			if ((LA26_1==IDENTIFIER))
+			{
+				alt26 = 1;
+			}
+			else if ((LA26_1==DYNAMICIDENTIFIER))
+			{
+				alt26 = 2;
+			}
+			else
+			{
+				NoViableAltException nvae = new NoViableAltException("", 26, 0, input, 1);
+				DebugRecognitionException(nvae);
+				throw nvae;
+			}
+			} finally { DebugExitDecision(26); }
+			switch (alt26)
+			{
+			case 1:
+				DebugEnterAlt(1);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:115:5: id= IDENTIFIER
+				{
+				DebugLocation(115, 7);
+				id=(IToken)Match(input,IDENTIFIER,Follow._IDENTIFIER_in_identifierpart846);  
+				stream_IDENTIFIER.Add(id);
+
+
+
+				{
+				// AST REWRITE
+				// elements: IDENTIFIER
+				// token labels: 
+				// rule labels: retval
+				// token list labels: 
+				// rule list labels: 
+				// wildcard labels: 
+				retval.Tree = root_0;
+				RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
+
+				root_0 = (object)adaptor.Nil();
+				// 115:19: -> {subquery}? ALIAS[$id]
+				if (subquery)
+				{
+					DebugLocation(115, 34);
+					adaptor.AddChild(root_0, (object)adaptor.Create(ALIAS, id));
+
+				}
+				else // 116:5: -> IDENTIFIER[$id]
+				{
+					DebugLocation(116, 8);
+					adaptor.AddChild(root_0, (object)adaptor.Create(IDENTIFIER, id));
+
+				}
+
+				retval.Tree = root_0;
+				}
+
+				}
+				break;
+			case 2:
+				DebugEnterAlt(2);
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:117:5: DYNAMICIDENTIFIER
+				{
+				DebugLocation(117, 5);
+				DYNAMICIDENTIFIER87=(IToken)Match(input,DYNAMICIDENTIFIER,Follow._DYNAMICIDENTIFIER_in_identifierpart868);  
+				stream_DYNAMICIDENTIFIER.Add(DYNAMICIDENTIFIER87);
+
+
+
+				{
+				// AST REWRITE
+				// elements: DYNAMICIDENTIFIER
+				// token labels: 
+				// rule labels: retval
+				// token list labels: 
+				// rule list labels: 
+				// wildcard labels: 
+				retval.Tree = root_0;
+				RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.Tree:null);
+
+				root_0 = (object)adaptor.Nil();
+				// 117:23: -> DYNAMICIDENTIFIER
+				{
+					DebugLocation(117, 26);
+					adaptor.AddChild(root_0, stream_DYNAMICIDENTIFIER.NextNode());
+
+				}
+
+				retval.Tree = root_0;
+				}
+
+				}
+				break;
+
+			}
+			} finally { DebugExitSubRule(26); }
+
+
+			}
+
+			retval.Stop = (IToken)input.LT(-1);
+
+			retval.Tree = (object)adaptor.RulePostProcessing(root_0);
+			adaptor.SetTokenBoundaries(retval.Tree, retval.Start, retval.Stop);
+
+		}
+		catch (RecognitionException re)
+		{
+			ReportError(re);
+			Recover(input,re);
+			retval.Tree = (object)adaptor.ErrorNode(input, retval.Start, input.LT(-1), re);
+
+		}
+		finally
+		{
+			TraceOut("identifierpart", 23);
+			LeaveRule("identifierpart", 23);
 			LeaveRule_identifierpart();
 		}
-		DebugLocation(114, 43);
+		DebugLocation(117, 43);
 		} finally { DebugExitRule(GrammarFileName, "identifierpart"); }
 		return retval;
 
@@ -3659,38 +3794,38 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	partial void EnterRule_filteroperator();
 	partial void LeaveRule_filteroperator();
 	// $ANTLR start "filteroperator"
-	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:116:1: filteroperator : ( EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL );
+	// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:119:1: filteroperator : ( EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL );
 	[GrammarRule("filteroperator")]
 	private AstParserRuleReturnScope<object, IToken> filteroperator()
 	{
 		EnterRule_filteroperator();
-		EnterRule("filteroperator", 23);
-		TraceIn("filteroperator", 23);
+		EnterRule("filteroperator", 24);
+		TraceIn("filteroperator", 24);
 		AstParserRuleReturnScope<object, IToken> retval = new AstParserRuleReturnScope<object, IToken>();
 		retval.Start = (IToken)input.LT(1);
 
 		object root_0 = default(object);
 
-		IToken set83 = default(IToken);
+		IToken set88 = default(IToken);
 
-		object set83_tree = default(object);
+		object set88_tree = default(object);
 		try { DebugEnterRule(GrammarFileName, "filteroperator");
-		DebugLocation(116, 85);
+		DebugLocation(119, 85);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:117:2: ( EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:120:2: ( EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL )
 			DebugEnterAlt(1);
 			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 			{
 			root_0 = (object)adaptor.Nil();
 
-			DebugLocation(117, 2);
+			DebugLocation(120, 2);
 
-			set83=(IToken)input.LT(1);
+			set88=(IToken)input.LT(1);
 			if (input.LA(1)==EQUALS||(input.LA(1)>=GREATERTHAN && input.LA(1)<=GREATERTHANOREQUAL)||(input.LA(1)>=LESSTHAN && input.LA(1)<=LESSTHANOREQUAL)||input.LA(1)==NOTEQUALS)
 			{
 				input.Consume();
-				adaptor.AddChild(root_0, (object)adaptor.Create(set83));
+				adaptor.AddChild(root_0, (object)adaptor.Create(set88));
 				state.errorRecovery=false;
 			}
 			else
@@ -3718,11 +3853,11 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 		}
 		finally
 		{
-			TraceOut("filteroperator", 23);
-			LeaveRule("filteroperator", 23);
+			TraceOut("filteroperator", 24);
+			LeaveRule("filteroperator", 24);
 			LeaveRule_filteroperator();
 		}
-		DebugLocation(117, 85);
+		DebugLocation(120, 85);
 		} finally { DebugExitRule(GrammarFileName, "filteroperator"); }
 		return retval;
 
@@ -3734,107 +3869,112 @@ public partial class LinqToQuerystringParser : Antlr.Runtime.Parser
 	#region Follow sets
 	private static class Follow
 	{
-		public static readonly BitSet _param_in_prog85 = new BitSet(new ulong[]{0x502C0020400002UL});
-		public static readonly BitSet _54_in_prog88 = new BitSet(new ulong[]{0x102C0020400000UL});
-		public static readonly BitSet _param_in_prog91 = new BitSet(new ulong[]{0x502C0020400002UL});
-		public static readonly BitSet _orderby_in_param104 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _top_in_param108 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _skip_in_param112 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _filter_in_param116 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _select_in_param120 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _inlinecount_in_param124 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _SKIP_in_skip135 = new BitSet(new ulong[]{0x40000000UL});
-		public static readonly BitSet _INT_in_skip138 = new BitSet(new ulong[]{0x40000002UL});
-		public static readonly BitSet _TOP_in_top149 = new BitSet(new ulong[]{0x40000000UL});
-		public static readonly BitSet _INT_in_top152 = new BitSet(new ulong[]{0x40000002UL});
-		public static readonly BitSet _FILTER_in_filter163 = new BitSet(new ulong[]{0x8B9042520EB000UL});
-		public static readonly BitSet _filterexpression_in_filter166 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _SELECT_in_select177 = new BitSet(new ulong[]{0x10040000UL});
-		public static readonly BitSet _propertyname_in_select180 = new BitSet(new ulong[]{0x200000000000002UL});
-		public static readonly BitSet _57_in_select184 = new BitSet(new ulong[]{0x10040000UL});
-		public static readonly BitSet _propertyname_in_select187 = new BitSet(new ulong[]{0x200000000000002UL});
-		public static readonly BitSet _INLINECOUNT_in_inlinecount200 = new BitSet(new ulong[]{0x40UL});
-		public static readonly BitSet _ALLPAGES_in_inlinecount203 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _INLINECOUNT_in_inlinecount208 = new BitSet(new ulong[]{0x2000000000UL});
-		public static readonly BitSet _NONE_in_inlinecount210 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _orexpression_in_filterexpression222 = new BitSet(new ulong[]{0x400000000002UL});
-		public static readonly BitSet _SPACE_in_filterexpression226 = new BitSet(new ulong[]{0x20000000000UL});
-		public static readonly BitSet _OR_in_filterexpression229 = new BitSet(new ulong[]{0x400000000000UL});
-		public static readonly BitSet _SPACE_in_filterexpression232 = new BitSet(new ulong[]{0x8B9042520EB000UL});
-		public static readonly BitSet _orexpression_in_filterexpression235 = new BitSet(new ulong[]{0x400000000002UL});
-		public static readonly BitSet _andexpression_in_orexpression249 = new BitSet(new ulong[]{0x400000000002UL});
-		public static readonly BitSet _SPACE_in_orexpression253 = new BitSet(new ulong[]{0x80UL});
-		public static readonly BitSet _AND_in_orexpression256 = new BitSet(new ulong[]{0x400000000000UL});
-		public static readonly BitSet _SPACE_in_orexpression259 = new BitSet(new ulong[]{0x8B9042520EB000UL});
-		public static readonly BitSet _andexpression_in_orexpression262 = new BitSet(new ulong[]{0x400000000002UL});
-		public static readonly BitSet _NOT_in_andexpression276 = new BitSet(new ulong[]{0x400000000000UL});
-		public static readonly BitSet _SPACE_in_andexpression279 = new BitSet(new ulong[]{0x8B9002520EB000UL});
-		public static readonly BitSet _55_in_andexpression282 = new BitSet(new ulong[]{0x8B9042520EB000UL});
-		public static readonly BitSet _filterexpression_in_andexpression284 = new BitSet(new ulong[]{0x100000000000000UL});
-		public static readonly BitSet _56_in_andexpression287 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _booleanexpression_in_andexpression291 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _55_in_andexpression299 = new BitSet(new ulong[]{0x8B9042520EB000UL});
-		public static readonly BitSet _filterexpression_in_andexpression301 = new BitSet(new ulong[]{0x100000000000000UL});
-		public static readonly BitSet _56_in_andexpression304 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _booleanexpression_in_andexpression308 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _atom_in_booleanexpression324 = new BitSet(new ulong[]{0x400000000002UL});
-		public static readonly BitSet _SPACE_in_booleanexpression332 = new BitSet(new ulong[]{0x8181900000UL});
-		public static readonly BitSet _EQUALS_in_booleanexpression337 = new BitSet(new ulong[]{0x400000000000UL});
-		public static readonly BitSet _NOTEQUALS_in_booleanexpression343 = new BitSet(new ulong[]{0x400000000000UL});
-		public static readonly BitSet _GREATERTHAN_in_booleanexpression349 = new BitSet(new ulong[]{0x400000000000UL});
-		public static readonly BitSet _GREATERTHANOREQUAL_in_booleanexpression355 = new BitSet(new ulong[]{0x400000000000UL});
-		public static readonly BitSet _LESSTHAN_in_booleanexpression361 = new BitSet(new ulong[]{0x400000000000UL});
-		public static readonly BitSet _LESSTHANOREQUAL_in_booleanexpression367 = new BitSet(new ulong[]{0x400000000000UL});
-		public static readonly BitSet _SPACE_in_booleanexpression370 = new BitSet(new ulong[]{0xB9002520EB000UL});
-		public static readonly BitSet _atom_in_booleanexpression374 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _functioncall_in_atom426 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _constant_in_atom432 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _accessor_in_atom437 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _function_in_functioncall449 = new BitSet(new ulong[]{0x80000000000000UL});
-		public static readonly BitSet _55_in_functioncall452 = new BitSet(new ulong[]{0xB9002520EB000UL});
-		public static readonly BitSet _atom_in_functioncall454 = new BitSet(new ulong[]{0x300000000000000UL});
-		public static readonly BitSet _57_in_functioncall458 = new BitSet(new ulong[]{0xB9002520EB000UL});
-		public static readonly BitSet _atom_in_functioncall460 = new BitSet(new ulong[]{0x300000000000000UL});
-		public static readonly BitSet _56_in_functioncall465 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _propertyname_in_accessor477 = new BitSet(new ulong[]{0x400000000000002UL});
-		public static readonly BitSet _58_in_accessor490 = new BitSet(new ulong[]{0x4000C00004920UL});
-		public static readonly BitSet _ANY_in_accessor495 = new BitSet(new ulong[]{0x80000000000000UL});
-		public static readonly BitSet _ALL_in_accessor501 = new BitSet(new ulong[]{0x80000000000000UL});
-		public static readonly BitSet _COUNT_in_accessor507 = new BitSet(new ulong[]{0x80000000000000UL});
-		public static readonly BitSet _MAX_in_accessor513 = new BitSet(new ulong[]{0x80000000000000UL});
-		public static readonly BitSet _MIN_in_accessor519 = new BitSet(new ulong[]{0x80000000000000UL});
-		public static readonly BitSet _SUM_in_accessor525 = new BitSet(new ulong[]{0x80000000000000UL});
-		public static readonly BitSet _AVERAGE_in_accessor531 = new BitSet(new ulong[]{0x80000000000000UL});
-		public static readonly BitSet _55_in_accessor538 = new BitSet(new ulong[]{0x100000010000000UL});
-		public static readonly BitSet _IDENTIFIER_in_accessor549 = new BitSet(new ulong[]{0x800000000000000UL});
-		public static readonly BitSet _59_in_accessor551 = new BitSet(new ulong[]{0x400000000000UL});
-		public static readonly BitSet _SPACE_in_accessor553 = new BitSet(new ulong[]{0x8B9042520EB000UL});
-		public static readonly BitSet _filterexpression_in_accessor555 = new BitSet(new ulong[]{0x100000000000000UL});
-		public static readonly BitSet _56_in_accessor595 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _ORDERBY_in_orderby634 = new BitSet(new ulong[]{0x10040000UL});
-		public static readonly BitSet _orderbylist_in_orderby637 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _orderpropertyname_in_orderbylist647 = new BitSet(new ulong[]{0x200000000000002UL});
-		public static readonly BitSet _57_in_orderbylist650 = new BitSet(new ulong[]{0x10040000UL});
-		public static readonly BitSet _orderpropertyname_in_orderbylist653 = new BitSet(new ulong[]{0x200000000000002UL});
-		public static readonly BitSet _propertyname_in_orderpropertyname664 = new BitSet(new ulong[]{0x400000000002UL});
-		public static readonly BitSet _SPACE_in_orderpropertyname687 = new BitSet(new ulong[]{0x10200UL});
-		public static readonly BitSet _ASC_in_orderpropertyname692 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _DESC_in_orderpropertyname698 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _INT_in_constant722 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _BOOL_in_constant727 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _STRING_in_constant732 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _DATETIME_in_constant737 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _LONG_in_constant742 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _SINGLE_in_constant747 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _DOUBLE_in_constant752 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _GUID_in_constant757 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _BYTE_in_constant762 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _identifierpart_in_propertyname775 = new BitSet(new ulong[]{0x400000000000002UL});
-		public static readonly BitSet _58_in_propertyname784 = new BitSet(new ulong[]{0x10040000UL});
-		public static readonly BitSet _subpropertyname_in_propertyname788 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _propertyname_in_subpropertyname811 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _IDENTIFIER_in_identifierpart826 = new BitSet(new ulong[]{0x2UL});
-		public static readonly BitSet _DYNAMICIDENTIFIER_in_identifierpart848 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _param_in_prog76 = new BitSet(new ulong[]{0xA0580040C00002UL});
+		public static readonly BitSet _55_in_prog79 = new BitSet(new ulong[]{0x20580040C00000UL});
+		public static readonly BitSet _param_in_prog82 = new BitSet(new ulong[]{0xA0580040C00002UL});
+		public static readonly BitSet _orderby_in_param95 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _top_in_param99 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _skip_in_param103 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _filter_in_param107 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _select_in_param111 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _inlinecount_in_param115 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _expand_in_param119 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _SKIP_in_skip130 = new BitSet(new ulong[]{0x80000000UL});
+		public static readonly BitSet _INT_in_skip133 = new BitSet(new ulong[]{0x80000002UL});
+		public static readonly BitSet _TOP_in_top144 = new BitSet(new ulong[]{0x80000000UL});
+		public static readonly BitSet _INT_in_top147 = new BitSet(new ulong[]{0x80000002UL});
+		public static readonly BitSet _FILTER_in_filter158 = new BitSet(new ulong[]{0x1172084A40EB000UL});
+		public static readonly BitSet _filterexpression_in_filter161 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _SELECT_in_select172 = new BitSet(new ulong[]{0x20040000UL});
+		public static readonly BitSet _propertyname_in_select175 = new BitSet(new ulong[]{0x400000000000002UL});
+		public static readonly BitSet _58_in_select179 = new BitSet(new ulong[]{0x20040000UL});
+		public static readonly BitSet _propertyname_in_select182 = new BitSet(new ulong[]{0x400000000000002UL});
+		public static readonly BitSet _EXPAND_in_expand197 = new BitSet(new ulong[]{0x20040000UL});
+		public static readonly BitSet _propertyname_in_expand200 = new BitSet(new ulong[]{0x400000000000002UL});
+		public static readonly BitSet _58_in_expand204 = new BitSet(new ulong[]{0x20040000UL});
+		public static readonly BitSet _propertyname_in_expand207 = new BitSet(new ulong[]{0x400000000000002UL});
+		public static readonly BitSet _INLINECOUNT_in_inlinecount220 = new BitSet(new ulong[]{0x40UL});
+		public static readonly BitSet _ALLPAGES_in_inlinecount223 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _INLINECOUNT_in_inlinecount228 = new BitSet(new ulong[]{0x4000000000UL});
+		public static readonly BitSet _NONE_in_inlinecount230 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _orexpression_in_filterexpression242 = new BitSet(new ulong[]{0x800000000002UL});
+		public static readonly BitSet _SPACE_in_filterexpression246 = new BitSet(new ulong[]{0x40000000000UL});
+		public static readonly BitSet _OR_in_filterexpression249 = new BitSet(new ulong[]{0x800000000000UL});
+		public static readonly BitSet _SPACE_in_filterexpression252 = new BitSet(new ulong[]{0x1172084A40EB000UL});
+		public static readonly BitSet _orexpression_in_filterexpression255 = new BitSet(new ulong[]{0x800000000002UL});
+		public static readonly BitSet _andexpression_in_orexpression269 = new BitSet(new ulong[]{0x800000000002UL});
+		public static readonly BitSet _SPACE_in_orexpression273 = new BitSet(new ulong[]{0x80UL});
+		public static readonly BitSet _AND_in_orexpression276 = new BitSet(new ulong[]{0x800000000000UL});
+		public static readonly BitSet _SPACE_in_orexpression279 = new BitSet(new ulong[]{0x1172084A40EB000UL});
+		public static readonly BitSet _andexpression_in_orexpression282 = new BitSet(new ulong[]{0x800000000002UL});
+		public static readonly BitSet _NOT_in_andexpression296 = new BitSet(new ulong[]{0x800000000000UL});
+		public static readonly BitSet _SPACE_in_andexpression299 = new BitSet(new ulong[]{0x1172004A40EB000UL});
+		public static readonly BitSet _56_in_andexpression302 = new BitSet(new ulong[]{0x1172084A40EB000UL});
+		public static readonly BitSet _filterexpression_in_andexpression304 = new BitSet(new ulong[]{0x200000000000000UL});
+		public static readonly BitSet _57_in_andexpression307 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _booleanexpression_in_andexpression311 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _56_in_andexpression319 = new BitSet(new ulong[]{0x1172084A40EB000UL});
+		public static readonly BitSet _filterexpression_in_andexpression321 = new BitSet(new ulong[]{0x200000000000000UL});
+		public static readonly BitSet _57_in_andexpression324 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _booleanexpression_in_andexpression328 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _atom_in_booleanexpression344 = new BitSet(new ulong[]{0x800000000002UL});
+		public static readonly BitSet _SPACE_in_booleanexpression352 = new BitSet(new ulong[]{0x10303100000UL});
+		public static readonly BitSet _EQUALS_in_booleanexpression357 = new BitSet(new ulong[]{0x800000000000UL});
+		public static readonly BitSet _NOTEQUALS_in_booleanexpression363 = new BitSet(new ulong[]{0x800000000000UL});
+		public static readonly BitSet _GREATERTHAN_in_booleanexpression369 = new BitSet(new ulong[]{0x800000000000UL});
+		public static readonly BitSet _GREATERTHANOREQUAL_in_booleanexpression375 = new BitSet(new ulong[]{0x800000000000UL});
+		public static readonly BitSet _LESSTHAN_in_booleanexpression381 = new BitSet(new ulong[]{0x800000000000UL});
+		public static readonly BitSet _LESSTHANOREQUAL_in_booleanexpression387 = new BitSet(new ulong[]{0x800000000000UL});
+		public static readonly BitSet _SPACE_in_booleanexpression390 = new BitSet(new ulong[]{0x172004A40EB000UL});
+		public static readonly BitSet _atom_in_booleanexpression394 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _functioncall_in_atom446 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _constant_in_atom452 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _accessor_in_atom457 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _function_in_functioncall469 = new BitSet(new ulong[]{0x100000000000000UL});
+		public static readonly BitSet _56_in_functioncall472 = new BitSet(new ulong[]{0x172004A40EB000UL});
+		public static readonly BitSet _atom_in_functioncall474 = new BitSet(new ulong[]{0x600000000000000UL});
+		public static readonly BitSet _58_in_functioncall478 = new BitSet(new ulong[]{0x172004A40EB000UL});
+		public static readonly BitSet _atom_in_functioncall480 = new BitSet(new ulong[]{0x600000000000000UL});
+		public static readonly BitSet _57_in_functioncall485 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _propertyname_in_accessor497 = new BitSet(new ulong[]{0x800000000000002UL});
+		public static readonly BitSet _59_in_accessor510 = new BitSet(new ulong[]{0x8001800004920UL});
+		public static readonly BitSet _ANY_in_accessor515 = new BitSet(new ulong[]{0x100000000000000UL});
+		public static readonly BitSet _ALL_in_accessor521 = new BitSet(new ulong[]{0x100000000000000UL});
+		public static readonly BitSet _COUNT_in_accessor527 = new BitSet(new ulong[]{0x100000000000000UL});
+		public static readonly BitSet _MAX_in_accessor533 = new BitSet(new ulong[]{0x100000000000000UL});
+		public static readonly BitSet _MIN_in_accessor539 = new BitSet(new ulong[]{0x100000000000000UL});
+		public static readonly BitSet _SUM_in_accessor545 = new BitSet(new ulong[]{0x100000000000000UL});
+		public static readonly BitSet _AVERAGE_in_accessor551 = new BitSet(new ulong[]{0x100000000000000UL});
+		public static readonly BitSet _56_in_accessor558 = new BitSet(new ulong[]{0x200000020000000UL});
+		public static readonly BitSet _IDENTIFIER_in_accessor569 = new BitSet(new ulong[]{0x1000000000000000UL});
+		public static readonly BitSet _60_in_accessor571 = new BitSet(new ulong[]{0x800000000000UL});
+		public static readonly BitSet _SPACE_in_accessor573 = new BitSet(new ulong[]{0x1172084A40EB000UL});
+		public static readonly BitSet _filterexpression_in_accessor575 = new BitSet(new ulong[]{0x200000000000000UL});
+		public static readonly BitSet _57_in_accessor615 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _ORDERBY_in_orderby654 = new BitSet(new ulong[]{0x20040000UL});
+		public static readonly BitSet _orderbylist_in_orderby657 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _orderpropertyname_in_orderbylist667 = new BitSet(new ulong[]{0x400000000000002UL});
+		public static readonly BitSet _58_in_orderbylist670 = new BitSet(new ulong[]{0x20040000UL});
+		public static readonly BitSet _orderpropertyname_in_orderbylist673 = new BitSet(new ulong[]{0x400000000000002UL});
+		public static readonly BitSet _propertyname_in_orderpropertyname684 = new BitSet(new ulong[]{0x800000000002UL});
+		public static readonly BitSet _SPACE_in_orderpropertyname707 = new BitSet(new ulong[]{0x10200UL});
+		public static readonly BitSet _ASC_in_orderpropertyname712 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _DESC_in_orderpropertyname718 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _INT_in_constant742 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _BOOL_in_constant747 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _STRING_in_constant752 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _DATETIME_in_constant757 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _LONG_in_constant762 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _SINGLE_in_constant767 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _DOUBLE_in_constant772 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _GUID_in_constant777 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _BYTE_in_constant782 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _identifierpart_in_propertyname795 = new BitSet(new ulong[]{0x800000000000002UL});
+		public static readonly BitSet _59_in_propertyname804 = new BitSet(new ulong[]{0x20040000UL});
+		public static readonly BitSet _subpropertyname_in_propertyname808 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _propertyname_in_subpropertyname831 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _IDENTIFIER_in_identifierpart846 = new BitSet(new ulong[]{0x2UL});
+		public static readonly BitSet _DYNAMICIDENTIFIER_in_identifierpart868 = new BitSet(new ulong[]{0x2UL});
 	}
 	#endregion Follow sets
 }
