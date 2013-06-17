@@ -137,10 +137,6 @@
                                 ConcreteCollection = o.ConcreteCollection,
                                 Concrete = o.Concrete
                             });
-
-                var test = collection.Where(o => o.StringCollection.Any(str => str == "Banana") == true);
-                var temp = test.ToList();
-                var s = "";
             };
     }
 
