@@ -145,7 +145,7 @@
     {
         private Because of = () => result = testDb.ComplexCollection.LinqToQuerystring(string.Empty).ToList();
 
-        private It should_return_all_the_records = () => result.Count.ShouldEqual(5);
+        private It should_the_correct_number_of_records = () => result.Count.ShouldEqual(5);
 
         private It should_return_null_for_the_concrete_collection = () =>
             result.ShouldEachConformTo(o => o.ConcreteCollection == null);
@@ -156,6 +156,16 @@
         private Because of = () => result = testDb.ComplexCollection.LinqToQuerystring("$expand=ConcreteCollection").ToList();
 
         private It should_return_all_the_records = () => result.Count.ShouldEqual(5);
+
+        private It should_return_the_concrete_collection = () =>
+            result.ShouldEachConformTo(o => o.ConcreteCollection != null);
+    }
+
+    public class When_expanding_a_complex_collection_with_preexisting_filter : SqlExpandWithSetup
+    {
+        private Because of = () => result = testDb.ComplexCollection.Where(o => o.Title != "Charles").LinqToQuerystring("$expand=ConcreteCollection").ToList();
+
+        private It should_return_the_correct_number_of_records = () => result.Count.ShouldEqual(4);
 
         private It should_return_the_concrete_collection = () =>
             result.ShouldEachConformTo(o => o.ConcreteCollection != null);

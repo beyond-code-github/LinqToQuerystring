@@ -24,13 +24,13 @@
         /// <summary>
         /// Allows the specification of custom tree nodes for particular situations, i.e Entity Framework include
         /// </summary>
-        public static Dictionary<Type, CustomNodeMappings> CustomNodes { get; set; }
+        public static Dictionary<string, CustomNodeMappings> CustomNodes { get; set; }
 
         public static void Reset()
         {
             EnumerableTypeMap = DefaultTypeMap;
             TypeConversionMap = DefaultTypeConversionMap;
-            CustomNodes = new Dictionary<Type, CustomNodeMappings>();
+            CustomNodes = new Dictionary<string, CustomNodeMappings>();
         }
 
         static Configuration()

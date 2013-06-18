@@ -120,8 +120,9 @@
 
         private static void BuildQuery(TreeNode node, ref IQueryable queryResult, ref IQueryable constrainedQuery)
         {
-            var type = queryResult.Expression.Type.BaseType;
-            var mappings = (type != null && Configuration.CustomNodes.ContainsKey(type))
+            var type = queryResult.Provider.GetType().Name;
+
+            var mappings = (!string.IsNullOrEmpty(type) && Configuration.CustomNodes.ContainsKey(type))
                                ? Configuration.CustomNodes[type]
                                : null;
 
