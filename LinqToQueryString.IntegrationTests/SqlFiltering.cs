@@ -30,8 +30,11 @@
             guidArray = Enumerable.Range(1, 5).Select(o => Guid.NewGuid()).ToArray();
 
             testDb = new TestDbContext();
-            Database.SetInitializer(new DropCreateDatabaseAlways<TestDbContext>());
-            testDb.Database.Initialize(true);
+
+            testDb.Database.ExecuteSqlCommand("UPDATE ComplexClasses SET Concrete_Id = NULL");
+            testDb.Database.ExecuteSqlCommand("DELETE FROM EdgeCaseClasses");
+            testDb.Database.ExecuteSqlCommand("DELETE FROM ConcreteClasses");
+            testDb.Database.ExecuteSqlCommand("DELETE FROM ComplexClasses");
 
             testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Apple", 1, new DateTime(2002, 01, 01), true, 10000000000, 111.111, 111.111f, 0x00, guidArray[0]));
             testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Apple", 2, new DateTime(2005, 01, 01), false, 30000000000, 333.333, 333.333f, 0x22, guidArray[2]));
@@ -58,6 +61,8 @@
 
             concreteCollection = testDb.ConcreteCollection.ToList();
             edgeCaseCollection = testDb.EdgeCaseCollection.ToList();
+
+            testDb = new TestDbContext();
         };
     }
 

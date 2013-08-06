@@ -22,8 +22,11 @@
         private Establish context = () =>
         {
             testDb = new TestDbContext();
-            Database.SetInitializer(new DropCreateDatabaseAlways<TestDbContext>());
-            testDb.Database.Initialize(true);
+
+            testDb.Database.ExecuteSqlCommand("UPDATE ComplexClasses SET Concrete_Id = NULL");
+            testDb.Database.ExecuteSqlCommand("DELETE FROM EdgeCaseClasses");
+            testDb.Database.ExecuteSqlCommand("DELETE FROM ConcreteClasses");
+            testDb.Database.ExecuteSqlCommand("DELETE FROM ComplexClasses");
 
             testDb.ComplexCollection.Add(
                 new ComplexClass
@@ -120,6 +123,7 @@
                 });
 
             testDb.SaveChanges();
+
             // Clear local cached entities
             testDb = new TestDbContext();
 

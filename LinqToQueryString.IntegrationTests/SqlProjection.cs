@@ -22,8 +22,11 @@
         private Establish context = () =>
         {
             testDb = new TestDbContext();
-            Database.SetInitializer(new DropCreateDatabaseAlways<TestDbContext>());
-            testDb.Database.Initialize(true);
+
+            testDb.Database.ExecuteSqlCommand("UPDATE ComplexClasses SET Concrete_Id = NULL");
+            testDb.Database.ExecuteSqlCommand("DELETE FROM EdgeCaseClasses");
+            testDb.Database.ExecuteSqlCommand("DELETE FROM ConcreteClasses");
+            testDb.Database.ExecuteSqlCommand("DELETE FROM ComplexClasses");
 
             testDb.ComplexCollection.Add(new ComplexClass { Title = "Charles", Concrete = InstanceBuilders.BuildConcrete("Apple", 5, new DateTime(2005, 01, 01), true) });
             testDb.ComplexCollection.Add(new ComplexClass { Title = "Andrew", Concrete = InstanceBuilders.BuildConcrete("Custard", 3, new DateTime(2007, 01, 01), true) });
@@ -34,6 +37,8 @@
             testDb.SaveChanges();
 
             concreteCollection = testDb.ConcreteCollection.ToList();
+
+            testDb = new TestDbContext();
         };
     }
 
