@@ -1,0 +1,207 @@
+<script type="text/javascript" src="antlr3-all-min.js"></script>
+<script type="text/javascript" src="output/LinqToQuerystringLexer.js"></script>
+<script type="text/javascript" src="output/LinqToQuerystringParser.js"></script>
+ 
+<script type="text/javascript">
+	var forceDynamicProperties = false;
+	var buildHtml = "";
+
+    function TopNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function SkipNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function OrderByNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function FilterNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function SelectNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function InlineCountNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function ExpandNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function NotNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function AndNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function OrNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function EqualsNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function NotEqualsNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function GreaterThanNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function GreaterThanOrEqualNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function LessThanNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function LessThanOrEqualNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function StartsWithNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function EndsWithNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function SubstringOfNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function ToLowerNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function AnyNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function AllNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function CountNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function AverageNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function MaxNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function MinNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function SumNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function AliasNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function DynamicIdentifierNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function IdentifierNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function StringNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function BoolNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function IntNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function DateTimeNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function DoubleNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function SingleNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function LongNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function ByteNode (inputType, token) { this.inputType = inputType; this.token = token };	
+	function GuidNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function DescNode (inputType, token) { this.inputType = inputType; this.token = token };
+	function AscNode (inputType, token) { this.inputType = inputType; this.token = token };
+
+    var processNode = function (input)
+    {
+    	var node;
+    	var token = input.token;
+
+		if (!input.token)
+		{
+			node = {};
+		}
+		else
+		{
+	    	var inputType = input.token.type;
+
+	    	switch (inputType)
+	    	{
+	    		case LinqToQuerystringLexer.TOP:
+	                    node = new TopNode(inputType, token); break;
+	                case LinqToQuerystringLexer.SKIP:
+	                    node = new SkipNode(inputType, token); break;
+	                case LinqToQuerystringLexer.ORDERBY:
+	                    node = new OrderByNode(inputType, token); break;
+	                case LinqToQuerystringLexer.FILTER:
+	                    node = new FilterNode(inputType, token); break;
+	                case LinqToQuerystringLexer.SELECT:
+	                    node = new SelectNode(inputType, token); break;
+	                case LinqToQuerystringLexer.INLINECOUNT:
+	                    node = new InlineCountNode(inputType, token); break;
+	                case LinqToQuerystringLexer.EXPAND:
+	                    node = new ExpandNode(inputType, token); break;
+	                case LinqToQuerystringLexer.NOT:
+	                    node = new NotNode(inputType, token); break;
+	                case LinqToQuerystringLexer.AND:
+	                    node = new AndNode(inputType, token); break;
+	                case LinqToQuerystringLexer.OR:
+	                    node = new OrNode(inputType, token); break;
+	                case LinqToQuerystringLexer.EQUALS:
+	                    node = new EqualsNode(inputType, token); break;
+	                case LinqToQuerystringLexer.NOTEQUALS:
+	                    node = new NotEqualsNode(inputType, token); break;
+	                case LinqToQuerystringLexer.GREATERTHAN:
+	                    node = new GreaterThanNode(inputType, token); break;
+	                case LinqToQuerystringLexer.GREATERTHANOREQUAL:
+	                    node = new GreaterThanOrEqualNode(inputType, token); break;
+	                case LinqToQuerystringLexer.LESSTHAN:
+	                    node = new LessThanNode(inputType, token); break;
+	                case LinqToQuerystringLexer.LESSTHANOREQUAL:
+	                    node = new LessThanOrEqualNode(inputType, token); break;
+	                case LinqToQuerystringLexer.STARTSWITH:
+	                    node = new StartsWithNode(inputType, token); break;
+	                case LinqToQuerystringLexer.ENDSWITH:
+	                    node = new EndsWithNode(inputType, token); break;
+	                case LinqToQuerystringLexer.SUBSTRINGOF:
+	                    node = new SubstringOfNode(inputType, token); break;
+	                case LinqToQuerystringLexer.TOLOWER:
+	                    node = new ToLowerNode(inputType, token); break;
+	                case LinqToQuerystringLexer.ANY:
+	                    node = new AnyNode(inputType, token); break;
+	                case LinqToQuerystringLexer.ALL:
+	                    node = new AllNode(inputType, token); break;
+	                case LinqToQuerystringLexer.COUNT:
+	                    node = new CountNode(inputType, token); break;
+	                case LinqToQuerystringLexer.AVERAGE:
+	                    node = new AverageNode(inputType, token); break;
+	                case LinqToQuerystringLexer.MAX:
+	                    node = new MaxNode(inputType, token); break;
+	                case LinqToQuerystringLexer.MIN:
+	                    node = new MinNode(inputType, token); break;
+	                case LinqToQuerystringLexer.SUM:
+	                    node = new SumNode(inputType, token); break;
+	                case LinqToQuerystringLexer.ALIAS:
+	                    node = new AliasNode(inputType, token); break;
+	                case LinqToQuerystringLexer.DYNAMICIDENTIFIER:
+	                    node = new DynamicIdentifierNode(inputType, token); break;
+	                case LinqToQuerystringLexer.IDENTIFIER:
+	                    if (forceDynamicProperties)
+	                    {
+	                        node = new DynamicIdentifierNode(inputType, token); break;
+	                    }
+	                    node = new IdentifierNode(inputType, token); break;
+	                case LinqToQuerystringLexer.STRING:
+	                    node = new StringNode(inputType, token); break;
+	                case LinqToQuerystringLexer.BOOL:
+	                    node = new BoolNode(inputType, token); break;
+	                case LinqToQuerystringLexer.INT:
+	                    node = new IntNode(inputType, token); break;
+	                case LinqToQuerystringLexer.DATETIME:
+	                    node = new DateTimeNode(inputType, token); break;
+	                case LinqToQuerystringLexer.DOUBLE:
+	                    node = new DoubleNode(inputType, token); break;
+	                case LinqToQuerystringLexer.SINGLE:
+	                    node = new SingleNode(inputType, token); break;
+	                case LinqToQuerystringLexer.LONG:
+	                    node = new LongNode(inputType, token); break;
+	                case LinqToQuerystringLexer.BYTE:
+	                    node = new ByteNode(inputType, token); break;
+	                case LinqToQuerystringLexer.GUID:
+	                    node = new GuidNode(inputType, token); break;
+	                case LinqToQuerystringLexer.DESC:
+	                    node = new DescNode(inputType, token); break;
+	                case LinqToQuerystringLexer.ASC:
+	                    node = new AscNode(inputType, token); break;
+	                default:
+	                	return null;
+	    	}
+		}
+
+    	node.Children = [];
+
+    	var text = "";
+    	if (node.token)
+    	{
+    		text = node.token.text;
+    	}
+
+    	buildHtml = buildHtml + "<li><span>" + node.constructor.name + " : " + text + "</span>";
+	    buildHtml = buildHtml + "<ul>";
+
+    	for (index in input.children)
+    	{
+    		var child = input.children[index];
+    		node.Children.push(processNode(child));
+    	}
+
+    	buildHtml = buildHtml + "</ul>";
+    	buildHtml = buildHtml + "</li>"
+
+    	return node
+    };
+
+    var go = function () {
+
+	    // Program
+	    var input = document.getElementById("query").value;
+
+	    cstream = new org.antlr.runtime.ANTLRStringStream(input),
+	    lexer = new LinqToQuerystringLexer(cstream),
+	    tstream = new org.antlr.runtime.CommonTokenStream(lexer),
+	    parser = new LinqToQuerystringParser(tstream);
+	    
+	    buildHtml = "";
+
+	    var output = document.getElementById("output");
+	    var entryPoint = parser.prog().tree;
+	    var result = processNode(entryPoint);
+	    console.log(result);
+
+	    output.innerHTML = buildHtml;
+    }
+
+
+</script>
+
+<input type="text" name="query" id="query" value="$filter=[Name] eq 'Test'" style="width:500px;"></input>
+<button onclick="go();">Process</button>
+
+<div id="output">
+</div>
