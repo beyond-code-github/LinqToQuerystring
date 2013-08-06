@@ -44,7 +44,7 @@
 
             NormalizeTypes(ref leftExpression, ref rightExpression);
 
-            return Expression.Equal(leftExpression, rightExpression);
+            return ApplyEnsuringNullablesHaveValues(Expression.Equal, leftExpression, rightExpression);
         }
     }
 }

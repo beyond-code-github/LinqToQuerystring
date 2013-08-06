@@ -62,4 +62,25 @@
             return String.CompareOrdinal(this.Name, other.Name);
         }
     }
+
+    public class NullableClass
+    {
+        public int? Id { get; set; }
+
+        public DateTime? Date { get; set; }
+
+        public int? Age { get; set; }
+
+        public bool? Complete { get; set; }
+
+        public long? Population { get; set; }
+
+        public double? Value { get; set; }
+
+        public float? Cost { get; set; }
+
+        public byte? Code { get; set; }
+
+        public Guid? Guid { get; set; }
+    }
 }

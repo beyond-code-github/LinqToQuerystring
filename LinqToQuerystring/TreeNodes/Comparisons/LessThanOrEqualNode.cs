@@ -22,7 +22,7 @@
 
             NormalizeTypes(ref leftExpression, ref rightExpression);
 
-            return Expression.LessThanOrEqual(leftExpression, rightExpression);
+            return ApplyEnsuringNullablesHaveValues(Expression.LessThanOrEqual, leftExpression, rightExpression);
         }
     }
 }

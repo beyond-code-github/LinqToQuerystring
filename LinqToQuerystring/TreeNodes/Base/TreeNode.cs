@@ -124,5 +124,49 @@
 
             return converted;
         }
+
+        protected static Expression ApplyEnsuringNullablesHaveValues(Func<Expression, Expression, Expression> produces, Expression leftExpression, Expression rightExpression)
+        {
+            var leftExpressionIsNullable = (Nullable.GetUnderlyingType(leftExpression.Type) != null);
+            var rightExpressionIsNullable = (Nullable.GetUnderlyingType(rightExpression.Type) != null);
+
+            if (leftExpressionIsNullable)
+            {
+                return Expression.AndAlso(
+                    Expression.NotEqual(leftExpression, Expression.Constant(null)),
+                    produces(Expression.Property(leftExpression, "Value"), rightExpression));
+            }
+
+            if (rightExpressionIsNullable)
+            {
+                return Expression.AndAlso(
+                    Expression.NotEqual(rightExpression, Expression.Constant(null)),
+                    produces(leftExpression, Expression.Property(rightExpression, "Value")));
+            }
+
+            return produces(leftExpression, rightExpression);
+        }
+
+        protected static Expression ApplyWithNullAsValidAlternative(Func<Expression, Expression, Expression> produces, Expression leftExpression, Expression rightExpression)
+        {
+            var leftExpressionIsNullable = (Nullable.GetUnderlyingType(leftExpression.Type) != null);
+            var rightExpressionIsNullable = (Nullable.GetUnderlyingType(rightExpression.Type) != null);
+
+            if (leftExpressionIsNullable)
+            {
+                return Expression.OrElse(
+                    Expression.Equal(leftExpression, Expression.Constant(null)),
+                    produces(Expression.Property(leftExpression, "Value"), rightExpression));
+            }
+
+            if (rightExpressionIsNullable)
+            {
+                return Expression.OrElse(
+                    Expression.Equal(rightExpression, Expression.Constant(null)),
+                    produces(leftExpression, Expression.Property(rightExpression, "Value")));
+            }
+
+            return produces(leftExpression, rightExpression);
+        }
     }
 }

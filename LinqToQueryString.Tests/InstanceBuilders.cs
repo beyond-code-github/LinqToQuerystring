@@ -18,5 +18,15 @@ namespace LinqToQueryString.Tests
         {
             return new ConcreteClass { Name = name, Date = date, Age = age, Complete = complete, Population = population, Value = value, Cost = cost, Code = code, Guid = guid };
         }
+
+        public static NullableClass BuildNull()
+        {
+            return new NullableClass();
+        }
+
+        public static NullableClass BuildNull(int? age, DateTime? date, bool? complete, long? population, double? value, float? cost, byte? code, Guid? guid)
+        {
+            return new NullableClass { Date = date, Age = age, Complete = complete, Population = population, Value = value, Cost = cost, Code = code, Guid = guid };
+        }
     }
 }

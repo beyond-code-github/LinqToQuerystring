@@ -22,7 +22,7 @@
 
             NormalizeTypes(ref leftExpression, ref rightExpression);
 
-            return Expression.NotEqual(leftExpression, rightExpression);
+            return ApplyWithNullAsValidAlternative(Expression.NotEqual, leftExpression, rightExpression);
         }
     }
 }
