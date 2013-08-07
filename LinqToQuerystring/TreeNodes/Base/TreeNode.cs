@@ -130,14 +130,14 @@
             var leftExpressionIsNullable = (Nullable.GetUnderlyingType(leftExpression.Type) != null);
             var rightExpressionIsNullable = (Nullable.GetUnderlyingType(rightExpression.Type) != null);
 
-            if (leftExpressionIsNullable)
+            if (leftExpressionIsNullable && !rightExpressionIsNullable)
             {
                 return Expression.AndAlso(
                     Expression.NotEqual(leftExpression, Expression.Constant(null)),
                     produces(Expression.Property(leftExpression, "Value"), rightExpression));
             }
 
-            if (rightExpressionIsNullable)
+            if (rightExpressionIsNullable && !leftExpressionIsNullable)
             {
                 return Expression.AndAlso(
                     Expression.NotEqual(rightExpression, Expression.Constant(null)),
@@ -152,14 +152,14 @@
             var leftExpressionIsNullable = (Nullable.GetUnderlyingType(leftExpression.Type) != null);
             var rightExpressionIsNullable = (Nullable.GetUnderlyingType(rightExpression.Type) != null);
 
-            if (leftExpressionIsNullable)
+            if (leftExpressionIsNullable && !rightExpressionIsNullable)
             {
                 return Expression.OrElse(
                     Expression.Equal(leftExpression, Expression.Constant(null)),
                     produces(Expression.Property(leftExpression, "Value"), rightExpression));
             }
 
-            if (rightExpressionIsNullable)
+            if (rightExpressionIsNullable && !leftExpressionIsNullable)
             {
                 return Expression.OrElse(
                     Expression.Equal(rightExpression, Expression.Constant(null)),

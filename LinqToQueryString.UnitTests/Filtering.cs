@@ -1151,6 +1151,110 @@
 
     #endregion
 
+    #region Filter with comparison to nulls
+
+    //eq
+    public class When_using_eq_filter_null_comparison : Filtering
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("?$filter=Age eq null");
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Age == null);
+    }
+
+    public class When_using_eq_filter_null_comparison_with_operands_reversed : Filtering
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("?$filter=null eq Age");
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Age == null);
+    }
+
+    //ne
+    public class When_using_ne_filter_null_comparison : Filtering
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("?$filter=Age ne null");
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Age != null);
+    }
+
+    public class When_using_ne_filter_null_comparison_with_operands_reversed : Filtering
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("?$filter=null ne Age");
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Age != null);
+    }
+
+    //gt
+    public class When_using_gt_filter_null_comparison : Filtering
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("?$filter=Age gt null");
+
+        private It should_return_0_records_because_null_is_not_valid_for_comparisons = () => nullableResult.Count().ShouldEqual(0);
+    }
+
+    public class When_using_gt_filter_null_comparison_with_operands_reversed : Filtering
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("?$filter=null gt Age");
+
+        private It should_return_0_records_because_null_is_not_valid_for_comparisons = () => nullableResult.Count().ShouldEqual(0);
+    }
+
+    //ge
+    public class When_using_ge_filter_null_comparison : Filtering
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("?$filter=Age ge null");
+
+        private It should_return_0_records_because_null_is_not_valid_for_comparisons = () => nullableResult.Count().ShouldEqual(0);
+    }
+
+    public class When_using_ge_filter_null_comparison_with_operands_reversed : Filtering
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("?$filter=null ge Age");
+
+        private It should_return_0_records_because_null_is_not_valid_for_comparisons = () => nullableResult.Count().ShouldEqual(0);
+    }
+
+    //lt
+    public class When_using_lt_filter_null_comparison : Filtering
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("?$filter=Age lt null");
+
+        private It should_return_0_records_because_null_is_not_valid_for_comparisons = () => nullableResult.Count().ShouldEqual(0);
+    }
+
+    public class When_using_lt_filter_null_comparison_with_operands_reversed : Filtering
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("?$filter=null lt Age");
+
+        private It should_return_0_records_because_null_is_not_valid_for_comparisons = () => nullableResult.Count().ShouldEqual(0);
+    }
+
+    //le
+    public class When_using_le_filter_null_comparison : Filtering
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("?$filter=Age le null");
+
+        private It should_return_0_records_because_null_is_not_valid_for_comparisons = () => nullableResult.Count().ShouldEqual(0);
+    }
+
+    public class When_using_le_filter_null_comparison_with_operands_reversed : Filtering
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("?$filter=null le Age");
+
+        private It should_return_0_records_because_null_is_not_valid_for_comparisons = () => nullableResult.Count().ShouldEqual(0);
+    }
+
+    //not
+
+    #endregion
+
     #region Filter on other nullable types
 
     public class When_using_eq_filter_on_a_single_nullable_date : Filtering

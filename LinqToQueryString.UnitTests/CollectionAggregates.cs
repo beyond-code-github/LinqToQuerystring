@@ -16,7 +16,11 @@
 
         protected static IQueryable<ComplexClass> result;
 
+        protected static IQueryable<NullableClass> nullableResult;
+
         protected static List<ComplexClass> complexCollection;
+
+        protected static List<NullableClass> nullableCollection;
 
         private Establish context = () =>
         {
@@ -81,6 +85,14 @@
                                                         }
                                                  }
                                          };
+
+            nullableCollection = new List<NullableClass>
+                                 {
+                                     new NullableClass { NullableInts = new List<int?> { null } },
+                                     new NullableClass { NullableInts = new List<int?> { 1 } },
+                                     new NullableClass { NullableInts = new List<int?> { 1, 2 } },
+                                     new NullableClass { NullableInts = new List<int?> { null, 1, 2 } },
+                                 };
         };
     }
 
@@ -120,6 +132,55 @@
         private It should_return_three_records = () => result.Count().ShouldEqual(3);
 
         private It should_only_return_records_where_average_of_values_is_greater_than_or_equal_to_2 = () => result.ShouldEachConformTo(o => o.IntCollection.Average() >= 2);
+    }
+
+    #endregion
+
+    #region Nullable Int Collections
+
+    public class When_filtering_on_a_simple_collection_property_using_max_against_a_nullable_int : CollectionAggregates
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("$filter=NullableInts/max() eq 2");
+
+        private It should_return_two_records = () => nullableResult.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_max_value_is_2 = () => nullableResult.ShouldEachConformTo(o => o.NullableInts.Max() == 2);
+    }
+
+    public class When_filtering_on_a_simple_collection_property_using_min_against_a_nullable_int : CollectionAggregates
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("$filter=NullableInts/min() eq 1");
+
+        private It should_return_three_records = () => nullableResult.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_min_value_is_1 = () => nullableResult.ShouldEachConformTo(o => o.NullableInts.Min() == 1);
+    }
+
+    public class When_filtering_on_a_simple_collection_property_using_sum_against_a_nullable_int : CollectionAggregates
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("$filter=NullableInts/sum() gt 2");
+
+        private It should_return_two_records = () => nullableResult.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_sum_of_values_is_greater_than_2 = () => nullableResult.ShouldEachConformTo(o => o.NullableInts.Sum() > 2);
+    }
+
+    public class When_filtering_on_a_simple_collection_property_using_average_against_a_nullable_int : CollectionAggregates
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("$filter=NullableInts/average() ge 1");
+
+        private It should_return_three_records = () => nullableResult.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_average_of_values_is_greater_than_or_equal_to_1 = () => nullableResult.ShouldEachConformTo(o => o.NullableInts.Average() >= 1);
+    }
+
+    public class When_filtering_on_a_nullable_int_collection_property_using_any_checking_for_nulls : CollectionAggregates
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("$filter=NullableInts/any(int: int eq null)");
+
+        private It should_return_two_records = () => nullableResult.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_string_collection_contains_banana = () => nullableResult.ShouldEachConformTo(o => o.NullableInts.Any(s => s == null));
     }
 
     #endregion

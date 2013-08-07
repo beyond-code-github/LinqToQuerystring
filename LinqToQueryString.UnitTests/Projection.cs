@@ -18,12 +18,20 @@
 
         protected static IQueryable<Dictionary<string, object>> complexResult;
 
+        protected static IQueryable<Dictionary<string, object>> nullableResult;
+
         protected static List<ConcreteClass> concreteCollection;
 
         protected static List<ComplexClass> complexCollection;
 
+        protected static List<NullableClass> nullableCollection;
+
+        protected static Guid[] guidArray;
+
         private Establish context = () =>
         {
+            guidArray = Enumerable.Range(1, 5).Select(o => Guid.NewGuid()).ToArray();
+
             concreteCollection = new List<ConcreteClass>
                                          {
                                              InstanceBuilders.BuildConcrete("Apple", 1, new DateTime(2001, 01, 01), true),
@@ -41,6 +49,12 @@
                                              new ComplexClass { Title = "Edward", Concrete = InstanceBuilders.BuildConcrete("Eggs", 1, new DateTime(2000, 01, 01), true) },
                                              new ComplexClass { Title = "Boris", Concrete = InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2009, 01, 01), false) }
                                          };
+
+            nullableCollection = new List<NullableClass>
+                                     {
+                                         InstanceBuilders.BuildNull(),
+                                         InstanceBuilders.BuildNull(1, new DateTime(2002, 01, 01), true, 10000000000, 111.111, 111.111f, 0x00, guidArray[0])
+                                     };
         };
     }
 
@@ -183,6 +197,26 @@
         private It should_project_the_right_age_for_the_fourth_record = () => result.ElementAt(3)["Name"].ShouldEqual(concreteCollection.ElementAt(3).Name);
 
         private It should_project_the_right_age_for_the_fifth_record = () => result.ElementAt(4)["Name"].ShouldEqual(concreteCollection.ElementAt(4).Name);
+    }
+
+    public class When_selecting_a_nullable_int_property : Projection
+    {
+        private Because of =
+            () =>
+            nullableResult = nullableCollection.AsQueryable().LinqToQuerystring<NullableClass, IQueryable<Dictionary<string, object>>>("?$select=Age");
+
+        private It should_project_the_name_properties_into_the_dictionary =
+            () => nullableResult.ShouldEachConformTo(
+                r => r.ContainsKey("Age"));
+
+        private It should_only_have_projected_the_one_property =
+            () => nullableResult.ShouldEachConformTo(r => r.Count == 1);
+
+        private It should_contain_2_results = () => nullableResult.Count().ShouldEqual(2);
+
+        private It should_start_with_the_first_record = () => nullableResult.ElementAt(0)["Age"].ShouldEqual(nullableCollection.ElementAt(0).Age);
+
+        private It should_then_return_the_second_record = () => nullableResult.ElementAt(1)["Age"].ShouldEqual(nullableCollection.ElementAt(1).Age);
     }
 
     #endregion

@@ -82,5 +82,7 @@
         public byte? Code { get; set; }
 
         public Guid? Guid { get; set; }
+
+        public List<int?> NullableInts { get; set; }
     }
 }
