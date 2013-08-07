@@ -17,7 +17,6 @@
         public List<int> IntCollection { get; set; }
     }
 
-
     public class ComplexClassDto
     {
         public int Id { get; set; }
@@ -31,5 +30,10 @@
         public string Title { get; set; }
 
         public IEnumerable<int> IntCollection { get; set; }
+    }
+
+    public class NullableClassDto
+    {
+        public IEnumerable<int?> NullableCollection { get; set; }
     }
 }

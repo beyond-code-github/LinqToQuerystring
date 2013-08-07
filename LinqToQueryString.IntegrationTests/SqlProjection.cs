@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Linq;
 
     using LinqToQueryString.Tests;
@@ -19,14 +18,21 @@
 
         protected static List<ConcreteClass> concreteCollection;
 
+        protected static List<NullableClass> nullableCollection;
+
+        protected static Guid[] guidArray;
+
         private Establish context = () =>
         {
+            guidArray = Enumerable.Range(1, 5).Select(o => Guid.NewGuid()).ToArray();
+
             testDb = new TestDbContext();
 
             testDb.Database.ExecuteSqlCommand("UPDATE ComplexClasses SET Concrete_Id = NULL");
             testDb.Database.ExecuteSqlCommand("DELETE FROM EdgeCaseClasses");
             testDb.Database.ExecuteSqlCommand("DELETE FROM ConcreteClasses");
             testDb.Database.ExecuteSqlCommand("DELETE FROM ComplexClasses");
+            testDb.Database.ExecuteSqlCommand("DELETE FROM NullableClasses");
 
             testDb.ComplexCollection.Add(new ComplexClass { Title = "Charles", Concrete = InstanceBuilders.BuildConcrete("Apple", 5, new DateTime(2005, 01, 01), true) });
             testDb.ComplexCollection.Add(new ComplexClass { Title = "Andrew", Concrete = InstanceBuilders.BuildConcrete("Custard", 3, new DateTime(2007, 01, 01), true) });
@@ -34,9 +40,13 @@
             testDb.ComplexCollection.Add(new ComplexClass { Title = "Edward", Concrete = InstanceBuilders.BuildConcrete("Eggs", 1, new DateTime(2000, 01, 01), true) });
             testDb.ComplexCollection.Add(new ComplexClass { Title = "Boris", Concrete = InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2009, 01, 01), false) });
 
+            testDb.NullableCollection.Add(InstanceBuilders.BuildNull());
+            testDb.NullableCollection.Add(InstanceBuilders.BuildNull(1, new DateTime(2002, 01, 01), true, 10000000000, 111.111, 111.111f, 0x00, guidArray[0]));
+
             testDb.SaveChanges();
 
             concreteCollection = testDb.ConcreteCollection.ToList();
+            nullableCollection = testDb.NullableCollection.ToList();
 
             testDb = new TestDbContext();
         };
@@ -181,6 +191,26 @@
         private It should_project_the_right_age_for_the_fourth_record = () => result.ElementAt(3)["Name"].ShouldEqual(concreteCollection.ElementAt(3).Name);
 
         private It should_project_the_right_age_for_the_fifth_record = () => result.ElementAt(4)["Name"].ShouldEqual(concreteCollection.ElementAt(4).Name);
+    }
+
+    public class When_selecting_a_nullable_int_property : SqlProjection
+    {
+        private Because of =
+            () =>
+            result = testDb.NullableCollection.LinqToQuerystring<NullableClass, IQueryable<Dictionary<string, object>>>("?$select=Age").ToList();
+
+        private It should_project_the_name_properties_into_the_dictionary =
+            () => result.ShouldEachConformTo(
+                r => r.ContainsKey("Age"));
+
+        private It should_only_have_projected_the_one_property =
+            () => result.ShouldEachConformTo(r => r.Count == 1);
+
+        private It should_contain_2_results = () => result.Count().ShouldEqual(2);
+
+        private It should_start_with_the_first_record = () => result.ElementAt(0)["Age"].ShouldEqual(nullableCollection.ElementAt(0).Age);
+
+        private It should_then_return_the_second_record = () => result.ElementAt(1)["Age"].ShouldEqual(nullableCollection.ElementAt(1).Age);
     }
 
     #endregion

@@ -19,9 +19,13 @@
 
         protected static List<EdgeCaseClass> edgeCaseResult;
 
+        protected static List<NullableClass> nullableResult;
+
         protected static List<ConcreteClass> concreteCollection;
 
         protected static List<EdgeCaseClass> edgeCaseCollection;
+
+        protected static List<NullableClass> nullableCollection;
 
         protected static Guid[] guidArray;
 
@@ -30,11 +34,13 @@
             guidArray = Enumerable.Range(1, 5).Select(o => Guid.NewGuid()).ToArray();
 
             testDb = new TestDbContext();
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<TestDbContext>());
 
             testDb.Database.ExecuteSqlCommand("UPDATE ComplexClasses SET Concrete_Id = NULL");
             testDb.Database.ExecuteSqlCommand("DELETE FROM EdgeCaseClasses");
             testDb.Database.ExecuteSqlCommand("DELETE FROM ConcreteClasses");
             testDb.Database.ExecuteSqlCommand("DELETE FROM ComplexClasses");
+            testDb.Database.ExecuteSqlCommand("DELETE FROM NullableClasses");
 
             testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Apple", 1, new DateTime(2002, 01, 01), true, 10000000000, 111.111, 111.111f, 0x00, guidArray[0]));
             testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Apple", 2, new DateTime(2005, 01, 01), false, 30000000000, 333.333, 333.333f, 0x22, guidArray[2]));
@@ -57,10 +63,14 @@
             testDb.EdgeCaseCollection.Add(InstanceBuilders.BuildEdgeCase("Apple\"Bob", 1, new DateTime(2002, 01, 01), true));
             testDb.EdgeCaseCollection.Add(InstanceBuilders.BuildEdgeCase("Apple'Bob", 1, new DateTime(2002, 01, 01), true));
 
+            testDb.NullableCollection.Add(InstanceBuilders.BuildNull());
+            testDb.NullableCollection.Add(InstanceBuilders.BuildNull(1, new DateTime(2002, 01, 01), true, 10000000000, 111.111, 111.111f, 0x00, guidArray[0]));
+
             testDb.SaveChanges();
 
             concreteCollection = testDb.ConcreteCollection.ToList();
             edgeCaseCollection = testDb.EdgeCaseCollection.ToList();
+            nullableCollection = testDb.NullableCollection.ToList();
 
             testDb = new TestDbContext();
         };
@@ -234,6 +244,16 @@
         private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o.Age == 4);
     }
 
+    public class When_using_eq_filter_on_a_negative_int : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Age gt -4").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(11);
+
+        private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o.Age > -4);
+    }
+
+
     public class When_using_not_eq_filter_on_a_single_int : SqlFiltering
     {
         private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Age eq 4").ToList();
@@ -344,6 +364,15 @@
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
         private It should_only_return_records_where_population_is_40000000000 = () => result.ShouldEachConformTo(o => o.Population == 40000000000);
+    }
+
+    public class When_using_eq_filter_on_a_negative_long : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$filter=Population gt -40000000000L").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(11);
+
+        private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o.Age > -40000000000);
     }
 
     public class When_using_not_eq_filter_on_a_single_long : SqlFiltering
@@ -619,6 +648,15 @@
         private It should_only_return_records_where_cost_is_444point444 = () => result.ShouldEachConformTo(o => o.Cost == 444.444f);
     }
 
+    public class When_using_eq_filter_on_a_negative_single : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$filter=Cost gt -444.444f").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(11);
+
+        private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o.Cost > -444.444f);
+    }
+
     public class When_using_not_eq_filter_on_a_single_single : SqlFiltering
     {
         private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Cost eq 444.444f").ToList();
@@ -729,6 +767,15 @@
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
         private It should_only_return_records_where_value_is_444point444 = () => result.ShouldEachConformTo(o => o.Value == 444.444);
+    }
+
+    public class When_using_eq_filter_on_a_negative_double : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$filter=Cost gt -444.444").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(11);
+
+        private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o.Cost > -444.444);
     }
 
     public class When_using_not_eq_filter_on_a_single_double : SqlFiltering
@@ -980,6 +1027,342 @@
         private It should_return_three_records = () => result.Count().ShouldEqual(6);
 
         private It should_only_return_records_where_age_is_2002_01_01 = () => result.ShouldEachConformTo(o => o.Complete);
+    }
+
+    #endregion
+
+    #region Filter on nullable ints
+
+    //eq
+    public class When_using_eq_filter_on_a_single_nullable_int : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Age eq 1").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Age == 1);
+    }
+
+    public class When_using_eq_filter_on_a_single_nullable_int_with_operands_reversed : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=1 eq Age").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Age == 1);
+    }
+
+    //ne
+    public class When_using_ne_filter_on_a_single_nullable_int : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Age ne 1").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Age != 1);
+    }
+
+    public class When_using_ne_filter_on_a_single_nullable_int_with_operands_reversed : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=1 ne Age").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Age != 1);
+    }
+
+    //gt
+    public class When_using_gt_filter_on_a_single_nullable_int : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Age gt 0").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Age > 0);
+    }
+
+    public class When_using_gt_filter_on_a_single_nullable_int_with_operands_reversed : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=2 gt Age").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => 2 > o.Age);
+    }
+
+    //ge
+    public class When_using_ge_filter_on_a_single_nullable_int : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Age ge 1").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Age >= 1);
+    }
+
+    public class When_using_ge_filter_on_a_single_nullable_int_with_operands_reversed : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=1 ge Age").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => 1 >= o.Age);
+    }
+
+    //lt
+    public class When_using_lt_filter_on_a_single_nullable_int : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Age lt 2").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Age < 2);
+    }
+
+    public class When_using_lt_filter_on_a_single_nullable_int_with_operands_reversed : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=0 lt Age").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => 0 < o.Age);
+    }
+
+    //le
+    public class When_using_le_filter_on_a_single_nullable_int : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Age le 1").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Age == 1);
+    }
+
+    public class When_using_le_filter_on_a_single_nullable_int_with_operands_reversed : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=1 le Age").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => 1 <= o.Age);
+    }
+
+    //not
+
+    #endregion
+
+    #region Filter with comparison to nulls
+
+    //eq
+    public class When_using_eq_filter_null_comparison : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Age eq null").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Age == null);
+    }
+
+    public class When_using_eq_filter_null_comparison_with_operands_reversed : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=null eq Age").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Age == null);
+    }
+
+    //ne
+    public class When_using_ne_filter_null_comparison : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Age ne null").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Age != null);
+    }
+
+    public class When_using_ne_filter_null_comparison_with_operands_reversed : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=null ne Age").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Age != null);
+    }
+
+    //gt
+    public class When_using_gt_filter_null_comparison : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Age gt null").ToList();
+
+        private It should_return_0_records_because_null_is_not_valid_for_comparisons = () => nullableResult.Count().ShouldEqual(0);
+    }
+
+    public class When_using_gt_filter_null_comparison_with_operands_reversed : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=null gt Age").ToList();
+
+        private It should_return_0_records_because_null_is_not_valid_for_comparisons = () => nullableResult.Count().ShouldEqual(0);
+    }
+
+    //ge
+    public class When_using_ge_filter_null_comparison : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Age ge null").ToList();
+
+        private It should_return_0_records_because_null_is_not_valid_for_comparisons = () => nullableResult.Count().ShouldEqual(0);
+    }
+
+    public class When_using_ge_filter_null_comparison_with_operands_reversed : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=null ge Age").ToList();
+
+        private It should_return_0_records_because_null_is_not_valid_for_comparisons = () => nullableResult.Count().ShouldEqual(0);
+    }
+
+    //lt
+    public class When_using_lt_filter_null_comparison : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Age lt null").ToList();
+
+        private It should_return_0_records_because_null_is_not_valid_for_comparisons = () => nullableResult.Count().ShouldEqual(0);
+    }
+
+    public class When_using_lt_filter_null_comparison_with_operands_reversed : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=null lt Age").ToList();
+
+        private It should_return_0_records_because_null_is_not_valid_for_comparisons = () => nullableResult.Count().ShouldEqual(0);
+    }
+
+    //le
+    public class When_using_le_filter_null_comparison : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Age le null").ToList();
+
+        private It should_return_0_records_because_null_is_not_valid_for_comparisons = () => nullableResult.Count().ShouldEqual(0);
+    }
+
+    public class When_using_le_filter_null_comparison_with_operands_reversed : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=null le Age").ToList();
+
+        private It should_return_0_records_because_null_is_not_valid_for_comparisons = () => nullableResult.Count().ShouldEqual(0);
+    }
+
+    //not
+
+    #endregion
+
+    #region Filter on other nullable types
+
+    public class When_using_eq_filter_on_a_single_nullable_date : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Date eq datetime'2002-01-01T00:00'").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Date == new DateTime(2002, 01, 01));
+    }
+
+    public class When_using_eq_filter_on_a_single_nullable_bool_equal_true : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Complete eq true").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Complete == true);
+    }
+
+    public class When_using_eq_filter_on_a_single_nullable_bool_implicit : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Complete").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Complete == true);
+    }
+
+    public class When_using_eq_filter_on_a_single_nullable_bool_equal_false : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Complete eq false").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(0);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Complete == false);
+    }
+
+    public class When_using_eq_filter_on_a_single_nullable_bool_not_true : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=not Complete eq true").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Complete != true);
+    }
+
+    public class When_using_eq_filter_on_a_single_nullable_bool_implicit_not : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=not Complete").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Complete != true);
+    }
+
+    public class When_using_eq_filter_on_a_single_nullable_bool_not_false : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=not Complete eq false").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(2);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Complete != false);
+    }
+
+    public class When_using_eq_filter_on_a_single_nullable_long : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Population eq 10000000000L").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Population == 10000000000L);
+    }
+
+    public class When_using_eq_filter_on_a_single_nullable_double : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Value eq 111.111").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Value == 111.111);
+    }
+
+    public class When_using_eq_filter_on_a_single_nullable_float : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Cost eq 111.111f").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Cost == 111.111f);
+    }
+
+    public class When_using_eq_filter_on_a_single_nullable_byte : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$filter=Code eq 0x00").ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Code == 0x00);
+    }
+
+    public class When_using_eq_filter_on_a_single_nullable_guid : SqlFiltering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring(string.Format("?$filter=Guid eq guid'{0}'", guidArray[0])).ToList();
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Guid == guidArray[0]);
     }
 
     #endregion

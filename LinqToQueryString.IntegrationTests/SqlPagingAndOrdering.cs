@@ -19,18 +19,27 @@
 
         protected static List<ComplexClass> complexResult;
 
+        protected static List<NullableClass> nullableResult;
+
         protected static List<ConcreteClass> concreteCollection;
 
         protected static List<ComplexClass> complexCollection;
 
+        protected static List<NullableClass> nullableCollection;
+
+        protected static Guid[] guidArray;
+
         private Establish context = () =>
             {
+                guidArray = Enumerable.Range(1, 5).Select(o => Guid.NewGuid()).ToArray();
+
                 testDb = new TestDbContext();
 
                 testDb.Database.ExecuteSqlCommand("UPDATE ComplexClasses SET Concrete_Id = NULL");
                 testDb.Database.ExecuteSqlCommand("DELETE FROM EdgeCaseClasses");
                 testDb.Database.ExecuteSqlCommand("DELETE FROM ConcreteClasses");
                 testDb.Database.ExecuteSqlCommand("DELETE FROM ComplexClasses");
+                testDb.Database.ExecuteSqlCommand("DELETE FROM NullableClasses");
 
                 testDb.ComplexCollection.Add(new ComplexClass { Title = "Charles", Concrete = InstanceBuilders.BuildConcrete("Apple", 5, new DateTime(2005, 01, 01), true) });
                 testDb.ComplexCollection.Add(new ComplexClass { Title = "Andrew", Concrete = InstanceBuilders.BuildConcrete("Custard", 3, new DateTime(2007, 01, 01), true) });
@@ -38,10 +47,16 @@
                 testDb.ComplexCollection.Add(new ComplexClass { Title = "Edward", Concrete = InstanceBuilders.BuildConcrete("Eggs", 1, new DateTime(2000, 01, 01), true) });
                 testDb.ComplexCollection.Add(new ComplexClass { Title = "Boris", Concrete = InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2009, 01, 01), false) });
 
+                testDb.NullableCollection.Add(InstanceBuilders.BuildNull(3, new DateTime(2003, 01, 01), true, 30000000000, 333.333, 333.333f, 0xEE, guidArray[2]));
+                testDb.NullableCollection.Add(InstanceBuilders.BuildNull(1, new DateTime(2001, 01, 01), false, 10000000000, 111.111, 111.111f, 0xDD, guidArray[0]));
+                testDb.NullableCollection.Add(InstanceBuilders.BuildNull());
+                testDb.NullableCollection.Add(InstanceBuilders.BuildNull(2, new DateTime(2002, 01, 01), true, 20000000000, 222.222, 222.222f, 0xCC, guidArray[1]));
+
                 testDb.SaveChanges();
 
                 concreteCollection = testDb.ConcreteCollection.ToList();
                 complexCollection = testDb.ComplexCollection.ToList();
+                nullableCollection = testDb.NullableCollection.ToList();
 
                 testDb = new TestDbContext();
             };
@@ -192,6 +207,56 @@
     }
 
     #endregion
+
+    #region OrderBy Nullable Integer Tests
+
+    public class When_using_order_by_on_nullable_integer_with_one_criteria : SqlPagingAndOrdering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$orderby=Age").ToList();
+
+        private It should_return_four_records = () => nullableResult.Count().ShouldEqual(4);
+
+        private It should_return_the_third_record = () => nullableResult.ElementAt(0).Age.ShouldEqual(nullableCollection.ElementAt(2).Age);
+
+        private It should_be_then_be_followed_by_the_second = () => nullableResult.ElementAt(1).Age.ShouldEqual(nullableCollection.ElementAt(1).Age);
+
+        private It should_be_then_be_followed_by_the_fourth = () => nullableResult.ElementAt(2).Age.ShouldEqual(nullableCollection.ElementAt(3).Age);
+
+        private It should_be_then_be_followed_by_the_first = () => nullableResult.ElementAt(3).Age.ShouldEqual(nullableCollection.ElementAt(0).Age);
+    }
+
+    public class When_using_order_by_asc_on_nullable_integer_with_one_criteria : SqlPagingAndOrdering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$orderby=Age asc").ToList();
+
+        private It should_return_four_records = () => nullableResult.Count().ShouldEqual(4);
+
+        private It should_return_the_third_record = () => nullableResult.ElementAt(0).Age.ShouldEqual(nullableCollection.ElementAt(2).Age);
+
+        private It should_be_then_be_followed_by_the_second = () => nullableResult.ElementAt(1).Age.ShouldEqual(nullableCollection.ElementAt(1).Age);
+
+        private It should_be_then_be_followed_by_the_fourth = () => nullableResult.ElementAt(2).Age.ShouldEqual(nullableCollection.ElementAt(3).Age);
+
+        private It should_be_then_be_followed_by_the_first = () => nullableResult.ElementAt(3).Age.ShouldEqual(nullableCollection.ElementAt(0).Age);
+    }
+
+    public class When_using_order_by_desc_on_nullable_integer_with_one_criteria : SqlPagingAndOrdering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$orderby=Age desc").ToList();
+
+        private It should_return_four_records = () => nullableResult.Count().ShouldEqual(4);
+
+        private It should_return_the_first_record = () => nullableResult.ElementAt(0).Age.ShouldEqual(nullableCollection.ElementAt(0).Age);
+
+        private It should_be_then_be_followed_by_the_fourth = () => nullableResult.ElementAt(1).Age.ShouldEqual(nullableCollection.ElementAt(3).Age);
+
+        private It should_be_then_be_followed_by_the_second = () => nullableResult.ElementAt(2).Age.ShouldEqual(nullableCollection.ElementAt(1).Age);
+
+        private It should_be_then_be_followed_by_the_third = () => nullableResult.ElementAt(3).Age.ShouldEqual(nullableCollection.ElementAt(2).Age);
+    }
+
+    #endregion
+
 
     #region OrderBy Single String Tests
 
@@ -354,6 +419,55 @@
         private It should_have_sorted_a_false_value_fourth = () => result.ElementAt(3).Complete.ShouldBeFalse();
 
         private It should_have_sorted_a_false_value_fifth = () => result.ElementAt(4).Complete.ShouldBeFalse();
+    }
+
+    #endregion
+
+    #region OrderBy Nullable Boolean Tests
+
+    public class When_using_order_by_on_nullable_boolean_with_one_criteria : SqlPagingAndOrdering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$orderby=Complete").ToList();
+
+        private It should_return_four_records = () => nullableResult.Count().ShouldEqual(4);
+
+        private It should_return_the_third_record = () => nullableResult.ElementAt(0).Age.ShouldEqual(nullableCollection.ElementAt(2).Age);
+
+        private It should_be_then_be_followed_by_the_second = () => nullableResult.ElementAt(1).Age.ShouldEqual(nullableCollection.ElementAt(1).Age);
+
+        private It should_be_then_be_followed_by_the_fourth = () => nullableResult.ElementAt(2).Age.ShouldEqual(nullableCollection.ElementAt(0).Age);
+
+        private It should_be_then_be_followed_by_the_first = () => nullableResult.ElementAt(3).Age.ShouldEqual(nullableCollection.ElementAt(3).Age);
+    }
+
+    public class When_using_order_by_asc_on_nullable_boolean_with_one_criteria : SqlPagingAndOrdering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$orderby=Complete asc").ToList();
+
+        private It should_return_four_records = () => nullableResult.Count().ShouldEqual(4);
+
+        private It should_return_the_third_record = () => nullableResult.ElementAt(0).Age.ShouldEqual(nullableCollection.ElementAt(2).Age);
+
+        private It should_be_then_be_followed_by_the_second = () => nullableResult.ElementAt(1).Age.ShouldEqual(nullableCollection.ElementAt(1).Age);
+
+        private It should_be_then_be_followed_by_the_fourth = () => nullableResult.ElementAt(2).Age.ShouldEqual(nullableCollection.ElementAt(0).Age);
+
+        private It should_be_then_be_followed_by_the_first = () => nullableResult.ElementAt(3).Age.ShouldEqual(nullableCollection.ElementAt(3).Age);
+    }
+
+    public class When_using_order_by_desc_on_nullable_boolean_with_one_criteria : SqlPagingAndOrdering
+    {
+        private Because of = () => nullableResult = testDb.NullableCollection.LinqToQuerystring("?$orderby=Complete desc").ToList();
+
+        private It should_return_four_records = () => nullableResult.Count().ShouldEqual(4);
+
+        private It should_return_the_first_record = () => nullableResult.ElementAt(0).Age.ShouldEqual(nullableCollection.ElementAt(0).Age);
+
+        private It should_be_then_be_followed_by_the_fourth = () => nullableResult.ElementAt(1).Age.ShouldEqual(nullableCollection.ElementAt(3).Age);
+
+        private It should_be_then_be_followed_by_the_second = () => nullableResult.ElementAt(2).Age.ShouldEqual(nullableCollection.ElementAt(1).Age);
+
+        private It should_be_then_be_followed_by_the_third = () => nullableResult.ElementAt(3).Age.ShouldEqual(nullableCollection.ElementAt(2).Age);
     }
 
     #endregion

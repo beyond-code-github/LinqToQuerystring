@@ -63,6 +63,22 @@
         }
     }
 
+    public class NullableContainer
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public List<NullableValue> Nullables { get; set; }
+    }
+
+    public class NullableValue
+    {
+        public int Id { get; set; }
+
+        public int? Age { get; set; }
+    }
+
     public class NullableClass
     {
         public int? Id { get; set; }

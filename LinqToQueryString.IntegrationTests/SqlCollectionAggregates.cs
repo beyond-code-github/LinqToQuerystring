@@ -17,13 +17,20 @@
 
         protected static List<ComplexClassDto> result;
 
+        protected static List<NullableClassDto> nullableResult;
+
         protected static IQueryable<ComplexClassDto> collection;
+
+        protected static IQueryable<NullableClassDto> nullableCollection;
 
         private Establish context = () =>
             {
                 testDb = new TestDbContext();
+                Database.SetInitializer(new DropCreateDatabaseIfModelChanges<TestDbContext>());
 
                 testDb.Database.ExecuteSqlCommand("UPDATE ComplexClasses SET Concrete_Id = NULL");
+                testDb.Database.ExecuteSqlCommand("DELETE FROM NullableValues");
+                testDb.Database.ExecuteSqlCommand("DELETE FROM NullableContainers");
                 testDb.Database.ExecuteSqlCommand("DELETE FROM EdgeCaseClasses");
                 testDb.Database.ExecuteSqlCommand("DELETE FROM ConcreteClasses");
                 testDb.Database.ExecuteSqlCommand("DELETE FROM ComplexClasses");
@@ -129,6 +136,13 @@
 
                 testDb.SaveChanges();
 
+                testDb.NullableContainers.Add(new NullableContainer { Nullables = new List<NullableValue> { new NullableValue { Age = null } } });
+                testDb.NullableContainers.Add(new NullableContainer { Nullables = new List<NullableValue> { new NullableValue { Age = 1 } } });
+                testDb.NullableContainers.Add(new NullableContainer { Nullables = new List<NullableValue> { new NullableValue { Age = 1 }, new NullableValue { Age = 2 } } });
+                testDb.NullableContainers.Add(new NullableContainer { Nullables = new List<NullableValue> { new NullableValue { Age = null }, new NullableValue { Age = 1 }, new NullableValue { Age = 2 } } });
+
+                testDb.SaveChanges();
+
                 collection =
                     testDb.ComplexCollection.Select(
                         o =>
@@ -140,6 +154,12 @@
                                 ConcreteCollection = o.ConcreteCollection,
                                 Concrete = o.Concrete
                             });
+
+                nullableCollection = testDb.NullableContainers.Select(
+                    o => new NullableClassDto
+                         {
+                             NullableCollection = o.Nullables.Select(n => n.Age)
+                         });
 
                 testDb = new TestDbContext();
             };
@@ -181,6 +201,55 @@
         private It should_return_three_records = () => result.Count().ShouldEqual(3);
 
         private It should_only_return_records_where_average_of_values_is_greater_than_or_equal_to_2 = () => result.ShouldEachConformTo(o => o.IntCollection.Average() >= 2);
+    }
+
+    #endregion
+
+    #region Nullable Int Collections
+
+    public class When_filtering_on_a_simple_collection_property_using_max_against_a_nullable_int : SqlCollectionAggregates
+    {
+        private Because of = () => nullableResult = nullableCollection.LinqToQuerystring("$filter=NullableCollection/max() eq 2").ToList();
+
+        private It should_return_two_records = () => nullableResult.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_max_value_is_2 = () => nullableResult.ShouldEachConformTo(o => o.NullableCollection.Max() == 2);
+    }
+
+    public class When_filtering_on_a_simple_collection_property_using_min_against_a_nullable_int : SqlCollectionAggregates
+    {
+        private Because of = () => nullableResult = nullableCollection.LinqToQuerystring("$filter=NullableCollection/min() eq 1").ToList();
+
+        private It should_return_three_records = () => nullableResult.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_min_value_is_1 = () => nullableResult.ShouldEachConformTo(o => o.NullableCollection.Min() == 1);
+    }
+
+    public class When_filtering_on_a_simple_collection_property_using_sum_against_a_nullable_int : SqlCollectionAggregates
+    {
+        private Because of = () => nullableResult = nullableCollection.LinqToQuerystring("$filter=NullableCollection/sum() gt 2").ToList();
+
+        private It should_return_two_records = () => nullableResult.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_sum_of_values_is_greater_than_2 = () => nullableResult.ShouldEachConformTo(o => o.NullableCollection.Sum() > 2);
+    }
+
+    public class When_filtering_on_a_simple_collection_property_using_average_against_a_nullable_int : SqlCollectionAggregates
+    {
+        private Because of = () => nullableResult = nullableCollection.LinqToQuerystring("$filter=NullableCollection/average() ge 1").ToList();
+
+        private It should_return_three_records = () => nullableResult.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_average_of_values_is_greater_than_or_equal_to_1 = () => nullableResult.ShouldEachConformTo(o => o.NullableCollection.Average() >= 1);
+    }
+
+    public class When_filtering_on_a_nullable_int_collection_property_using_any_checking_for_nulls : SqlCollectionAggregates
+    {
+        private Because of = () => nullableResult = nullableCollection.LinqToQuerystring("$filter=NullableCollection/any(int: int eq null)").ToList();
+
+        private It should_return_two_records = () => nullableResult.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_string_collection_contains_banana = () => nullableResult.ShouldEachConformTo(o => o.NullableCollection.Any(s => s == null));
     }
 
     #endregion
