@@ -103,7 +103,7 @@ orderpropertyname
 			| (SPACE (op=ASC | op=DESC)) -> ^($op propertyname)
 		);
 	
-constant:	(INT^ | BOOL^ | STRING^ | DATETIME^ | LONG^ | SINGLE^ | DOUBLE^ | GUID^ | BYTE^);
+constant:	(INT^ | BOOL^ | STRING^ | DATETIME^ | LONG^ | SINGLE^ | DOUBLE^ | GUID^ | BYTE^ | NULL^);
 
 propertyname[bool subquery]
 	:	(identifierpart[subquery] -> identifierpart) ('/' next=subpropertyname[false] -> ^($propertyname $next))?;
@@ -216,6 +216,8 @@ DOUBLE	:	('-')? ('0'..'9')+ '.' ('0'..'9')+;
 SINGLE	:	('-')? ('0'..'9')+ '.' ('0'..'9')+ 'f';
 	
 BOOL	:	('true' | 'false');
+
+NULL	:	'null';
 
 DATETIME
 	:	'datetime\'' '0'..'9'+ '-' '0'..'9'+ '-' + '0'..'9'+ 'T' '0'..'9'+ ':' '0'..'9'+ (':' '0'..'9'+ ('.' '0'..'9'+)*)* '\'';

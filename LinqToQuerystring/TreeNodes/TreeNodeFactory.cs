@@ -116,6 +116,8 @@
                     return new DescNode(inputType, token, this);
                 case LinqToQuerystringLexer.ASC:
                     return new AscNode(inputType, token, this);
+                case LinqToQuerystringLexer.NULL:
+                    return new NullNode(inputType, token, this);
             }
 
             return null;

@@ -93,7 +93,8 @@ constant
 		sing=SINGLE -> SINGLE[sing] | 
 		dbl=DOUBLE -> DOUBLE[dbl] | 
 		guid=GUID -> GUID[guid] | 
-		byte=BYTE -> BYTE[byte]
+		byte=BYTE -> BYTE[byte] |
+		null=NULL -> NULL[null]
 	);
 
 propertyname[subquery]
@@ -207,6 +208,8 @@ DOUBLE	:	('-')? ('0'..'9')+ '.' ('0'..'9')+;
 SINGLE	:	('-')? ('0'..'9')+ '.' ('0'..'9')+ 'f';
 	
 BOOL	:	('true' | 'false');
+
+NULL	:	'null';
 
 DATETIME
 	:	'datetime\'' '0'..'9'+ '-' '0'..'9'+ '-' + '0'..'9'+ 'T' '0'..'9'+ ':' '0'..'9'+ (':' '0'..'9'+ ('.' '0'..'9'+)*)* '\'';
