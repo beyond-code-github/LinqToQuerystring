@@ -143,7 +143,7 @@ Tested against Mongo DB
 
 ## Future roadmap:
 
-* Website & improved documentation
-* $select - sub properties & complex types
+* Website & improved documentation, samples
+* $select - sub properties & complex types (this should already work, but not tested)
 * More functions/Arithmetic operations (e.g abs, mod)
-* $expand (via EF Include method)
+* $expand for Lazy<T> and DTOs
