@@ -107,7 +107,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>$(ProjectDir)bin\ANTLR\Antlr3.exe $(ProjectDir)LinqToQuerystring.g -o $(ProjectDir)</PreBuildEvent>
+    <PreBuildEvent>$(ProjectDir)..\lib\ANTLR\Antlr3.exe $(ProjectDir)LinqToQuerystring.g -o $(ProjectDir)</PreBuildEvent>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
