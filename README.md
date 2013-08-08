@@ -56,7 +56,7 @@ Get going straight away by adding the [LinqToQueryable] attribute to your Asp.Ne
 
 ***
 
-**_v0.5.5_* the core library now targets .net 3.5 and above. Beware however that support prior to 4.5 is largely untested in a real-world scenario... if you use it in this version please let me know how it goes.
+**_v0.5.5_** the core library now targets .net 3.5 and above. Beware however that support prior to 4.5 is largely untested in a real-world scenario... if you use it in this version please let me know how it goes.
 
 Check out the demo site here: http://linqtoquerystring.azurewebsites.net/
 
