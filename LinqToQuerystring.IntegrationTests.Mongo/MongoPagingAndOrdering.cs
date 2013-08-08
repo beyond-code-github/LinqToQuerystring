@@ -27,6 +27,10 @@
 
         protected static IQueryable<MongoDocument> complexCollection;
 
+        protected static IQueryable<MongoDocument> nullableCollection;
+
+        protected static Guid[] guidArray;
+
         private Cleanup cleanup = () =>
         {
             var mongoCollection = database.GetCollection<MongoDocument>("Dynamic");
@@ -34,15 +38,21 @@
 
             var complexMongoCollection = database.GetCollection<MongoDocument>("ComplexDynamic");
             complexMongoCollection.RemoveAll();
+
+            var nullables = database.GetCollection<MongoDocument>("NullableCollection");
+            nullables.RemoveAll();
         };
 
         private Establish context = () =>
         {
+            guidArray = Enumerable.Range(1, 5).Select(o => Guid.NewGuid()).ToArray();
+
             server = MongoServer.Create("mongodb://localhost/LinqToQuerystring?safe=true");
             database = server.GetDatabase("LinqToQuerystring");
 
             var mongoCollection = database.GetCollection<MongoDocument>("Dynamic");
             var complexMongoCollection = database.GetCollection<MongoDocument>("ComplexDynamic");
+            var nullableMongoCollection = database.GetCollection<MongoDocument>("NullableCollection");
 
             mongoCollection.Insert(InstanceBuilders.BuildMongoDocument("Apple", 5, new DateTime(2005, 01, 01), true));
             mongoCollection.Insert(InstanceBuilders.BuildMongoDocument("Custard", 3, new DateTime(2007, 01, 01), true));
@@ -59,8 +69,14 @@
             complexMongoCollection.Insert(InstanceBuilders.BuildComplexMongoDocument("Edward", InstanceBuilders.BuildMongoDocument("Eggs", 1, new DateTime(2000, 01, 01), true)));
             complexMongoCollection.Insert(InstanceBuilders.BuildComplexMongoDocument("Boris", InstanceBuilders.BuildMongoDocument("Dogfood", 4, new DateTime(2009, 01, 01), false)));
 
+            nullableMongoCollection.Insert(InstanceBuilders.BuildNullableMongoDocument(3, new DateTime(2003, 01, 01), true, 30000000000, 333.333, 333.333f, 0xEE, guidArray[2]));
+            nullableMongoCollection.Insert(InstanceBuilders.BuildNullableMongoDocument(1, new DateTime(2001, 01, 01), false, 10000000000, 111.111, 111.111f, 0xDD, guidArray[0]));
+            nullableMongoCollection.Insert(InstanceBuilders.BuildNullableMongoDocument());
+            nullableMongoCollection.Insert(InstanceBuilders.BuildNullableMongoDocument(2, new DateTime(2002, 01, 01), true, 20000000000, 222.222, 222.222f, 0xCC, guidArray[1]));
+
             complexCollection = complexMongoCollection.AsQueryable();
             complexList = complexCollection.ToList();
+            nullableCollection = nullableMongoCollection.AsQueryable();
         };
     }
 
@@ -206,6 +222,55 @@
         private It should_be_then_be_followed_by_the_fifth = () => result.ElementAt(3)["Name"].ShouldEqual(concreteList.ElementAt(2)["Name"]);
 
         private It should_be_then_be_followed_by_the_first = () => result.ElementAt(4)["Name"].ShouldEqual(concreteList.ElementAt(3)["Name"]);
+    }
+
+    #endregion
+
+    #region OrderBy Nullable Integer Tests
+
+    public class When_using_order_by_on_nullable_integer_with_one_criteria : MongoPagingAndOrdering
+    {
+        private Because of = () => result = nullableCollection.LinqToQuerystring("?$orderby=Age", true).ToList();
+
+        private It should_return_four_records = () => result.Count().ShouldEqual(4);
+
+        private It should_return_the_third_record = () => result.ElementAt(0)["Age"].ShouldEqual(nullableCollection.ElementAt(2)["Age"]);
+
+        private It should_be_then_be_followed_by_the_second = () => result.ElementAt(1)["Age"].ShouldEqual(nullableCollection.ElementAt(1)["Age"]);
+
+        private It should_be_then_be_followed_by_the_fourth = () => result.ElementAt(2)["Age"].ShouldEqual(nullableCollection.ElementAt(3)["Age"]);
+
+        private It should_be_then_be_followed_by_the_first = () => result.ElementAt(3)["Age"].ShouldEqual(nullableCollection.ElementAt(0)["Age"]);
+    }
+
+    public class When_using_order_by_asc_on_nullable_integer_with_one_criteria : MongoPagingAndOrdering
+    {
+        private Because of = () => result = nullableCollection.LinqToQuerystring("?$orderby=Age asc", true).ToList();
+
+        private It should_return_four_records = () => result.Count().ShouldEqual(4);
+
+        private It should_return_the_third_record = () => result.ElementAt(0)["Age"].ShouldEqual(nullableCollection.ElementAt(2)["Age"]);
+
+        private It should_be_then_be_followed_by_the_second = () => result.ElementAt(1)["Age"].ShouldEqual(nullableCollection.ElementAt(1)["Age"]);
+
+        private It should_be_then_be_followed_by_the_fourth = () => result.ElementAt(2)["Age"].ShouldEqual(nullableCollection.ElementAt(3)["Age"]);
+
+        private It should_be_then_be_followed_by_the_first = () => result.ElementAt(3)["Age"].ShouldEqual(nullableCollection.ElementAt(0)["Age"]);
+    }
+
+    public class When_using_order_by_desc_on_nullable_integer_with_one_criteria : MongoPagingAndOrdering
+    {
+        private Because of = () => result = nullableCollection.LinqToQuerystring("?$orderby=Age desc", true).ToList();
+
+        private It should_return_four_records = () => result.Count().ShouldEqual(4);
+
+        private It should_return_the_first_record = () => result.ElementAt(0)["Age"].ShouldEqual(nullableCollection.ElementAt(0)["Age"]);
+
+        private It should_be_then_be_followed_by_the_fourth = () => result.ElementAt(1)["Age"].ShouldEqual(nullableCollection.ElementAt(3)["Age"]);
+
+        private It should_be_then_be_followed_by_the_second = () => result.ElementAt(2)["Age"].ShouldEqual(nullableCollection.ElementAt(1)["Age"]);
+
+        private It should_be_then_be_followed_by_the_third = () => result.ElementAt(3)["Age"].ShouldEqual(nullableCollection.ElementAt(2)["Age"]);
     }
 
     #endregion
@@ -371,6 +436,55 @@
         private It should_have_sorted_a_false_value_fourth = () => result.ElementAt(3)["Complete"].AsBoolean.ShouldBeFalse();
 
         private It should_have_sorted_a_false_value_fifth = () => result.ElementAt(4)["Complete"].AsBoolean.ShouldBeFalse();
+    }
+
+    #endregion
+
+    #region OrderBy Nullable Boolean Tests
+
+    public class When_using_order_by_on_nullable_boolean_with_one_criteria : MongoPagingAndOrdering
+    {
+        private Because of = () => result = nullableCollection.LinqToQuerystring("?$orderby=Complete", true).ToList();
+
+        private It should_return_four_records = () => result.Count().ShouldEqual(4);
+
+        private It should_return_the_third_record = () => result.ElementAt(0)["Age"].ShouldEqual(nullableCollection.ElementAt(2)["Age"]);
+
+        private It should_be_then_be_followed_by_the_second = () => result.ElementAt(1)["Age"].ShouldEqual(nullableCollection.ElementAt(1)["Age"]);
+
+        private It should_be_then_be_followed_by_the_fourth = () => result.ElementAt(2)["Age"].ShouldEqual(nullableCollection.ElementAt(0)["Age"]);
+
+        private It should_be_then_be_followed_by_the_first = () => result.ElementAt(3)["Age"].ShouldEqual(nullableCollection.ElementAt(3)["Age"]);
+    }
+
+    public class When_using_order_by_asc_on_nullable_boolean_with_one_criteria : MongoPagingAndOrdering
+    {
+        private Because of = () => result = nullableCollection.LinqToQuerystring("?$orderby=Complete asc", true).ToList();
+
+        private It should_return_four_records = () => result.Count().ShouldEqual(4);
+
+        private It should_return_the_third_record = () => result.ElementAt(0)["Age"].ShouldEqual(nullableCollection.ElementAt(2)["Age"]);
+
+        private It should_be_then_be_followed_by_the_second = () => result.ElementAt(1)["Age"].ShouldEqual(nullableCollection.ElementAt(1)["Age"]);
+
+        private It should_be_then_be_followed_by_the_fourth = () => result.ElementAt(2)["Age"].ShouldEqual(nullableCollection.ElementAt(0)["Age"]);
+
+        private It should_be_then_be_followed_by_the_first = () => result.ElementAt(3)["Age"].ShouldEqual(nullableCollection.ElementAt(3)["Age"]);
+    }
+
+    public class When_using_order_by_desc_on_nullable_boolean_with_one_criteria : MongoPagingAndOrdering
+    {
+        private Because of = () => result = nullableCollection.LinqToQuerystring("?$orderby=Complete desc", true).ToList();
+
+        private It should_return_four_records = () => result.Count().ShouldEqual(4);
+
+        private It should_return_the_first_record = () => result.ElementAt(0)["Age"].ShouldEqual(nullableCollection.ElementAt(0)["Age"]);
+
+        private It should_be_then_be_followed_by_the_fourth = () => result.ElementAt(1)["Age"].ShouldEqual(nullableCollection.ElementAt(3)["Age"]);
+
+        private It should_be_then_be_followed_by_the_second = () => result.ElementAt(2)["Age"].ShouldEqual(nullableCollection.ElementAt(1)["Age"]);
+
+        private It should_be_then_be_followed_by_the_third = () => result.ElementAt(3)["Age"].ShouldEqual(nullableCollection.ElementAt(2)["Age"]);
     }
 
     #endregion

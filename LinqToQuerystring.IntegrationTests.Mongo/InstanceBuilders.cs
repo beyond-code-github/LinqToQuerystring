@@ -67,5 +67,19 @@ namespace LinqToQuerystring.IntegrationTests.Mongo
                 new MongoDocument(
                     new BsonDocument { { "Name", name }, { "Date", date }, { "Age", age }, { "Complete", complete }, { "Population", population }, { "Value", value }, { "Cost", cost }, { "Code", code }, { "Guid", guid } });
         }
+
+        public static MongoDocument BuildNullableMongoDocument(int? age, DateTime? date, bool? complete, long? population, double? value, float? cost, byte? code, Guid? guid)
+        {
+            return
+                new MongoDocument(
+                    new BsonDocument { { "Date", date }, { "Age", age }, { "Complete", complete }, { "Population", population }, { "Value", value }, { "Cost", cost }, { "Code", code }, { "Guid", guid } });
+        }
+
+        public static MongoDocument BuildNullableMongoDocument()
+        {
+            return
+                new MongoDocument(
+                    new BsonDocument { { "Date", BsonNull.Value }, { "Age", BsonNull.Value }, { "Complete", BsonNull.Value }, { "Population", BsonNull.Value }, { "Value", BsonNull.Value }, { "Cost", BsonNull.Value }, { "Code", BsonNull.Value }, { "Guid", BsonNull.Value } });
+        }
     }
 }

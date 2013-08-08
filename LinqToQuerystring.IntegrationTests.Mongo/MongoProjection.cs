@@ -19,12 +19,17 @@
 
         protected static List<MongoDocument> concreteCollection;
 
+        protected static IQueryable<MongoDocument> nullableCollection;
+
         protected static IQueryable<MongoDocument> collection;
 
         private Cleanup cleanup = () =>
         {
             var mongoCollection = database.GetCollection<MongoDocument>("Dynamic");
             mongoCollection.RemoveAll();
+
+            var nullables = database.GetCollection<MongoDocument>("NullableCollection");
+            nullables.RemoveAll();
         };
 
         private Establish context = () =>
@@ -40,8 +45,15 @@
             mongoCollection.Insert(InstanceBuilders.BuildMongoDocument("Eggs", 1, new DateTime(2000, 01, 01), true));
             mongoCollection.Insert(InstanceBuilders.BuildMongoDocument("Dogfood", 4, new DateTime(2009, 01, 01), false));
 
+            var mongoNullableCollection = database.GetCollection<MongoDocument>("NullableCollection");
+            mongoNullableCollection.Insert(InstanceBuilders.BuildNullableMongoDocument());
+            mongoNullableCollection.Insert(InstanceBuilders.BuildNullableMongoDocument(1, new DateTime(2002, 01, 01), true, 10000000000, 111.111, 111.111f, 0x00, Guid.NewGuid()));
+
             collection = mongoCollection.AsQueryable();
+            nullableCollection = mongoNullableCollection.AsQueryable();
+
             concreteCollection = collection.ToList();
+
         };
     }
 
@@ -184,6 +196,26 @@
         private It should_project_the_right_age_for_the_fourth_record = () => result.ElementAt(3)["Name"].ShouldEqual(concreteCollection.ElementAt(3)["Name"]);
 
         private It should_project_the_right_age_for_the_fifth_record = () => result.ElementAt(4)["Name"].ShouldEqual(concreteCollection.ElementAt(4)["Name"]);
+    }
+
+    public class When_selecting_a_nullable_int_property : MongoProjection
+    {
+        private Because of =
+            () =>
+            result = nullableCollection.LinqToQuerystring<MongoDocument, IQueryable<Dictionary<string, object>>>("?$select=Age", true).ToList();
+
+        private It should_project_the_name_properties_into_the_dictionary =
+            () => result.ShouldEachConformTo(
+                r => r.ContainsKey("Age"));
+
+        private It should_only_have_projected_the_one_property =
+            () => result.ShouldEachConformTo(r => r.Count == 1);
+
+        private It should_contain_2_results = () => result.Count().ShouldEqual(2);
+
+        private It should_start_with_the_first_record = () => result.ElementAt(0)["Age"].ShouldEqual(nullableCollection.ElementAt(0)["Age"]);
+
+        private It should_then_return_the_second_record = () => result.ElementAt(1)["Age"].ShouldEqual(nullableCollection.ElementAt(1)["Age"]);
     }
 
     #endregion
