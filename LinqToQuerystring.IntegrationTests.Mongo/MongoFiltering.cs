@@ -264,6 +264,15 @@
         private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o["Age"].AsInt32 == 4);
     }
 
+    public class When_using_eq_filter_on_a_negative_int : MongoFiltering
+    {
+        private Because of = () => result = collection.LinqToQuerystring("?$filter=Age gt -4", true).ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(11);
+
+        private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o["Age"].AsInt32 > -4);
+    }
+
     public class When_using_not_eq_filter_on_a_single_int : MongoFiltering
     {
         private Because of = () => result = collection.LinqToQuerystring("?$filter=not Age eq 4", true).ToList();
@@ -374,6 +383,15 @@
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
         private It should_only_return_records_where_population_is_40000000000 = () => result.ShouldEachConformTo(o => o["Population"] == 40000000000);
+    }
+
+    public class When_using_eq_filter_on_a_negative_long : MongoFiltering
+    {
+        private Because of = () => result = collection.AsQueryable().LinqToQuerystring("?$filter=Population gt -40000000000L", true).ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(11);
+
+        private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o["Age"] > -40000000000);
     }
 
     public class When_using_not_eq_filter_on_a_single_long : MongoFiltering
@@ -649,6 +667,15 @@
         private It should_only_return_records_where_cost_is_444point444 = () => result.ShouldEachConformTo(o => o["Cost"] == 444.444f);
     }
 
+    public class When_using_eq_filter_on_a_negative_single : MongoFiltering
+    {
+        private Because of = () => result = collection.AsQueryable().LinqToQuerystring("?$filter=Cost gt -444.444f", true).ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(11);
+
+        private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o["Cost"] > -444.444f);
+    }
+
     public class When_using_not_eq_filter_on_a_single_single : MongoFiltering
     {
         private Because of = () => result = collection.LinqToQuerystring("?$filter=not Cost eq 444.444f", true).ToList();
@@ -759,6 +786,15 @@
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
 
         private It should_only_return_records_where_value_is_444point444 = () => result.ShouldEachConformTo(o => o["Value"] == 444.444);
+    }
+
+    public class When_using_eq_filter_on_a_negative_double : MongoFiltering
+    {
+        private Because of = () => result = collection.AsQueryable().LinqToQuerystring("?$filter=Cost gt -444.444", true).ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(11);
+
+        private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o["Cost"] > -444.444);
     }
 
     public class When_using_not_eq_filter_on_a_single_double : MongoFiltering
