@@ -1,4 +1,4 @@
-Linq to Querystring v0.6.1
+Linq to Querystring v0.6.4
 ==========================
 
 ## What is it?
@@ -20,8 +20,12 @@ With smaller goals, a more focussed development effort and by addressing communi
 * Nuget package: https://nuget.org/packages/LinqToQuerystring/
 PM> Install-Package LinqToQuerystring
 
+* Entity Framework package ($expand support): https://nuget.org/packages/LinqToQuerystring.EntityFramework/
+PM> Install-Package LinqToQuerystring.EntityFramework
+
 * Web Api package: https://nuget.org/packages/LinqToQuerystring.WebApi/
 PM> Install-Package LinqToQuerystring.WebApi
+
 
 * Nancy FX package: https://nuget.org/packages/LinqToQuerystring.Nancy/
 PM> Install-Package LinqToQuerystring.Nancy
@@ -42,10 +46,18 @@ Get going straight away by adding the [LinqToQueryable] attribute to your Asp.Ne
         Get["/"] =
             _ => this.moviesService.Get().LinqToQuerystring((IDictionary<string, object>)this.Context.Request.Query)
     }
+##Key Release Notes
 
-## Key Release Notes
+**_v0.6.4** - Entity Framework and Web API libraries now support .net framework 4.0
+Nullable types are now supported, along with the OData null keyword.
 
-As of v0.5.5 the core library now targets .net 3.5 and above. Beware however that support prior to 4.5 is largely untested in a real-world scenario... if you use it in this version please let me know how it goes.
+***
+
+**_v0.6.3_** - $expand support is now available when directly interfacing with Linq to Entities queries.
+
+***
+
+**_v0.5.5__* the core library now targets .net 3.5 and above. Beware however that support prior to 4.5 is largely untested in a real-world scenario... if you use it in this version please let me know how it goes.
 
 Check out the demo site here: http://linqtoquerystring.azurewebsites.net/
 
@@ -112,6 +124,7 @@ Tested against Mongo DB
 * Linq to Objects, Entity framework & MongoDB
 * Support for loosely typed datastructures
 * string, int32, bool, datetime, byte, decimal, double, single, guid, long data types
+* nullable types & the null keyword
 * $top
 * $skip (must be used in conjunction with orderby in Linq to Entities)
 * $orderby:
@@ -120,6 +133,7 @@ Tested against Mongo DB
     * complex types ( Linq to Objects only, via IComparable, )
 * $filter - simple properties & subproperties
 * $select - simple properties
+* $expand - when directly exposing entity framework queries
 * $inlinecount
 * Functions - startswith, endswith, substringof, tolower
 * Collection Aggregates:
