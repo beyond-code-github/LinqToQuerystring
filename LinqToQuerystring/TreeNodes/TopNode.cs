@@ -27,6 +27,11 @@
 
         public override int CompareTo(TreeNode other)
         {
+            if (other is TopNode)
+            {
+                return 0;
+            }
+
             if (other is OrderByNode || other is FilterNode || other is SkipNode)
             {
                 return 1;

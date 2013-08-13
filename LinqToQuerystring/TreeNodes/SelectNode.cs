@@ -39,6 +39,11 @@
 
         public override int CompareTo(TreeNode other)
         {
+            if (other is SelectNode)
+            {
+                return 0;
+            }
+
             // Select clause should always be last apart from inlinecount
             if (other is InlineCountNode)
             {

@@ -26,6 +26,11 @@
 
         public override int CompareTo(TreeNode other)
         {
+            if (other is FilterNode)
+            {
+                return 0;
+            }
+
             return -1;
         }
     }

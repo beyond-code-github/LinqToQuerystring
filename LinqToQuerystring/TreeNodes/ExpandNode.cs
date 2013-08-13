@@ -21,6 +21,11 @@
 
         public override int CompareTo(TreeNode other)
         {
+            if (other is ExpandNode)
+            {
+                return 0;
+            }
+
             return -1;
         }
     }

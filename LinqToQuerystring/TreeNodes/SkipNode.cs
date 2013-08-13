@@ -22,6 +22,11 @@
 
         public override int CompareTo(TreeNode other)
         {
+            if (other is SkipNode)
+            {
+                return 0;
+            }
+
             if (other is OrderByNode || other is FilterNode)
             {
                 return 1;

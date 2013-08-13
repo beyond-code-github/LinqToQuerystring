@@ -45,12 +45,12 @@
 
         public override int CompareTo(TreeNode other)
         {
-            if (other is FilterNode)
+            if (other is OrderByNode)
             {
-                return 1;
+                return 0;
             }
 
-            if (other is ExpandNode)
+            if (other is FilterNode || other is ExpandNode)
             {
                 return 1;
             }
