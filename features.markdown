@@ -4,7 +4,7 @@ title:  Features
 ---
 ## Current features
 
-* String escape sequences: \\\\ \' \t \r \n \f ''
+* String escape sequences: \\\\ \\' \t \r \n \f ''
 * Seamless integration with Asp.Net Web API using LinqToQueryable Attribute 
 * Use Linq to Querystring with Nancy FX modules
 * Linq to Objects, Entity framework & MongoDB
@@ -13,3 +13,7 @@ title:  Features
 * nullable types & the null keyword
 * $top
 * $skip (must be used in conjunction with orderby in Linq to Entities)
+* $orderby:
+    * simple types, 
+    * subproperties
+    * complex types ( Linq to Objects only, via IComparable, )
