@@ -287,11 +287,11 @@ Full-Width Styles
 }
 
 #logo {
-  background: url('../images/logo.jpeg') no-repeat;
+  background: url('../images/logo.png') no-repeat;
 }
 
 #header_wrap {
-  background: #212121;
+  background: #038B4A;
 }
 
 #header_wrap .inner {
