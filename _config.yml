@@ -2,7 +2,7 @@
 author: "Roysvork"
 email: "blog@zanshine.com"
 title: "Linq to Querystring"
-subtitle: "Uri querying done right"
+subtitle: "Flexible standardised query syntax for URIs and much more"
 url: "https://github.com/roysvork/linqtoquerystring"
 description: ""
 short_description: "A lightweight subset of OData querystring conventions that works with any IQueryable"
