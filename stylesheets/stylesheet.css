@@ -357,14 +357,6 @@ Full-Width Styles
     border-bottom-right-radius: 2px;
 }
 
-.zip_download_link:hover {
-    background: url(../images/sprite_download.png) no-repeat top left;
-}
-
-.tar_download_link:hover {
-    background: url(../images/sprite_download.png) no-repeat top right;
-}
-
 #main_content_wrap {
     background: #f2f2f2;
     border-top: 1px solid #111;
