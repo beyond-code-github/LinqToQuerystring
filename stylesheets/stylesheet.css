@@ -130,10 +130,10 @@ footer a {
     color: #B63B2B;
 }
 
-footer a:hover {
-    color: #D84530;
-    text-shadow: #B63B2B 0px 0px 2px;
-}
+    footer a:hover {
+        color: #D84530;
+        text-shadow: #B63B2B 0px 0px 2px;
+    }
 
 em {
     font-style: italic;
@@ -208,7 +208,7 @@ ul, ol, dl {
         font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
         text-shadow: #111 0px 0px 10px;
         letter-spacing: -2px;
-        font-size: 28px;
+        font-size: 24px;
         font-weight: 700;
         padding-left: 40px;
     }
@@ -216,11 +216,11 @@ ul, ol, dl {
     ul.navigation a {
         color: #B63B2B;
     }
-    
-    ul.navigation a:hover {
-        color: #D84530;
-        text-shadow: none;
-    }
+
+        ul.navigation a:hover {
+            color: #D84530;
+            text-shadow: none;
+        }
 
     ol li {
         list-style: decimal inside;
@@ -317,9 +317,17 @@ Full-Width Styles
     background: #038B4A;
 }
 
-    #header_wrap .inner {
-        padding: 50px 10px 30px 10px;
-    }
+#header_wrap .inner {
+    padding: 50px 10px 30px 10px;
+}
+
+#navigation_wrap {
+    height: 50px;
+}
+
+#navigation_wrap .inner {
+    padding: 5px 10px;
+}
 
 #project_title {
     margin: 0;
