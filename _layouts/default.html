@@ -29,10 +29,15 @@
         </header>
     </div>
 
+    <div id="navigation_wrap" class="outer">
+      <section id="navigation" class="inner">
+        {% include navigation.html %}
+      </section>
+    </div>
+
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        {% include navigation.html %}
         {{ content }}
       </section>
     </div>
