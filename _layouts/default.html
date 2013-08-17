@@ -1,44 +1,47 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
+
   <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="{{ page.description }} {{ site.description }}" />
-    <title>{{ page.title }} - {{ site.title }} ({{ site.author }}) - {{ site.short_description }}</title>
-    <link rel="stylesheet" type="text/css" href="/css/styles.css" media="screen,projection" charset="utf-8" />
-    <!--[if lt IE 8]>
-      <link rel="stylesheet" type="text/css" href="/css/ie.css" media="screen, projection" charset="utf-8" />
-    <![endif]-->
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Slate is a responsive theme for GitHub Pages" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>{{ page.title }} - {{ site.title }}</title>
   </head>
+
   <body>
-    <a href="https://github.com/roysvork/linqtoquerystring" target="_blank"><img alt="Fork me on GitHub" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;" /></a>
-    <div id="container">
 
-      <!-- header -->
-      <div id="header" class="title">
-        <h1><a href="/"><strong class="title">{{ site.title }}</strong> <em>{{ site.subtitle }}</em></a></h1>
-      </div>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="{{repository_url}}">View on GitHub</a>
 
-      <div id="credit">
-        <h2 id="page-title">{{ page.title }}</h2>
-        <h2 id="author" class="author">by {{ site.author }}</h2>
-      </div>
+          <h1 id="project_title">{{ site.title }}</h1>
+          <h2 id="project_tagline">{{ site.subtitle }}</h2>
 
-      <!-- content -->
-      <div id="content">
-      {{ content }}
-      </div>
+          <section id="downloads">
+            <a class="zip_download_link" href="#">Download this project as a .zip file</a>
+            <a class="tar_download_link" href="#">Download this project as a tar.gz file</a>
+          </section>
+        </header>
+    </div>
 
-      <div id="sidebar">
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        {{ content }}
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
         {% include navigation.html %}
-      </div>
-
-      <!-- footer -->
-      <div id="footer-container"></div>
-    
-      <div id="footer">
-        {% include navigation.html %}
-      </div>
-
+        <p class="copyright">Linq to Querystring maintained by <a href="https://github.com/roysvork">Pete Smith aka Roysvork</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
     </div>
 
   </body>
