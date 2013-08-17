@@ -322,11 +322,11 @@ Full-Width Styles
 }
 
 #navigation_wrap {
-    height: 50px;
+    height: 40px;
 }
 
 #navigation_wrap .inner {
-    padding: 7px 10px;
+    padding: 3px 10px;
 }
 
 #project_title {
