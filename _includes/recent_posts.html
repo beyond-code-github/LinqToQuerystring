@@ -1,0 +1,22 @@
+<div>
+
+  <h3>Recent posts</h3>
+  
+  {% for post in site.posts offset: 0 limit: 5 %}
+
+    <div class="post {% cycle 'odd', 'even' %}">
+      <h4>
+        <a class="title" href="{{ post.url }}/">{{ post.title }}</a>
+      </h4>
+      
+      <div class="abstract">
+        <p class="date">{{ post.date | date_to_string }}</p>
+        <p>{{ post.content | strip_html | truncatewords: 35 }}</p>
+        <br />
+        » <a href="{{ post.url }}/">Read more</a>
+      </div>
+    </div>
+
+  {% endfor %}
+
+</div>
