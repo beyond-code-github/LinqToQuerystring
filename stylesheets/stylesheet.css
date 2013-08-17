@@ -211,10 +211,12 @@ ul, ol, dl {
 
     ul.navigation a {
         color: #B63B2B;
+        text-decoration: none;
     }
     
     ul.navigation a:hover {
         color: #D84530;
+        text-decoration: none;
     }
 
     ol li {
