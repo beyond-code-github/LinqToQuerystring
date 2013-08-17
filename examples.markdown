@@ -8,20 +8,20 @@ Linq to Querystring uses an expression parser written in ANTLR to map a subset o
 
 Work directly with Linq to Object IQueryables:
 {% highlight c# %}
-    var collection = new List<Dummy>
-    {
-       new Dummy("Apple", 5, new DateTime(2005, 01, 01), true),
-       new Dummy("Custard", 3, new DateTime(2007, 01, 01), true),
-       new Dummy("Banana", 2, new DateTime(2003, 01, 01), false),
-       new Dummy("Eggs", 1, new DateTime(2000, 01, 01), true),
-       new Dummy("Dogfood", 4, new DateTime(2009, 01, 01), false),
-    }.AsQueryable();
+var collection = new List<Dummy>
+{
+   new Dummy("Apple", 5, new DateTime(2005, 01, 01), true),
+   new Dummy("Custard", 3, new DateTime(2007, 01, 01), true),
+   new Dummy("Banana", 2, new DateTime(2003, 01, 01), false),
+   new Dummy("Eggs", 1, new DateTime(2000, 01, 01), true),
+   new Dummy("Dogfood", 4, new DateTime(2009, 01, 01), false),
+}.AsQueryable();
 
-    var ordered = collection.LinqToQuerystring("?$orderby=Complete,Age");
-    var paged = collection.LinqToQuerystring("?$skip=2$top=2");
+var ordered = collection.LinqToQuerystring("?$orderby=Complete,Age");
+var paged = collection.LinqToQuerystring("?$skip=2$top=2");
 {% endhighlight %}
 Work with Dynamic objects:
-
+{% highlight c# %}
     var item1 = new Dictionary<string, object>();
     item1["Age"] = 25;
     item1["Name"] = "Kathryn";
@@ -33,13 +33,14 @@ Work with Dynamic objects:
     collection = new List<Dictionary<string, object>> { item1, item2 }.AsQueryable();
     
     var ordered = collection.LinqToQuerystring("?$orderby=[Age] desc");
-    
+{% endhighlight %}  
 Tested against Entity Framework:
-
+{% highlight c# %}
     var query = this.unitOfWork.Data.Where(o => o.SomeRepoLevelFilter == x);
     var extended = query.LinqToQuerystring("?$filter=Complete eq true and Name eq 'Eggs'");
-    
+{% endhighlight %}
 Tested against Mongo DB
-
+{% highlight c# %}
     var query = mongoCollection.AsQueryable();
     var extended = query.LinqToQuerystring("?$filter=[Complete] eq true and [Name] eq 'Eggs'");
+{% endhighlight %}
