@@ -2,7 +2,7 @@
 author: "Roysvork"
 email: "blog@zanshine.com"
 title: "Linq to Querystring"
-subtitle: "OData compatible queries done right"
+subtitle: "Uri querying done right"
 url: "https://github.com/roysvork/linqtoquerystring"
 description: ""
 short_description: "A lightweight subset of OData querystring conventions that works with any IQueryable"
