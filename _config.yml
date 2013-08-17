@@ -9,3 +9,4 @@ short_description: "A lightweight subset of OData querystring conventions that w
 
 theme:          plain
 permalink:      /:title
+markdown: rdiscount
