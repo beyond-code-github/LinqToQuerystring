@@ -22,25 +22,25 @@ var paged = collection.LinqToQuerystring("?$skip=2$top=2");
 {% endhighlight %}
 Work with Dynamic objects:
 {% highlight c# %}
-    var item1 = new Dictionary<string, object>();
-    item1["Age"] = 25;
-    item1["Name"] = "Kathryn";
+var item1 = new Dictionary<string, object>();
+item1["Age"] = 25;
+item1["Name"] = "Kathryn";
 
-    var item2 = new Dictionary<string, object>();
-    item2["Age"] = 28;
-    item2["Name"] = "Pete";
+var item2 = new Dictionary<string, object>();
+item2["Age"] = 28;
+item2["Name"] = "Pete";
 
-    collection = new List<Dictionary<string, object>> { item1, item2 }.AsQueryable();
-    
-    var ordered = collection.LinqToQuerystring("?$orderby=[Age] desc");
+collection = new List<Dictionary<string, object>> { item1, item2 }.AsQueryable();
+
+var ordered = collection.LinqToQuerystring("?$orderby=[Age] desc");
 {% endhighlight %}  
 Tested against Entity Framework:
 {% highlight c# %}
-    var query = this.unitOfWork.Data.Where(o => o.SomeRepoLevelFilter == x);
-    var extended = query.LinqToQuerystring("?$filter=Complete eq true and Name eq 'Eggs'");
+var query = this.unitOfWork.Data.Where(o => o.SomeRepoLevelFilter == x);
+var extended = query.LinqToQuerystring("?$filter=Complete eq true and Name eq 'Eggs'");
 {% endhighlight %}
 Tested against Mongo DB
 {% highlight c# %}
-    var query = mongoCollection.AsQueryable();
-    var extended = query.LinqToQuerystring("?$filter=[Complete] eq true and [Name] eq 'Eggs'");
+var query = mongoCollection.AsQueryable();
+var extended = query.LinqToQuerystring("?$filter=[Complete] eq true and [Name] eq 'Eggs'");
 {% endhighlight %}
