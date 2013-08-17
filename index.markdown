@@ -2,9 +2,6 @@
 layout: default
 title:  Home
 ---
-Linq to Querystring v0.6.4
-==========================
-
 ## What is it?
 
 Linq to Querystring is an expression parser for .NET that aims to provide a lightweight subset of the OData URI Specification. We focus only on the query aspect of the specification which is one of the most useful and flexible elements of OData.
