@@ -18,17 +18,17 @@ With smaller goals, a more focussed development effort and by addressing communi
 
 ## Installation
 
-* Nuget package: https://nuget.org/packages/LinqToQuerystring/
+* Nuget package: [https://nuget.org/packages/LinqToQuerystring/](https://nuget.org/packages/LinqToQuerystring/)
 PM> Install-Package LinqToQuerystring
 
-* Entity Framework package ($expand support): https://nuget.org/packages/LinqToQuerystring.EntityFramework/
+* Entity Framework package ($expand support): [https://nuget.org/packages/LinqToQuerystring.EntityFramework/](https://nuget.org/packages/LinqToQuerystring.EntityFramework/)
 PM> Install-Package LinqToQuerystring.EntityFramework
 
-* Web Api package: https://nuget.org/packages/LinqToQuerystring.WebApi/
+* Web Api package: [https://nuget.org/packages/LinqToQuerystring.WebApi/](https://nuget.org/packages/LinqToQuerystring.WebApi/)
 PM> Install-Package LinqToQuerystring.WebApi
 
 
-* Nancy FX package: https://nuget.org/packages/LinqToQuerystring.Nancy/
+* Nancy FX package: [https://nuget.org/packages/LinqToQuerystring.Nancy/](https://nuget.org/packages/LinqToQuerystring.Nancy/)
 PM> Install-Package LinqToQuerystring.Nancy
 
 ## Getting Started
@@ -59,13 +59,13 @@ Get going straight away by adding the [LinqToQueryable] attribute to your Asp.Ne
 
 **_v0.5.5_** the core library now targets .net 3.5 and above. Beware however that support prior to 4.5 is largely untested in a real-world scenario... if you use it in this version please let me know how it goes.
 
-Check out the demo site here: http://linqtoquerystring.azurewebsites.net/
+Check out the demo site here: [http://linqtoquerystring.azurewebsites.net/](http://linqtoquerystring.azurewebsites.net/)
 
 ***
 **_BREAKING CHANGE AS OF v0.5.5_**
 
 The parameters of the substringof function have been swapped around so that they are now in line with the OData specification
-http://www.odata.org/documentation/odata-v2-documentation/uri-conventions/#45_Filter_System_Query_Option_filter
+[http://www.odata.org/documentation/odata-v2-documentation/uri-conventions/#45_Filter_System_Query_Option_filter](http://www.odata.org/documentation/odata-v2-documentation/uri-conventions/#45_Filter_System_Query_Option_filter)
 ***
 **_BREAKING CHANGE AS OF v0.5.3_**
 
