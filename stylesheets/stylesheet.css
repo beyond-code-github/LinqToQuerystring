@@ -107,6 +107,7 @@ footer p {
 
 a {
     text-decoration: none;
+    font-weight: 300;
     color: #0E3F28;
     text-shadow: none;
     transition: color 0.5s ease;
