@@ -1,11 +1,11 @@
 ---
-author: "Stéphane R. Richard"
+author: "Roysvork"
 email: "blog@zanshine.com"
-title: "jekyll or hide"
-subtitle: "A basic project for the jekyll blog generator"
-url: "https://github.com/zanshine/jekyll-base-project"
+title: "Linq to Querystring"
+subtitle: "OData compatible queries done right"
+url: "https://github.com/roysvork/linqtoquerystring"
 description: ""
-short_description: "Stéphane R. Richard's website, cg artworks, music and software development"
+short_description: "A lightweight subset of OData querystring conventions that works with any IQueryable"
 
 theme:          plain
-permalink:      /blog/stephane-richard/:categories/:year-:month-:day/:title
+permalink:      /:title
