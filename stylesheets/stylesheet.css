@@ -199,6 +199,9 @@ ul, ol, dl {
     }
 
     ul.navigation li {
+        font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
+        text-shadow: #111 0px 0px 10px;
+        letter-spacing: -1px;
         font-size: 36px;
         font-weight: 700;
         padding-left: 20px;
