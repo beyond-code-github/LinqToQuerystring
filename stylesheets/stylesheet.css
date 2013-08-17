@@ -286,6 +286,10 @@ Full-Width Styles
   border-bottom-right-radius: 2px;
 }
 
+#logo {
+  background: url('../images/logo.jpg') no-repeat;
+}
+
 #header_wrap {
   background: #212121;
 }
