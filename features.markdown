@@ -21,16 +21,3 @@ title:  Features
 * $select - simple properties
 * $expand - when directly exposing entity framework queries
 * $inlinecount
-* Functions - startswith, endswith, substringof, tolower
-* Collection Aggregates:
-    * Any / All with predicates
-    * Count, Sum, Average, Min, Max
-* Unicode values
-* UIToQuerystring (alpha) - JQuery plugin for building oData/Linq to Querystring expressions
-
-## Future roadmap:
-
-* Website & improved documentation, samples
-* $select - sub properties & complex types (this should already work, but not tested)
-* More functions/Arithmetic operations (e.g abs, mod)
-* $expand for Lazy<T> and DTOs
