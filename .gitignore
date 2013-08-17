@@ -1,0 +1,4 @@
+.sass*
+*~
+*.swp
+_site

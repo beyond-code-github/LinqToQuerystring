@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="description" content="{{ page.description }} {{ site.description }}" />
+    <title>{{ page.title }} - {{ site.title }} ({{ site.author }}) - {{ site.short_description }}</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" media="screen,projection" charset="utf-8" />
+    <!--[if lt IE 8]>
+      <link rel="stylesheet" type="text/css" href="/css/ie.css" media="screen, projection" charset="utf-8" />
+    <![endif]-->
+  </head>
+  <body>
+    <a href="https://github.com/mojombo/jekyll" target="_blank"><img alt="Fork me on GitHub" src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" style="position: absolute; top: 0; right: 0; border: 0;" /></a>
+    <div id="container">
+
+      <!-- header -->
+      <div id="header" class="title">
+        <h1><a href="/"><strong class="title">{{ site.title }}</strong> <em>{{ site.subtitle }}</em></a></h1>
+      </div>
+
+      <div id="credit">
+        <h2 id="page-title">{{ page.title }}</h2>
+        <h2 id="author" class="author">by {{ site.author }}</h2>
+      </div>
+
+      <!-- content -->
+      <div id="content">
+      {{ content }}
+      </div>
+
+      <div id="sidebar">
+        {% include navigation.html %}
+      </div>
+
+      <!-- footer -->
+      <div id="footer-container"></div>
+    
+      <div id="footer">
+        {% include navigation.html %}
+      </div>
+
+    </div>
+
+  </body>
+</html>
