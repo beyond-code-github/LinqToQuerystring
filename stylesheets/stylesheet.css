@@ -262,7 +262,7 @@ Full-Width Styles
 
 .inner {
     position: relative;
-    max-width: 640px;
+    max-width: 800px;
     padding: 20px 10px;
     margin: 0 auto;
 }
@@ -307,6 +307,7 @@ Full-Width Styles
 
 #project_tagline {
     color: #fff;
+    margin-left: 90px;
     font-size: 24px;
     font-weight: 300;
     background: none;
@@ -330,7 +331,13 @@ Full-Width Styles
     height: 70px;
     text-indent: -5000px;
     overflow: hidden;
-    background: url(../images/sprite_download.png) no-repeat bottom left;
+    z-index: 10;
+    padding: 10px 50px 10px 10px;
+    color: #fff;
+    background: #8B2011 no-repeat 95% 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,.5);
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
 }
 
 .tar_download_link {
@@ -340,8 +347,14 @@ Full-Width Styles
     height: 70px;
     text-indent: -5000px;
     overflow: hidden;
-    background: url(../images/sprite_download.png) no-repeat bottom right;
+    z-index: 10;
+    padding: 10px 50px 10px 10px;
+    color: #fff;
+    background: #8B2011 no-repeat 95% 50%;
     margin-left: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,.5);
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
 }
 
 .zip_download_link:hover {
