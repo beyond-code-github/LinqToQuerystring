@@ -7,7 +7,7 @@ title:  Examples
 Linq to Querystring uses an expression parser written in ANTLR to map a subset of odata-compatible expressions onto any .NET IQueryable.
 
 Work directly with Linq to Object IQueryables:
-~~~ c#
+{% highlight c# %}
     var collection = new List<Dummy>
     {
        new Dummy("Apple", 5, new DateTime(2005, 01, 01), true),
@@ -19,7 +19,7 @@ Work directly with Linq to Object IQueryables:
 
     var ordered = collection.LinqToQuerystring("?$orderby=Complete,Age");
     var paged = collection.LinqToQuerystring("?$skip=2$top=2");
-~~~  
+{% endhighlight %}
 Work with Dynamic objects:
 
     var item1 = new Dictionary<string, object>();
