@@ -4,7 +4,7 @@ title:  Features
 ---
 ## Current features
 
-* String escape sequences: \\\\ \' \t \r \n \f ''
+* String escape sequences: \\ \' \t \r \n \f ''
 * Seamless integration with Asp.Net Web API using LinqToQueryable Attribute 
 * Use Linq to Querystring with Nancy FX modules
 * Linq to Objects, Entity framework & MongoDB
