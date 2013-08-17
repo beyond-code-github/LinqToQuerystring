@@ -55,7 +55,7 @@ Theme Styles
 body {
     box-sizing: border-box;
     color: #373737;
-    background: #212121;
+    background: #3F140E;
     font-size: 16px;
     font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
     line-height: 1.5;
@@ -107,7 +107,7 @@ footer p {
 
 a {
     text-decoration: none;
-    color: #8B2011;
+    color: #B63B2B;
     text-shadow: none;
     transition: color 0.5s ease;
     transition: text-shadow 0.5s ease;
@@ -122,13 +122,13 @@ a {
 }
 
 #main_content a:hover {
-    color: #8B392D;
-    text-shadow: #8B2011 0px 0px 2px;
+    color: #D84530;
+    text-shadow: #B63B2B 0px 0px 2px;
 }
 
 footer a:hover {
-    color: #8B392D;
-    text-shadow: #8B2011 0px 0px 2px;
+    color: #D84530;
+    text-shadow: #B63B2B 0px 0px 2px;
 }
 
 em {

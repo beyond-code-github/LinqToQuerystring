@@ -32,6 +32,7 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
+        {% include navigation.html %}
         {{ content }}
       </section>
     </div>
@@ -39,7 +40,6 @@
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        {% include navigation.html %}
         <p class="copyright">Linq to Querystring maintained by <a href="https://github.com/roysvork">Pete Smith aka Roysvork</a></p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
