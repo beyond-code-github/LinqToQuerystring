@@ -107,7 +107,7 @@ footer p {
 
 a {
     text-decoration: none;
-    color: #007edf;
+    color: #8B2011;
     text-shadow: none;
     transition: color 0.5s ease;
     transition: text-shadow 0.5s ease;
@@ -122,13 +122,13 @@ a {
 }
 
 #main_content a:hover {
-    color: #0069ba;
-    text-shadow: #0090ff 0px 0px 2px;
+    color: #8B392D;
+    text-shadow: #8B2011 0px 0px 2px;
 }
 
 footer a:hover {
-    color: #43adff;
-    text-shadow: #0090ff 0px 0px 2px;
+    color: #8B392D;
+    text-shadow: #8B2011 0px 0px 2px;
 }
 
 em {
@@ -368,7 +368,7 @@ Full-Width Styles
 }
 
 #footer_wrap {
-    background: #212121;
+    background: #3F140E;
 }
 
 /*******************************************************************************
