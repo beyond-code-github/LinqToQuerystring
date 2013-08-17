@@ -3,9 +3,6 @@ layout: default
 title: About Jekyll
 ---
 
-Original file from https://github.com/mojombo/jekyll
-
-
 # Jekyll
 
 By Tom Preston-Werner, Nick Quaranto, and many awesome contributors!

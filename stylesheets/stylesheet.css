@@ -107,7 +107,7 @@ footer p {
 
 a {
     text-decoration: none;
-    color: #B63B2B;
+    color: #0E3F28;
     text-shadow: none;
     transition: color 0.5s ease;
     transition: text-shadow 0.5s ease;
@@ -123,7 +123,7 @@ a {
 
 #main_content a:hover {
     color: #D84530;
-    text-shadow: #B63B2B 0px 0px 2px;
+    text-shadow: #0E3F28 0px 0px 2px;
 }
 
 footer a:hover {
@@ -203,10 +203,18 @@ ul, ol, dl {
         list-style: none;
         font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
         text-shadow: #111 0px 0px 10px;
-        letter-spacing: -1px;
-        font-size: 36px;
+        letter-spacing: -2px;
+        font-size: 28px;
         font-weight: 700;
         padding-left: 20px;
+    }
+
+    ul.navigation a {
+        color: #B63B2B;
+    }
+    
+    ul.navigation a:hover {
+        color: #D84530;
     }
 
     ol li {
