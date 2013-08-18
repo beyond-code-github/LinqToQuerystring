@@ -17,7 +17,7 @@
 
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
-            return Expression.Or(
+            return Expression.OrElse(
                 this.LeftNode.BuildLinqExpression(query, expression, item),
                 this.RightNode.BuildLinqExpression(query, expression, item));
         }
