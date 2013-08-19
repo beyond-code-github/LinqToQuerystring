@@ -1,12 +1,14 @@
 ﻿namespace LinqToQuerystring.WebApi
 {
-    using System;
     using System.Linq;
     using System.Net;
     using System.Net.Http;
+    using System.Net.Http.Formatting;
     using System.Web;
     using System.Web.Http;
     using System.Web.Http.Filters;
+
+    using ActionFilterAttribute = System.Web.Http.Filters.ActionFilterAttribute;
 
     public class LinqToQueryableAttribute : ActionFilterAttribute
     {
@@ -33,20 +35,23 @@
                 var genericType = originalquery.GetType().GetGenericArguments()[0];
                 var query = HttpUtility.UrlDecode(queryString);
 
-                dynamic reply = originalquery.LinqToQuerystring(genericType, query, this.forceDynamicProperties, this.maxPageSize);
+                var reply = originalquery.LinqToQuerystring(genericType, query, this.forceDynamicProperties, this.maxPageSize);
 
-                var mediaFormatter =
-                    GlobalConfiguration.Configuration.Formatters.FirstOrDefault(o => o.CanWriteType(reply.GetType()));
+                var queryableType = typeof(IQueryable<>).GetGenericTypeDefinition();
+                var genericArgs = reply.GetType().GetGenericArguments();
+                var replyType = queryableType.MakeGenericType(genericArgs);
 
-                if (mediaFormatter == null)
+                var conneg = (IContentNegotiator)GlobalConfiguration.Configuration.Services.GetService(typeof(IContentNegotiator));
+                var formatter = conneg.Negotiate(
+                    replyType,
+                    actionExecutedContext.Request,
+                    GlobalConfiguration.Configuration.Formatters);
+
+                actionExecutedContext.Response = new HttpResponseMessage()
                 {
-                    throw new InvalidOperationException(string.Format("No media type formatter was found for the type: {0}", reply.GetType().Name));
-                }
-
-                var response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.OK);
-                response.Content = new ObjectContent(reply.GetType(), reply, mediaFormatter); ;
-
-                actionExecutedContext.Response = response;
+                    StatusCode = HttpStatusCode.OK,
+                    Content = new ObjectContent(replyType, reply, formatter.Formatter)
+                };
             }
         }
     }
