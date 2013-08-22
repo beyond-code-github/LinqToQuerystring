@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="ContentNegotiationTests.cs" />
     <Compile Include="Controllers\DataController.cs" />
+    <Compile Include="CsvMediaTypeFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleTracer.cs" />
   </ItemGroup>

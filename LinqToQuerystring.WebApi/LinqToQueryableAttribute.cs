@@ -41,13 +41,14 @@
                 var genericArgs = reply.GetType().GetGenericArguments();
                 var replyType = queryableType.MakeGenericType(genericArgs);
 
-                var conneg = (IContentNegotiator)GlobalConfiguration.Configuration.Services.GetService(typeof(IContentNegotiator));
+                var configuraton = actionExecutedContext.ActionContext.ControllerContext.Configuration;
+                var conneg = (IContentNegotiator)configuraton.Services.GetService(typeof(IContentNegotiator));
                 var formatter = conneg.Negotiate(
                     replyType,
                     actionExecutedContext.Request,
-                    GlobalConfiguration.Configuration.Formatters);
+                    configuraton.Formatters);
 
-                actionExecutedContext.Response = new HttpResponseMessage()
+                actionExecutedContext.Response = new HttpResponseMessage
                 {
                     StatusCode = HttpStatusCode.OK,
                     Content = new ObjectContent(replyType, reply, formatter.Formatter)

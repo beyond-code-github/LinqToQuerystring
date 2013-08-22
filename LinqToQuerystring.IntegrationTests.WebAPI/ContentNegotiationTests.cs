@@ -20,6 +20,8 @@
         {
             var config = new HttpConfiguration();
             config.Services.Replace(typeof(ITraceWriter), new SimpleTracer());
+            config.Formatters.Add(new CsvMediaTypeFormatter());
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
@@ -56,5 +58,20 @@
         private It should_return_200_ok = () => response.StatusCode.ShouldEqual(HttpStatusCode.OK);
 
         private It should_return_xml = () => response.Content.Headers.GetValues("Content-Type").FirstOrDefault().ShouldStartWith("application/xml");
+    }
+
+    public class Can_handle_media_type_mappings : ContentNegotiationTestsBase
+    {
+        private Because of = () => response = browser.Get(
+            "/api/data?format=csv",
+            (with) =>
+            {
+                with.Header("Accept", "text/csv");
+                with.HttpRequest();
+            });
+
+        private It should_return_200_ok = () => response.StatusCode.ShouldEqual(HttpStatusCode.OK);
+
+        private It should_return_xml = () => response.Content.Headers.GetValues("Content-Type").FirstOrDefault().ShouldStartWith("text/csv");
     }
 }
