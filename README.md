@@ -2,7 +2,7 @@ Linq to Querystring v0.6.5
 ==========================
 
 ## New Website
-Linq to Querystring now has a project page! Please refer to http://www.linqtoquerystring.net/ for documentation and samples.
+Linq to Querystring now has a project page! Please refer to http://linqtoquerystring.net/ for documentation and samples.
 
 ## Installation
 
