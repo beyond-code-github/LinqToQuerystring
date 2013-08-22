@@ -17,7 +17,3 @@ PM> Install-Package LinqToQuerystring.WebApi
 
 * Nancy FX package: https://nuget.org/packages/LinqToQuerystring.Nancy/
 PM> Install-Package LinqToQuerystring.Nancy
-
-* $select - sub properties & complex types (this should already work, but not tested)
-* More functions/Arithmetic operations (e.g abs, mod)
-* $expand for Lazy<T> and DTOs
