@@ -36,10 +36,14 @@
                 var query = HttpUtility.UrlDecode(queryString);
 
                 var reply = originalquery.LinqToQuerystring(genericType, query, this.forceDynamicProperties, this.maxPageSize);
+                var replyType = reply.GetType();
 
-                var queryableType = typeof(IQueryable<>).GetGenericTypeDefinition();
-                var genericArgs = reply.GetType().GetGenericArguments();
-                var replyType = queryableType.MakeGenericType(genericArgs);
+                if (typeof(IQueryable).IsAssignableFrom(replyType))
+                {
+                    var queryableType = typeof(IQueryable<>).GetGenericTypeDefinition();
+                    var genericArgs = replyType.GetGenericArguments();
+                    replyType = queryableType.MakeGenericType(genericArgs);
+                }
 
                 var configuraton = actionExecutedContext.ActionContext.ControllerContext.Configuration;
                 var conneg = (IContentNegotiator)configuraton.Services.GetService(typeof(IContentNegotiator));
