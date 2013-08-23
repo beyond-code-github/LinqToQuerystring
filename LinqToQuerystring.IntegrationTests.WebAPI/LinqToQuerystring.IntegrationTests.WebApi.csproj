@@ -69,6 +69,7 @@
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="CsvMediaTypeFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuerySyntaxTests.cs" />
     <Compile Include="SimpleTracer.cs" />
   </ItemGroup>
   <ItemGroup>
