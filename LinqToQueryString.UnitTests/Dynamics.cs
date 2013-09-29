@@ -90,4 +90,48 @@
 
         private It should_return_two_results = () => result.Count().ShouldEqual(4);
     }
+
+    public class When_filtering_using_startswith_function_on_a_dynamic_type : Dynamics
+    {
+        private Because of =
+            () => result = collection.AsQueryable().LinqToQuerystring("?$filter=startswith([Name],'Ka')");
+
+        private It should_return_four_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_name_starts_with_Sat =
+            () => result.ShouldEachConformTo(o => ((string)o["Name"]).StartsWith("Ka"));
+    }
+
+    public class When_filtering_using_endswith_function_on_a_dynamic_type : Dynamics
+    {
+        private Because of =
+            () => result = collection.AsQueryable().LinqToQuerystring("?$filter=endswith([Name],'te')");
+
+        private It should_return_four_records = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_ends_with_day =
+            () => result.ShouldEachConformTo(o => ((string)o["Name"]).EndsWith("te"));
+    }
+
+    public class When_filtering_using_substringof_function_on_a_dynamic_type : Dynamics
+    {
+        private Because of =
+            () => result = collection.AsQueryable().LinqToQuerystring("?$filter=substringof('r',[Name])");
+
+        private It should_return_three_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_name_contains_urn =
+            () => result.ShouldEachConformTo(o => ((string)o["Name"]).Contains("r"));
+    }
+
+    public class When_filtering_using_tolower_function_on_a_dynamic_type : Dynamics
+    {
+        private Because of =
+            () => result = collection.AsQueryable().LinqToQuerystring("?$filter=tolower([Name] eq 'pete')");
+
+        private It should_return_three_records = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_contains_urn =
+            () => result.ShouldEachConformTo(o => ((string)o["Name"]).ToLower() == "pete");
+    }
 }

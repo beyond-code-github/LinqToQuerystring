@@ -19,11 +19,11 @@
         {
             var childexpression = this.ChildNode.BuildLinqExpression(query, expression, item);
 
-            if (!childexpression.Type.IsAssignableFrom(typeof(string)))
+            if (!typeof(string).IsAssignableFrom(childexpression.Type))
             {
                 childexpression = Expression.Convert(childexpression, typeof(string));
             }
-
+            
             return Expression.Call(childexpression, "ToLower", null, null);
         }
     }

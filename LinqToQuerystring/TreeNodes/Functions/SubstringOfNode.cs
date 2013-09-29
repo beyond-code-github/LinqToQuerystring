@@ -20,12 +20,12 @@
             var leftExpression = this.LeftNode.BuildLinqExpression(query, expression, item);
             var rightExpression = this.RightNode.BuildLinqExpression(query, expression, item);
 
-            if (!leftExpression.Type.IsAssignableFrom(typeof(string)))
+            if (!typeof(string).IsAssignableFrom(leftExpression.Type))
             {
                 leftExpression = Expression.Convert(leftExpression, typeof(string));
             }
 
-            if (!rightExpression.Type.IsAssignableFrom(typeof(string)))
+            if (!typeof(string).IsAssignableFrom(rightExpression.Type))
             {
                 rightExpression = Expression.Convert(rightExpression, typeof(string));
             }
