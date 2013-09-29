@@ -1,13 +1,13 @@
-﻿namespace LinqToQueryString.IntegrationTests.Sql
+﻿namespace LinqToQuerystring.IntegrationTests.EntityFramework
 {
     using System;
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Linq;
 
-    using LinqToQueryString.Tests;
-
     using LinqToQuerystring;
+
+    using LinqToQueryString.IntegrationTests.Sql;
+    using LinqToQueryString.Tests;
 
     using Machine.Specifications;
 

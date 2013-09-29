@@ -90,7 +90,6 @@
   <ItemGroup>
     <Compile Include="SqlCollectionAggregates.cs" />
     <Compile Include="Exceptions.cs" />
-    <Compile Include="SqlExpand.cs" />
     <Compile Include="SqlFunctions.cs" />
     <Compile Include="SqlInlineCount.cs" />
     <Compile Include="SqlProjection.cs" />
@@ -104,10 +103,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LinqToQuerystring.EntityFramework\LinqToQuerystring.EntityFramework.csproj">
-      <Project>{854fa068-ff2b-49e3-a632-d0adea6264e6}</Project>
-      <Name>LinqToQuerystring.EntityFramework</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LinqToQueryString.Tests\LinqToQueryString.Tests.csproj">
       <Project>{139B0E4C-BC18-4180-8863-FB248CFDA42E}</Project>
       <Name>LinqToQueryString.Tests</Name>
