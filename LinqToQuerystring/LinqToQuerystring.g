@@ -33,7 +33,7 @@ public override void ReportError(RecognitionException e) {
 public prog
 	:	(param ('&'! param)*)*;
 
-param	:	(orderby | top | skip | filter | select | inlinecount | expand);
+param	:	(orderby | top | skip | filter | select | inlinecount | expand | ignored);
 
 skip	
 	:	SKIP^ INT+;
@@ -49,10 +49,12 @@ select
 			
 expand
 	:	EXPAND^ propertyname[false] (','! propertyname[false])*;
-	
+
 inlinecount
 	:	INLINECOUNT^ ALLPAGES
 	|	INLINECOUNT NONE ->;
+
+ignored	:	IGNORED IDENTIFIER -> IGNORED;
 
 filterexpression[bool subquery]
 	:	orexpression[subquery] (SPACE! OR^ SPACE! orexpression[subquery])*;
@@ -180,6 +182,8 @@ INLINECOUNT
 	:	'$inlinecount=';
 	
 EXPAND	:	'$expand=';
+	
+IGNORED :	'$' IDENTIFIER '=';
 	
 STARTSWITH
 	:	'startswith';

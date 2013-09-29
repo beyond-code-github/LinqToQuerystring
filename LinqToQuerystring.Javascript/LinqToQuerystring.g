@@ -13,7 +13,7 @@ tokens {
 public prog
 	:	(param ('&'! param)*)*;
 
-param	:	(orderby | top | skip | filter | select | inlinecount | expand);
+param	:	(orderby | top | skip | filter | select | inlinecount | expand | ignored);
 
 skip	
 	:	SKIP int=INT+ -> ^(SKIP INT[int]);
@@ -33,6 +33,8 @@ expand
 inlinecount
 	:	INLINECOUNT^ ALLPAGES
 	|	INLINECOUNT NONE ->;
+
+ignored	:	IGNORED IDENTIFIER -> IGNORED;
 
 filterexpression[subquery]
 	:	orexpression[subquery] (SPACE! OR^ SPACE! orexpression[subquery])*;
@@ -172,6 +174,8 @@ INLINECOUNT
 	:	'$inlinecount=';
 	
 EXPAND	:	'$expand=';
+
+IGNORED :	'$' IDENTIFIER '=';
 	
 STARTSWITH
 	:	'startswith';

@@ -63,6 +63,7 @@
     <Compile Include="TreeNodes\Base\TwoChildNode.cs" />
     <Compile Include="TreeNodes\DataTypes\BoolNode.cs" />
     <Compile Include="TreeNodes\DataTypes\ByteNode.cs" />
+    <Compile Include="TreeNodes\IgnoredNode.cs" />
     <Compile Include="TreeNodes\NullNode.cs" />
     <Compile Include="TreeNodes\DataTypes\GuidNode.cs" />
     <Compile Include="TreeNodes\DataTypes\SingleNode.cs" />

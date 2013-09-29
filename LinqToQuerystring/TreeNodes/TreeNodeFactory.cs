@@ -118,6 +118,8 @@
                     return new AscNode(inputType, token, this);
                 case LinqToQuerystringLexer.NULL:
                     return new NullNode(inputType, token, this);
+                case LinqToQuerystringLexer.IGNORED:
+                    return new IgnoredNode(inputType, token, this);
             }
 
             return null;

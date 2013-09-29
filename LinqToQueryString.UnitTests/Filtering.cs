@@ -78,6 +78,46 @@
             };
     }
 
+    #region Ignored operators
+
+    public class When_using_eq_filter_on_a_single_with_a_leading_superflouous_operator : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$format=json&$filter=Name eq 'Apple'");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_name_is_apple = () => result.ShouldEachConformTo(o => o.Name == "Apple");
+    }
+
+    public class When_using_eq_filter_on_a_single_with_a_trailing_superflouous_operator : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Name eq 'Apple'&$format=json");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_name_is_apple = () => result.ShouldEachConformTo(o => o.Name == "Apple");
+    }
+
+    public class When_using_eq_filter_on_a_single_with_a_leading_superflouous_query_parameter : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?format=json&$filter=Name eq 'Apple'");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_name_is_apple = () => result.ShouldEachConformTo(o => o.Name == "Apple");
+    }
+
+    public class When_using_eq_filter_on_a_single_with_a_trailing_superflouous_query_parameter : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Name eq 'Apple'&format=json");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_name_is_apple = () => result.ShouldEachConformTo(o => o.Name == "Apple");
+    }
+
+    #endregion
+
     #region Filter on implicit boolean identifiers
 
     public class When_specifying_a_single_boolean_identifier_as_a_filter : Filtering
@@ -107,6 +147,15 @@
         private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Name eq 'Apple'");
 
         private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_name_is_apple = () => result.ShouldEachConformTo(o => o.Name == "Apple");
+    }
+
+    public class When_using_eq_filter_on_a_single_string_and_applying_top : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Name eq 'Apple'&$top=1");
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
 
         private It should_only_return_records_where_name_is_apple = () => result.ShouldEachConformTo(o => o.Name == "Apple");
     }
