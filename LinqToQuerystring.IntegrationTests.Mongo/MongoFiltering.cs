@@ -1396,7 +1396,6 @@
 
     #endregion
 
-
     #region Simple Logic Tests
 
     public class When_anding_two_filters_together : MongoFiltering
