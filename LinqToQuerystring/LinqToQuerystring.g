@@ -91,7 +91,7 @@ accessor[bool subquery]:
 		)?;
 	
 function
-	:	STARTSWITH | ENDSWITH | SUBSTRINGOF | TOLOWER;
+	:	STARTSWITH | ENDSWITH | SUBSTRINGOF | TOLOWER | TOUPPER;
 		
 orderby
 	:	ORDERBY^ orderbylist;
@@ -196,6 +196,9 @@ SUBSTRINGOF
 	
 TOLOWER
 	:	'tolower';
+
+TOUPPER
+	:	'toupper';
 	
 ANY	: 	'any';
 	

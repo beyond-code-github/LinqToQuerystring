@@ -70,6 +70,8 @@
                     return new SubstringOfNode(inputType, token, this);
                 case LinqToQuerystringLexer.TOLOWER:
                     return new ToLowerNode(inputType, token, this);
+                case LinqToQuerystringLexer.TOUPPER:
+                    return new ToUpperNode(inputType, token, this);
                 case LinqToQuerystringLexer.ANY:
                     return new AnyNode(inputType, token, this);
                 case LinqToQuerystringLexer.ALL:

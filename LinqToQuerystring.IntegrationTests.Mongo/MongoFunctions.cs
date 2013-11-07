@@ -110,6 +110,17 @@
             () => strongResult.ShouldEachConformTo(o => o.Name.Contains("Sat"));
     }
 
+    public class When_filtering_strongly_typed_data_with_substringof_function_with_toupper : MongoFunctions
+    {
+        private Because of =
+            () => strongResult = strongCollection.LinqToQuerystring(@"?$filter=substringof('SAT',toupper(Name))").ToList();
+
+        private It should_return_four_records = () => strongResult.Count().ShouldEqual(4);
+
+        private It should_only_return_records_where_name_contains_sat =
+            () => strongResult.ShouldEachConformTo(o => o.Name.Contains("Sat"));
+    }
+
     #endregion
 
     #region Loosely typed data functions
@@ -153,6 +164,17 @@
     {
         private Because of =
             () => result = collection.LinqToQuerystring(@"?$filter=substringof('sat',tolower([Name]))").ToList();
+
+        private It should_return_four_records = () => result.Count().ShouldEqual(4);
+
+        private It should_only_return_records_where_name_contains_sat =
+            () => result.ShouldEachConformTo(o => o["Name"].AsString.Contains("Sat"));
+    }
+
+    public class When_filtering_loosely_typed_data_with_substringof_function_with_toupper : MongoFunctions
+    {
+        private Because of =
+            () => result = collection.LinqToQuerystring(@"?$filter=substringof('SAT',toupper([Name]))").ToList();
 
         private It should_return_four_records = () => result.Count().ShouldEqual(4);
 

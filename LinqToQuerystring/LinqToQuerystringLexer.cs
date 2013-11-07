@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// $ANTLR 3.5.0.2 D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g 2013-09-29 19:22:52
+// $ANTLR 3.5.0.2 D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g 2013-11-07 21:37:15
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 219
@@ -86,13 +86,14 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	public const int SUM=53;
 	public const int TOLOWER=54;
 	public const int TOP=55;
-	public const int UNICODE_ESC=56;
-	public const int T__57=57;
+	public const int TOUPPER=56;
+	public const int UNICODE_ESC=57;
 	public const int T__58=58;
 	public const int T__59=59;
 	public const int T__60=60;
 	public const int T__61=61;
 	public const int T__62=62;
+	public const int T__63=63;
 
 	public override void ReportError(RecognitionException e) {
 		if (this.input.LT(1) == '\\')
@@ -131,19 +132,19 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	partial void EnterRule(string ruleName, int ruleIndex);
 	partial void LeaveRule(string ruleName, int ruleIndex);
 
-	partial void EnterRule_T__57();
-	partial void LeaveRule_T__57();
+	partial void EnterRule_T__58();
+	partial void LeaveRule_T__58();
 
-	// $ANTLR start "T__57"
-	[GrammarRule("T__57")]
-	private void mT__57()
+	// $ANTLR start "T__58"
+	[GrammarRule("T__58")]
+	private void mT__58()
 	{
-		EnterRule_T__57();
-		EnterRule("T__57", 1);
-		TraceIn("T__57", 1);
+		EnterRule_T__58();
+		EnterRule("T__58", 1);
+		TraceIn("T__58", 1);
 		try
 		{
-			int _type = T__57;
+			int _type = T__58;
 			int _channel = DefaultTokenChannel;
 			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:23:7: ( '&' )
 			DebugEnterAlt(1);
@@ -159,26 +160,26 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("T__57", 1);
-			LeaveRule("T__57", 1);
-			LeaveRule_T__57();
+			TraceOut("T__58", 1);
+			LeaveRule("T__58", 1);
+			LeaveRule_T__58();
 		}
 	}
-	// $ANTLR end "T__57"
+	// $ANTLR end "T__58"
 
-	partial void EnterRule_T__58();
-	partial void LeaveRule_T__58();
+	partial void EnterRule_T__59();
+	partial void LeaveRule_T__59();
 
-	// $ANTLR start "T__58"
-	[GrammarRule("T__58")]
-	private void mT__58()
+	// $ANTLR start "T__59"
+	[GrammarRule("T__59")]
+	private void mT__59()
 	{
-		EnterRule_T__58();
-		EnterRule("T__58", 2);
-		TraceIn("T__58", 2);
+		EnterRule_T__59();
+		EnterRule("T__59", 2);
+		TraceIn("T__59", 2);
 		try
 		{
-			int _type = T__58;
+			int _type = T__59;
 			int _channel = DefaultTokenChannel;
 			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:24:7: ( '(' )
 			DebugEnterAlt(1);
@@ -194,26 +195,26 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("T__58", 2);
-			LeaveRule("T__58", 2);
-			LeaveRule_T__58();
+			TraceOut("T__59", 2);
+			LeaveRule("T__59", 2);
+			LeaveRule_T__59();
 		}
 	}
-	// $ANTLR end "T__58"
+	// $ANTLR end "T__59"
 
-	partial void EnterRule_T__59();
-	partial void LeaveRule_T__59();
+	partial void EnterRule_T__60();
+	partial void LeaveRule_T__60();
 
-	// $ANTLR start "T__59"
-	[GrammarRule("T__59")]
-	private void mT__59()
+	// $ANTLR start "T__60"
+	[GrammarRule("T__60")]
+	private void mT__60()
 	{
-		EnterRule_T__59();
-		EnterRule("T__59", 3);
-		TraceIn("T__59", 3);
+		EnterRule_T__60();
+		EnterRule("T__60", 3);
+		TraceIn("T__60", 3);
 		try
 		{
-			int _type = T__59;
+			int _type = T__60;
 			int _channel = DefaultTokenChannel;
 			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:25:7: ( ')' )
 			DebugEnterAlt(1);
@@ -229,26 +230,26 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("T__59", 3);
-			LeaveRule("T__59", 3);
-			LeaveRule_T__59();
+			TraceOut("T__60", 3);
+			LeaveRule("T__60", 3);
+			LeaveRule_T__60();
 		}
 	}
-	// $ANTLR end "T__59"
+	// $ANTLR end "T__60"
 
-	partial void EnterRule_T__60();
-	partial void LeaveRule_T__60();
+	partial void EnterRule_T__61();
+	partial void LeaveRule_T__61();
 
-	// $ANTLR start "T__60"
-	[GrammarRule("T__60")]
-	private void mT__60()
+	// $ANTLR start "T__61"
+	[GrammarRule("T__61")]
+	private void mT__61()
 	{
-		EnterRule_T__60();
-		EnterRule("T__60", 4);
-		TraceIn("T__60", 4);
+		EnterRule_T__61();
+		EnterRule("T__61", 4);
+		TraceIn("T__61", 4);
 		try
 		{
-			int _type = T__60;
+			int _type = T__61;
 			int _channel = DefaultTokenChannel;
 			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:26:7: ( ',' )
 			DebugEnterAlt(1);
@@ -264,26 +265,26 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("T__60", 4);
-			LeaveRule("T__60", 4);
-			LeaveRule_T__60();
+			TraceOut("T__61", 4);
+			LeaveRule("T__61", 4);
+			LeaveRule_T__61();
 		}
 	}
-	// $ANTLR end "T__60"
+	// $ANTLR end "T__61"
 
-	partial void EnterRule_T__61();
-	partial void LeaveRule_T__61();
+	partial void EnterRule_T__62();
+	partial void LeaveRule_T__62();
 
-	// $ANTLR start "T__61"
-	[GrammarRule("T__61")]
-	private void mT__61()
+	// $ANTLR start "T__62"
+	[GrammarRule("T__62")]
+	private void mT__62()
 	{
-		EnterRule_T__61();
-		EnterRule("T__61", 5);
-		TraceIn("T__61", 5);
+		EnterRule_T__62();
+		EnterRule("T__62", 5);
+		TraceIn("T__62", 5);
 		try
 		{
-			int _type = T__61;
+			int _type = T__62;
 			int _channel = DefaultTokenChannel;
 			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:27:7: ( '/' )
 			DebugEnterAlt(1);
@@ -299,26 +300,26 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("T__61", 5);
-			LeaveRule("T__61", 5);
-			LeaveRule_T__61();
+			TraceOut("T__62", 5);
+			LeaveRule("T__62", 5);
+			LeaveRule_T__62();
 		}
 	}
-	// $ANTLR end "T__61"
+	// $ANTLR end "T__62"
 
-	partial void EnterRule_T__62();
-	partial void LeaveRule_T__62();
+	partial void EnterRule_T__63();
+	partial void LeaveRule_T__63();
 
-	// $ANTLR start "T__62"
-	[GrammarRule("T__62")]
-	private void mT__62()
+	// $ANTLR start "T__63"
+	[GrammarRule("T__63")]
+	private void mT__63()
 	{
-		EnterRule_T__62();
-		EnterRule("T__62", 6);
-		TraceIn("T__62", 6);
+		EnterRule_T__63();
+		EnterRule("T__63", 6);
+		TraceIn("T__63", 6);
 		try
 		{
-			int _type = T__62;
+			int _type = T__63;
 			int _channel = DefaultTokenChannel;
 			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:28:7: ( ':' )
 			DebugEnterAlt(1);
@@ -334,12 +335,12 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("T__62", 6);
-			LeaveRule("T__62", 6);
-			LeaveRule_T__62();
+			TraceOut("T__63", 6);
+			LeaveRule("T__63", 6);
+			LeaveRule_T__63();
 		}
 	}
-	// $ANTLR end "T__62"
+	// $ANTLR end "T__63"
 
 	partial void EnterRule_ASSIGN();
 	partial void LeaveRule_ASSIGN();
@@ -1279,6 +1280,42 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	}
 	// $ANTLR end "TOLOWER"
 
+	partial void EnterRule_TOUPPER();
+	partial void LeaveRule_TOUPPER();
+
+	// $ANTLR start "TOUPPER"
+	[GrammarRule("TOUPPER")]
+	private void mTOUPPER()
+	{
+		EnterRule_TOUPPER();
+		EnterRule("TOUPPER", 33);
+		TraceIn("TOUPPER", 33);
+		try
+		{
+			int _type = TOUPPER;
+			int _channel = DefaultTokenChannel;
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:201:2: ( 'toupper' )
+			DebugEnterAlt(1);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:201:4: 'toupper'
+			{
+			DebugLocation(201, 4);
+			Match("toupper"); 
+
+
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally
+		{
+			TraceOut("TOUPPER", 33);
+			LeaveRule("TOUPPER", 33);
+			LeaveRule_TOUPPER();
+		}
+	}
+	// $ANTLR end "TOUPPER"
+
 	partial void EnterRule_ANY();
 	partial void LeaveRule_ANY();
 
@@ -1287,17 +1324,17 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mANY()
 	{
 		EnterRule_ANY();
-		EnterRule("ANY", 33);
-		TraceIn("ANY", 33);
+		EnterRule("ANY", 34);
+		TraceIn("ANY", 34);
 		try
 		{
 			int _type = ANY;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:200:5: ( 'any' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:203:5: ( 'any' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:200:8: 'any'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:203:8: 'any'
 			{
-			DebugLocation(200, 8);
+			DebugLocation(203, 8);
 			Match("any"); 
 
 
@@ -1308,8 +1345,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("ANY", 33);
-			LeaveRule("ANY", 33);
+			TraceOut("ANY", 34);
+			LeaveRule("ANY", 34);
 			LeaveRule_ANY();
 		}
 	}
@@ -1323,17 +1360,17 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mALL()
 	{
 		EnterRule_ALL();
-		EnterRule("ALL", 34);
-		TraceIn("ALL", 34);
+		EnterRule("ALL", 35);
+		TraceIn("ALL", 35);
 		try
 		{
 			int _type = ALL;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:202:5: ( 'all' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:205:5: ( 'all' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:202:7: 'all'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:205:7: 'all'
 			{
-			DebugLocation(202, 7);
+			DebugLocation(205, 7);
 			Match("all"); 
 
 
@@ -1344,8 +1381,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("ALL", 34);
-			LeaveRule("ALL", 34);
+			TraceOut("ALL", 35);
+			LeaveRule("ALL", 35);
 			LeaveRule_ALL();
 		}
 	}
@@ -1359,17 +1396,17 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mCOUNT()
 	{
 		EnterRule_COUNT();
-		EnterRule("COUNT", 35);
-		TraceIn("COUNT", 35);
+		EnterRule("COUNT", 36);
+		TraceIn("COUNT", 36);
 		try
 		{
 			int _type = COUNT;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:204:7: ( 'count' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:207:7: ( 'count' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:204:9: 'count'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:207:9: 'count'
 			{
-			DebugLocation(204, 9);
+			DebugLocation(207, 9);
 			Match("count"); 
 
 
@@ -1380,8 +1417,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("COUNT", 35);
-			LeaveRule("COUNT", 35);
+			TraceOut("COUNT", 36);
+			LeaveRule("COUNT", 36);
 			LeaveRule_COUNT();
 		}
 	}
@@ -1395,17 +1432,17 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mMIN()
 	{
 		EnterRule_MIN();
-		EnterRule("MIN", 36);
-		TraceIn("MIN", 36);
+		EnterRule("MIN", 37);
+		TraceIn("MIN", 37);
 		try
 		{
 			int _type = MIN;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:206:5: ( 'min' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:209:5: ( 'min' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:206:7: 'min'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:209:7: 'min'
 			{
-			DebugLocation(206, 7);
+			DebugLocation(209, 7);
 			Match("min"); 
 
 
@@ -1416,8 +1453,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("MIN", 36);
-			LeaveRule("MIN", 36);
+			TraceOut("MIN", 37);
+			LeaveRule("MIN", 37);
 			LeaveRule_MIN();
 		}
 	}
@@ -1431,17 +1468,17 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mMAX()
 	{
 		EnterRule_MAX();
-		EnterRule("MAX", 37);
-		TraceIn("MAX", 37);
+		EnterRule("MAX", 38);
+		TraceIn("MAX", 38);
 		try
 		{
 			int _type = MAX;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:208:5: ( 'max' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:211:5: ( 'max' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:208:7: 'max'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:211:7: 'max'
 			{
-			DebugLocation(208, 7);
+			DebugLocation(211, 7);
 			Match("max"); 
 
 
@@ -1452,8 +1489,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("MAX", 37);
-			LeaveRule("MAX", 37);
+			TraceOut("MAX", 38);
+			LeaveRule("MAX", 38);
 			LeaveRule_MAX();
 		}
 	}
@@ -1467,17 +1504,17 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mSUM()
 	{
 		EnterRule_SUM();
-		EnterRule("SUM", 38);
-		TraceIn("SUM", 38);
+		EnterRule("SUM", 39);
+		TraceIn("SUM", 39);
 		try
 		{
 			int _type = SUM;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:210:5: ( 'sum' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:213:5: ( 'sum' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:210:7: 'sum'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:213:7: 'sum'
 			{
-			DebugLocation(210, 7);
+			DebugLocation(213, 7);
 			Match("sum"); 
 
 
@@ -1488,8 +1525,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("SUM", 38);
-			LeaveRule("SUM", 38);
+			TraceOut("SUM", 39);
+			LeaveRule("SUM", 39);
 			LeaveRule_SUM();
 		}
 	}
@@ -1503,17 +1540,17 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mAVERAGE()
 	{
 		EnterRule_AVERAGE();
-		EnterRule("AVERAGE", 39);
-		TraceIn("AVERAGE", 39);
+		EnterRule("AVERAGE", 40);
+		TraceIn("AVERAGE", 40);
 		try
 		{
 			int _type = AVERAGE;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:212:9: ( 'average' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:215:9: ( 'average' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:212:11: 'average'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:215:11: 'average'
 			{
-			DebugLocation(212, 11);
+			DebugLocation(215, 11);
 			Match("average"); 
 
 
@@ -1524,8 +1561,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("AVERAGE", 39);
-			LeaveRule("AVERAGE", 39);
+			TraceOut("AVERAGE", 40);
+			LeaveRule("AVERAGE", 40);
 			LeaveRule_AVERAGE();
 		}
 	}
@@ -1539,18 +1576,18 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mINT()
 	{
 		EnterRule_INT();
-		EnterRule("INT", 40);
-		TraceIn("INT", 40);
+		EnterRule("INT", 41);
+		TraceIn("INT", 41);
 		try
 		{
 			int _type = INT;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:214:5: ( ( '-' )? ( '0' .. '9' )+ )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:217:5: ( ( '-' )? ( '0' .. '9' )+ )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:214:7: ( '-' )? ( '0' .. '9' )+
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:217:7: ( '-' )? ( '0' .. '9' )+
 			{
-			DebugLocation(214, 7);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:214:7: ( '-' )?
+			DebugLocation(217, 7);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:217:7: ( '-' )?
 			int alt1=2;
 			try { DebugEnterSubRule(1);
 			try { DebugEnterDecision(1, false);
@@ -1565,9 +1602,9 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:214:8: '-'
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:217:8: '-'
 				{
-				DebugLocation(214, 8);
+				DebugLocation(217, 8);
 				Match('-'); 
 
 				}
@@ -1576,8 +1613,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 			}
 			} finally { DebugExitSubRule(1); }
 
-			DebugLocation(214, 17);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:214:17: ( '0' .. '9' )+
+			DebugLocation(217, 17);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:217:17: ( '0' .. '9' )+
 			int cnt2=0;
 			try { DebugEnterSubRule(2);
 			while (true)
@@ -1599,7 +1636,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(214, 17);
+					DebugLocation(217, 17);
 					input.Consume();
 
 
@@ -1629,8 +1666,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("INT", 40);
-			LeaveRule("INT", 40);
+			TraceOut("INT", 41);
+			LeaveRule("INT", 41);
 			LeaveRule_INT();
 		}
 	}
@@ -1644,18 +1681,18 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mLONG()
 	{
 		EnterRule_LONG();
-		EnterRule("LONG", 41);
-		TraceIn("LONG", 41);
+		EnterRule("LONG", 42);
+		TraceIn("LONG", 42);
 		try
 		{
 			int _type = LONG;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:216:6: ( ( '-' )? ( '0' .. '9' )+ 'L' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:219:6: ( ( '-' )? ( '0' .. '9' )+ 'L' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:216:8: ( '-' )? ( '0' .. '9' )+ 'L'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:219:8: ( '-' )? ( '0' .. '9' )+ 'L'
 			{
-			DebugLocation(216, 8);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:216:8: ( '-' )?
+			DebugLocation(219, 8);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:219:8: ( '-' )?
 			int alt3=2;
 			try { DebugEnterSubRule(3);
 			try { DebugEnterDecision(3, false);
@@ -1670,9 +1707,9 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:216:9: '-'
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:219:9: '-'
 				{
-				DebugLocation(216, 9);
+				DebugLocation(219, 9);
 				Match('-'); 
 
 				}
@@ -1681,8 +1718,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 			}
 			} finally { DebugExitSubRule(3); }
 
-			DebugLocation(216, 15);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:216:15: ( '0' .. '9' )+
+			DebugLocation(219, 15);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:219:15: ( '0' .. '9' )+
 			int cnt4=0;
 			try { DebugEnterSubRule(4);
 			while (true)
@@ -1704,7 +1741,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(216, 15);
+					DebugLocation(219, 15);
 					input.Consume();
 
 
@@ -1726,7 +1763,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(4); }
 
-			DebugLocation(216, 27);
+			DebugLocation(219, 27);
 			Match('L'); 
 
 			}
@@ -1736,8 +1773,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("LONG", 41);
-			LeaveRule("LONG", 41);
+			TraceOut("LONG", 42);
+			LeaveRule("LONG", 42);
 			LeaveRule_LONG();
 		}
 	}
@@ -1751,18 +1788,18 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mDOUBLE()
 	{
 		EnterRule_DOUBLE();
-		EnterRule("DOUBLE", 42);
-		TraceIn("DOUBLE", 42);
+		EnterRule("DOUBLE", 43);
+		TraceIn("DOUBLE", 43);
 		try
 		{
 			int _type = DOUBLE;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:218:8: ( ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )+ )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:221:8: ( ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )+ )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:218:10: ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )+
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:221:10: ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )+
 			{
-			DebugLocation(218, 10);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:218:10: ( '-' )?
+			DebugLocation(221, 10);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:221:10: ( '-' )?
 			int alt5=2;
 			try { DebugEnterSubRule(5);
 			try { DebugEnterDecision(5, false);
@@ -1777,9 +1814,9 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:218:11: '-'
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:221:11: '-'
 				{
-				DebugLocation(218, 11);
+				DebugLocation(221, 11);
 				Match('-'); 
 
 				}
@@ -1788,8 +1825,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 			}
 			} finally { DebugExitSubRule(5); }
 
-			DebugLocation(218, 17);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:218:17: ( '0' .. '9' )+
+			DebugLocation(221, 17);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:221:17: ( '0' .. '9' )+
 			int cnt6=0;
 			try { DebugEnterSubRule(6);
 			while (true)
@@ -1811,7 +1848,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(218, 17);
+					DebugLocation(221, 17);
 					input.Consume();
 
 
@@ -1833,10 +1870,10 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(6); }
 
-			DebugLocation(218, 29);
+			DebugLocation(221, 29);
 			Match('.'); 
-			DebugLocation(218, 33);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:218:33: ( '0' .. '9' )+
+			DebugLocation(221, 33);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:221:33: ( '0' .. '9' )+
 			int cnt7=0;
 			try { DebugEnterSubRule(7);
 			while (true)
@@ -1858,7 +1895,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(218, 33);
+					DebugLocation(221, 33);
 					input.Consume();
 
 
@@ -1888,8 +1925,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("DOUBLE", 42);
-			LeaveRule("DOUBLE", 42);
+			TraceOut("DOUBLE", 43);
+			LeaveRule("DOUBLE", 43);
 			LeaveRule_DOUBLE();
 		}
 	}
@@ -1903,18 +1940,18 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mSINGLE()
 	{
 		EnterRule_SINGLE();
-		EnterRule("SINGLE", 43);
-		TraceIn("SINGLE", 43);
+		EnterRule("SINGLE", 44);
+		TraceIn("SINGLE", 44);
 		try
 		{
 			int _type = SINGLE;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:220:8: ( ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )+ 'f' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:223:8: ( ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )+ 'f' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:220:10: ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )+ 'f'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:223:10: ( '-' )? ( '0' .. '9' )+ '.' ( '0' .. '9' )+ 'f'
 			{
-			DebugLocation(220, 10);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:220:10: ( '-' )?
+			DebugLocation(223, 10);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:223:10: ( '-' )?
 			int alt8=2;
 			try { DebugEnterSubRule(8);
 			try { DebugEnterDecision(8, false);
@@ -1929,9 +1966,9 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:220:11: '-'
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:223:11: '-'
 				{
-				DebugLocation(220, 11);
+				DebugLocation(223, 11);
 				Match('-'); 
 
 				}
@@ -1940,8 +1977,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 			}
 			} finally { DebugExitSubRule(8); }
 
-			DebugLocation(220, 17);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:220:17: ( '0' .. '9' )+
+			DebugLocation(223, 17);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:223:17: ( '0' .. '9' )+
 			int cnt9=0;
 			try { DebugEnterSubRule(9);
 			while (true)
@@ -1963,7 +2000,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(220, 17);
+					DebugLocation(223, 17);
 					input.Consume();
 
 
@@ -1985,10 +2022,10 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(9); }
 
-			DebugLocation(220, 29);
+			DebugLocation(223, 29);
 			Match('.'); 
-			DebugLocation(220, 33);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:220:33: ( '0' .. '9' )+
+			DebugLocation(223, 33);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:223:33: ( '0' .. '9' )+
 			int cnt10=0;
 			try { DebugEnterSubRule(10);
 			while (true)
@@ -2010,7 +2047,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(220, 33);
+					DebugLocation(223, 33);
 					input.Consume();
 
 
@@ -2032,7 +2069,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(10); }
 
-			DebugLocation(220, 45);
+			DebugLocation(223, 45);
 			Match('f'); 
 
 			}
@@ -2042,8 +2079,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("SINGLE", 43);
-			LeaveRule("SINGLE", 43);
+			TraceOut("SINGLE", 44);
+			LeaveRule("SINGLE", 44);
 			LeaveRule_SINGLE();
 		}
 	}
@@ -2057,18 +2094,18 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mBOOL()
 	{
 		EnterRule_BOOL();
-		EnterRule("BOOL", 44);
-		TraceIn("BOOL", 44);
+		EnterRule("BOOL", 45);
+		TraceIn("BOOL", 45);
 		try
 		{
 			int _type = BOOL;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:222:6: ( ( 'true' | 'false' ) )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:225:6: ( ( 'true' | 'false' ) )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:222:8: ( 'true' | 'false' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:225:8: ( 'true' | 'false' )
 			{
-			DebugLocation(222, 8);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:222:8: ( 'true' | 'false' )
+			DebugLocation(225, 8);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:225:8: ( 'true' | 'false' )
 			int alt11=2;
 			try { DebugEnterSubRule(11);
 			try { DebugEnterDecision(11, false);
@@ -2093,9 +2130,9 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:222:9: 'true'
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:225:9: 'true'
 				{
-				DebugLocation(222, 9);
+				DebugLocation(225, 9);
 				Match("true"); 
 
 
@@ -2103,9 +2140,9 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:222:18: 'false'
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:225:18: 'false'
 				{
-				DebugLocation(222, 18);
+				DebugLocation(225, 18);
 				Match("false"); 
 
 
@@ -2123,8 +2160,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("BOOL", 44);
-			LeaveRule("BOOL", 44);
+			TraceOut("BOOL", 45);
+			LeaveRule("BOOL", 45);
 			LeaveRule_BOOL();
 		}
 	}
@@ -2138,17 +2175,17 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mNULL()
 	{
 		EnterRule_NULL();
-		EnterRule("NULL", 45);
-		TraceIn("NULL", 45);
+		EnterRule("NULL", 46);
+		TraceIn("NULL", 46);
 		try
 		{
 			int _type = NULL;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:224:6: ( 'null' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:227:6: ( 'null' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:224:8: 'null'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:227:8: 'null'
 			{
-			DebugLocation(224, 8);
+			DebugLocation(227, 8);
 			Match("null"); 
 
 
@@ -2159,8 +2196,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("NULL", 45);
-			LeaveRule("NULL", 45);
+			TraceOut("NULL", 46);
+			LeaveRule("NULL", 46);
 			LeaveRule_NULL();
 		}
 	}
@@ -2174,21 +2211,21 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mDATETIME()
 	{
 		EnterRule_DATETIME();
-		EnterRule("DATETIME", 46);
-		TraceIn("DATETIME", 46);
+		EnterRule("DATETIME", 47);
+		TraceIn("DATETIME", 47);
 		try
 		{
 			int _type = DATETIME;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:227:2: ( 'datetime\\'' ( '0' .. '9' )+ '-' ( '0' .. '9' )+ ( '-' )+ ( '0' .. '9' )+ 'T' ( '0' .. '9' )+ ':' ( '0' .. '9' )+ ( ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )* )* '\\'' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:230:2: ( 'datetime\\'' ( '0' .. '9' )+ '-' ( '0' .. '9' )+ ( '-' )+ ( '0' .. '9' )+ 'T' ( '0' .. '9' )+ ':' ( '0' .. '9' )+ ( ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )* )* '\\'' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:227:4: 'datetime\\'' ( '0' .. '9' )+ '-' ( '0' .. '9' )+ ( '-' )+ ( '0' .. '9' )+ 'T' ( '0' .. '9' )+ ':' ( '0' .. '9' )+ ( ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )* )* '\\''
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:230:4: 'datetime\\'' ( '0' .. '9' )+ '-' ( '0' .. '9' )+ ( '-' )+ ( '0' .. '9' )+ 'T' ( '0' .. '9' )+ ':' ( '0' .. '9' )+ ( ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )* )* '\\''
 			{
-			DebugLocation(227, 4);
+			DebugLocation(230, 4);
 			Match("datetime'"); 
 
-			DebugLocation(227, 20);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:227:20: ( '0' .. '9' )+
+			DebugLocation(230, 20);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:230:20: ( '0' .. '9' )+
 			int cnt12=0;
 			try { DebugEnterSubRule(12);
 			while (true)
@@ -2210,7 +2247,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(227, 20);
+					DebugLocation(230, 20);
 					input.Consume();
 
 
@@ -2232,10 +2269,10 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(12); }
 
-			DebugLocation(227, 27);
+			DebugLocation(230, 27);
 			Match('-'); 
-			DebugLocation(227, 34);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:227:34: ( '0' .. '9' )+
+			DebugLocation(230, 34);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:230:34: ( '0' .. '9' )+
 			int cnt13=0;
 			try { DebugEnterSubRule(13);
 			while (true)
@@ -2257,7 +2294,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(227, 34);
+					DebugLocation(230, 34);
 					input.Consume();
 
 
@@ -2279,8 +2316,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(13); }
 
-			DebugLocation(227, 41);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:227:41: ( '-' )+
+			DebugLocation(230, 41);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:230:41: ( '-' )+
 			int cnt14=0;
 			try { DebugEnterSubRule(14);
 			while (true)
@@ -2300,9 +2337,9 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:227:41: '-'
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:230:41: '-'
 					{
-					DebugLocation(227, 41);
+					DebugLocation(230, 41);
 					Match('-'); 
 
 					}
@@ -2323,8 +2360,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(14); }
 
-			DebugLocation(227, 50);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:227:50: ( '0' .. '9' )+
+			DebugLocation(230, 50);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:230:50: ( '0' .. '9' )+
 			int cnt15=0;
 			try { DebugEnterSubRule(15);
 			while (true)
@@ -2346,7 +2383,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(227, 50);
+					DebugLocation(230, 50);
 					input.Consume();
 
 
@@ -2368,10 +2405,10 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(15); }
 
-			DebugLocation(227, 57);
+			DebugLocation(230, 57);
 			Match('T'); 
-			DebugLocation(227, 64);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:227:64: ( '0' .. '9' )+
+			DebugLocation(230, 64);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:230:64: ( '0' .. '9' )+
 			int cnt16=0;
 			try { DebugEnterSubRule(16);
 			while (true)
@@ -2393,7 +2430,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(227, 64);
+					DebugLocation(230, 64);
 					input.Consume();
 
 
@@ -2415,10 +2452,10 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(16); }
 
-			DebugLocation(227, 71);
+			DebugLocation(230, 71);
 			Match(':'); 
-			DebugLocation(227, 78);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:227:78: ( '0' .. '9' )+
+			DebugLocation(230, 78);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:230:78: ( '0' .. '9' )+
 			int cnt17=0;
 			try { DebugEnterSubRule(17);
 			while (true)
@@ -2440,7 +2477,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(227, 78);
+					DebugLocation(230, 78);
 					input.Consume();
 
 
@@ -2462,8 +2499,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(17); }
 
-			DebugLocation(227, 85);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:227:85: ( ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )* )*
+			DebugLocation(230, 85);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:230:85: ( ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )* )*
 			try { DebugEnterSubRule(21);
 			while (true)
 			{
@@ -2482,12 +2519,12 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:227:86: ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )*
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:230:86: ':' ( '0' .. '9' )+ ( '.' ( '0' .. '9' )+ )*
 					{
-					DebugLocation(227, 86);
+					DebugLocation(230, 86);
 					Match(':'); 
-					DebugLocation(227, 93);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:227:93: ( '0' .. '9' )+
+					DebugLocation(230, 93);
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:230:93: ( '0' .. '9' )+
 					int cnt18=0;
 					try { DebugEnterSubRule(18);
 					while (true)
@@ -2509,7 +2546,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 							DebugEnterAlt(1);
 							// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 							{
-							DebugLocation(227, 93);
+							DebugLocation(230, 93);
 							input.Consume();
 
 
@@ -2531,8 +2568,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 					} finally { DebugExitSubRule(18); }
 
-					DebugLocation(227, 100);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:227:100: ( '.' ( '0' .. '9' )+ )*
+					DebugLocation(230, 100);
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:230:100: ( '.' ( '0' .. '9' )+ )*
 					try { DebugEnterSubRule(20);
 					while (true)
 					{
@@ -2551,12 +2588,12 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 						{
 						case 1:
 							DebugEnterAlt(1);
-							// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:227:101: '.' ( '0' .. '9' )+
+							// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:230:101: '.' ( '0' .. '9' )+
 							{
-							DebugLocation(227, 101);
+							DebugLocation(230, 101);
 							Match('.'); 
-							DebugLocation(227, 108);
-							// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:227:108: ( '0' .. '9' )+
+							DebugLocation(230, 108);
+							// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:230:108: ( '0' .. '9' )+
 							int cnt19=0;
 							try { DebugEnterSubRule(19);
 							while (true)
@@ -2578,7 +2615,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 									DebugEnterAlt(1);
 									// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 									{
-									DebugLocation(227, 108);
+									DebugLocation(230, 108);
 									input.Consume();
 
 
@@ -2628,7 +2665,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(21); }
 
-			DebugLocation(227, 119);
+			DebugLocation(230, 119);
 			Match('\''); 
 
 			}
@@ -2638,8 +2675,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("DATETIME", 46);
-			LeaveRule("DATETIME", 46);
+			TraceOut("DATETIME", 47);
+			LeaveRule("DATETIME", 47);
 			LeaveRule_DATETIME();
 		}
 	}
@@ -2653,60 +2690,60 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mGUID()
 	{
 		EnterRule_GUID();
-		EnterRule("GUID", 47);
-		TraceIn("GUID", 47);
+		EnterRule("GUID", 48);
+		TraceIn("GUID", 48);
 		try
 		{
 			int _type = GUID;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:229:6: ( 'guid\\'' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '\\'' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:232:6: ( 'guid\\'' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '\\'' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:229:8: 'guid\\'' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '\\''
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:232:8: 'guid\\'' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR '-' HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR HEX_PAIR '\\''
 			{
-			DebugLocation(229, 8);
+			DebugLocation(232, 8);
 			Match("guid'"); 
 
-			DebugLocation(229, 17);
+			DebugLocation(232, 17);
 			mHEX_PAIR(); 
-			DebugLocation(229, 26);
+			DebugLocation(232, 26);
 			mHEX_PAIR(); 
-			DebugLocation(229, 35);
+			DebugLocation(232, 35);
 			mHEX_PAIR(); 
-			DebugLocation(229, 44);
+			DebugLocation(232, 44);
 			mHEX_PAIR(); 
-			DebugLocation(229, 53);
+			DebugLocation(232, 53);
 			Match('-'); 
-			DebugLocation(229, 57);
+			DebugLocation(232, 57);
 			mHEX_PAIR(); 
-			DebugLocation(229, 66);
+			DebugLocation(232, 66);
 			mHEX_PAIR(); 
-			DebugLocation(229, 75);
+			DebugLocation(232, 75);
 			Match('-'); 
-			DebugLocation(229, 79);
+			DebugLocation(232, 79);
 			mHEX_PAIR(); 
-			DebugLocation(229, 88);
+			DebugLocation(232, 88);
 			mHEX_PAIR(); 
-			DebugLocation(229, 97);
+			DebugLocation(232, 97);
 			Match('-'); 
-			DebugLocation(229, 101);
+			DebugLocation(232, 101);
 			mHEX_PAIR(); 
-			DebugLocation(229, 110);
+			DebugLocation(232, 110);
 			mHEX_PAIR(); 
-			DebugLocation(229, 119);
+			DebugLocation(232, 119);
 			Match('-'); 
-			DebugLocation(229, 123);
+			DebugLocation(232, 123);
 			mHEX_PAIR(); 
-			DebugLocation(229, 132);
+			DebugLocation(232, 132);
 			mHEX_PAIR(); 
-			DebugLocation(229, 141);
+			DebugLocation(232, 141);
 			mHEX_PAIR(); 
-			DebugLocation(229, 150);
+			DebugLocation(232, 150);
 			mHEX_PAIR(); 
-			DebugLocation(229, 159);
+			DebugLocation(232, 159);
 			mHEX_PAIR(); 
-			DebugLocation(229, 168);
+			DebugLocation(232, 168);
 			mHEX_PAIR(); 
-			DebugLocation(229, 177);
+			DebugLocation(232, 177);
 			Match('\''); 
 
 			}
@@ -2716,8 +2753,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("GUID", 47);
-			LeaveRule("GUID", 47);
+			TraceOut("GUID", 48);
+			LeaveRule("GUID", 48);
 			LeaveRule_GUID();
 		}
 	}
@@ -2731,20 +2768,20 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mBYTE()
 	{
 		EnterRule_BYTE();
-		EnterRule("BYTE", 48);
-		TraceIn("BYTE", 48);
+		EnterRule("BYTE", 49);
+		TraceIn("BYTE", 49);
 		try
 		{
 			int _type = BYTE;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:231:6: ( '0x' HEX_PAIR )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:234:6: ( '0x' HEX_PAIR )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:231:8: '0x' HEX_PAIR
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:234:8: '0x' HEX_PAIR
 			{
-			DebugLocation(231, 8);
+			DebugLocation(234, 8);
 			Match("0x"); 
 
-			DebugLocation(231, 13);
+			DebugLocation(234, 13);
 			mHEX_PAIR(); 
 
 			}
@@ -2754,8 +2791,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("BYTE", 48);
-			LeaveRule("BYTE", 48);
+			TraceOut("BYTE", 49);
+			LeaveRule("BYTE", 49);
 			LeaveRule_BYTE();
 		}
 	}
@@ -2769,18 +2806,18 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mSPACE()
 	{
 		EnterRule_SPACE();
-		EnterRule("SPACE", 49);
-		TraceIn("SPACE", 49);
+		EnterRule("SPACE", 50);
+		TraceIn("SPACE", 50);
 		try
 		{
 			int _type = SPACE;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:233:7: ( ( ' ' | '\\t' )+ )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:236:7: ( ( ' ' | '\\t' )+ )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:233:9: ( ' ' | '\\t' )+
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:236:9: ( ' ' | '\\t' )+
 			{
-			DebugLocation(233, 9);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:233:9: ( ' ' | '\\t' )+
+			DebugLocation(236, 9);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:236:9: ( ' ' | '\\t' )+
 			int cnt22=0;
 			try { DebugEnterSubRule(22);
 			while (true)
@@ -2802,7 +2839,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(233, 9);
+					DebugLocation(236, 9);
 					input.Consume();
 
 
@@ -2832,8 +2869,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("SPACE", 49);
-			LeaveRule("SPACE", 49);
+			TraceOut("SPACE", 50);
+			LeaveRule("SPACE", 50);
 			LeaveRule_SPACE();
 		}
 	}
@@ -2847,18 +2884,18 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mNEWLINE()
 	{
 		EnterRule_NEWLINE();
-		EnterRule("NEWLINE", 50);
-		TraceIn("NEWLINE", 50);
+		EnterRule("NEWLINE", 51);
+		TraceIn("NEWLINE", 51);
 		try
 		{
 			int _type = NEWLINE;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:235:9: ( ( '\\r' | '\\n' )+ )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:238:9: ( ( '\\r' | '\\n' )+ )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:235:11: ( '\\r' | '\\n' )+
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:238:11: ( '\\r' | '\\n' )+
 			{
-			DebugLocation(235, 11);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:235:11: ( '\\r' | '\\n' )+
+			DebugLocation(238, 11);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:238:11: ( '\\r' | '\\n' )+
 			int cnt23=0;
 			try { DebugEnterSubRule(23);
 			while (true)
@@ -2880,7 +2917,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(235, 11);
+					DebugLocation(238, 11);
 					input.Consume();
 
 
@@ -2910,8 +2947,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("NEWLINE", 50);
-			LeaveRule("NEWLINE", 50);
+			TraceOut("NEWLINE", 51);
+			LeaveRule("NEWLINE", 51);
 			LeaveRule_NEWLINE();
 		}
 	}
@@ -2925,20 +2962,20 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mDYNAMICIDENTIFIER()
 	{
 		EnterRule_DYNAMICIDENTIFIER();
-		EnterRule("DYNAMICIDENTIFIER", 51);
-		TraceIn("DYNAMICIDENTIFIER", 51);
+		EnterRule("DYNAMICIDENTIFIER", 52);
+		TraceIn("DYNAMICIDENTIFIER", 52);
 		try
 		{
 			int _type = DYNAMICIDENTIFIER;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:238:2: ( '[' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+ ']' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:241:2: ( '[' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+ ']' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:238:4: '[' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+ ']'
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:241:4: '[' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+ ']'
 			{
-			DebugLocation(238, 4);
+			DebugLocation(241, 4);
 			Match('['); 
-			DebugLocation(238, 8);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:238:8: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+
+			DebugLocation(241, 8);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:241:8: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+
 			int cnt24=0;
 			try { DebugEnterSubRule(24);
 			while (true)
@@ -2960,7 +2997,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(238, 8);
+					DebugLocation(241, 8);
 					input.Consume();
 
 
@@ -2982,7 +3019,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(24); }
 
-			DebugLocation(238, 42);
+			DebugLocation(241, 42);
 			Match(']'); 
 
 			}
@@ -2992,8 +3029,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("DYNAMICIDENTIFIER", 51);
-			LeaveRule("DYNAMICIDENTIFIER", 51);
+			TraceOut("DYNAMICIDENTIFIER", 52);
+			LeaveRule("DYNAMICIDENTIFIER", 52);
 			LeaveRule_DYNAMICIDENTIFIER();
 		}
 	}
@@ -3007,17 +3044,17 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mHEX_PAIR()
 	{
 		EnterRule_HEX_PAIR();
-		EnterRule("HEX_PAIR", 52);
-		TraceIn("HEX_PAIR", 52);
+		EnterRule("HEX_PAIR", 53);
+		TraceIn("HEX_PAIR", 53);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:243:2: ( HEX_DIGIT HEX_DIGIT )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:246:2: ( HEX_DIGIT HEX_DIGIT )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:243:4: HEX_DIGIT HEX_DIGIT
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:246:4: HEX_DIGIT HEX_DIGIT
 			{
-			DebugLocation(243, 4);
+			DebugLocation(246, 4);
 			mHEX_DIGIT(); 
-			DebugLocation(243, 14);
+			DebugLocation(246, 14);
 			mHEX_DIGIT(); 
 
 			}
@@ -3025,8 +3062,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("HEX_PAIR", 52);
-			LeaveRule("HEX_PAIR", 52);
+			TraceOut("HEX_PAIR", 53);
+			LeaveRule("HEX_PAIR", 53);
 			LeaveRule_HEX_PAIR();
 		}
 	}
@@ -3040,18 +3077,18 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mIDENTIFIER()
 	{
 		EnterRule_IDENTIFIER();
-		EnterRule("IDENTIFIER", 53);
-		TraceIn("IDENTIFIER", 53);
+		EnterRule("IDENTIFIER", 54);
+		TraceIn("IDENTIFIER", 54);
 		try
 		{
 			int _type = IDENTIFIER;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:245:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+ )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:248:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+ )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:245:4: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:248:4: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+
 			{
-			DebugLocation(245, 4);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:245:4: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+
+			DebugLocation(248, 4);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:248:4: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )+
 			int cnt25=0;
 			try { DebugEnterSubRule(25);
 			while (true)
@@ -3073,7 +3110,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 					DebugEnterAlt(1);
 					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 					{
-					DebugLocation(245, 4);
+					DebugLocation(248, 4);
 					input.Consume();
 
 
@@ -3103,8 +3140,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("IDENTIFIER", 53);
-			LeaveRule("IDENTIFIER", 53);
+			TraceOut("IDENTIFIER", 54);
+			LeaveRule("IDENTIFIER", 54);
 			LeaveRule_IDENTIFIER();
 		}
 	}
@@ -3118,20 +3155,20 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mSTRING()
 	{
 		EnterRule_STRING();
-		EnterRule("STRING", 54);
-		TraceIn("STRING", 54);
+		EnterRule("STRING", 55);
+		TraceIn("STRING", 55);
 		try
 		{
 			int _type = STRING;
 			int _channel = DefaultTokenChannel;
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:247:9: ( '\\'' ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )* '\\'' )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:250:9: ( '\\'' ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )* '\\'' )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:247:12: '\\'' ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )* '\\''
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:250:12: '\\'' ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )* '\\''
 			{
-			DebugLocation(247, 12);
+			DebugLocation(250, 12);
 			Match('\''); 
-			DebugLocation(247, 17);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:247:17: ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )*
+			DebugLocation(250, 17);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:250:17: ( ESC_SEQ |~ ( '\\\\' | '\\'' ) )*
 			try { DebugEnterSubRule(26);
 			while (true)
 			{
@@ -3165,18 +3202,18 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				{
 				case 1:
 					DebugEnterAlt(1);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:247:18: ESC_SEQ
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:250:18: ESC_SEQ
 					{
-					DebugLocation(247, 18);
+					DebugLocation(250, 18);
 					mESC_SEQ(); 
 
 					}
 					break;
 				case 2:
 					DebugEnterAlt(2);
-					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:247:27: ~ ( '\\\\' | '\\'' )
+					// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:250:27: ~ ( '\\\\' | '\\'' )
 					{
-					DebugLocation(247, 27);
+					DebugLocation(250, 27);
 					input.Consume();
 
 
@@ -3193,7 +3230,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 			} finally { DebugExitSubRule(26); }
 
-			DebugLocation(247, 42);
+			DebugLocation(250, 42);
 			Match('\''); 
 
 			}
@@ -3203,8 +3240,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("STRING", 54);
-			LeaveRule("STRING", 54);
+			TraceOut("STRING", 55);
+			LeaveRule("STRING", 55);
 			LeaveRule_STRING();
 		}
 	}
@@ -3218,15 +3255,15 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mHEX_DIGIT()
 	{
 		EnterRule_HEX_DIGIT();
-		EnterRule("HEX_DIGIT", 55);
-		TraceIn("HEX_DIGIT", 55);
+		EnterRule("HEX_DIGIT", 56);
+		TraceIn("HEX_DIGIT", 56);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:251:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:254:11: ( ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' ) )
 			DebugEnterAlt(1);
 			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:
 			{
-			DebugLocation(251, 11);
+			DebugLocation(254, 11);
 			if ((input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='F')||(input.LA(1)>='a' && input.LA(1)<='f'))
 			{
 				input.Consume();
@@ -3245,8 +3282,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("HEX_DIGIT", 55);
-			LeaveRule("HEX_DIGIT", 55);
+			TraceOut("HEX_DIGIT", 56);
+			LeaveRule("HEX_DIGIT", 56);
 			LeaveRule_HEX_DIGIT();
 		}
 	}
@@ -3260,11 +3297,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mESC_SEQ()
 	{
 		EnterRule_ESC_SEQ();
-		EnterRule("ESC_SEQ", 56);
-		TraceIn("ESC_SEQ", 56);
+		EnterRule("ESC_SEQ", 57);
+		TraceIn("ESC_SEQ", 57);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:255:2: ( '\\'\\'' | '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:258:2: ( '\\'\\'' | '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' ) | UNICODE_ESC | OCTAL_ESC )
 			int alt27=4;
 			try { DebugEnterDecision(27, false);
 			int LA27_1 = input.LA(1);
@@ -3326,9 +3363,9 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:255:4: '\\'\\''
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:258:4: '\\'\\''
 				{
-				DebugLocation(255, 4);
+				DebugLocation(258, 4);
 				Match("''"); 
 
 
@@ -3336,11 +3373,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:256:5: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:259:5: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\\\"' | '\\'' | '\\\\' )
 				{
-				DebugLocation(256, 5);
+				DebugLocation(259, 5);
 				Match('\\'); 
-				DebugLocation(256, 10);
+				DebugLocation(259, 10);
 				input.Consume();
 
 
@@ -3348,18 +3385,18 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				break;
 			case 3:
 				DebugEnterAlt(3);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:257:5: UNICODE_ESC
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:260:5: UNICODE_ESC
 				{
-				DebugLocation(257, 5);
+				DebugLocation(260, 5);
 				mUNICODE_ESC(); 
 
 				}
 				break;
 			case 4:
 				DebugEnterAlt(4);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:258:5: OCTAL_ESC
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:261:5: OCTAL_ESC
 				{
-				DebugLocation(258, 5);
+				DebugLocation(261, 5);
 				mOCTAL_ESC(); 
 
 				}
@@ -3369,8 +3406,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("ESC_SEQ", 56);
-			LeaveRule("ESC_SEQ", 56);
+			TraceOut("ESC_SEQ", 57);
+			LeaveRule("ESC_SEQ", 57);
 			LeaveRule_ESC_SEQ();
 		}
 	}
@@ -3384,11 +3421,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mOCTAL_ESC()
 	{
 		EnterRule_OCTAL_ESC();
-		EnterRule("OCTAL_ESC", 57);
-		TraceIn("OCTAL_ESC", 57);
+		EnterRule("OCTAL_ESC", 58);
+		TraceIn("OCTAL_ESC", 58);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:263:3: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:266:3: ( '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) ( '0' .. '7' ) | '\\\\' ( '0' .. '7' ) )
 			int alt28=3;
 			try { DebugEnterDecision(28, false);
 			int LA28_1 = input.LA(1);
@@ -3450,17 +3487,17 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 			{
 			case 1:
 				DebugEnterAlt(1);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:263:7: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:266:7: '\\\\' ( '0' .. '3' ) ( '0' .. '7' ) ( '0' .. '7' )
 				{
-				DebugLocation(263, 7);
+				DebugLocation(266, 7);
 				Match('\\'); 
-				DebugLocation(263, 12);
+				DebugLocation(266, 12);
 				input.Consume();
 
-				DebugLocation(263, 23);
+				DebugLocation(266, 23);
 				input.Consume();
 
-				DebugLocation(263, 34);
+				DebugLocation(266, 34);
 				input.Consume();
 
 
@@ -3468,14 +3505,14 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				break;
 			case 2:
 				DebugEnterAlt(2);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:264:7: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:267:7: '\\\\' ( '0' .. '7' ) ( '0' .. '7' )
 				{
-				DebugLocation(264, 7);
+				DebugLocation(267, 7);
 				Match('\\'); 
-				DebugLocation(264, 12);
+				DebugLocation(267, 12);
 				input.Consume();
 
-				DebugLocation(264, 23);
+				DebugLocation(267, 23);
 				input.Consume();
 
 
@@ -3483,11 +3520,11 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				break;
 			case 3:
 				DebugEnterAlt(3);
-				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:265:7: '\\\\' ( '0' .. '7' )
+				// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:268:7: '\\\\' ( '0' .. '7' )
 				{
-				DebugLocation(265, 7);
+				DebugLocation(268, 7);
 				Match('\\'); 
-				DebugLocation(265, 12);
+				DebugLocation(268, 12);
 				input.Consume();
 
 
@@ -3498,8 +3535,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("OCTAL_ESC", 57);
-			LeaveRule("OCTAL_ESC", 57);
+			TraceOut("OCTAL_ESC", 58);
+			LeaveRule("OCTAL_ESC", 58);
 			LeaveRule_OCTAL_ESC();
 		}
 	}
@@ -3513,25 +3550,25 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 	private void mUNICODE_ESC()
 	{
 		EnterRule_UNICODE_ESC();
-		EnterRule("UNICODE_ESC", 58);
-		TraceIn("UNICODE_ESC", 58);
+		EnterRule("UNICODE_ESC", 59);
+		TraceIn("UNICODE_ESC", 59);
 		try
 		{
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:270:3: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:273:3: ( '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT )
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:270:7: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:273:7: '\\\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
 			{
-			DebugLocation(270, 7);
+			DebugLocation(273, 7);
 			Match('\\'); 
-			DebugLocation(270, 12);
+			DebugLocation(273, 12);
 			Match('u'); 
-			DebugLocation(270, 16);
+			DebugLocation(273, 16);
 			mHEX_DIGIT(); 
-			DebugLocation(270, 26);
+			DebugLocation(273, 26);
 			mHEX_DIGIT(); 
-			DebugLocation(270, 36);
+			DebugLocation(273, 36);
 			mHEX_DIGIT(); 
-			DebugLocation(270, 46);
+			DebugLocation(273, 46);
 			mHEX_DIGIT(); 
 
 			}
@@ -3539,8 +3576,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		}
 		finally
 		{
-			TraceOut("UNICODE_ESC", 58);
-			LeaveRule("UNICODE_ESC", 58);
+			TraceOut("UNICODE_ESC", 59);
+			LeaveRule("UNICODE_ESC", 59);
 			LeaveRule_UNICODE_ESC();
 		}
 	}
@@ -3548,8 +3585,8 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 
 	public override void mTokens()
 	{
-		// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:8: ( T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | ASSIGN | EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL | NOT | OR | AND | ASC | DESC | ALLPAGES | NONE | SKIP | TOP | FILTER | ORDERBY | SELECT | INLINECOUNT | EXPAND | IGNORED | STARTSWITH | ENDSWITH | SUBSTRINGOF | TOLOWER | ANY | ALL | COUNT | MIN | MAX | SUM | AVERAGE | INT | LONG | DOUBLE | SINGLE | BOOL | NULL | DATETIME | GUID | BYTE | SPACE | NEWLINE | DYNAMICIDENTIFIER | IDENTIFIER | STRING )
-		int alt29=53;
+		// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:8: ( T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | ASSIGN | EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL | NOT | OR | AND | ASC | DESC | ALLPAGES | NONE | SKIP | TOP | FILTER | ORDERBY | SELECT | INLINECOUNT | EXPAND | IGNORED | STARTSWITH | ENDSWITH | SUBSTRINGOF | TOLOWER | TOUPPER | ANY | ALL | COUNT | MIN | MAX | SUM | AVERAGE | INT | LONG | DOUBLE | SINGLE | BOOL | NULL | DATETIME | GUID | BYTE | SPACE | NEWLINE | DYNAMICIDENTIFIER | IDENTIFIER | STRING )
+		int alt29=54;
 		try { DebugEnterDecision(29, false);
 		try
 		{
@@ -3565,55 +3602,55 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		{
 		case 1:
 			DebugEnterAlt(1);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:10: T__57
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:10: T__58
 			{
 			DebugLocation(1, 10);
-			mT__57(); 
+			mT__58(); 
 
 			}
 			break;
 		case 2:
 			DebugEnterAlt(2);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:16: T__58
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:16: T__59
 			{
 			DebugLocation(1, 16);
-			mT__58(); 
+			mT__59(); 
 
 			}
 			break;
 		case 3:
 			DebugEnterAlt(3);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:22: T__59
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:22: T__60
 			{
 			DebugLocation(1, 22);
-			mT__59(); 
+			mT__60(); 
 
 			}
 			break;
 		case 4:
 			DebugEnterAlt(4);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:28: T__60
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:28: T__61
 			{
 			DebugLocation(1, 28);
-			mT__60(); 
+			mT__61(); 
 
 			}
 			break;
 		case 5:
 			DebugEnterAlt(5);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:34: T__61
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:34: T__62
 			{
 			DebugLocation(1, 34);
-			mT__61(); 
+			mT__62(); 
 
 			}
 			break;
 		case 6:
 			DebugEnterAlt(6);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:40: T__62
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:40: T__63
 			{
 			DebugLocation(1, 40);
-			mT__62(); 
+			mT__63(); 
 
 			}
 			break;
@@ -3853,189 +3890,198 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 			break;
 		case 33:
 			DebugEnterAlt(33);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:258: ANY
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:258: TOUPPER
 			{
 			DebugLocation(1, 258);
-			mANY(); 
+			mTOUPPER(); 
 
 			}
 			break;
 		case 34:
 			DebugEnterAlt(34);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:262: ALL
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:266: ANY
 			{
-			DebugLocation(1, 262);
-			mALL(); 
+			DebugLocation(1, 266);
+			mANY(); 
 
 			}
 			break;
 		case 35:
 			DebugEnterAlt(35);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:266: COUNT
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:270: ALL
 			{
-			DebugLocation(1, 266);
-			mCOUNT(); 
+			DebugLocation(1, 270);
+			mALL(); 
 
 			}
 			break;
 		case 36:
 			DebugEnterAlt(36);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:272: MIN
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:274: COUNT
 			{
-			DebugLocation(1, 272);
-			mMIN(); 
+			DebugLocation(1, 274);
+			mCOUNT(); 
 
 			}
 			break;
 		case 37:
 			DebugEnterAlt(37);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:276: MAX
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:280: MIN
 			{
-			DebugLocation(1, 276);
-			mMAX(); 
+			DebugLocation(1, 280);
+			mMIN(); 
 
 			}
 			break;
 		case 38:
 			DebugEnterAlt(38);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:280: SUM
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:284: MAX
 			{
-			DebugLocation(1, 280);
-			mSUM(); 
+			DebugLocation(1, 284);
+			mMAX(); 
 
 			}
 			break;
 		case 39:
 			DebugEnterAlt(39);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:284: AVERAGE
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:288: SUM
 			{
-			DebugLocation(1, 284);
-			mAVERAGE(); 
+			DebugLocation(1, 288);
+			mSUM(); 
 
 			}
 			break;
 		case 40:
 			DebugEnterAlt(40);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:292: INT
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:292: AVERAGE
 			{
 			DebugLocation(1, 292);
-			mINT(); 
+			mAVERAGE(); 
 
 			}
 			break;
 		case 41:
 			DebugEnterAlt(41);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:296: LONG
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:300: INT
 			{
-			DebugLocation(1, 296);
-			mLONG(); 
+			DebugLocation(1, 300);
+			mINT(); 
 
 			}
 			break;
 		case 42:
 			DebugEnterAlt(42);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:301: DOUBLE
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:304: LONG
 			{
-			DebugLocation(1, 301);
-			mDOUBLE(); 
+			DebugLocation(1, 304);
+			mLONG(); 
 
 			}
 			break;
 		case 43:
 			DebugEnterAlt(43);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:308: SINGLE
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:309: DOUBLE
 			{
-			DebugLocation(1, 308);
-			mSINGLE(); 
+			DebugLocation(1, 309);
+			mDOUBLE(); 
 
 			}
 			break;
 		case 44:
 			DebugEnterAlt(44);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:315: BOOL
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:316: SINGLE
 			{
-			DebugLocation(1, 315);
-			mBOOL(); 
+			DebugLocation(1, 316);
+			mSINGLE(); 
 
 			}
 			break;
 		case 45:
 			DebugEnterAlt(45);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:320: NULL
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:323: BOOL
 			{
-			DebugLocation(1, 320);
-			mNULL(); 
+			DebugLocation(1, 323);
+			mBOOL(); 
 
 			}
 			break;
 		case 46:
 			DebugEnterAlt(46);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:325: DATETIME
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:328: NULL
 			{
-			DebugLocation(1, 325);
-			mDATETIME(); 
+			DebugLocation(1, 328);
+			mNULL(); 
 
 			}
 			break;
 		case 47:
 			DebugEnterAlt(47);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:334: GUID
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:333: DATETIME
 			{
-			DebugLocation(1, 334);
-			mGUID(); 
+			DebugLocation(1, 333);
+			mDATETIME(); 
 
 			}
 			break;
 		case 48:
 			DebugEnterAlt(48);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:339: BYTE
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:342: GUID
 			{
-			DebugLocation(1, 339);
-			mBYTE(); 
+			DebugLocation(1, 342);
+			mGUID(); 
 
 			}
 			break;
 		case 49:
 			DebugEnterAlt(49);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:344: SPACE
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:347: BYTE
 			{
-			DebugLocation(1, 344);
-			mSPACE(); 
+			DebugLocation(1, 347);
+			mBYTE(); 
 
 			}
 			break;
 		case 50:
 			DebugEnterAlt(50);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:350: NEWLINE
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:352: SPACE
 			{
-			DebugLocation(1, 350);
-			mNEWLINE(); 
+			DebugLocation(1, 352);
+			mSPACE(); 
 
 			}
 			break;
 		case 51:
 			DebugEnterAlt(51);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:358: DYNAMICIDENTIFIER
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:358: NEWLINE
 			{
 			DebugLocation(1, 358);
-			mDYNAMICIDENTIFIER(); 
+			mNEWLINE(); 
 
 			}
 			break;
 		case 52:
 			DebugEnterAlt(52);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:376: IDENTIFIER
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:366: DYNAMICIDENTIFIER
 			{
-			DebugLocation(1, 376);
-			mIDENTIFIER(); 
+			DebugLocation(1, 366);
+			mDYNAMICIDENTIFIER(); 
 
 			}
 			break;
 		case 53:
 			DebugEnterAlt(53);
-			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:387: STRING
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:384: IDENTIFIER
 			{
-			DebugLocation(1, 387);
+			DebugLocation(1, 384);
+			mIDENTIFIER(); 
+
+			}
+			break;
+		case 54:
+			DebugEnterAlt(54);
+			// D:\\Code\\LinqToQuerystring\\LinqToQuerystring\\LinqToQuerystring.g:1:395: STRING
+			{
+			DebugLocation(1, 395);
 			mSTRING(); 
 
 			}
@@ -4060,18 +4106,18 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 		private const string DFA29_eotS =
 			"\x8\xFFFF\x7\x1B\x1\xFFFF\x4\x1B\x1\xFFFF\x1\x3E\x1\x1B\x1\x3E\x5\xFFFF"+
 			"\x1\x42\x1\x1B\x1\x44\x2\x1B\x1\x48\x1\x49\x1\x1B\x1\x4B\x1\x4C\x1\x4D"+
-			"\x6\x1B\x7\xFFFF\x7\x1B\x1\x3E\x1\x1B\x1\xFFFF\x1\x64\x1\xFFFF\x1\x1B"+
-			"\x1\xFFFF\x1\x1B\x1\xFFFF\x1\x69\x2\x1B\x2\xFFFF\x1\x1B\x3\xFFFF\x1\x6D"+
-			"\x1\x6E\x1\x6F\x1\x71\x3\x1B\x7\xFFFF\x2\x1B\x1\x7E\x3\x1B\x1\x82\x1"+
-			"\x83\x1\xFFFF\x1\x1B\x1\x85\x2\x1B\x1\xFFFF\x1\x89\x1\x8A\x1\x1B\x3\xFFFF"+
-			"\x1\x1B\x1\xFFFF\x1\x1B\x1\x8E\x1\x1B\x7\xFFFF\x2\x1B\x1\xFFFF\x1\x1B"+
-			"\x1\x9A\x1\x1B\x2\xFFFF\x1\x9C\x2\xFFFF\x2\x1B\x3\xFFFF\x2\x1B\x1\xFFFF"+
-			"\x1\x1B\x7\xFFFF\x3\x1B\x1\xFFFF\x1\xAC\x1\xFFFF\x1\x9A\x4\x1B\x7\xFFFF"+
-			"\x3\x1B\x1\xFFFF\x2\x1B\x1\xBC\x1\x1B\x6\xFFFF\x2\x1B\x1\xC5\x1\xC6\x1"+
-			"\xC7\x1\xFFFF\x1\x1B\x5\xFFFF\x2\x1B\x9\xFFFF\x2\x1B\x2\xFFFF\x1\xD5"+
-			"\x1\x1B\x2\xFFFF\x1\xD8\x4\xFFFF";
+			"\x6\x1B\x7\xFFFF\x7\x1B\x1\x3E\x1\x1B\x1\xFFFF\x1\x65\x1\xFFFF\x1\x1B"+
+			"\x1\xFFFF\x1\x1B\x1\xFFFF\x1\x6A\x2\x1B\x2\xFFFF\x1\x1B\x3\xFFFF\x1\x6E"+
+			"\x1\x6F\x1\x70\x1\x72\x3\x1B\x7\xFFFF\x2\x1B\x1\x7F\x4\x1B\x1\x84\x1"+
+			"\x85\x1\xFFFF\x1\x1B\x1\x87\x2\x1B\x1\xFFFF\x1\x8B\x1\x8C\x1\x1B\x3\xFFFF"+
+			"\x1\x1B\x1\xFFFF\x1\x1B\x1\x90\x1\x1B\x7\xFFFF\x2\x1B\x1\xFFFF\x2\x1B"+
+			"\x1\x9D\x1\x1B\x2\xFFFF\x1\x9F\x2\xFFFF\x2\x1B\x3\xFFFF\x2\x1B\x1\xFFFF"+
+			"\x1\x1B\x7\xFFFF\x4\x1B\x1\xFFFF\x1\xB0\x1\xFFFF\x1\x9D\x4\x1B\x7\xFFFF"+
+			"\x4\x1B\x1\xFFFF\x2\x1B\x1\xC1\x1\x1B\x6\xFFFF\x2\x1B\x1\xCA\x1\xCB\x1"+
+			"\xCC\x1\xCD\x1\xFFFF\x1\x1B\x5\xFFFF\x2\x1B\xA\xFFFF\x2\x1B\x2\xFFFF"+
+			"\x1\xDB\x1\x1B\x2\xFFFF\x1\xDE\x4\xFFFF";
 		private const string DFA29_eofS =
-			"\xDB\xFFFF";
+			"\xE1\xFFFF";
 		private const string DFA29_minS =
 			"\x1\x9\x7\xFFFF\x1\x6E\x3\x65\x1\x72\x1\x6C\x1\x61\x1\x30\x1\x74\x2\x6F"+
 			"\x1\x61\x1\x30\x1\x2E\x1\x61\x1\x2E\x5\xFFFF\x1\x30\x1\x64\x1\x30\x1"+
@@ -4079,46 +4125,46 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 			"\x74\x6\x30\x1\xFFFF\x1\x61\x1\x62\x1\x6C\x2\x75\x1\x6E\x1\x78\x1\x2E"+
 			"\x1\x30\x1\xFFFF\x2\x30\x1\x6C\x1\xFFFF\x1\x73\x1\xFFFF\x1\x30\x1\x65"+
 			"\x1\x6C\x2\xFFFF\x1\x64\x3\xFFFF\x4\x30\x1\x72\x1\x63\x1\x65\x7\x30\x1"+
-			"\x72\x1\x73\x1\x30\x1\x6F\x1\x65\x1\x6E\x2\x30\x1\xFFFF\x2\x30\x1\x73"+
-			"\x1\x77\x1\xFFFF\x2\x30\x1\x27\x3\xFFFF\x1\x61\x1\xFFFF\x1\x61\x1\x30"+
-			"\x1\x74\x7\x30\x2\x74\x1\xFFFF\x1\x77\x1\x30\x1\x74\x2\xFFFF\x1\x30\x2"+
-			"\xFFFF\x1\x65\x1\x69\x3\xFFFF\x2\x67\x1\xFFFF\x1\x69\x2\x30\x1\xFFFF"+
-			"\x4\x30\x1\x73\x1\x72\x1\x65\x1\xFFFF\x1\x30\x1\xFFFF\x1\x30\x1\x74\x2"+
-			"\x65\x1\x6D\x1\xFFFF\x1\x30\x1\xFFFF\x4\x30\x1\x77\x1\x69\x1\x72\x1\xFFFF"+
-			"\x1\x68\x1\x73\x1\x30\x1\x65\x1\xFFFF\x5\x30\x1\x69\x1\x6E\x3\x30\x1"+
-			"\xFFFF\x1\x27\x2\xFFFF\x2\x30\x1\xFFFF\x1\x74\x1\x67\x7\xFFFF\x1\x30"+
-			"\x1\xFFFF\x1\x68\x1\x6F\x1\xFFFF\x2\x30\x1\x66\x1\x30\x1\xFFFF\x2\x30"+
-			"\x3\xFFFF";
+			"\x72\x1\x73\x1\x30\x1\x6F\x1\x70\x1\x65\x1\x6E\x2\x30\x1\xFFFF\x2\x30"+
+			"\x1\x73\x1\x77\x1\xFFFF\x2\x30\x1\x27\x3\xFFFF\x1\x61\x1\xFFFF\x1\x61"+
+			"\x1\x30\x1\x74\x7\x30\x2\x74\x1\xFFFF\x1\x77\x1\x70\x1\x30\x1\x74\x2"+
+			"\xFFFF\x1\x30\x2\xFFFF\x1\x65\x1\x69\x3\xFFFF\x2\x67\x1\xFFFF\x1\x69"+
+			"\x2\x30\x1\xFFFF\x4\x30\x1\x73\x1\x72\x2\x65\x1\xFFFF\x1\x30\x1\xFFFF"+
+			"\x1\x30\x1\x74\x2\x65\x1\x6D\x1\xFFFF\x1\x30\x1\xFFFF\x4\x30\x1\x77\x1"+
+			"\x69\x2\x72\x1\xFFFF\x1\x68\x1\x73\x1\x30\x1\x65\x1\xFFFF\x5\x30\x1\x69"+
+			"\x1\x6E\x4\x30\x1\xFFFF\x1\x27\x2\xFFFF\x2\x30\x1\xFFFF\x1\x74\x1\x67"+
+			"\x8\xFFFF\x1\x30\x1\xFFFF\x1\x68\x1\x6F\x1\xFFFF\x2\x30\x1\x66\x1\x30"+
+			"\x1\xFFFF\x2\x30\x3\xFFFF";
 		private const string DFA29_maxS =
 			"\x1\x7A\x7\xFFFF\x1\x71\x2\x75\x1\x74\x1\x72\x1\x76\x1\x65\x1\x7A\x1"+
 			"\x75\x1\x72\x1\x6F\x1\x69\x1\x39\x1\x7A\x1\x61\x1\x7A\x5\xFFFF\x1\x7A"+
 			"\x1\x64\x1\x7A\x1\x74\x1\x6C\x2\x7A\x1\x69\x3\x7A\x1\x79\x1\x63\x1\x6C"+
-			"\x1\x65\x1\x73\x1\x74\x6\x7A\x1\xFFFF\x1\x61\x1\x6D\x1\x6C\x2\x75\x1"+
-			"\x6E\x1\x78\x1\x4C\x1\x66\x1\xFFFF\x1\x7A\x1\x39\x1\x6C\x1\xFFFF\x1\x73"+
-			"\x1\xFFFF\x1\x7A\x1\x65\x1\x6C\x2\xFFFF\x1\x64\x3\xFFFF\x4\x7A\x1\x72"+
-			"\x1\x63\x1\x65\x7\x7A\x1\x72\x1\x73\x1\x7A\x1\x6F\x1\x65\x1\x6E\x2\x7A"+
-			"\x1\xFFFF\x2\x66\x1\x73\x1\x77\x1\xFFFF\x2\x7A\x1\x27\x3\xFFFF\x1\x61"+
-			"\x1\xFFFF\x1\x61\x1\x7A\x1\x74\x7\x7A\x2\x74\x1\xFFFF\x1\x77\x1\x7A\x1"+
-			"\x74\x2\xFFFF\x1\x7A\x2\xFFFF\x1\x65\x1\x69\x3\xFFFF\x2\x67\x1\xFFFF"+
-			"\x1\x69\x2\x7A\x1\xFFFF\x4\x7A\x1\x73\x1\x72\x1\x65\x1\xFFFF\x1\x7A\x1"+
+			"\x1\x65\x1\x73\x1\x74\x6\x7A\x1\xFFFF\x1\x61\x1\x6D\x3\x75\x1\x6E\x1"+
+			"\x78\x1\x4C\x1\x66\x1\xFFFF\x1\x7A\x1\x39\x1\x6C\x1\xFFFF\x1\x73\x1\xFFFF"+
+			"\x1\x7A\x1\x65\x1\x6C\x2\xFFFF\x1\x64\x3\xFFFF\x4\x7A\x1\x72\x1\x63\x1"+
+			"\x65\x7\x7A\x1\x72\x1\x73\x1\x7A\x1\x6F\x1\x70\x1\x65\x1\x6E\x2\x7A\x1"+
+			"\xFFFF\x2\x66\x1\x73\x1\x77\x1\xFFFF\x2\x7A\x1\x27\x3\xFFFF\x1\x61\x1"+
+			"\xFFFF\x1\x61\x1\x7A\x1\x74\x7\x7A\x2\x74\x1\xFFFF\x1\x77\x1\x70\x1\x7A"+
+			"\x1\x74\x2\xFFFF\x1\x7A\x2\xFFFF\x1\x65\x1\x69\x3\xFFFF\x2\x67\x1\xFFFF"+
+			"\x1\x69\x2\x7A\x1\xFFFF\x4\x7A\x1\x73\x1\x72\x2\x65\x1\xFFFF\x1\x7A\x1"+
 			"\xFFFF\x1\x7A\x1\x74\x2\x65\x1\x6D\x1\xFFFF\x1\x7A\x1\xFFFF\x4\x7A\x1"+
-			"\x77\x1\x69\x1\x72\x1\xFFFF\x1\x68\x1\x73\x1\x7A\x1\x65\x1\xFFFF\x5\x7A"+
-			"\x1\x69\x1\x6E\x3\x7A\x1\xFFFF\x1\x27\x2\xFFFF\x2\x7A\x1\xFFFF\x1\x74"+
-			"\x1\x67\x7\xFFFF\x1\x7A\x1\xFFFF\x1\x68\x1\x6F\x1\xFFFF\x2\x7A\x1\x66"+
+			"\x77\x1\x69\x2\x72\x1\xFFFF\x1\x68\x1\x73\x1\x7A\x1\x65\x1\xFFFF\x5\x7A"+
+			"\x1\x69\x1\x6E\x4\x7A\x1\xFFFF\x1\x27\x2\xFFFF\x2\x7A\x1\xFFFF\x1\x74"+
+			"\x1\x67\x8\xFFFF\x1\x7A\x1\xFFFF\x1\x68\x1\x6F\x1\xFFFF\x2\x7A\x1\x66"+
 			"\x1\x7A\x1\xFFFF\x2\x7A\x3\xFFFF";
 		private const string DFA29_acceptS =
-			"\x1\xFFFF\x1\x1\x1\x2\x1\x3\x1\x4\x1\x5\x1\x6\x1\x7\x10\xFFFF\x1\x31"+
-			"\x1\x32\x1\x33\x1\x34\x1\x35\x17\xFFFF\x1\x1C\x9\xFFFF\x1\x28\x3\xFFFF"+
+			"\x1\xFFFF\x1\x1\x1\x2\x1\x3\x1\x4\x1\x5\x1\x6\x1\x7\x10\xFFFF\x1\x32"+
+			"\x1\x33\x1\x34\x1\x35\x1\x36\x17\xFFFF\x1\x1C\x9\xFFFF\x1\x29\x3\xFFFF"+
 			"\x1\x8\x1\xFFFF\x1\x9\x3\xFFFF\x1\xA\x1\xB\x1\xFFFF\x1\xC\x1\xD\x1\xF"+
-			"\x16\xFFFF\x1\x29\x4\xFFFF\x1\xE\x3\xFFFF\x1\x10\x1\x21\x1\x11\x1\xFFFF"+
-			"\x1\x22\xC\xFFFF\x1\x26\x3\xFFFF\x1\x24\x1\x25\x1\xFFFF\x1\x2A\x1\x2B"+
-			"\x2\xFFFF\x1\x14\x1\x2D\x1\x2F\x2\xFFFF\x1\x12\x3\xFFFF\x1\x16\x7\xFFFF"+
-			"\x1\x2C\x1\xFFFF\x1\x30\x5\xFFFF\x1\x15\x1\xFFFF\x1\x16\x7\xFFFF\x1\x23"+
-			"\x4\xFFFF\x1\x15\xA\xFFFF\x1\x27\x1\xFFFF\x1\x19\x1\x17\x2\xFFFF\x1\x1B"+
-			"\x2\xFFFF\x1\x20\x1\x1E\x1\x13\x1\x2E\x1\x19\x1\x17\x1\x18\x1\xFFFF\x1"+
-			"\x1B\x2\xFFFF\x1\x18\x4\xFFFF\x1\x1D\x2\xFFFF\x1\x1F\x2\x1A";
+			"\x17\xFFFF\x1\x2A\x4\xFFFF\x1\xE\x3\xFFFF\x1\x10\x1\x22\x1\x11\x1\xFFFF"+
+			"\x1\x23\xC\xFFFF\x1\x27\x4\xFFFF\x1\x25\x1\x26\x1\xFFFF\x1\x2B\x1\x2C"+
+			"\x2\xFFFF\x1\x14\x1\x2E\x1\x30\x2\xFFFF\x1\x12\x3\xFFFF\x1\x16\x8\xFFFF"+
+			"\x1\x2D\x1\xFFFF\x1\x31\x5\xFFFF\x1\x15\x1\xFFFF\x1\x16\x8\xFFFF\x1\x24"+
+			"\x4\xFFFF\x1\x15\xB\xFFFF\x1\x28\x1\xFFFF\x1\x19\x1\x17\x2\xFFFF\x1\x1B"+
+			"\x2\xFFFF\x1\x20\x1\x21\x1\x1E\x1\x13\x1\x2F\x1\x19\x1\x17\x1\x18\x1"+
+			"\xFFFF\x1\x1B\x2\xFFFF\x1\x18\x4\xFFFF\x1\x1D\x2\xFFFF\x1\x1F\x2\x1A";
 		private const string DFA29_specialS =
-			"\xDB\xFFFF}>";
+			"\xE1\xFFFF}>";
 		private static readonly string[] DFA29_transitionS =
 			{
 				"\x1\x18\x1\x19\x2\xFFFF\x1\x19\x12\xFFFF\x1\x18\x3\xFFFF\x1\xF\x1\xFFFF"+
@@ -4189,180 +4235,186 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				"",
 				"\x1\x5C",
 				"\x1\x5D\xA\xFFFF\x1\x5E",
-				"\x1\x5F",
-				"\x1\x60",
+				"\x1\x5F\x8\xFFFF\x1\x60",
 				"\x1\x61",
 				"\x1\x62",
 				"\x1\x63",
-				"\x1\x40\x1\xFFFF\xA\x3C\x12\xFFFF\x1\x64",
-				"\xA\x65\x7\xFFFF\x6\x65\x1A\xFFFF\x6\x65",
+				"\x1\x64",
+				"\x1\x40\x1\xFFFF\xA\x3C\x12\xFFFF\x1\x65",
+				"\xA\x66\x7\xFFFF\x6\x66\x1A\xFFFF\x6\x66",
 				"",
 				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
-				"\xA\x66",
-				"\x1\x67",
-				"",
+				"\xA\x67",
 				"\x1\x68",
 				"",
+				"\x1\x69",
+				"",
 				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
-				"\x1\x6A",
 				"\x1\x6B",
-				"",
-				"",
 				"\x1\x6C",
 				"",
 				"",
+				"\x1\x6D",
+				"",
+				"",
 				"",
 				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
 				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
 				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
-				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\xF\x1B\x1\x70\xA\x1B",
-				"\x1\x72",
+				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\xF\x1B\x1\x71\xA\x1B",
 				"\x1\x73",
 				"\x1\x74",
+				"\x1\x75",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x8"+
-				"\x34\x1\x75\x11\x34",
+				"\x34\x1\x76\x11\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\xB"+
-				"\x34\x1\x76\xE\x34",
+				"\x34\x1\x77\xE\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\xF"+
-				"\x34\x1\x77\xA\x34",
+				"\x34\x1\x78\xA\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\xB"+
-				"\x34\x1\x78\xE\x34",
+				"\x34\x1\x79\xE\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x3"+
-				"\x34\x1\x79\x16\x34",
+				"\x34\x1\x7A\x16\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\xB"+
-				"\x34\x1\x7A\xE\x34",
+				"\x34\x1\x7B\xE\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\xF"+
-				"\x34\x1\x7B\xA\x34",
-				"\x1\x7C",
+				"\x34\x1\x7C\xA\x34",
 				"\x1\x7D",
+				"\x1\x7E",
 				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
-				"\x1\x7F",
 				"\x1\x80",
 				"\x1\x81",
+				"\x1\x82",
+				"\x1\x83",
 				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
 				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
 				"",
-				"\xA\x84\x7\xFFFF\x6\x84\x1A\xFFFF\x6\x84",
-				"\xA\x66\x2C\xFFFF\x1\x86",
-				"\x1\x87",
-				"\x1\x88",
+				"\xA\x86\x7\xFFFF\x6\x86\x1A\xFFFF\x6\x86",
+				"\xA\x67\x2C\xFFFF\x1\x88",
+				"\x1\x89",
+				"\x1\x8A",
 				"",
 				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
 				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
-				"\x1\x8B",
-				"",
-				"",
-				"",
-				"\x1\x8C",
-				"",
 				"\x1\x8D",
-				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
+				"",
+				"",
+				"",
+				"\x1\x8E",
+				"",
 				"\x1\x8F",
+				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
+				"\x1\x91",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\xF"+
-				"\x34\x1\x90\xA\x34",
+				"\x34\x1\x92\xA\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x4"+
-				"\x34\x1\x91\x15\x34",
-				"\xA\x34\x3\xFFFF\x1\x92\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x1A"+
+				"\x34\x1\x93\x15\x34",
+				"\xA\x34\x3\xFFFF\x1\x94\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x1A"+
 				"\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x13"+
-				"\x34\x1\x93\x6\x34",
+				"\x34\x1\x95\x6\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x4"+
-				"\x34\x1\x94\x15\x34",
+				"\x34\x1\x96\x15\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x8"+
-				"\x34\x1\x95\x11\x34",
+				"\x34\x1\x97\x11\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x1"+
-				"\x96\x19\x34",
-				"\x1\x97",
-				"\x1\x98",
-				"",
+				"\x98\x19\x34",
 				"\x1\x99",
-				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
+				"\x1\x9A",
+				"",
 				"\x1\x9B",
-				"",
-				"",
+				"\x1\x9C",
 				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
-				"",
-				"",
-				"\x1\x9D",
 				"\x1\x9E",
 				"",
 				"",
+				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
 				"",
-				"\x1\x9F",
+				"",
 				"\x1\xA0",
-				"",
 				"\x1\xA1",
-				"\xA\x34\x3\xFFFF\x1\xA2\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x1A"+
+				"",
+				"",
+				"",
+				"\x1\xA2",
+				"\x1\xA3",
+				"",
+				"\x1\xA4",
+				"\xA\x34\x3\xFFFF\x1\xA5\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x1A"+
 				"\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x2"+
-				"\x34\x1\xA3\x17\x34",
+				"\x34\x1\xA6\x17\x34",
 				"",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x4"+
-				"\x34\x1\xA5\x15\x34",
+				"\x34\x1\xA8\x15\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x11"+
-				"\x34\x1\xA6\x8\x34",
+				"\x34\x1\xA9\x8\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\xD"+
-				"\x34\x1\xA7\xC\x34",
+				"\x34\x1\xAA\xC\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\xD"+
-				"\x34\x1\xA8\xC\x34",
-				"\x1\xA9",
-				"\x1\xAA",
-				"\x1\xAB",
-				"",
-				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
-				"",
-				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
+				"\x34\x1\xAB\xC\x34",
+				"\x1\xAC",
 				"\x1\xAD",
 				"\x1\xAE",
 				"\x1\xAF",
-				"\x1\xB0",
+				"",
+				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
+				"",
+				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
+				"\x1\xB1",
+				"\x1\xB2",
+				"\x1\xB3",
+				"\x1\xB4",
 				"",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x13"+
-				"\x34\x1\xB2\x6\x34",
+				"\x34\x1\xB6\x6\x34",
 				"",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x11"+
-				"\x34\x1\xB3\x8\x34",
+				"\x34\x1\xB7\x8\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x1"+
-				"\x34\x1\xB4\x18\x34",
+				"\x34\x1\xB8\x18\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x4"+
-				"\x34\x1\xB5\x15\x34",
+				"\x34\x1\xB9\x15\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x3"+
-				"\x34\x1\xB6\x16\x34",
-				"\x1\xB7",
-				"\x1\xB8",
-				"\x1\xB9",
-				"",
-				"\x1\xBA",
+				"\x34\x1\xBA\x16\x34",
 				"\x1\xBB",
-				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
+				"\x1\xBC",
 				"\x1\xBD",
+				"\x1\xBE",
 				"",
-				"\xA\x34\x3\xFFFF\x1\xBE\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x1A"+
+				"\x1\xBF",
+				"\x1\xC0",
+				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
+				"\x1\xC2",
+				"",
+				"\xA\x34\x3\xFFFF\x1\xC3\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x1A"+
 				"\x34",
-				"\xA\x34\x3\xFFFF\x1\xBF\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x1A"+
+				"\xA\x34\x3\xFFFF\x1\xC4\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x1A"+
 				"\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x18"+
-				"\x34\x1\xC0\x1\x34",
+				"\x34\x1\xC5\x1\x34",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x2"+
-				"\x34\x1\xC1\x17\x34",
-				"\xA\x34\x3\xFFFF\x1\xC2\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x1A"+
+				"\x34\x1\xC6\x17\x34",
+				"\xA\x34\x3\xFFFF\x1\xC7\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x1A"+
 				"\x34",
-				"\x1\xC3",
-				"\x1\xC4",
-				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
-				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
-				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
-				"",
 				"\x1\xC8",
-				"",
-				"",
-				"\xA\x34\x3\xFFFF\x1\xCB\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x1A"+
-				"\x34",
-				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\xE"+
-				"\x34\x1\xCC\xB\x34",
+				"\x1\xC9",
+				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
+				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
+				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
+				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
 				"",
 				"\x1\xCE",
-				"\x1\xCF",
+				"",
+				"",
+				"\xA\x34\x3\xFFFF\x1\xD1\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x1A"+
+				"\x34",
+				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\xE"+
+				"\x34\x1\xD2\xB\x34",
+				"",
+				"\x1\xD4",
+				"\x1\xD5",
+				"",
 				"",
 				"",
 				"",
@@ -4371,20 +4423,20 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 				"",
 				"",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x14"+
-				"\x34\x1\xD1\x5\x34",
+				"\x34\x1\xD7\x5\x34",
 				"",
-				"\x1\xD2",
-				"\x1\xD3",
+				"\x1\xD8",
+				"\x1\xD9",
 				"",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\xD"+
-				"\x34\x1\xD4\xC\x34",
+				"\x34\x1\xDA\xC\x34",
 				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
-				"\x1\xD6",
+				"\x1\xDC",
 				"\xA\x34\x3\xFFFF\x1\x34\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x13"+
-				"\x34\x1\xD7\x6\x34",
+				"\x34\x1\xDD\x6\x34",
 				"",
 				"\xA\x1B\x7\xFFFF\x1A\x1B\x4\xFFFF\x1\x1B\x1\xFFFF\x1A\x1B",
-				"\xA\x34\x3\xFFFF\x1\xD9\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x1A"+
+				"\xA\x34\x3\xFFFF\x1\xDF\x3\xFFFF\x1A\x34\x4\xFFFF\x1\x34\x1\xFFFF\x1A"+
 				"\x34",
 				"",
 				"",
@@ -4422,7 +4474,7 @@ public partial class LinqToQuerystringLexer : Antlr.Runtime.Lexer
 			this.transition = DFA29_transition;
 		}
 
-		public override string Description { get { return "1:1: Tokens : ( T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | ASSIGN | EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL | NOT | OR | AND | ASC | DESC | ALLPAGES | NONE | SKIP | TOP | FILTER | ORDERBY | SELECT | INLINECOUNT | EXPAND | IGNORED | STARTSWITH | ENDSWITH | SUBSTRINGOF | TOLOWER | ANY | ALL | COUNT | MIN | MAX | SUM | AVERAGE | INT | LONG | DOUBLE | SINGLE | BOOL | NULL | DATETIME | GUID | BYTE | SPACE | NEWLINE | DYNAMICIDENTIFIER | IDENTIFIER | STRING );"; } }
+		public override string Description { get { return "1:1: Tokens : ( T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | ASSIGN | EQUALS | NOTEQUALS | GREATERTHAN | GREATERTHANOREQUAL | LESSTHAN | LESSTHANOREQUAL | NOT | OR | AND | ASC | DESC | ALLPAGES | NONE | SKIP | TOP | FILTER | ORDERBY | SELECT | INLINECOUNT | EXPAND | IGNORED | STARTSWITH | ENDSWITH | SUBSTRINGOF | TOLOWER | TOUPPER | ANY | ALL | COUNT | MIN | MAX | SUM | AVERAGE | INT | LONG | DOUBLE | SINGLE | BOOL | NULL | DATETIME | GUID | BYTE | SPACE | NEWLINE | DYNAMICIDENTIFIER | IDENTIFIER | STRING );"; } }
 
 		public override void Error(NoViableAltException nvae)
 		{
