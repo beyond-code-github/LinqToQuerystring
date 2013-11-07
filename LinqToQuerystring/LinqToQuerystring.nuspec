@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+  <metadata> 
+    <authors>Roysvork</authors>
+    <owners>Roysvork</owners>
+    <id>LinqToQuerystring</id>
+    <title>Linq to Querystring</title>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Linq to Querystring is an expression parser for .NET that aims to provide a lightweight subset of the OData URI Specification</description>
+    <copyright>Pete Smith 2013</copyright>
+    <dependencies>
+        <dependency id="Antlr" version="3.5.0.2" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="LinqToQuerystring\bin\Release\LinqToQuerystring.dll" target="lib\net35\LinqToQuerystring.dll" />
+  </files>
+</package>
