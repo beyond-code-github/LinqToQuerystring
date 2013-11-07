@@ -36,7 +36,7 @@
 
             if (queryString == null)
             {
-                throw new ArgumentNullException("querystring", "Query String cannot be null");
+                throw new ArgumentNullException("queryString", "Query String cannot be null");
             }
 
             if (queryString.StartsWith("?"))
