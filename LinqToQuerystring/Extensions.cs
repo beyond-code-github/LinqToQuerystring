@@ -26,8 +26,8 @@
 
         public static object LinqToQuerystring(this IQueryable query, Type inputType, string queryString = "", bool forceDynamicProperties = false, int maxPageSize = -1)
         {
-            IQueryable queryResult = query;
-            IQueryable constrainedQuery = query;
+            var queryResult = query;
+            var constrainedQuery = query;
 
             if (query == null)
             {
