@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <metadata> 
-    <version>0</version>
+    <version>0.0</version>
     <authors>Roysvork</authors>
     <owners>Roysvork</owners>
     <id>LinqToQuerystring</id>
