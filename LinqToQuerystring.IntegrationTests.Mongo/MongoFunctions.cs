@@ -86,6 +86,19 @@
             () => strongResult.ShouldEachConformTo(o => o.Name.Contains("urn"));
     }
 
+    public class When_filtering_strongly_typed_data_with_multiple_substringof_functions : MongoFunctions
+    {
+        private Because of =
+            () =>
+            strongResult = strongCollection.LinqToQuerystring(
+                "?$filter=(substringof('Mond',Name)) or (substringof('Tues',Name))").ToList();
+
+        private It should_return_three_records = () => strongResult.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_name_contains_urn =
+            () => strongResult.ShouldEachConformTo(o => o.Name.Contains("Mond") || o.Name.Contains("Tues"));
+    }
+
     public class When_filtering_loosely_strongly_data_with_substringof_function_with_tolower : MongoFunctions
     {
         private Because of =
@@ -121,6 +134,19 @@
 
         private It should_only_return_records_where_name_contains_urn =
             () => result.ShouldEachConformTo(o => o["Name"].AsString.Contains("urn"));
+    }
+
+    public class When_filtering_loosely_typed_data_with_multiple_substringof_functions : MongoFunctions
+    {
+        private Because of =
+            () =>
+            result = collection.LinqToQuerystring(
+                "?$filter=(substringof('Mond',[Name])) or (substringof('Tues',[Name]))").ToList();
+
+        private It should_return_three_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_name_contains_urn =
+            () => result.ShouldEachConformTo(o => o["Name"].AsString.Contains("Mond") || o["Name"].AsString.Contains("Tues"));
     }
 
     public class When_filtering_loosely_typed_data_with_substringof_function_with_tolower : MongoFunctions

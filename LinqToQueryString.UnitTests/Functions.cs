@@ -77,6 +77,17 @@
             () => result.ShouldEachConformTo(o => o.Name.Contains("urn"));
     }
 
+    public class When_filtering_on_multiple_substringof_functions : Functions
+    {
+        private Because of =
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=(substringof('Mond',Name)) or (substringof('Tues',Name))");
+
+        private It should_return_three_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_name_contains_urn =
+            () => result.ShouldEachConformTo(o => o.Name.Contains("Mond") || o.Name.Contains("Tues"));
+    }
+
     public class When_filtering_on_substringof_function_with_escape_character : Filtering
     {
         private Because of =
