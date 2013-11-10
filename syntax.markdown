@@ -92,7 +92,7 @@ Linq to Querystring uses a subset of the query syntax from OData, so most of the
 * **Retrieve price and category**			/Products?$select=Price,Category
 * **Retreive price and category name**		/Products?$select=Price,Category/Name
 
-## Expand (Entity Framework Only)
+### Expand (Entity Framework Only)
 
 * **Invoke EF Include() on Property**       /Products?$expand=Category
 
