@@ -10,14 +10,6 @@ The project started out as an experiment of mine in ANLTR, and then grew as part
 
 Check out the demo site here: [http://linqtoquerystring.azurewebsites.net/](http://linqtoquerystring.azurewebsites.net/)
 
-## Why are we doing this?
-
-Currently the main proponents of OData are the Microsoft ASP.net team, and they're doing a great job with the OData specification and driving their implementation forward. However, it relies heavily on Microsoft technologies and is tied to the release cycle of MVC 4/Web API.
-
-It's always beneficial for a technology to have multiple implementations, especially when those implementations can all contribute to an open standard. But rather than 'competing' with other offerings, Linq to Querystring specialies in implementing a part of the spec, that which pertains to querying data via URIs.
-
-With smaller goals, a more focussed development effort and by addressing community concerns, Linq to Querystring can provide a more developer-centric implementation, with concise syntax, and increased interoperability, both with other web frameworks and database providers such as Mongo. And maybe we'll help push the standards forward along the way!
-
 ## Installation
 
 * Nuget package: [https://nuget.org/packages/LinqToQuerystring/](https://nuget.org/packages/LinqToQuerystring/)
