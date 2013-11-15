@@ -23,6 +23,7 @@
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
         {
             object responseObject;
+
             actionExecutedContext.Response.TryGetContentValue(out responseObject);
             var originalquery = responseObject as IQueryable;
 
