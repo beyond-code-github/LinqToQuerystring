@@ -59,6 +59,7 @@
                                          InstanceBuilders.BuildConcrete("Apple\rBob", 1, new DateTime(2002, 01, 01), true),
                                          InstanceBuilders.BuildConcrete("Apple\"Bob", 1, new DateTime(2002  , 01, 01), true),
                                          InstanceBuilders.BuildConcrete("Apple'Bob", 1, new DateTime(2002, 01, 01), true),
+                                         InstanceBuilders.BuildConcrete("x y & z", 1, new DateTime(2002, 01, 01), true),
                                      };
 
                 complexCollection = new List<ComplexClass>
@@ -279,6 +280,19 @@
         private It should_return_one_record = () => result.Count().ShouldEqual(1);
 
         private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o.Name == "Apple'Bob");
+    }
+
+    #endregion
+    
+    #region Filter on url encoded character tests
+
+    public class When_using_eq_filter_with_url_encoding : Filtering
+    {
+        private Because of = () => result = edgeCaseCollection.AsQueryable().LinqToQuerystring(@"?$filter=Name eq 'x%20y%20%26%20z'");
+
+        private It should_return_one_record = () => result.Count().ShouldEqual(1);
+
+        private It should_only_return_records_where_name_matches = () => result.ShouldEachConformTo(o => o.Name == "x y & z");
     }
 
     #endregion

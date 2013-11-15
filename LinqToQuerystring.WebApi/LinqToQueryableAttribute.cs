@@ -31,11 +31,9 @@
             if (originalquery != null)
             {
                 var queryString = actionExecutedContext.Request.RequestUri.Query;
-
                 var genericType = originalquery.GetType().GetGenericArguments()[0];
-                var query = HttpUtility.UrlDecode(queryString);
 
-                var reply = originalquery.LinqToQuerystring(genericType, query, this.forceDynamicProperties, this.maxPageSize);
+                var reply = originalquery.LinqToQuerystring(genericType, queryString, this.forceDynamicProperties, this.maxPageSize);
                 var replyType = reply.GetType();
 
                 if (typeof(IQueryable).IsAssignableFrom(replyType))

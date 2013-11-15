@@ -63,7 +63,7 @@
                 }
             }
 
-            var odataQuerystring = string.Join("&", odataQueries.ToArray());
+            var odataQuerystring = Uri.UnescapeDataString(string.Join("&", odataQueries.ToArray()));
 
             var input = new ANTLRReaderStream(new StringReader(odataQuerystring));
             var lexer = new LinqToQuerystringLexer(input);
