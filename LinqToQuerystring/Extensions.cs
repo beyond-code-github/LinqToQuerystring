@@ -84,7 +84,7 @@
 
                 if (singleNode is SelectNode)
                 {
-                    return ProjectQuery(queryResult, constrainedQuery, singleNode);
+                    return ProjectQuery(constrainedQuery, singleNode);
                 }
 
                 return PackageResults(queryResult, constrainedQuery);
@@ -105,7 +105,7 @@
                 var selectNode = children.FirstOrDefault(o => o is SelectNode);
                 if (selectNode != null)
                 {
-                    constrainedQuery = ProjectQuery(queryResult, constrainedQuery, selectNode);
+                    constrainedQuery = ProjectQuery(constrainedQuery, selectNode);
                 }
 
                 var inlineCountNode = children.FirstOrDefault(o => o is InlineCountNode);
@@ -158,7 +158,7 @@
             }
         }
 
-        private static IQueryable ProjectQuery(IQueryable query, IQueryable constrainedQuery, TreeNode node)
+        private static IQueryable ProjectQuery(IQueryable constrainedQuery, TreeNode node)
         {
             // TODO: Find a solution to the following:
             // Currently the only way to perform the SELECT part of the query is to call ToList and then project onto a dictionary. Two main problems:
