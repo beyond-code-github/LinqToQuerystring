@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <metadata> 
+    <version>0.0</version>
+    <authors>Roysvork</authors>
+    <owners>Roysvork</owners>
+    <id>LinqToQuerystring.WebApi</id>
+    <title>Linq to Querystring - Web Api</title>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides an action filter to enable LinqToQuerystring for Web API actions that return IQueryable</description>
+    <copyright>Pete Smith 2013</copyright>
+    <dependencies>
+        <dependency id="LinqToQuerystring" version="6.6.7.1" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\LinqToQuerystring.WebApi.dll" target="lib\net40\LinqToQuerystring.WebApi.dll" />
+  </files>
+</package>
