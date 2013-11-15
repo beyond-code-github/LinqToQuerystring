@@ -1,4 +1,4 @@
-Linq to Querystring v0.6.5
+Linq to Querystring v0.6.7
 ==========================
 
 ## New Website
