@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToQuerystring.WebApi", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToQuerystring.IntegrationTests.WebApi", "LinqToQuerystring.IntegrationTests.WebAPI\LinqToQuerystring.IntegrationTests.WebApi.csproj", "{D9657640-E56D-440C-9566-67EDF848A64A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqToQuerystring", "LinqToQuerystring\LinqToQuerystring.csproj", "{7859C906-95D8-4322-AA44-BC854B065AEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{D9657640-E56D-440C-9566-67EDF848A64A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9657640-E56D-440C-9566-67EDF848A64A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9657640-E56D-440C-9566-67EDF848A64A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7859C906-95D8-4322-AA44-BC854B065AEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7859C906-95D8-4322-AA44-BC854B065AEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7859C906-95D8-4322-AA44-BC854B065AEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7859C906-95D8-4322-AA44-BC854B065AEE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
