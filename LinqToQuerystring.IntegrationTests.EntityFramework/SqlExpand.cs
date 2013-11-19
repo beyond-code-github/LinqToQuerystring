@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
 
     using LinqToQuerystring;
@@ -22,6 +23,7 @@
         private Establish context = () =>
         {
             testDb = new TestDbContext();
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<TestDbContext>());
 
             testDb.Database.ExecuteSqlCommand("UPDATE ComplexClasses SET Concrete_Id = NULL");
             testDb.Database.ExecuteSqlCommand("DELETE FROM EdgeCaseClasses");
