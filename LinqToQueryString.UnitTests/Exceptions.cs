@@ -7,6 +7,15 @@
     using LinqToQuerystring.Exceptions;
 
     using Machine.Specifications;
+    
+    public class When_using_eq_filter_on_a_dynamic_type_decimal_property_without_m_suffix : Dynamics
+    {
+        private static Exception ex;
+
+        private Because of = () => ex = Catch.Exception(() => collection.AsQueryable().LinqToQuerystring("$filter=[Score] eq 0.4").ToList());
+
+        private It should_throw_an_exception = () => ex.ShouldBeOfType<InvalidCastException>();
+    }
 
     #region Filter on String tests
 

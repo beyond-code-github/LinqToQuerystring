@@ -1,5 +1,6 @@
 ﻿namespace LinqToQueryString.UnitTests
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -18,18 +19,22 @@
                 var item1 = new Dictionary<string, object>();
                 item1["Age"] = 23;
                 item1["Name"] = "Karl";
+                item1["Score"] = 0.1m;
 
                 var item2 = new Dictionary<string, object>();
                 item2["Age"] = 25;
                 item2["Name"] = "Kathryn";
+                item2["Score"] = 0.2m;
 
                 var item3 = new Dictionary<string, object>();
                 item3["Age"] = 28;
                 item3["Name"] = "Pete";
+                item3["Score"] = 0.3m;
 
                 var item4 = new Dictionary<string, object>();
                 item4["Age"] = 17;
                 item4["Name"] = "Dominic";
+                item4["Score"] = 0.4m;
 
                 collection = new List<Dictionary<string, object>> { item1, item2, item3, item4 };
             };
@@ -49,6 +54,13 @@
         private It should_return_two_results = () => result.Count().ShouldEqual(2);
     }
 
+    public class When_using_eq_filter_on_a_dynamic_type_decimal_property : Dynamics
+    {
+        private Because of = () => result = collection.AsQueryable().LinqToQuerystring("$filter=[Score] eq 0.4m");
+
+        private It should_return_one_result = () => result.Count().ShouldEqual(1);
+    }
+    
     public class When_using_gt_filter_on_a_dynamic_type : Dynamics
     {
         private Because of = () => result = collection.AsQueryable().LinqToQuerystring("$filter=[Age] gt 25");

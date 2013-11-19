@@ -108,6 +108,8 @@
                     return new DoubleNode(inputType, token, this);
                 case LinqToQuerystringLexer.SINGLE:
                     return new SingleNode(inputType, token, this);
+                case LinqToQuerystringLexer.DECIMAL:
+                    return new DecimalNode(inputType, token, this);
                 case LinqToQuerystringLexer.LONG:
                     return new LongNode(inputType, token, this);
                 case LinqToQuerystringLexer.BYTE:

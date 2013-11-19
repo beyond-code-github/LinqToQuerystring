@@ -54,6 +54,11 @@
                             return typeof(double);
                         }
 
+                        if (from == typeof(decimal) && to == typeof(BsonValue))
+                        {
+                            return typeof(double);
+                        }
+
                         return Configuration.DefaultTypeConversionMap(from, to);
                     };
 
@@ -904,6 +909,19 @@
         private It should_return_two_records = () => result.Count().ShouldEqual(3);
 
         private It should_only_return_records_where_value_is_not_less_than_or_equal_to_333point333 = () => result.ShouldEachConformTo(o => !(o["Value"] <= 333.333));
+    }
+
+    #endregion
+
+    #region Filter on decimal tests
+    
+    public class When_using_eq_filter_on_a_decimal : MongoFiltering
+    {
+        private Because of = () => result = collection.LinqToQuerystring("?$filter=Value eq 444.444m", true).ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_treat_the_value_as_a_double = () => result.ShouldEachConformTo(o => o["Value"] == 444.444);
     }
 
     #endregion

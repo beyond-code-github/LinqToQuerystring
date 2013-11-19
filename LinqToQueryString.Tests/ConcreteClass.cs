@@ -34,6 +34,8 @@
 
         public Guid Guid { get; set; }
 
+        public decimal Score { get; set; }
+
         public int CompareTo(ConcreteClass other)
         {
             return String.CompareOrdinal(this.Name, other.Name);

@@ -42,17 +42,17 @@
             testDb.Database.ExecuteSqlCommand("DELETE FROM ComplexClasses");
             testDb.Database.ExecuteSqlCommand("DELETE FROM NullableClasses");
 
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Apple", 1, new DateTime(2002, 01, 01), true, 10000000000, 111.111, 111.111f, 0x00, guidArray[0]));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Apple", 2, new DateTime(2005, 01, 01), false, 30000000000, 333.333, 333.333f, 0x22, guidArray[2]));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Custard", 1, new DateTime(2003, 01, 01), true, 50000000000, 555.555, 555.555f, 0xDD, guidArray[4]));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Custard", 2, new DateTime(2002, 01, 01), false, 30000000000, 333.333, 333.333f, 0x00, guidArray[2]));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Custard", 3, new DateTime(2002, 01, 01), true, 40000000000, 444.444, 444.444f, 0x22, guidArray[3]));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Banana", 3, new DateTime(2003, 01, 01), false, 10000000000, 111.111, 111.111f, 0x00, guidArray[0]));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Eggs", 1, new DateTime(2005, 01, 01), true, 40000000000, 444.444, 444.444f, 0xCC, guidArray[3]));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Eggs", 3, new DateTime(2001, 01, 01), false, 20000000000, 222.222, 222.222f, 0xCC, guidArray[1]));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2003, 01, 01), true, 30000000000, 333.333, 333.333f, 0xEE, guidArray[2]));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2004, 01, 01), false, 10000000000, 111.111, 111.111f, 0xDD, guidArray[0]));
-            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Dogfood", 5, new DateTime(2001, 01, 01), true, 20000000000, 222.222, 222.222f, 0xCC, guidArray[1]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Apple", 1, new DateTime(2002, 01, 01), true, 10000000000, 111.111, 111.111f, 0x00, 0.1m, guidArray[0]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Apple", 2, new DateTime(2005, 01, 01), false, 30000000000, 333.333, 333.333f, 0x22, 0.3m, guidArray[2]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Custard", 1, new DateTime(2003, 01, 01), true, 50000000000, 555.555, 555.555f, 0xDD, 0.5m, guidArray[4]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Custard", 2, new DateTime(2002, 01, 01), false, 30000000000, 333.333, 333.333f, 0x00, 0.3m, guidArray[2]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Custard", 3, new DateTime(2002, 01, 01), true, 40000000000, 444.444, 444.444f, 0x22, 0.4m, guidArray[3]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Banana", 3, new DateTime(2003, 01, 01), false, 10000000000, 111.111, 111.111f, 0x00, 0.1m, guidArray[0]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Eggs", 1, new DateTime(2005, 01, 01), true, 40000000000, 444.444, 444.444f, 0xCC, 0.4m, guidArray[3]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Eggs", 3, new DateTime(2001, 01, 01), false, 20000000000, 222.222, 222.222f, 0xCC, 0.2m, guidArray[1]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2003, 01, 01), true, 30000000000, 333.333, 333.333f, 0xEE, 0.3m, guidArray[2]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Dogfood", 4, new DateTime(2004, 01, 01), false, 10000000000, 111.111, 111.111f, 0xDD, 0.1m, guidArray[0]));
+            testDb.ConcreteCollection.Add(InstanceBuilders.BuildConcrete("Dogfood", 5, new DateTime(2001, 01, 01), true, 20000000000, 222.222, 222.222f, 0xCC, 0.2m, guidArray[1]));
 
             testDb.EdgeCaseCollection.Add(InstanceBuilders.BuildEdgeCase("Apple\\Bob", 1, new DateTime(2002, 01, 01), true));
             testDb.EdgeCaseCollection.Add(InstanceBuilders.BuildEdgeCase("Apple\bBob", 1, new DateTime(2002, 01, 01), true));
@@ -771,11 +771,11 @@
 
     public class When_using_eq_filter_on_a_negative_double : SqlFiltering
     {
-        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$filter=Cost gt -444.444").ToList();
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$filter=Value gt -444.444").ToList();
 
         private It should_return_two_records = () => result.Count().ShouldEqual(11);
 
-        private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o.Cost > -444.444);
+        private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o.Value > -444.444);
     }
 
     public class When_using_not_eq_filter_on_a_single_double : SqlFiltering
@@ -875,6 +875,127 @@
         private It should_return_two_records = () => result.Count().ShouldEqual(3);
 
         private It should_only_return_records_where_value_is_not_less_than_or_equal_to_333point333 = () => result.ShouldEachConformTo(o => !(o.Value <= 333.333));
+    }
+
+    #endregion
+
+    #region Filter on decimal tests
+
+    public class When_using_eq_filter_on_a_single_decimal : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Score eq 0.4m").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_Score_is_444point444 = () => result.ShouldEachConformTo(o => o.Score == 0.4m);
+    }
+
+    public class When_using_eq_filter_on_a_negative_decimal : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$filter=Score gt -0.4m").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(11);
+
+        private It should_only_return_records_where_age_is_4 = () => result.ShouldEachConformTo(o => o.Score > -0.4m);
+    }
+
+    public class When_using_not_eq_filter_on_a_single_decimal : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Score eq 0.4m").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(9);
+
+        private It should_only_return_records_where_Score_is_not_444point444 = () => result.ShouldEachConformTo(o => o.Score != 0.4m);
+    }
+
+    public class When_using_ne_filter_on_a_single_decimal : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Score ne 0.4m").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(9);
+
+        private It should_only_return_records_where_Score_is_not_444point444 = () => result.ShouldEachConformTo(o => o.Score != 0.4m);
+    }
+
+    public class When_using_not_ne_filter_on_a_single_decimal : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Score ne 0.4m").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_Score_is_444point444 = () => result.ShouldEachConformTo(o => o.Score == 0.4m);
+    }
+
+    public class When_using_gt_filter_on_a_single_decimal : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Score gt 0.3m").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_Score_is_greater_than_333point333 = () => result.ShouldEachConformTo(o => o.Score > 0.3m);
+    }
+
+    public class When_using_not_gt_filter_on_a_single_decimal : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Score gt 0.3m").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(8);
+
+        private It should_only_return_records_where_Score_is_not_greater_than_333point333 = () => result.ShouldEachConformTo(o => !(o.Score > 0.3m));
+    }
+
+    public class When_using_ge_filter_on_a_single_decimal : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Score ge 0.3m").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(6);
+
+        private It should_only_return_records_where_Score_is_greater_than_or_equal_to_333point333 = () => result.ShouldEachConformTo(o => o.Score >= 0.3m);
+    }
+
+    public class When_using_not_ge_filter_on_a_single_decimal : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Score ge 0.3m").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(5);
+
+        private It should_only_return_records_where_Score_is_not_greater_than_or_equal_to_333point333 = () => result.ShouldEachConformTo(o => !(o.Score >= 0.3m));
+    }
+
+    public class When_using_lt_filter_on_a_single_decimal : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Score lt 0.3m").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(5);
+
+        private It should_only_return_records_where_Score_is_less_than_333point333 = () => result.ShouldEachConformTo(o => o.Score < 0.3m);
+    }
+
+    public class When_using_not_lt_filter_on_a_single_decimal : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Score lt 0.3m").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(6);
+
+        private It should_only_return_records_where_Score_is_not_less_than_333point333 = () => result.ShouldEachConformTo(o => !(o.Score < 0.3m));
+    }
+
+    public class When_using_le_filter_on_a_single_decimal : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=Score le 0.3m").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(8);
+
+        private It should_only_return_records_where_Score_is_less_than_or_equal_to_333point333 = () => result.ShouldEachConformTo(o => o.Score <= 0.3m);
+    }
+
+    public class When_using_not_le_filter_on_a_single_decimal : SqlFiltering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.LinqToQuerystring("?$filter=not Score le 0.3m").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_Score_is_not_less_than_or_equal_to_333point333 = () => result.ShouldEachConformTo(o => !(o.Score <= 0.3m));
     }
 
     #endregion
