@@ -60,6 +60,13 @@
 
         private It should_return_one_result = () => result.Count().ShouldEqual(1);
     }
+
+    public class When_using_ge_filter_on_a_dynamic_type_decimal_property : Dynamics
+    {
+        private Because of = () => result = collection.AsQueryable().LinqToQuerystring("$filter=[Score] ge 1.0m");
+
+        private It should_return_one_result = () => result.Count().ShouldEqual(0);
+    }
     
     public class When_using_gt_filter_on_a_dynamic_type : Dynamics
     {
