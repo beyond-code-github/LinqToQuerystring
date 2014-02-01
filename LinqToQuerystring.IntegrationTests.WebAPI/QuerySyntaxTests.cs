@@ -19,12 +19,13 @@
         {
             var config = new HttpConfiguration();
             config.Services.Replace(typeof(ITraceWriter), new SimpleTracer());
-
+            
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
 
             browser = new Browser(config);
         };
@@ -67,5 +68,35 @@
             });
 
         private It should_return_200_ok = () => response.StatusCode.ShouldEqual(HttpStatusCode.OK);
+    }
+
+    public class NonGenericSelect : QuerySyntaxTests
+    {
+        private Because of = () => response = browser.Get(
+            "/api/nongeneric?$select=Name,Age",
+            (with) =>
+            {
+                with.Header("Accept", "application/json");
+                with.HttpRequest();
+            });
+
+        private It should_return_200_ok = () => response.StatusCode.ShouldEqual(HttpStatusCode.OK);
+    }
+
+    public class NonGenericFilter : QuerySyntaxTests
+    {
+        private Because of = () => response = browser.Get(
+            "/api/nongeneric?$filter=Age gt 28",
+            (with) =>
+            {
+                with.Header("Accept", "application/json");
+                with.HttpRequest();
+            });
+
+        private It should_return_200_ok = () => response.StatusCode.ShouldEqual(HttpStatusCode.OK);
+
+        private It should_return_Pete = () => response.Content.ReadAsStringAsync().Result.ShouldContain("Pete");
+
+        private It should_not_return_Kathryn = () => response.Content.ReadAsStringAsync().Result.ShouldNotContain("Kathryn");
     }
 }

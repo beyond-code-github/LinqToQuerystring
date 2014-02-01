@@ -6,10 +6,10 @@
 
     using LinqToQuerystring.WebApi;
 
-    public class DataController : ApiController
+    public class NonGenericController : ApiController
     {
         [LinqToQueryable]
-        public IQueryable<DataClass> Get()
+        public IQueryable Get()
         {
             return
                 new List<DataClass>
