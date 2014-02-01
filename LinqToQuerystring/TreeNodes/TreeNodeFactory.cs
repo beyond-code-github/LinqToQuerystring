@@ -72,6 +72,28 @@
                     return new ToLowerNode(inputType, token, this);
                 case LinqToQuerystringLexer.TOUPPER:
                     return new ToUpperNode(inputType, token, this);
+                case LinqToQuerystringLexer.YEAR:
+                    return new YearNode(inputType, token, this);
+                case LinqToQuerystringLexer.YEARS:
+                    return new YearsNode(inputType, token, this);
+                case LinqToQuerystringLexer.MONTH:
+                    return new MonthNode(inputType, token, this);
+                case LinqToQuerystringLexer.DAY:
+                    return new DayNode(inputType, token, this);
+                case LinqToQuerystringLexer.DAYS:
+                    return new DaysNode(inputType, token, this);
+                case LinqToQuerystringLexer.HOUR:
+                    return new HourNode(inputType, token, this);
+                case LinqToQuerystringLexer.HOURS:
+                    return new HoursNode(inputType, token, this);
+                case LinqToQuerystringLexer.MINUTE:
+                    return new MinuteNode(inputType, token, this);
+                case LinqToQuerystringLexer.MINUTES:
+                    return new MinutesNode(inputType, token, this);
+                case LinqToQuerystringLexer.SECOND:
+                    return new SecondNode(inputType, token, this);
+                case LinqToQuerystringLexer.SECONDS:
+                    return new SecondsNode(inputType, token, this);
                 case LinqToQuerystringLexer.ANY:
                     return new AnyNode(inputType, token, this);
                 case LinqToQuerystringLexer.ALL:
