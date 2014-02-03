@@ -96,6 +96,7 @@
 
         private It should_throw_an_exception = () => ex.ShouldBeOfExactType<FunctionNotSupportedException>();
     }
+
     public class When_using_years_function_on_a_string : Functions
     {
         private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=years(Name) eq 2002"));
@@ -116,6 +117,7 @@
 
         private It should_throw_an_exception = () => ex.ShouldBeOfExactType<FunctionNotSupportedException>();
     }
+
     public class When_using_days_function_on_a_string : Functions
     {
         private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=days(Name) eq 2"));
@@ -129,6 +131,7 @@
 
         private It should_throw_an_exception = () => ex.ShouldBeOfExactType<FunctionNotSupportedException>();
     }
+
     public class When_using_hours_function_on_a_string : Functions
     {
         private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=hours(Name) eq 14"));
@@ -142,6 +145,7 @@
 
         private It should_throw_an_exception = () => ex.ShouldBeOfExactType<FunctionNotSupportedException>();
     }
+
     public class When_using_minutes_function_on_a_string : Functions
     {
         private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=minutes(Name) eq 45"));
@@ -155,6 +159,7 @@
 
         private It should_throw_an_exception = () => ex.ShouldBeOfExactType<FunctionNotSupportedException>();
     }
+
     public class When_using_seconds_function_on_a_string : Functions
     {
         private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=seconds(Name) eq 32"));
