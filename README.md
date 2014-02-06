@@ -1,4 +1,4 @@
-Linq to Querystring v0.6.8
+Linq to Querystring v0.7.0
 ==========================
 
 ## New Website
@@ -17,3 +17,8 @@ PM> Install-Package LinqToQuerystring.WebApi
 
 * Nancy FX package: https://nuget.org/packages/LinqToQuerystring.Nancy/
 PM> Install-Package LinqToQuerystring.Nancy
+
+
+###Contributors
+
+https://github.com/xt0rted
