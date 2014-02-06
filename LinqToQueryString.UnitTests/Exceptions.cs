@@ -87,4 +87,85 @@
     }
 
     #endregion
+
+    #region Filter on DateTime & DateTimeOffset tests
+
+    public class When_using_year_function_on_a_string : Functions
+    {
+        private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=year(Name) eq 2005"));
+
+        private It should_throw_an_exception = () => ex.ShouldBeOfExactType<FunctionNotSupportedException>();
+    }
+
+    public class When_using_years_function_on_a_string : Functions
+    {
+        private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=years(Name) eq 2002"));
+
+        private It should_throw_an_exception = () => ex.ShouldBeOfExactType<FunctionNotSupportedException>();
+    }
+
+    public class When_using_month_function_on_a_string : Functions
+    {
+        private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=month(Name) eq 5"));
+
+        private It should_throw_an_exception = () => ex.ShouldBeOfExactType<FunctionNotSupportedException>();
+    }
+
+    public class When_using_day_function_on_a_string : Functions
+    {
+        private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=day(Name) eq 4"));
+
+        private It should_throw_an_exception = () => ex.ShouldBeOfExactType<FunctionNotSupportedException>();
+    }
+
+    public class When_using_days_function_on_a_string : Functions
+    {
+        private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=days(Name) eq 2"));
+
+        private It should_throw_an_exception = () => ex.ShouldBeOfExactType<FunctionNotSupportedException>();
+    }
+
+    public class When_using_hour_function_on_a_string : Functions
+    {
+        private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=hour(Name) eq 9"));
+
+        private It should_throw_an_exception = () => ex.ShouldBeOfExactType<FunctionNotSupportedException>();
+    }
+
+    public class When_using_hours_function_on_a_string : Functions
+    {
+        private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=hours(Name) eq 14"));
+
+        private It should_throw_an_exception = () => ex.ShouldBeOfExactType<FunctionNotSupportedException>();
+    }
+
+    public class When_using_minute_function_on_a_string : Functions
+    {
+        private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=minute(Name) eq 5"));
+
+        private It should_throw_an_exception = () => ex.ShouldBeOfExactType<FunctionNotSupportedException>();
+    }
+
+    public class When_using_minutes_function_on_a_string : Functions
+    {
+        private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=minutes(Name) eq 45"));
+
+        private It should_throw_an_exception = () => ex.ShouldBeOfExactType<FunctionNotSupportedException>();
+    }
+
+    public class When_using_second_function_on_a_string : Functions
+    {
+        private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=second(Name) eq 23"));
+
+        private It should_throw_an_exception = () => ex.ShouldBeOfExactType<FunctionNotSupportedException>();
+    }
+
+    public class When_using_seconds_function_on_a_string : Functions
+    {
+        private Because of = () => ex = Catch.Exception(() => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=seconds(Name) eq 32"));
+
+        private It should_throw_an_exception = () => ex.ShouldBeOfExactType<FunctionNotSupportedException>();
+    }
+
+    #endregion
 }

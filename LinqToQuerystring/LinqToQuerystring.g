@@ -91,7 +91,7 @@ accessor[bool subquery]:
 		)?;
 	
 function
-	:	STARTSWITH | ENDSWITH | SUBSTRINGOF | TOLOWER | TOUPPER;
+	:	STARTSWITH | ENDSWITH | SUBSTRINGOF | TOLOWER | TOUPPER | YEAR | YEARS | MONTH | DAY | DAYS | HOUR | HOURS | MINUTE | MINUTES | SECOND | SECONDS;
 		
 orderby
 	:	ORDERBY^ orderbylist;
@@ -200,6 +200,39 @@ TOLOWER
 TOUPPER
 	:	'toupper';
 	
+YEAR
+	:	'year';
+	
+YEARS
+	:	'years';
+	
+MONTH
+	:	'month';
+	
+DAY
+	:	'day';
+	
+DAYS
+	:	'days';
+	
+HOUR
+	:	'hour';
+	
+HOURS
+	:	'hours';
+	
+MINUTE
+	:	'minute';
+	
+MINUTES
+	:	'minutes';
+	
+SECOND
+	:	'second';
+	
+SECONDS
+	:	'seconds';
+
 ANY	: 	'any';
 	
 ALL	:	'all';

@@ -24,13 +24,13 @@
         {
             concreteCollection = new List<ConcreteClass>
                                          {
-                                             InstanceBuilders.BuildConcrete("Saturday", 1, new DateTime(2001, 01, 01), true),
-                                             InstanceBuilders.BuildConcrete("Satnav", 2, new DateTime(2002, 01, 01), false),
-                                             InstanceBuilders.BuildConcrete("Saturnalia", 3, new DateTime(2003, 01, 01), true),
-                                             InstanceBuilders.BuildConcrete("Saturn", 4, new DateTime(2004, 01, 01), true),
-                                             InstanceBuilders.BuildConcrete("Monday", 5, new DateTime(2005, 01, 01), true),
-                                             InstanceBuilders.BuildConcrete("Tuesday", 5, new DateTime(2005, 01, 01), true),
-                                             InstanceBuilders.BuildConcrete("Burns", 5, new DateTime(2005, 01, 01), true)
+                                             InstanceBuilders.BuildConcrete("Saturday", 1, new DateTime(2001, 01, 01, 01, 05, 00), true),
+                                             InstanceBuilders.BuildConcrete("Satnav", 2, new DateTime(2002, 01, 02, 06, 10, 10), false),
+                                             InstanceBuilders.BuildConcrete("Saturnalia", 3, new DateTime(2003, 02, 02, 10, 10, 20), true),
+                                             InstanceBuilders.BuildConcrete("Saturn", 4, new DateTime(2004, 04, 06, 10, 20, 30), true),
+                                             InstanceBuilders.BuildConcrete("Monday", 5, new DateTime(2005, 06, 21, 13, 20, 40), true),
+                                             InstanceBuilders.BuildConcrete("Tuesday", 5, new DateTime(2005, 06, 30, 20, 20, 50), true),
+                                             InstanceBuilders.BuildConcrete("Burns", 5, new DateTime(2005, 10, 31, 23, 35, 50), true)
                                          };
 
             complexCollection = new List<ComplexClass>
@@ -119,5 +119,126 @@
 
         private It should_only_return_records_where_name_contains_sat =
             () => result.ShouldEachConformTo(o => o.Name.Contains("Sat"));
+    }
+
+    public class When_filtering_on_year_function : Functions
+    {
+        private Because of =
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring(@"?$filter=year(Date) eq 2005");
+
+        private It should_return_three_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_year_is_2005 =
+            () => result.ShouldEachConformTo(o => o.Date.Year == 2005);
+    }
+
+    public class When_filtering_on_years_function : Functions
+    {
+        private Because of =
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring(@"?$filter=years(Date) eq 2005");
+
+        private It should_return_three_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_year_is_2005 =
+            () => result.ShouldEachConformTo(o => o.Date.Year == 2005);
+    }
+
+    public class When_filtering_on_month_function : Functions
+    {
+        private Because of =
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring(@"?$filter=month(Date) eq 6");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_month_is_6 =
+            () => result.ShouldEachConformTo(o => o.Date.Month == 6);
+    }
+
+    public class When_filtering_on_day_function : Functions
+    {
+        private Because of =
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring(@"?$filter=day(Date) eq 2");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_day_is_2 =
+            () => result.ShouldEachConformTo(o => o.Date.Day == 2);
+    }
+
+    public class When_filtering_on_days_function : Functions
+    {
+        private Because of =
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring(@"?$filter=days(Date) eq 2");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_day_is_2 =
+            () => result.ShouldEachConformTo(o => o.Date.Day == 2);
+    }
+
+    public class When_filtering_on_hour_function : Functions
+    {
+        private Because of =
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring(@"?$filter=hour(Date) eq 10");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_hour_is_10 =
+            () => result.ShouldEachConformTo(o => o.Date.Hour == 10);
+    }
+
+    public class When_filtering_on_hours_function : Functions
+    {
+        private Because of =
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring(@"?$filter=hours(Date) eq 10");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_hour_is_10 =
+            () => result.ShouldEachConformTo(o => o.Date.Hour == 10);
+    }
+
+    public class When_filtering_on_minute_function : Functions
+    {
+        private Because of =
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring(@"?$filter=minute(Date) eq 20");
+
+        private It should_return_three_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_minute_is_20 =
+            () => result.ShouldEachConformTo(o => o.Date.Minute == 20);
+    }
+
+    public class When_filtering_on_minutes_function : Functions
+    {
+        private Because of =
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring(@"?$filter=minutes(Date) eq 20");
+
+        private It should_return_three_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_minute_is_20 =
+            () => result.ShouldEachConformTo(o => o.Date.Minute == 20);
+    }
+
+    public class When_filtering_on_second_function : Functions
+    {
+        private Because of =
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring(@"?$filter=second(Date) eq 50");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_second_is_50 =
+            () => result.ShouldEachConformTo(o => o.Date.Second == 50);
+    }
+
+    public class When_filtering_on_seconds_function : Functions
+    {
+        private Because of =
+            () => result = concreteCollection.AsQueryable().LinqToQuerystring(@"?$filter=seconds(Date) eq 50");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_only_return_records_where_second_is_50 =
+            () => result.ShouldEachConformTo(o => o.Date.Second == 50);
     }
 }
