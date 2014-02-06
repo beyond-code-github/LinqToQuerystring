@@ -22,6 +22,7 @@ title:  Features
 * $expand - when directly exposing entity framework queries
 * $inlinecount
 * Functions - startswith, endswith, substringof, tolower
+* Date and time - year, years, month, day, days, hour, hours, minute, minutes, second, seconds
 * Collection Aggregates:
     * Any / All with predicates
     * Count, Sum, Average, Min, Max
@@ -30,7 +31,6 @@ title:  Features
 
 ## Future roadmap:
 
-* Website & improved documentation, samples
 * $select - sub properties & complex types (this should already work, but not tested)
 * More functions/Arithmetic operations (e.g abs, mod)
 * $expand for Lazy<T> and DTOs

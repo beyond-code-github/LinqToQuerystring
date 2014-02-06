@@ -42,6 +42,14 @@ Get going straight away by adding the [LinqToQueryable] attribute to your Asp.Ne
     }
 ##Release Notes
 
+**_v0.7.0_** - Date and time functions added, courtesy of https://github.com/xt0rted
+
+**_v0.6.8_** - Decimal data type is now supported. Please note when dealing with dynamic identifiers such as [Score] decimal constants must use m suffix e.g 0.4m
+
+**_v0.6.7_** - Better management of URL encoding
+
+**_v0.6.6_** - Unrecognised query operators should be ignored, String functions now working against Dictionary&lt;string, object&gt;
+
 **_v0.6.5_** - Now using AndAlso and OrElse expressions, fixed an issue when targeting .Net 3.5, and with content negotiation in Web API.
 
 **_v0.6.4_** - Entity Framework and Web API libraries now support .net framework 4.0. Nullable types are now supported, along with the OData null keyword.
