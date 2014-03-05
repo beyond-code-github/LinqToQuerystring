@@ -866,6 +866,15 @@
         private It should_only_return_records_where_value_is_greater_than_or_equal_to_333point333 = () => result.ShouldEachConformTo(o => o["Value"] >= 333.333);
     }
 
+    public class When_using_ge_filter_on_a_double_but_specifying_an_int : MongoFiltering
+    {
+        private Because of = () => result = collection.LinqToQuerystring("?$filter=Value ge 333", true).ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(6);
+
+        private It should_only_return_records_where_value_is_greater_than_or_equal_to_333point333 = () => result.ShouldEachConformTo(o => o["Value"] >= 333.333);
+    }
+
     public class When_using_not_ge_filter_on_a_single_double : MongoFiltering
     {
         private Because of = () => result = collection.LinqToQuerystring("?$filter=not Value ge 333.333", true).ToList();

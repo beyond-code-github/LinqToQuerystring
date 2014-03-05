@@ -17,7 +17,7 @@
 
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
-            return Expression.Constant(Convert.ToDouble(this.Text));
+            return Expression.Constant(Convert.ToDouble(this.Text.Replace("d",string.Empty)));
         }
     }
 }
