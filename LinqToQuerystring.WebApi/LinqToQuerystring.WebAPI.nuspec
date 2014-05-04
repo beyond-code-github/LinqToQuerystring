@@ -10,7 +10,7 @@
     <description>Provides an action filter to enable LinqToQuerystring for Web API actions that return IQueryable</description>
     <copyright>Pete Smith 2013</copyright>
     <dependencies>
-      <dependency id="LinqToQuerystring" version="0.6.7.2" />
+      <dependency id="LinqToQuerystring" version="0.7.0" />
       <dependency id="Microsoft.AspNet.WebApi.Core" version="[4.0.30506]" />
     </dependencies>
   </metadata>

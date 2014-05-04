@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <metadata> 
+    <version>1.1</version>
+    <authors>Roysvork</authors>
+    <owners>Roysvork</owners>
+    <id>LinqToQuerystring.Nancy</id>
+    <title>LinqToQuerystring.Nancy</title>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Provides an extension method for LinqToQuerystring that facilitates use with NancyFX</description>
+    <copyright>Pete Smith 2014</copyright>
+    <dependencies>
+      <dependency id="LinqToQuerystring" version="0.7.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\LinqToQuerystring.Nancy.dll" target="lib\net40\LinqToQuerystring.Nancy.dll" />
+  </files>
+</package>
