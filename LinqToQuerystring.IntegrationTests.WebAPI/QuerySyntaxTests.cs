@@ -70,6 +70,19 @@
         private It should_return_200_ok = () => response.StatusCode.ShouldEqual(HttpStatusCode.OK);
     }
 
+    public class UrlEncodingForDollarSign : QuerySyntaxTests
+    {
+        private Because of = () => response = browser.Get(
+            "/api/data?%24filter=Name%20eq%20%27x%20y%20%26%20z%27",
+            (with) =>
+            {
+                with.Header("Accept", "application/json");
+                with.HttpRequest();
+            });
+
+        private It should_return_200_ok = () => response.StatusCode.ShouldEqual(HttpStatusCode.OK);
+    }
+
     public class NonGenericSelect : QuerySyntaxTests
     {
         private Because of = () => response = browser.Get(

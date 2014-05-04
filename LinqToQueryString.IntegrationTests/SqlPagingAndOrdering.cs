@@ -151,6 +151,17 @@
         private It should_then_follow_with_the_fourth_record = () => result.ElementAt(1).Name.ShouldEqual(concreteCollection.ElementAt(3).Name);
     }
 
+    public class When_using_top_2_and_skip_2_on_ordered_data_but_orderby_is_at_the_end : SqlPagingAndOrdering
+    {
+        private Because of = () => result = testDb.ConcreteCollection.AsQueryable().LinqToQuerystring("?$top=2&$skip=2$orderby=Id").ToList();
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(2);
+
+        private It should_start_with_the_third_record = () => result.ElementAt(0).Name.ShouldEqual(concreteCollection.ElementAt(2).Name);
+
+        private It should_then_follow_with_the_fourth_record = () => result.ElementAt(1).Name.ShouldEqual(concreteCollection.ElementAt(3).Name);
+    }
+
     #endregion
 
     #region OrderBy Single Integer Tests
