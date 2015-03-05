@@ -4,8 +4,8 @@
     using System.Net;
     using System.Net.Http;
     using System.Net.Http.Formatting;
+    using System.Web;
     using System.Web.Http.Filters;
-
     using ActionFilterAttribute = System.Web.Http.Filters.ActionFilterAttribute;
 
     public class LinqToQueryableAttribute : ActionFilterAttribute
@@ -29,7 +29,7 @@
 
             if (originalquery != null)
             {
-                var queryString = actionExecutedContext.Request.RequestUri.Query;
+                var queryString = HttpUtility.UrlDecode(actionExecutedContext.Request.RequestUri.Query);
                 var genericType = originalquery.GetType().GetGenericArguments()[0];
 
                 var reply = originalquery.LinqToQuerystring(genericType, queryString, this.forceDynamicProperties, this.maxPageSize);
