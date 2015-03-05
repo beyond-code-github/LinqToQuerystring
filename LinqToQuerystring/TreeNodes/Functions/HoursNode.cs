@@ -22,7 +22,7 @@ namespace LinqToQuerystring.TreeNodes.Functions
 
             if (!typeof(DateTime).IsAssignableFrom(childexpression.Type))
             {
-                throw new FunctionNotSupportedException(childexpression.Type, "hours");
+                childexpression = Expression.Convert(childexpression, typeof(DateTime));
             }
 
             return Expression.Property(childexpression, "Hour");

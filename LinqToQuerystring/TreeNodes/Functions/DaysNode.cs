@@ -22,7 +22,7 @@
 
             if (!typeof(DateTime).IsAssignableFrom(childexpression.Type))
             {
-                throw new FunctionNotSupportedException(childexpression.Type, "days");
+                childexpression = Expression.Convert(childexpression, typeof(DateTime));
             }
 
             return Expression.Property(childexpression, "Day");
