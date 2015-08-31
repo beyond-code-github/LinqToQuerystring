@@ -126,6 +126,8 @@
                     return new IntNode(inputType, token, this);
                 case LinqToQuerystringLexer.DATETIME:
                     return new DateTimeNode(inputType, token, this);
+                case LinqToQuerystringLexer.DATETIMEOFFSET:
+                    return new DateTimeOffsetNode(inputType, token, this);
                 case LinqToQuerystringLexer.DOUBLE:
                     return new DoubleNode(inputType, token, this);
                 case LinqToQuerystringLexer.SINGLE:

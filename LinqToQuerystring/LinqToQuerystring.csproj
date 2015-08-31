@@ -63,6 +63,7 @@
     <Compile Include="TreeNodes\Base\TwoChildNode.cs" />
     <Compile Include="TreeNodes\DataTypes\BoolNode.cs" />
     <Compile Include="TreeNodes\DataTypes\ByteNode.cs" />
+    <Compile Include="TreeNodes\DataTypes\DateTimeOffsetNode.cs" />
     <Compile Include="TreeNodes\DataTypes\DecimalNode.cs" />
     <Compile Include="TreeNodes\Functions\DayNode.cs" />
     <Compile Include="TreeNodes\Functions\DaysNode.cs" />
@@ -124,7 +125,7 @@
   <PropertyGroup>
     <PreBuildEvent>$(ProjectDir)..\lib\ANTLR\Antlr3.exe $(ProjectDir)LinqToQuerystring.g -o $(ProjectDir)</PreBuildEvent>
   </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
