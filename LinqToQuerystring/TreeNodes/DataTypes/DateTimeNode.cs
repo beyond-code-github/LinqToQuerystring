@@ -20,8 +20,7 @@
         {
             var dateText = this.Text
                 .Replace("datetime'", string.Empty)
-                .Replace("'", string.Empty)
-                .Replace(".", ":");
+                .Replace("'", string.Empty);
 
             return Expression.Constant(DateTime.Parse(dateText, null, DateTimeStyles.RoundtripKind));
         }
