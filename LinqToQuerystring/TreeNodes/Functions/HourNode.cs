@@ -22,7 +22,7 @@
 
             if (!typeof(DateTime).IsAssignableFrom(childexpression.Type) && !typeof(DateTimeOffset).IsAssignableFrom(childexpression.Type))
             {
-                throw new FunctionNotSupportedException(childexpression.Type, "hour");
+                childexpression = Expression.Convert(childexpression, typeof(DateTime));
             }
 
             return Expression.Property(childexpression, "Hour");

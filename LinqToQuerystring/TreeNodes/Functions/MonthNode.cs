@@ -22,7 +22,7 @@
 
             if (!typeof(DateTime).IsAssignableFrom(childexpression.Type))
             {
-                throw new FunctionNotSupportedException(childexpression.Type, "month");
+                childexpression = Expression.Convert(childexpression, typeof(DateTime));
             }
 
             return Expression.Property(childexpression, "Month");
