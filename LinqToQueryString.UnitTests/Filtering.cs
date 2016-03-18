@@ -1,4 +1,4 @@
-﻿namespace LinqToQueryString.UnitTests
+namespace LinqToQueryString.UnitTests
 {
     using System;
     using System.Collections.Generic;
@@ -1202,6 +1202,118 @@
 
     #endregion
 
+    #region Filter on date with offset tests
+
+    public class When_using_eq_filter_on_a_single_date_with_offset : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Date eq datetimeoffset'2002-01-01T00:00.000Z'");
+
+        private It should_return_three_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_date_is_2002_01_01 = () => result.ShouldEachConformTo(o => o.Date == new DateTime(2002, 01, 01));
+    }
+
+    public class When_using_not_eq_filter_on_a_single_date_with_offset : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Date eq datetimeoffset'2002-01-01T00:00.000Z'");
+
+        private It should_return_eight_records = () => result.Count().ShouldEqual(8);
+
+        private It should_only_return_records_where_age_is_not_2002_01_01 = () => result.ShouldEachConformTo(o => o.Date != new DateTime(2002, 01, 01));
+    }
+
+    public class When_using_ne_filter_on_a_single_date_with_offset : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Date ne datetimeoffset'2002-01-01T00:00.000Z'");
+
+        private It should_return_eight_records = () => result.Count().ShouldEqual(8);
+
+        private It should_only_return_records_where_age_is_not_2002_01_01 = () => result.ShouldEachConformTo(o => o.Date != new DateTime(2002, 01, 01));
+    }
+
+    public class When_using_not_ne_filter_on_a_single_date_with_offset : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Date ne datetimeoffset'2002-01-01T00:00.000Z'");
+
+        private It should_return_three_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_age_is_2002_01_01 = () => result.ShouldEachConformTo(o => o.Date == new DateTime(2002, 01, 01));
+    }
+
+    public class When_using_gt_filter_on_a_single_date_with_offset : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Date gt datetimeoffset'2003-01-01T00:00.000Z'");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_age_is_greater_than_3 = () => result.ShouldEachConformTo(o => o.Date > new DateTime(2003, 01, 01));
+    }
+
+    public class When_using_not_gt_filter_on_a_single_date_with_offset : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Date gt datetimeoffset'2003-01-01T00:00.000Z'");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(8);
+
+        private It should_only_return_records_where_age_is_not_greater_than_3 = () => result.ShouldEachConformTo(o => !(o.Date > new DateTime(2003, 01, 01)));
+    }
+
+    public class When_using_ge_filter_on_a_single_date_with_offset : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Date ge datetimeoffset'2003-01-01T00:00.000Z'");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(6);
+
+        private It should_only_return_records_where_age_is_greater_than_or_equal_to_3 = () => result.ShouldEachConformTo(o => o.Date >= new DateTime(2003, 01, 01));
+    }
+
+    public class When_using_not_ge_filter_on_a_single_date_with_offset : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Date ge datetimeoffset'2003-01-01T00:00.000Z'");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(5);
+
+        private It should_only_return_records_where_age_is_not_greater_than_or_equal_to_3 = () => result.ShouldEachConformTo(o => !(o.Date >= new DateTime(2003, 01, 01)));
+    }
+
+    public class When_using_lt_filter_on_a_single_date_with_offset : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Date lt datetimeoffset'2003-01-01T00:00.000Z'");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(5);
+
+        private It should_only_return_records_where_age_is_less_than_3 = () => result.ShouldEachConformTo(o => o.Date < new DateTime(2003, 01, 01));
+    }
+
+    public class When_using_not_lt_filter_on_a_single_date_with_offset : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Date lt datetimeoffset'2003-01-01T00:00.000Z'");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(6);
+
+        private It should_only_return_records_where_age_is_not_less_than_3 = () => result.ShouldEachConformTo(o => !(o.Date < new DateTime(2003, 01, 01)));
+    }
+
+    public class When_using_le_filter_on_a_single_date_with_offset : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=Date le datetimeoffset'2003-01-01T00:00.000Z'");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(8);
+
+        private It should_only_return_records_where_age_is_less_than_or_equal_to_3 = () => result.ShouldEachConformTo(o => o.Date <= new DateTime(2003, 01, 01));
+    }
+
+    public class When_using_not_le_filter_on_a_single_date_with_offset : Filtering
+    {
+        private Because of = () => result = concreteCollection.AsQueryable().LinqToQuerystring("?$filter=not Date le datetimeoffset'2003-01-01T00:00.000Z'");
+
+        private It should_return_two_records = () => result.Count().ShouldEqual(3);
+
+        private It should_only_return_records_where_age_is_not_less_than_or_equal_to_3 = () => result.ShouldEachConformTo(o => !(o.Date <= new DateTime(2003, 01, 01)));
+    }
+
+    #endregion
+
     #region Filter on bool tests
 
     public class When_using_eq_filter_on_a_single_bool : Filtering
@@ -1471,6 +1583,15 @@
     public class When_using_eq_filter_on_a_single_nullable_date : Filtering
     {
         private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("?$filter=Date eq datetime'2002-01-01T00:00'");
+
+        private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
+
+        private It should_only_return_matching_records = () => nullableResult.ShouldEachConformTo(o => o.Date == new DateTime(2002, 01, 01));
+    }
+
+    public class When_using_eq_filter_on_a_single_nullable_date_with_offset : Filtering
+    {
+        private Because of = () => nullableResult = nullableCollection.AsQueryable().LinqToQuerystring("?$filter=Date eq datetime'2002-01-01T00:00.000Z'");
 
         private It should_return_the_correct_number_of_records = () => nullableResult.Count().ShouldEqual(1);
 
