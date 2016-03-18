@@ -5,6 +5,8 @@
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+	using System.Linq.Expressions;
+	using System.Reflection;
 
     using Antlr.Runtime;
     using Antlr.Runtime.Tree;
@@ -95,7 +97,7 @@
             {
                 var children = tree.Children.Cast<TreeNode>().ToList();
                 children.Sort();
-
+				
                 // These should always come first
                 foreach (var node in children.Where(o => !(o is SelectNode) && !(o is InlineCountNode)))
                 {
@@ -140,8 +142,9 @@
                 }
                 else
                 {
-                    queryResult = queryResult.Provider.CreateQuery(
-                        node.BuildLinqExpression(queryResult, queryResult.Expression));
+                    var expression = node.BuildLinqExpression(queryResult, queryResult.Expression);
+                    var queryType = expression.Type.GetGenericArguments()[0];
+                    queryResult = CreateQuery(queryResult.Provider, expression, queryType);
                 }
             }
 
@@ -152,10 +155,16 @@
             }
             else
             {
-                constrainedQuery =
-                    constrainedQuery.Provider.CreateQuery(
-                        node.BuildLinqExpression(constrainedQuery, constrainedQuery.Expression));
+                var expression = node.BuildLinqExpression(constrainedQuery, constrainedQuery.Expression);
+                var queryType = expression.Type.GetGenericArguments()[0];
+                constrainedQuery = CreateQuery(constrainedQuery.Provider, expression, queryType);
             }
+        }
+
+        private static IQueryable CreateQuery(IQueryProvider provider, Expression expression, Type queryType)
+        {
+            var genericMethod = _createQueryMethodInfo.MakeGenericMethod(queryType);
+            return (IQueryable)genericMethod.Invoke(provider,new object[] { expression });
         }
 
         private static IQueryable ProjectQuery(IQueryable constrainedQuery, TreeNode node)
@@ -189,5 +198,7 @@
             while (iterator.MoveNext())
                 yield return iterator.Current;
         }
+
+        private static MethodInfo _createQueryMethodInfo = typeof(IQueryProvider).GetMethods().First(x => x.Name == "CreateQuery" && x.IsGenericMethod);
     }
 }
