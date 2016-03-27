@@ -1,16 +1,13 @@
 ﻿namespace LinqToQuerystring.IntegrationTests.EntityFramework
 {
+    using LinqToQuerystring;
+    using LinqToQueryString.IntegrationTests.Sql;
+    using LinqToQueryString.Tests;
+    using Machine.Specifications;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
-
-    using LinqToQuerystring;
-
-    using LinqToQueryString.IntegrationTests.Sql;
-    using LinqToQueryString.Tests;
-
-    using Machine.Specifications;
 
     public abstract class SqlExpand
     {

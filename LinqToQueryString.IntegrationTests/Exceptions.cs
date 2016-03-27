@@ -1,12 +1,11 @@
 ﻿namespace LinqToQueryString.IntegrationTests.Sql
 {
+    using LinqToQuerystring;
+    using Machine.Specifications;
     using System;
     using System.Data;
+    using System.Data.Entity.Core;
     using System.Linq;
-
-    using LinqToQuerystring;
-
-    using Machine.Specifications;
 
     public class When_using_skip_on_unordered_data : SqlPagingAndOrdering
     {
