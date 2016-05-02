@@ -11,6 +11,7 @@
 
     using LinqToQuerystring.TreeNodes;
     using LinqToQuerystring.TreeNodes.Base;
+    using System.Linq.Expressions;
 
     public static class Extensions
     {
@@ -175,8 +176,16 @@
 
         private static object PackageResults(IQueryable query, IQueryable constrainedQuery)
         {
-            var result = query.GetEnumeratedQuery();
-            return new Dictionary<string, object> { { "Count", result.Count() }, { "Results", constrainedQuery } };
+            // Invoke Count on the query to not enumerate the whole collection into memory
+            var method = typeof(System.Linq.Queryable).GetMethods().Single(a => a.Name == "Count" && a.GetParameters().Length == 1);
+            var count = query.Provider.Execute<int>(
+                Expression.Call(
+                    null,
+                    method.MakeGenericMethod(query.ElementType),
+                    new Expression[] { query.Expression }
+                    ));
+            
+            return new Dictionary<string, object> { { "Count", count }, { "Results", constrainedQuery } };
         }
 
         public static IEnumerable<object> GetEnumeratedQuery(this IQueryable query)
