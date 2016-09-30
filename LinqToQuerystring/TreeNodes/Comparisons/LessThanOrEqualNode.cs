@@ -18,7 +18,7 @@
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
             var leftExpression = this.LeftNode.BuildLinqExpression(query, expression, item);
-            var rightExpression = this.RightNode.BuildLinqExpression(query, expression, item);
+            var rightExpression = this.RightNode.BuildLinqExpressionWithComparison(query, expression, item, leftExpression);
 
             NormalizeTypes(ref leftExpression, ref rightExpression);
 
