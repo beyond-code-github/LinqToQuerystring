@@ -52,15 +52,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Machine.Specifications.Should.0.7.0-Unstable0008\lib\net45\Machine.Specifications.Should.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WebAPI.Testing">
       <HintPath>..\packages\WebAPI.Testing.1.0.0.1\lib\net45\WebAPI.Testing.dll</HintPath>
     </Reference>
@@ -84,12 +90,13 @@
     <Compile Include="SimpleTracer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LinqToQuerystring.WebApi\LinqToQuerystring.WebApi.csproj">
-      <Project>{AC211100-2F7A-46A9-B630-C2DF57F50895}</Project>
-      <Name>LinqToQuerystring.WebApi</Name>
+    <ProjectReference Include="..\LinqToQuerystring.WebApi\LinqToQuerystring.WebApi2.csproj">
+      <Project>{C2EBA6BA-11AD-4AF7-B935-B71B761A63FC}</Project>
+      <Name>LinqToQuerystring.WebApi2</Name>
     </ProjectReference>
     <ProjectReference Include="..\LinqToQuerystring\LinqToQuerystring.csproj">
       <Project>{7859c906-95d8-4322-aa44-bc854b065aee}</Project>
