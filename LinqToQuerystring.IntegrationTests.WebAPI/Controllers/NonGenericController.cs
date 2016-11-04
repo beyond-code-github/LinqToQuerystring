@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
-
     using LinqToQuerystring.WebApi;
 
     public class NonGenericController : ApiController
