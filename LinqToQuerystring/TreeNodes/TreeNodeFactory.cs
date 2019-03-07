@@ -34,6 +34,8 @@
                     return new TopNode(inputType, token, this);
                 case LinqToQuerystringLexer.SKIP:
                     return new SkipNode(inputType, token, this);
+                case LinqToQuerystringLexer.AS:
+                    return new AsNode(inputType, token, this);
                 case LinqToQuerystringLexer.ORDERBY:
                     return new OrderByNode(inputType, token, this);
                 case LinqToQuerystringLexer.FILTER:

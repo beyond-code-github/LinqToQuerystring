@@ -1,4 +1,6 @@
-﻿namespace LinqToQueryString.UnitTests
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace LinqToQueryString.UnitTests
 {
     using System;
     using System.Collections.Generic;
@@ -28,7 +30,7 @@
 
         protected static Guid[] guidArray;
 
-        private Establish context = () =>
+        protected Establish context = () =>
         {
             guidArray = Enumerable.Range(1, 5).Select(o => Guid.NewGuid()).ToArray();
 
@@ -223,7 +225,30 @@
 
     #region Complex Property Tests
 
+    public class When_selecting_a_single_complex_string_property : Projection
+    {
+        private Because of =
+            () =>
+                result = concreteCollection.AsQueryable().LinqToQuerystring<ConcreteClass, IQueryable<Dictionary<string, object>>>("?$select=Name");
 
+        private It should_project_the_name_properties_into_the_dictionary =
+            () => result.ShouldEachConformTo(r => r.ContainsKey("Name"));
+
+        private It should_only_have_projected_the_one_property =
+            () => result.ShouldEachConformTo(r => r.Count == 1);
+
+        private It should_contain_5_results = () => result.Count().ShouldEqual(5);
+
+        private It should_start_with_the_first_record = () => result.ElementAt(0)["Name"].ShouldEqual(concreteCollection.ElementAt(0).Name);
+
+        private It should_be_followed_by_the_second_record = () => result.ElementAt(1)["Name"].ShouldEqual(concreteCollection.ElementAt(1).Name);
+
+        private It should_be_followed_by_the_third_record = () => result.ElementAt(2)["Name"].ShouldEqual(concreteCollection.ElementAt(2).Name);
+
+        private It should_be_followed_by_the_fourth_record = () => result.ElementAt(3)["Name"].ShouldEqual(concreteCollection.ElementAt(3).Name);
+
+        private It should_be_followed_by_the_fifth_record = () => result.ElementAt(4)["Name"].ShouldEqual(concreteCollection.ElementAt(4).Name);
+    }
 
     #endregion
 

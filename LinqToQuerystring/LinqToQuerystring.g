@@ -45,8 +45,11 @@ filter
 	:	FILTER^ filterexpression[false];
 	
 select
-	:	SELECT^ propertyname[false] (','! propertyname[false])*;
+	:	SELECT^ propertyname[false] (SPACE! asexp)? (','! propertyname[false] (SPACE! asexp)?)*;
 			
+asexp
+	:	AS^ SPACE! IDENTIFIER;
+
 expand
 	:	EXPAND^ propertyname[false] (','! propertyname[false])*;
 
@@ -246,6 +249,8 @@ MAX	:	'max';
 SUM	:	'sum';
 
 AVERAGE	:	'average';
+
+AS: 'as';
 		
 INT	:	('-')? '0'..'9'+;
 	
@@ -281,7 +286,7 @@ HEX_PAIR
 	
 IDENTIFIER
 	:	('a'..'z'|'A'..'Z') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*;
-	
+
 STRING 	: 	'\'' (ESC_SEQ| ~('\\'|'\''))* '\'';
 
 fragment
