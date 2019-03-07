@@ -33,7 +33,7 @@ public override void ReportError(RecognitionException e) {
 public prog
 	:	(param ('&'! param)*)*;
 
-param	:	(orderby | top | skip | filter | select | inlinecount | expand | ignored);
+param	:	(orderby | top | skip | filter | select | inlinecount | expand | ignored | apply);
 
 skip	
 	:	SKIP^ INT+;
@@ -49,6 +49,27 @@ select
 			
 asexp
 	:	AS^ SPACE! IDENTIFIER;
+
+apply
+	:	APPLY^ aggexpr;
+
+aggexpr
+	:	applyTrafo ('/'! applyTrafo)*;
+
+applyTrafo
+	:	aggregateTrafo;
+
+aggregateTrafo
+	:	AGGREGATE^ '(' aggregateExpr (','! aggregateExpr)*')';
+
+aggregateExpr
+	:	propertyname[false] SPACE! aggregateWith SPACE! asexp; 
+
+aggregateWith
+	:	WITH^ SPACE! aggregateMethod;
+
+aggregateMethod
+	:	MAX | MIN | SUM | AVERAGE;
 
 expand
 	:	EXPAND^ propertyname[false] (','! propertyname[false])*;
@@ -180,6 +201,12 @@ ORDERBY
 	
 SELECT
 	:	'$select=';
+
+APPLY
+	:	'$apply=';
+
+AGGREGATE
+	:	'aggregate';
 	
 INLINECOUNT
 	:	'$inlinecount=';
@@ -251,6 +278,8 @@ SUM	:	'sum';
 AVERAGE	:	'average';
 
 AS: 'as';
+
+WITH: 'with';
 		
 INT	:	('-')? '0'..'9'+;
 	

@@ -55,6 +55,8 @@
     <Compile Include="TreeNodes\Aggregates\AverageNode.cs" />
     <Compile Include="TreeNodes\Aggregates\MinNode.cs" />
     <Compile Include="TreeNodes\Aggregates\CountNode.cs" />
+    <Compile Include="TreeNodes\Apply\ApplyNode.cs" />
+    <Compile Include="TreeNodes\Apply\WithNode.cs" />
     <Compile Include="TreeNodes\AsNode.cs" />
     <Compile Include="TreeNodes\AliasNode.cs" />
     <Compile Include="TreeNodes\AndNode.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="TreeNodes\DataTypes\BoolNode.cs" />
     <Compile Include="TreeNodes\DataTypes\ByteNode.cs" />
     <Compile Include="TreeNodes\DataTypes\DecimalNode.cs" />
+    <Compile Include="TreeNodes\Apply\AggregateNode.cs" />
     <Compile Include="TreeNodes\Functions\DayNode.cs" />
     <Compile Include="TreeNodes\Functions\DaysNode.cs" />
     <Compile Include="Exceptions\FunctionNotSupportedException.cs" />

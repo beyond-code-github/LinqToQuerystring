@@ -36,6 +36,12 @@
                     return new SkipNode(inputType, token, this);
                 case LinqToQuerystringLexer.AS:
                     return new AsNode(inputType, token, this);
+                case LinqToQuerystringLexer.WITH:
+                    return new WithNode(inputType, token, this);
+                case LinqToQuerystringLexer.APPLY:
+                    return new ApplyNode(inputType, token, this);
+                case LinqToQuerystringLexer.AGGREGATE:
+                    return new AggregateNode(inputType, token, this);
                 case LinqToQuerystringLexer.ORDERBY:
                     return new OrderByNode(inputType, token, this);
                 case LinqToQuerystringLexer.FILTER:

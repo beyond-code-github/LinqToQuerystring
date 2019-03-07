@@ -95,6 +95,7 @@
     <Compile Include="Filtering.cs" />
     <Compile Include="Functions.cs" />
     <Compile Include="InlineCount.cs" />
+    <Compile Include="Nunit\Aggregation.cs" />
     <Compile Include="Nunit\Projection.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="PagingAndOrdering.cs" />
