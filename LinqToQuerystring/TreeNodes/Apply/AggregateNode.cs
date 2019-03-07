@@ -36,11 +36,15 @@ namespace LinqToQuerystring.TreeNodes
                 var withNode = childNodes.ElementAtOrDefault(i + 1) as WithNode;
                 var asNode = childNodes.ElementAtOrDefault(i + 2) as AsNode;
 
-                var property = propertyNode.BuildLinqExpression(query, expression, parameter) as MemberExpression;
-                var selector = Expression.Lambda(property, false, Expression.Parameter(inputType, "o"));
+                var selectorType = propertyNode is DynamicIdentifierNode
+                    ? typeof(Dictionary<string, object>)
+                    : inputType;
+
+                var property = propertyNode.BuildLinqExpression(query, expression, parameter);
+                var selector = Expression.Lambda(property, false, Expression.Parameter(selectorType, "o"));
                 var methodName = CultureInfo.InvariantCulture.TextInfo.ToTitleCase(withNode.ChildNode.Text);
                 var element = Expression.ElementInit(addMethod, Expression.Constant(asNode.ChildNode.Text)
-                    , Expression.Convert(Expression.Call(typeof(Enumerable), methodName, new [] { inputType }, query.Expression, selector), typeof(object)));
+                    , Expression.Convert(Expression.Call(typeof(Enumerable), methodName, new [] { selectorType }, expression, selector), typeof(object)));
 
                 elements.Add(element);
             }

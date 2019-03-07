@@ -204,4 +204,47 @@ namespace LinqToQueryString.UnitTests.Nunit
             Assert.IsTrue((int)_result.ElementAt(4)["MinAge"] == 5);
         }
     }
+
+    [TestFixture]
+    public class When_aggregating_multiple_properties : Aggregations
+    {
+        private IQueryable<Dictionary<string, object>> _result;
+        [SetUp]
+        public void Setup()
+        {
+            // establish context
+            CreateContext();
+            _result = concreteCollection.AsQueryable()
+                .LinqToQuerystring<ConcreteClass, IQueryable<Dictionary<string, object>>>("?$apply=aggregate(Age with min as MinAge,Age with sum as TotalAge)");
+
+        }
+
+        [Test]
+        public void Should_have_the_projected_property_in_the_dictionary()
+        {
+            Assert.IsTrue(_result.All(r => r.ContainsKey("MinAge") && r.ContainsKey("TotalAge")));
+        }
+
+        [Test]
+        public void Should_have_exactly_two_property()
+        {
+            Assert.IsTrue(_result.All(r => r.Count == 2));
+        }
+
+        [Test]
+        public void Should_have_the_correct_max()
+        {
+            Assert.IsTrue((int)_result.ElementAt(0)["MinAge"] == 1);
+            Assert.IsTrue((int)_result.ElementAt(1)["MinAge"] == 2);
+            Assert.IsTrue((int)_result.ElementAt(2)["MinAge"] == 3);
+            Assert.IsTrue((int)_result.ElementAt(3)["MinAge"] == 4);
+            Assert.IsTrue((int)_result.ElementAt(4)["MinAge"] == 5);
+
+            Assert.IsTrue((int)_result.ElementAt(0)["TotalAge"] == 5);
+            Assert.IsTrue((int)_result.ElementAt(1)["TotalAge"] == 10);
+            Assert.IsTrue((int)_result.ElementAt(2)["TotalAge"] == 15);
+            Assert.IsTrue((int)_result.ElementAt(3)["TotalAge"] == 20);
+            Assert.IsTrue((int)_result.ElementAt(4)["TotalAge"] == 25);
+        }
+    }
 }

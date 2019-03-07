@@ -1,4 +1,6 @@
-﻿namespace LinqToQuerystring.TreeNodes
+﻿using System.Collections.Generic;
+
+namespace LinqToQuerystring.TreeNodes
 {
     using System;
     using System.Linq;
@@ -17,7 +19,12 @@
 
         public override Expression BuildLinqExpression(IQueryable query, Expression expression, Expression item = null)
         {
-            return ChildNode.BuildLinqExpression(query, expression, item);
+            var result = ChildNode.BuildLinqExpression(query, expression, item);
+            foreach (var child in ChildNodes.Skip(1))
+            {
+                result = child.BuildLinqExpression(query, result, Expression.Parameter(typeof(Dictionary<string, object>)));
+            }
+            return result;
         }
 
         public override int CompareTo(TreeNode other)
