@@ -113,4 +113,30 @@ namespace LinqToQueryString.UnitTests.Nunit
             Assert.IsTrue(_result.All(r => r.Count == 2));
         }
     }
+
+    [TestFixture]
+    public class When_selecting_multiple_complex_properties_with_rename : Projection
+    {
+        private IQueryable<Dictionary<string, object>> _result;
+        [SetUp]
+        public void Setup()
+        {
+            // establish context
+            context();
+            _result = complexCollection.AsQueryable()
+                .LinqToQuerystring<ComplexClass, IQueryable<Dictionary<string, object>>>("?$select=Concrete/Id,Concrete/Name as DisplayName");
+        }
+
+        [Test]
+        public void Should_have_the_projected_property_in_the_dictionary()
+        {
+            Assert.IsTrue(_result.All(r => r.ContainsKey("Concrete_Id") && r.ContainsKey("DisplayName")));
+        }
+
+        [Test]
+        public void Should_have_exactly_two_property()
+        {
+            Assert.IsTrue(_result.All(r => r.Count == 2));
+        }
+    }
 }
