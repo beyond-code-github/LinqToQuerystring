@@ -22,38 +22,41 @@
 
         public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
         {
-            object responseObject;
-
-            actionExecutedContext.Response.TryGetContentValue(out responseObject);
-            var originalquery = responseObject as IQueryable;
-
-            if (originalquery != null)
+            if (actionExecutedContext.Response != null)
             {
-                var queryString = actionExecutedContext.Request.RequestUri.Query;
-                var genericType = originalquery.GetType().GetGenericArguments()[0];
+                object responseObject;
 
-                var reply = originalquery.LinqToQuerystring(genericType, queryString, this.forceDynamicProperties, this.maxPageSize);
-                var replyType = reply.GetType();
+                actionExecutedContext.Response.TryGetContentValue(out responseObject);
+                var originalquery = responseObject as IQueryable;
 
-                if (typeof(IQueryable).IsAssignableFrom(replyType))
+                if (originalquery != null)
                 {
-                    var queryableType = typeof(IQueryable<>).GetGenericTypeDefinition();
-                    var genericArgs = replyType.GetGenericArguments();
-                    replyType = queryableType.MakeGenericType(genericArgs);
+                    var queryString = actionExecutedContext.Request.RequestUri.Query;
+                    var genericType = originalquery.GetType().GetGenericArguments()[0];
+
+                    var reply = originalquery.LinqToQuerystring(genericType, queryString, this.forceDynamicProperties, this.maxPageSize);
+                    var replyType = reply.GetType();
+
+                    if (typeof(IQueryable).IsAssignableFrom(replyType))
+                    {
+                        var queryableType = typeof(IQueryable<>).GetGenericTypeDefinition();
+                        var genericArgs = replyType.GetGenericArguments();
+                        replyType = queryableType.MakeGenericType(genericArgs);
+                    }
+
+                    var configuraton = actionExecutedContext.ActionContext.ControllerContext.Configuration;
+                    var conneg = (IContentNegotiator) configuraton.Services.GetService(typeof(IContentNegotiator));
+                    var formatter = conneg.Negotiate(
+                        replyType,
+                        actionExecutedContext.Request,
+                        configuraton.Formatters);
+
+                    actionExecutedContext.Response = new HttpResponseMessage
+                    {
+                        StatusCode = HttpStatusCode.OK,
+                        Content = new ObjectContent(replyType, reply, formatter.Formatter)
+                    };
                 }
-
-                var configuraton = actionExecutedContext.ActionContext.ControllerContext.Configuration;
-                var conneg = (IContentNegotiator)configuraton.Services.GetService(typeof(IContentNegotiator));
-                var formatter = conneg.Negotiate(
-                    replyType,
-                    actionExecutedContext.Request,
-                    configuraton.Formatters);
-
-                actionExecutedContext.Response = new HttpResponseMessage
-                {
-                    StatusCode = HttpStatusCode.OK,
-                    Content = new ObjectContent(replyType, reply, formatter.Formatter)
-                };
             }
         }
     }
